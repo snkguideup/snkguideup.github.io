@@ -1,0 +1,792 @@
+```html
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Login / Sign Up | SNK Academy</title>
+
+  <meta
+    name="description"
+    content="SNK Academy Login and Sign Up"
+  >
+
+  <style>
+
+    /* =====================================================
+       RESET
+    ===================================================== */
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      min-height:100vh;
+
+      background:#050505;
+
+      color:#fff;
+
+      line-height:1.6;
+
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    button,
+    input{
+      font:inherit;
+    }
+
+
+    /* =====================================================
+       PAGE BACKGROUND
+    ===================================================== */
+
+    .page{
+      min-height:100vh;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      padding:30px 15px;
+
+      position:relative;
+
+      overflow:hidden;
+
+      background:
+
+        radial-gradient(
+          circle at 50% 20%,
+          rgba(183,255,0,.10),
+          transparent 35%
+        ),
+
+        #050505;
+    }
+
+
+    .page::before{
+      content:"";
+
+      position:absolute;
+
+      width:500px;
+      height:500px;
+
+      border:
+        1px solid
+        rgba(183,255,0,.05);
+
+      border-radius:50%;
+
+      left:50%;
+      top:50%;
+
+      transform:
+        translate(-50%,-50%);
+    }
+
+
+    /* =====================================================
+       BACK HOME
+    ===================================================== */
+
+    .home-link{
+      position:absolute;
+
+      top:25px;
+      left:25px;
+
+      z-index:5;
+
+      padding:
+        9px 14px;
+
+      border:
+        1px solid #292929;
+
+      border-radius:8px;
+
+      color:#999;
+
+      font-size:12px;
+
+      font-weight:700;
+
+      transition:.3s;
+    }
+
+    .home-link:hover{
+      color:#b7ff00;
+
+      border-color:#b7ff00;
+    }
+
+
+    /* =====================================================
+       LOGIN BOX
+    ===================================================== */
+
+    .auth-box{
+      width:100%;
+
+      max-width:440px;
+
+      position:relative;
+
+      z-index:2;
+
+      padding:35px;
+
+      background:
+        rgba(12,12,12,.96);
+
+      border:
+        1px solid #242424;
+
+      border-radius:20px;
+
+      box-shadow:
+        0 25px 80px
+        rgba(0,0,0,.45);
+    }
+
+
+    /* =====================================================
+       LOGO
+    ===================================================== */
+
+    .logo{
+      display:flex;
+
+      justify-content:center;
+
+      margin-bottom:25px;
+    }
+
+    .logo img{
+      width:125px;
+
+      height:auto;
+    }
+
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
+
+    .auth-header{
+      text-align:center;
+
+      margin-bottom:28px;
+    }
+
+    .badge{
+      display:inline-flex;
+
+      align-items:center;
+
+      gap:7px;
+
+      padding:
+        6px 11px;
+
+      margin-bottom:14px;
+
+      color:#b7ff00;
+
+      background:
+        rgba(183,255,0,.06);
+
+      border:
+        1px solid
+        rgba(183,255,0,.20);
+
+      border-radius:30px;
+
+      font-size:9px;
+
+      font-weight:800;
+
+      letter-spacing:1px;
+    }
+
+    .badge-dot{
+      width:6px;
+      height:6px;
+
+      background:#b7ff00;
+
+      border-radius:50%;
+
+      box-shadow:
+        0 0 10px #b7ff00;
+    }
+
+    h1{
+      font-size:32px;
+
+      line-height:1.15;
+
+      letter-spacing:-1px;
+
+      margin-bottom:8px;
+    }
+
+    h1 span{
+      color:#b7ff00;
+    }
+
+    .subtitle{
+      color:#777;
+
+      font-size:13px;
+    }
+
+
+    /* =====================================================
+       FORM
+    ===================================================== */
+
+    .form{
+      display:flex;
+
+      flex-direction:column;
+
+      gap:15px;
+    }
+
+
+    /* INPUT GROUP */
+
+    .input-group{
+      display:flex;
+
+      flex-direction:column;
+
+      gap:7px;
+    }
+
+    .input-group label{
+      color:#aaa;
+
+      font-size:12px;
+
+      font-weight:700;
+    }
+
+    .input-group input{
+      width:100%;
+
+      height:48px;
+
+      padding:
+        0 14px;
+
+      background:#080808;
+
+      color:#fff;
+
+      border:
+        1px solid #292929;
+
+      border-radius:9px;
+
+      outline:none;
+
+      font-size:13px;
+
+      transition:.3s;
+    }
+
+    .input-group input::placeholder{
+      color:#555;
+    }
+
+    .input-group input:focus{
+      border-color:
+        rgba(183,255,0,.55);
+
+      box-shadow:
+        0 0 0 3px
+        rgba(183,255,0,.06);
+    }
+
+
+    /* PASSWORD ROW */
+
+    .password-row{
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:10px;
+    }
+
+    .forgot{
+      color:#b7ff00;
+
+      font-size:11px;
+
+      font-weight:700;
+
+      cursor:pointer;
+    }
+
+
+    /* =====================================================
+       LOGIN BUTTON
+    ===================================================== */
+
+    .login-button{
+      width:100%;
+
+      height:49px;
+
+      margin-top:4px;
+
+      border:0;
+
+      border-radius:9px;
+
+      background:#b7ff00;
+
+      color:#050505;
+
+      font-size:13px;
+
+      font-weight:900;
+
+      cursor:pointer;
+
+      transition:.3s;
+    }
+
+    .login-button:hover{
+      transform:
+        translateY(-2px);
+
+      box-shadow:
+        0 12px 30px
+        rgba(183,255,0,.18);
+    }
+
+
+    /* =====================================================
+       DIVIDER
+    ===================================================== */
+
+    .divider{
+      display:flex;
+
+      align-items:center;
+
+      gap:12px;
+
+      margin:22px 0;
+    }
+
+    .divider::before,
+    .divider::after{
+      content:"";
+
+      height:1px;
+
+      flex:1;
+
+      background:#222;
+    }
+
+    .divider span{
+      color:#555;
+
+      font-size:11px;
+    }
+
+
+    /* =====================================================
+       SIGN UP
+    ===================================================== */
+
+    .signup-box{
+      text-align:center;
+
+      padding:
+        15px;
+
+      background:#090909;
+
+      border:
+        1px solid #1d1d1d;
+
+      border-radius:10px;
+    }
+
+    .signup-box p{
+      color:#777;
+
+      font-size:12px;
+
+      margin-bottom:8px;
+    }
+
+    .signup-button{
+      display:inline-block;
+
+      color:#b7ff00;
+
+      font-size:12px;
+
+      font-weight:800;
+
+      cursor:pointer;
+    }
+
+
+    /* =====================================================
+       NOTICE
+    ===================================================== */
+
+    .demo-notice{
+      margin-top:18px;
+
+      padding:
+        11px 13px;
+
+      background:
+        rgba(183,255,0,.04);
+
+      border:
+        1px solid
+        rgba(183,255,0,.12);
+
+      border-radius:8px;
+
+      text-align:center;
+
+      color:#666;
+
+      font-size:10px;
+
+      line-height:1.6;
+    }
+
+    .demo-notice strong{
+      color:#b7ff00;
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    .copyright{
+      position:absolute;
+
+      bottom:18px;
+
+      left:0;
+
+      width:100%;
+
+      text-align:center;
+
+      color:#444;
+
+      font-size:10px;
+    }
+
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media(max-width:500px){
+
+      .page{
+        padding:
+          70px 15px 60px;
+      }
+
+      .home-link{
+        top:18px;
+        left:18px;
+      }
+
+      .auth-box{
+        padding:26px 20px;
+
+        border-radius:16px;
+      }
+
+      .logo img{
+        width:110px;
+      }
+
+      h1{
+        font-size:28px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     PAGE
+===================================================== -->
+
+<main class="page">
+
+
+  <!-- HOME -->
+
+  <a
+    href="index.html"
+    class="home-link"
+  >
+    ← Home
+  </a>
+
+
+
+  <!-- ===================================================
+       AUTH BOX
+  ==================================================== -->
+
+  <div class="auth-box">
+
+
+    <!-- LOGO -->
+
+    <div class="logo">
+
+      <img
+        src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk-it-institute-logo.svg"
+        alt="SNK Academy"
+      >
+
+    </div>
+
+
+
+    <!-- HEADER -->
+
+    <div class="auth-header">
+
+
+      <div class="badge">
+
+        <span class="badge-dot"></span>
+
+        SNK ACADEMY
+
+      </div>
+
+
+      <h1>
+
+        Login /
+
+        <span>
+          Sign Up
+        </span>
+
+      </h1>
+
+
+      <p class="subtitle">
+
+        আপনার learning journey চালিয়ে যেতে
+        account-এ প্রবেশ করুন।
+
+      </p>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         FORM
+    ================================================== -->
+
+    <form
+      class="form"
+      onsubmit="
+        alert('Login system শীঘ্রই চালু হবে।');
+        return false;
+      "
+    >
+
+
+      <!-- EMAIL -->
+
+      <div class="input-group">
+
+        <label for="email">
+          Email Address
+        </label>
+
+        <input
+          id="email"
+          type="email"
+          placeholder="আপনার email লিখুন"
+          required
+        >
+
+      </div>
+
+
+
+      <!-- PASSWORD -->
+
+      <div class="input-group">
+
+        <div class="password-row">
+
+          <label for="password">
+            Password
+          </label>
+
+          <span
+            class="forgot"
+            onclick="
+              alert('Password recovery system পরে যোগ করা হবে।');
+            "
+          >
+            Forgot Password?
+          </span>
+
+        </div>
+
+
+        <input
+          id="password"
+          type="password"
+          placeholder="আপনার password লিখুন"
+          required
+        >
+
+      </div>
+
+
+
+      <!-- LOGIN -->
+
+      <button
+        type="submit"
+        class="login-button"
+      >
+
+        Login →
+
+      </button>
+
+
+    </form>
+
+
+
+    <!-- DIVIDER -->
+
+    <div class="divider">
+
+      <span>
+        অথবা
+      </span>
+
+    </div>
+
+
+
+    <!-- SIGN UP -->
+
+    <div class="signup-box">
+
+      <p>
+        নতুন শিক্ষার্থী?
+      </p>
+
+
+      <a
+        href="admission.html"
+        class="signup-button"
+      >
+
+        Create Account / Sign Up →
+
+      </a>
+
+    </div>
+
+
+
+    <!-- DEMO NOTICE -->
+
+    <div class="demo-notice">
+
+      <strong>Demo Version:</strong>
+
+      এখন Login / Sign Up শুধু UI হিসেবে
+      তৈরি করা হয়েছে। পরে real account system
+      যুক্ত করা হবে।
+
+    </div>
+
+
+  </div>
+
+
+
+  <!-- COPYRIGHT -->
+
+  <div class="copyright">
+
+    © 2026 SNK Academy • Learn • Practice • Grow
+
+  </div>
+
+
+</main>
+
+
+</body>
+
+</html>
+```
