@@ -1,0 +1,1212 @@
+```html
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Lesson 02 | SNK Academy</title>
+
+  <meta
+    name="description"
+    content="SNK Academy Free Course — Lesson 02"
+  >
+
+  <style>
+
+    /* =====================================================
+       RESET
+    ===================================================== */
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      background:#050505;
+      color:#fff;
+
+      line-height:1.6;
+
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+
+    /* =====================================================
+       CONTAINER
+    ===================================================== */
+
+    .container{
+      width:min(1050px,92%);
+      margin:auto;
+    }
+
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
+
+    .header{
+      position:sticky;
+
+      top:0;
+
+      z-index:9999;
+
+      background:
+        rgba(5,5,5,.95);
+
+      backdrop-filter:
+        blur(16px);
+
+      -webkit-backdrop-filter:
+        blur(16px);
+
+      border-bottom:
+        1px solid #1c1c1c;
+    }
+
+    .nav{
+      min-height:72px;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:20px;
+    }
+
+
+    /* LOGO */
+
+    .logo{
+      display:flex;
+
+      align-items:center;
+    }
+
+    .logo img{
+      width:110px;
+
+      height:auto;
+    }
+
+
+    /* NAV ACTIONS */
+
+    .nav-actions{
+      display:flex;
+
+      align-items:center;
+
+      gap:10px;
+    }
+
+
+    /* BACK BUTTON */
+
+    .back-btn{
+      padding:
+        9px 14px;
+
+      border:
+        1px solid #292929;
+
+      border-radius:8px;
+
+      color:#aaa;
+
+      font-size:12px;
+
+      font-weight:700;
+
+      transition:.3s;
+    }
+
+    .back-btn:hover{
+      color:#b7ff00;
+
+      border-color:#b7ff00;
+    }
+
+
+    /* LOGIN */
+
+    .login-btn{
+      padding:
+        10px 15px;
+
+      background:#b7ff00;
+
+      color:#050505;
+
+      border-radius:8px;
+
+      font-size:12px;
+
+      font-weight:800;
+
+      transition:.3s;
+    }
+
+    .login-btn:hover{
+      transform:
+        translateY(-2px);
+
+      box-shadow:
+        0 10px 25px
+        rgba(183,255,0,.18);
+    }
+
+
+    /* =====================================================
+       PAGE
+    ===================================================== */
+
+    .page{
+      padding:
+        65px 0 90px;
+    }
+
+
+    /* =====================================================
+       BADGE
+    ===================================================== */
+
+    .badge{
+      display:inline-flex;
+
+      align-items:center;
+
+      gap:8px;
+
+      padding:
+        7px 12px;
+
+      color:#b7ff00;
+
+      background:
+        rgba(183,255,0,.06);
+
+      border:
+        1px solid
+        rgba(183,255,0,.25);
+
+      border-radius:30px;
+
+      font-size:10px;
+
+      font-weight:800;
+
+      letter-spacing:1px;
+
+      margin-bottom:18px;
+    }
+
+    .badge-dot{
+      width:6px;
+      height:6px;
+
+      background:#b7ff00;
+
+      border-radius:50%;
+
+      box-shadow:
+        0 0 10px #b7ff00;
+    }
+
+
+    /* =====================================================
+       TITLE
+    ===================================================== */
+
+    h1{
+      font-size:
+        clamp(
+          38px,
+          6vw,
+          62px
+        );
+
+      line-height:1.08;
+
+      letter-spacing:-2.5px;
+
+      margin-bottom:12px;
+    }
+
+    h1 span{
+      color:#b7ff00;
+    }
+
+    .subtitle{
+      color:#777;
+
+      font-size:14px;
+
+      margin-bottom:35px;
+    }
+
+
+    /* =====================================================
+       VIDEO
+    ===================================================== */
+
+    .video-box{
+      width:100%;
+
+      aspect-ratio:16/9;
+
+      background:#0b0b0b;
+
+      border:
+        1px solid #222;
+
+      border-radius:18px;
+
+      overflow:hidden;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      position:relative;
+    }
+
+    .video-placeholder{
+      text-align:center;
+
+      padding:30px;
+    }
+
+    .play-icon{
+      width:72px;
+
+      height:72px;
+
+      display:grid;
+
+      place-items:center;
+
+      margin:
+        0 auto 18px;
+
+      background:#b7ff00;
+
+      color:#050505;
+
+      border-radius:50%;
+
+      font-size:28px;
+    }
+
+    .video-placeholder h2{
+      font-size:20px;
+
+      margin-bottom:7px;
+    }
+
+    .video-placeholder p{
+      color:#666;
+
+      font-size:13px;
+    }
+
+
+    /* =====================================================
+       VIDEO NOTE
+    ===================================================== */
+
+    .video-note{
+      margin-top:12px;
+
+      padding:
+        13px 15px;
+
+      background:#0b0b0b;
+
+      border:
+        1px solid #1d1d1d;
+
+      border-radius:9px;
+
+      color:#666;
+
+      font-size:12px;
+    }
+
+    .video-note strong{
+      color:#b7ff00;
+    }
+
+
+    /* =====================================================
+       CONTENT GRID
+    ===================================================== */
+
+    .content-grid{
+      display:grid;
+
+      grid-template-columns:
+        1fr 300px;
+
+      gap:25px;
+
+      margin-top:45px;
+    }
+
+
+    /* =====================================================
+       MAIN CARD
+    ===================================================== */
+
+    .card{
+      background:#0c0c0c;
+
+      border:
+        1px solid #202020;
+
+      border-radius:16px;
+
+      padding:28px;
+    }
+
+    .card h2{
+      font-size:24px;
+
+      margin-bottom:15px;
+    }
+
+    .card h2 span{
+      color:#b7ff00;
+    }
+
+    .card p{
+      color:#858585;
+
+      font-size:14px;
+
+      line-height:1.9;
+
+      margin-bottom:18px;
+    }
+
+
+    /* =====================================================
+       LEARNING LIST
+    ===================================================== */
+
+    .learning-list{
+      display:flex;
+
+      flex-direction:column;
+
+      gap:10px;
+
+      margin-top:20px;
+    }
+
+    .learning-item{
+      display:flex;
+
+      align-items:center;
+
+      gap:12px;
+
+      padding:12px;
+
+      background:#111;
+
+      border:
+        1px solid #202020;
+
+      border-radius:9px;
+
+      color:#aaa;
+
+      font-size:13px;
+    }
+
+    .check{
+      width:25px;
+
+      height:25px;
+
+      flex-shrink:0;
+
+      display:grid;
+
+      place-items:center;
+
+      background:
+        rgba(183,255,0,.1);
+
+      color:#b7ff00;
+
+      border-radius:6px;
+
+      font-weight:800;
+    }
+
+
+    /* =====================================================
+       SIDEBAR
+    ===================================================== */
+
+    .sidebar{
+      display:flex;
+
+      flex-direction:column;
+
+      gap:15px;
+    }
+
+    .side-card{
+      padding:22px;
+
+      background:#0c0c0c;
+
+      border:
+        1px solid #202020;
+
+      border-radius:16px;
+    }
+
+    .side-card h3{
+      font-size:16px;
+
+      margin-bottom:10px;
+    }
+
+    .side-card p{
+      color:#666;
+
+      font-size:12px;
+
+      line-height:1.7;
+    }
+
+
+    /* =====================================================
+       LIVE CLASS
+    ===================================================== */
+
+    .live-btn{
+      display:block;
+
+      width:100%;
+
+      margin-top:14px;
+
+      padding:13px;
+
+      text-align:center;
+
+      background:#b7ff00;
+
+      color:#050505;
+
+      border-radius:8px;
+
+      font-size:12px;
+
+      font-weight:800;
+
+      transition:.3s;
+    }
+
+    .live-btn:hover{
+      transform:
+        translateY(-2px);
+
+      box-shadow:
+        0 10px 25px
+        rgba(183,255,0,.15);
+    }
+
+
+    /* =====================================================
+       RESOURCES
+    ===================================================== */
+
+    .resource{
+      display:block;
+
+      padding:
+        11px 12px;
+
+      margin-top:8px;
+
+      background:#111;
+
+      border:
+        1px solid #222;
+
+      border-radius:8px;
+
+      color:#aaa;
+
+      font-size:12px;
+
+      transition:.3s;
+    }
+
+    .resource:hover{
+      color:#b7ff00;
+
+      border-color:
+        rgba(183,255,0,.3);
+    }
+
+
+    /* =====================================================
+       LESSON NAVIGATION
+    ===================================================== */
+
+    .lesson-navigation{
+      display:flex;
+
+      gap:15px;
+
+      margin-top:35px;
+    }
+
+    .lesson-nav{
+      flex:1;
+
+      padding:15px;
+
+      background:#0c0c0c;
+
+      border:
+        1px solid #222;
+
+      border-radius:10px;
+
+      transition:.3s;
+    }
+
+    .lesson-nav:hover{
+      border-color:#b7ff00;
+    }
+
+    .lesson-nav small{
+      display:block;
+
+      color:#666;
+
+      font-size:10px;
+
+      margin-bottom:4px;
+    }
+
+    .lesson-nav strong{
+      font-size:13px;
+    }
+
+    .next{
+      text-align:right;
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    .footer{
+      padding:
+        38px 0;
+
+      border-top:
+        1px solid #1c1c1c;
+
+      background:#050505;
+
+      color:#666;
+    }
+
+    .footer-inner{
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:20px;
+    }
+
+    .footer-brand{
+      color:#fff;
+
+      font-size:18px;
+
+      font-weight:800;
+    }
+
+    .footer-brand span{
+      color:#b7ff00;
+    }
+
+
+    /* =====================================================
+       TABLET
+    ===================================================== */
+
+    @media(max-width:800px){
+
+      .content-grid{
+        grid-template-columns:1fr;
+      }
+
+      .back-btn{
+        display:none;
+      }
+
+    }
+
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media(max-width:600px){
+
+      .page{
+        padding:
+          50px 0 70px;
+      }
+
+      h1{
+        font-size:40px;
+
+        letter-spacing:-2px;
+      }
+
+      .video-box{
+        border-radius:12px;
+      }
+
+      .card{
+        padding:22px;
+      }
+
+      .lesson-navigation{
+        flex-direction:column;
+      }
+
+      .next{
+        text-align:left;
+      }
+
+      .footer-inner{
+        flex-direction:column;
+
+        align-items:flex-start;
+      }
+
+    }
+
+
+    /* =====================================================
+       VERY SMALL MOBILE
+    ===================================================== */
+
+    @media(max-width:400px){
+
+      h1{
+        font-size:35px;
+      }
+
+      .login-btn{
+        padding:
+          9px 11px;
+
+        font-size:11px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+  <div class="container nav">
+
+
+    <!-- LOGO -->
+
+    <a
+      href="course.html"
+      class="logo"
+    >
+
+      <img
+        src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk-it-institute-logo.svg"
+        alt="SNK Academy"
+      >
+
+    </a>
+
+
+    <!-- NAV ACTIONS -->
+
+    <div class="nav-actions">
+
+
+      <a
+        href="course.html"
+        class="back-btn"
+      >
+        ← Course
+      </a>
+
+
+      <a
+        href="https://snkitinstitute.github.io/login.html"
+        class="login-btn"
+      >
+        Login / Sign Up →
+      </a>
+
+
+    </div>
+
+  </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="page">
+
+  <div class="container">
+
+
+    <!-- BADGE -->
+
+    <div class="badge">
+
+      <span class="badge-dot"></span>
+
+      LESSON 02 • FREE COURSE
+
+    </div>
+
+
+    <!-- TITLE -->
+
+    <h1>
+
+      Getting Started &
+
+      <span>
+        Basic Concepts
+      </span>
+
+    </h1>
+
+
+    <p class="subtitle">
+      Recorded Class • Lesson 02
+    </p>
+
+
+
+    <!-- =================================================
+         VIDEO
+    ================================================== -->
+
+    <div class="video-box">
+
+      <div class="video-placeholder">
+
+        <div class="play-icon">
+          ▶
+        </div>
+
+
+        <h2>
+          Recording Coming Soon
+        </h2>
+
+
+        <p>
+          এই জায়গায় Lesson 02-এর recorded
+          class video যুক্ত হবে।
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- VIDEO NOTE -->
+
+    <div class="video-note">
+
+      <strong>Video:</strong>
+
+      Recording প্রস্তুত হলে এই জায়গায়
+      YouTube / video link বসানো হবে।
+
+    </div>
+
+
+
+    <!-- =================================================
+         CONTENT
+    ================================================== -->
+
+    <div class="content-grid">
+
+
+      <!-- MAIN CONTENT -->
+
+      <div>
+
+
+        <div class="card">
+
+
+          <h2>
+
+            এই Lesson-এ
+
+            <span>
+              যা শিখবেন
+            </span>
+
+          </h2>
+
+
+          <p>
+
+            এই lesson-এ আপনি course-এর
+            মূল বিষয়গুলো সম্পর্কে basic ধারণা
+            তৈরি করবেন। নতুনদের জন্য প্রয়োজনীয়
+            fundamental concepts সহজভাবে
+            বোঝানো হবে।
+
+          </p>
+
+
+          <div class="learning-list">
+
+
+            <div class="learning-item">
+
+              <div class="check">
+                ✓
+              </div>
+
+              Basic Concepts সম্পর্কে ধারণা
+
+            </div>
+
+
+            <div class="learning-item">
+
+              <div class="check">
+                ✓
+              </div>
+
+              প্রয়োজনীয় Tools সম্পর্কে পরিচিতি
+
+            </div>
+
+
+            <div class="learning-item">
+
+              <div class="check">
+                ✓
+              </div>
+
+              Step-by-Step Learning Process
+
+            </div>
+
+
+            <div class="learning-item">
+
+              <div class="check">
+                ✓
+              </div>
+
+              Practical Learning-এর শুরু
+
+            </div>
+
+
+            <div class="learning-item">
+
+              <div class="check">
+                ✓
+              </div>
+
+              পরবর্তী Lesson-এর প্রস্তুতি
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             LESSON NAVIGATION
+        ================================================== -->
+
+        <div class="lesson-navigation">
+
+
+          <!-- PREVIOUS -->
+
+          <a
+            href="lesson-01.html"
+            class="lesson-nav"
+          >
+
+            <small>
+              ← PREVIOUS
+            </small>
+
+            <strong>
+              Lesson 01 — Introduction
+            </strong>
+
+          </a>
+
+
+          <!-- NEXT -->
+
+          <a
+            href="lesson-03.html"
+            class="lesson-nav next"
+          >
+
+            <small>
+              NEXT →
+            </small>
+
+            <strong>
+              Lesson 03 — Practical Session
+            </strong>
+
+          </a>
+
+
+        </div>
+
+
+      </div>
+
+
+
+      <!-- =================================================
+           SIDEBAR
+      ================================================== -->
+
+      <aside class="sidebar">
+
+
+        <!-- LIVE CLASS -->
+
+        <div class="side-card">
+
+          <h3>
+            🔴 Live Class
+          </h3>
+
+
+          <p>
+
+            Live class শুরু হলে এখান থেকে
+            সরাসরি class-এ join করতে পারবেন।
+
+          </p>
+
+
+          <a
+            href="#"
+            class="live-btn"
+            onclick="
+              alert('Live Class এখনো শুরু হয়নি।');
+              return false;
+            "
+          >
+
+            Join Live Class →
+
+          </a>
+
+        </div>
+
+
+
+        <!-- COURSE -->
+
+        <div class="side-card">
+
+          <h3>
+            📚 Course
+          </h3>
+
+
+          <p>
+            SNK Academy Free Course
+          </p>
+
+
+          <a
+            href="course.html"
+            class="resource"
+          >
+
+            ← সকল Lesson দেখুন
+
+          </a>
+
+        </div>
+
+
+
+        <!-- RESOURCES -->
+
+        <div class="side-card">
+
+          <h3>
+            📎 Resources
+          </h3>
+
+
+          <a
+            href="#"
+            class="resource"
+            onclick="
+              alert('Course Notes শীঘ্রই যুক্ত করা হবে।');
+              return false;
+            "
+          >
+
+            📄 Course Notes
+
+          </a>
+
+
+          <a
+            href="#"
+            class="resource"
+            onclick="
+              alert('Practice Files শীঘ্রই যুক্ত করা হবে।');
+              return false;
+            "
+          >
+
+            📁 Practice Files
+
+          </a>
+
+        </div>
+
+
+      </aside>
+
+
+    </div>
+
+
+  </div>
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+  <div class="container footer-inner">
+
+
+    <div>
+
+      <div class="footer-brand">
+
+        SNK <span>Academy</span>
+
+      </div>
+
+
+      <small>
+        Learn • Practice • Grow
+      </small>
+
+    </div>
+
+
+    <small>
+
+      © 2026 SNK Academy.
+      সর্বস্বত্ব সংরক্ষিত।
+
+    </small>
+
+
+  </div>
+
+</footer>
+
+
+</body>
+
+</html>
+```
