@@ -1,0 +1,1122 @@
+```html
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>SNK Academy | Free Course</title>
+
+  <meta
+    name="description"
+    content="SNK Academy — Free Skill Development Course"
+  >
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+
+      background:#050505;
+
+      color:#fff;
+
+      line-height:1.6;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .container{
+      width:min(1100px,92%);
+      margin:auto;
+    }
+
+
+    /* ================================
+       HEADER
+    ================================= */
+
+    .header{
+      position:sticky;
+      top:0;
+      z-index:999;
+
+      background:rgba(5,5,5,.95);
+
+      backdrop-filter:blur(16px);
+
+      border-bottom:1px solid #1d1d1d;
+    }
+
+    .nav{
+      min-height:72px;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:20px;
+    }
+
+    .logo img{
+      width:110px;
+      height:auto;
+    }
+
+    .nav-right{
+      display:flex;
+
+      align-items:center;
+
+      gap:10px;
+    }
+
+    .home-btn{
+      padding:9px 14px;
+
+      border:1px solid #292929;
+
+      border-radius:8px;
+
+      color:#aaa;
+
+      font-size:12px;
+
+      font-weight:700;
+
+      transition:.3s;
+    }
+
+    .home-btn:hover{
+      color:#b7ff00;
+
+      border-color:#b7ff00;
+    }
+
+    .login-btn{
+      padding:10px 15px;
+
+      background:#b7ff00;
+
+      color:#050505;
+
+      border-radius:8px;
+
+      font-size:12px;
+
+      font-weight:800;
+    }
+
+
+    /* ================================
+       HERO
+    ================================= */
+
+    .hero{
+      padding:85px 0 70px;
+
+      background:
+
+        radial-gradient(
+          circle at 80% 30%,
+          rgba(183,255,0,.12),
+          transparent 30%
+        ),
+
+        #050505;
+    }
+
+    .badge{
+      display:inline-flex;
+
+      align-items:center;
+
+      gap:8px;
+
+      padding:7px 12px;
+
+      border-radius:30px;
+
+      border:
+        1px solid
+        rgba(183,255,0,.25);
+
+      background:
+        rgba(183,255,0,.06);
+
+      color:#b7ff00;
+
+      font-size:10px;
+
+      font-weight:800;
+
+      letter-spacing:1px;
+
+      margin-bottom:20px;
+    }
+
+    .badge-dot{
+      width:6px;
+      height:6px;
+
+      background:#b7ff00;
+
+      border-radius:50%;
+
+      box-shadow:
+        0 0 10px #b7ff00;
+    }
+
+    h1{
+      max-width:750px;
+
+      font-size:
+        clamp(
+          40px,
+          6vw,
+          70px
+        );
+
+      line-height:1.05;
+
+      letter-spacing:-3px;
+
+      margin-bottom:20px;
+    }
+
+    h1 span{
+      color:#b7ff00;
+    }
+
+    .hero-description{
+      max-width:700px;
+
+      color:#888;
+
+      font-size:16px;
+
+      line-height:1.8;
+    }
+
+
+    /* ================================
+       COURSE INFO
+    ================================= */
+
+    .info-grid{
+      display:grid;
+
+      grid-template-columns:
+        repeat(3,1fr);
+
+      gap:15px;
+
+      margin-top:35px;
+    }
+
+    .info-card{
+      padding:20px;
+
+      background:#0b0b0b;
+
+      border:1px solid #202020;
+
+      border-radius:14px;
+    }
+
+    .info-card strong{
+      display:block;
+
+      color:#b7ff00;
+
+      font-size:20px;
+
+      margin-bottom:3px;
+    }
+
+    .info-card span{
+      color:#666;
+
+      font-size:12px;
+    }
+
+
+    /* ================================
+       COURSE SECTION
+    ================================= */
+
+    .course-section{
+      padding:80px 0 100px;
+
+      background:#080808;
+    }
+
+    .section-title{
+      margin-bottom:35px;
+    }
+
+    .section-title small{
+      display:block;
+
+      color:#b7ff00;
+
+      font-size:11px;
+
+      font-weight:800;
+
+      letter-spacing:2px;
+
+      margin-bottom:10px;
+    }
+
+    .section-title h2{
+      font-size:38px;
+
+      letter-spacing:-1.5px;
+    }
+
+    .section-title p{
+      color:#777;
+
+      font-size:14px;
+
+      margin-top:8px;
+    }
+
+
+    /* ================================
+       LESSON LIST
+    ================================= */
+
+    .lesson-list{
+      display:flex;
+
+      flex-direction:column;
+
+      gap:13px;
+    }
+
+    .lesson{
+      display:grid;
+
+      grid-template-columns:
+        65px 1fr auto;
+
+      align-items:center;
+
+      gap:18px;
+
+      padding:20px;
+
+      background:#0e0e0e;
+
+      border:1px solid #222;
+
+      border-radius:14px;
+
+      transition:.3s;
+    }
+
+    .lesson:hover{
+      transform:translateY(-3px);
+
+      border-color:
+        rgba(183,255,0,.35);
+    }
+
+
+    /* LESSON NUMBER */
+
+    .lesson-number{
+      width:50px;
+
+      height:50px;
+
+      display:grid;
+
+      place-items:center;
+
+      border-radius:12px;
+
+      background:#151515;
+
+      border:1px solid #292929;
+
+      color:#b7ff00;
+
+      font-size:13px;
+
+      font-weight:800;
+    }
+
+
+    /* LESSON CONTENT */
+
+    .lesson-content h3{
+      font-size:17px;
+
+      margin-bottom:4px;
+    }
+
+    .lesson-content p{
+      color:#666;
+
+      font-size:12px;
+    }
+
+
+    /* LESSON STATUS */
+
+    .lesson-status{
+      display:inline-block;
+
+      margin-top:7px;
+
+      color:#b7ff00;
+
+      font-size:9px;
+
+      font-weight:800;
+
+      letter-spacing:1px;
+    }
+
+
+    /* WATCH BUTTON */
+
+    .watch-btn{
+      min-width:100px;
+
+      text-align:center;
+
+      padding:10px 14px;
+
+      background:#b7ff00;
+
+      color:#050505;
+
+      border-radius:8px;
+
+      font-size:11px;
+
+      font-weight:800;
+
+      transition:.3s;
+    }
+
+    .watch-btn:hover{
+      transform:translateY(-2px);
+
+      box-shadow:
+        0 8px 25px
+        rgba(183,255,0,.15);
+    }
+
+
+    /* COMING SOON */
+
+    .coming-soon{
+      min-width:100px;
+
+      text-align:center;
+
+      padding:10px 14px;
+
+      background:#151515;
+
+      color:#555;
+
+      border:1px solid #252525;
+
+      border-radius:8px;
+
+      font-size:10px;
+
+      font-weight:800;
+    }
+
+
+    /* ================================
+       FREE COURSE CTA
+    ================================= */
+
+    .free-cta{
+      margin-top:35px;
+
+      padding:30px;
+
+      border-radius:16px;
+
+      border:
+        1px solid
+        rgba(183,255,0,.18);
+
+      background:
+
+        linear-gradient(
+          135deg,
+          rgba(183,255,0,.07),
+          #0d0d0d
+        );
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:25px;
+    }
+
+    .free-cta h3{
+      font-size:22px;
+
+      margin-bottom:5px;
+    }
+
+    .free-cta p{
+      color:#777;
+
+      font-size:13px;
+    }
+
+    .start-btn{
+      flex-shrink:0;
+
+      padding:13px 20px;
+
+      background:#b7ff00;
+
+      color:#050505;
+
+      border-radius:8px;
+
+      font-size:12px;
+
+      font-weight:800;
+    }
+
+
+    /* ================================
+       FOOTER
+    ================================= */
+
+    .footer{
+      padding:40px 0;
+
+      background:#050505;
+
+      border-top:1px solid #1c1c1c;
+
+      color:#666;
+    }
+
+    .footer-inner{
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:20px;
+    }
+
+    .footer-brand{
+      color:#fff;
+
+      font-size:18px;
+
+      font-weight:800;
+    }
+
+    .footer-brand span{
+      color:#b7ff00;
+    }
+
+    .footer small{
+      font-size:11px;
+    }
+
+
+    /* ================================
+       MOBILE
+    ================================= */
+
+    @media(max-width:700px){
+
+      .hero{
+        padding:65px 0 55px;
+      }
+
+      h1{
+        font-size:43px;
+
+        letter-spacing:-2px;
+      }
+
+      .hero-description{
+        font-size:14px;
+      }
+
+      .info-grid{
+        grid-template-columns:1fr;
+      }
+
+      .course-section{
+        padding:65px 0 80px;
+      }
+
+      .section-title h2{
+        font-size:32px;
+      }
+
+      .lesson{
+        grid-template-columns:
+          50px 1fr;
+
+        gap:13px;
+
+        padding:16px;
+      }
+
+      .lesson-number{
+        width:45px;
+        height:45px;
+      }
+
+      .lesson-action{
+        grid-column:2;
+      }
+
+      .watch-btn,
+      .coming-soon{
+        display:block;
+
+        width:100%;
+      }
+
+      .free-cta{
+        flex-direction:column;
+
+        align-items:flex-start;
+      }
+
+      .start-btn{
+        width:100%;
+
+        text-align:center;
+      }
+
+      .home-btn{
+        display:none;
+      }
+
+      .footer-inner{
+        flex-direction:column;
+
+        align-items:flex-start;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =================================
+     HEADER
+================================= -->
+
+<header class="header">
+
+  <div class="container nav">
+
+
+    <a
+      href="https://snkitinstitute.github.io/"
+      class="logo"
+    >
+
+      <img
+        src="https://raw.githubusercontent.com/snkitinstitute/AssetsandProducts/main/snk-it-institute-logo.svg"
+        alt="SNK Academy"
+      >
+
+    </a>
+
+
+    <div class="nav-right">
+
+
+      <a
+        href="https://snkitinstitute.github.io/"
+        class="home-btn"
+      >
+        ← Main Website
+      </a>
+
+
+      <a
+        href="https://snkitinstitute.github.io/login.html"
+        class="login-btn"
+      >
+        Login / Sign Up →
+      </a>
+
+
+    </div>
+
+  </div>
+
+</header>
+
+
+
+<!-- =================================
+     HERO
+================================= -->
+
+<section class="hero">
+
+  <div class="container">
+
+
+    <div class="badge">
+
+      <span class="badge-dot"></span>
+
+      FREE COURSE • SNK ACADEMY
+
+    </div>
+
+
+    <h1>
+
+      আপনার শেখার
+
+      <br>
+
+      <span>
+        যাত্রা শুরু হোক।
+      </span>
+
+    </h1>
+
+
+    <p class="hero-description">
+
+      SNK Academy-এর এই Free Course-এর মাধ্যমে
+      practical skill শেখার যাত্রা শুরু করুন।
+      প্রতিটি lesson ধাপে ধাপে complete করুন
+      এবং নিজের skill development এগিয়ে নিন।
+
+    </p>
+
+
+
+    <div class="info-grid">
+
+
+      <div class="info-card">
+
+        <strong>
+          FREE
+        </strong>
+
+        <span>
+          সম্পূর্ণ কোর্স ফ্রি
+        </span>
+
+      </div>
+
+
+      <div class="info-card">
+
+        <strong>
+          10+
+        </strong>
+
+        <span>
+          Lessons & Learning Materials
+        </span>
+
+      </div>
+
+
+      <div class="info-card">
+
+        <strong>
+          LIVE
+        </strong>
+
+        <span>
+          Live Class + Recorded Class
+        </span>
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =================================
+     LESSONS
+================================= -->
+
+<section class="course-section">
+
+  <div class="container">
+
+
+    <div class="section-title">
+
+      <small>
+        COURSE CONTENT
+      </small>
+
+      <h2>
+        Course Lessons
+      </h2>
+
+      <p>
+        নিচ থেকে একে একে আপনার lesson শুরু করুন।
+      </p>
+
+    </div>
+
+
+
+    <div class="lesson-list">
+
+
+      <!-- LESSON 01 -->
+
+      <article class="lesson">
+
+
+        <div class="lesson-number">
+          01
+        </div>
+
+
+        <div class="lesson-content">
+
+          <h3>
+            Introduction & Course Overview
+          </h3>
+
+          <p>
+            Course সম্পর্কে পরিচিতি এবং
+            কীভাবে শেখা শুরু করবেন।
+          </p>
+
+          <span class="lesson-status">
+            AVAILABLE
+          </span>
+
+        </div>
+
+
+        <div class="lesson-action">
+
+          <a
+            href="lesson-01.html"
+            class="watch-btn"
+          >
+            Watch Lesson →
+          </a>
+
+        </div>
+
+
+      </article>
+
+
+
+      <!-- LESSON 02 -->
+
+      <article class="lesson">
+
+
+        <div class="lesson-number">
+          02
+        </div>
+
+
+        <div class="lesson-content">
+
+          <h3>
+            Getting Started
+          </h3>
+
+          <p>
+            Learning environment, tools এবং
+            basic workflow সম্পর্কে ধারণা।
+          </p>
+
+          <span class="lesson-status">
+            AVAILABLE
+          </span>
+
+        </div>
+
+
+        <div class="lesson-action">
+
+          <a
+            href="lesson-02.html"
+            class="watch-btn"
+          >
+            Watch Lesson →
+          </a>
+
+        </div>
+
+
+      </article>
+
+
+
+      <!-- LESSON 03 -->
+
+      <article class="lesson">
+
+
+        <div class="lesson-number">
+          03
+        </div>
+
+
+        <div class="lesson-content">
+
+          <h3>
+            Basic Skills
+          </h3>
+
+          <p>
+            Course-এর core skill শেখার
+            practical session।
+          </p>
+
+          <span
+            class="lesson-status"
+            style="color:#555;"
+          >
+            COMING SOON
+          </span>
+
+        </div>
+
+
+        <div class="lesson-action">
+
+          <span class="coming-soon">
+            Coming Soon
+          </span>
+
+        </div>
+
+
+      </article>
+
+
+
+      <!-- LESSON 04 -->
+
+      <article class="lesson">
+
+
+        <div class="lesson-number">
+          04
+        </div>
+
+
+        <div class="lesson-content">
+
+          <h3>
+            Practical Project
+          </h3>
+
+          <p>
+            শেখা skill ব্যবহার করে
+            practical project তৈরি।
+          </p>
+
+          <span
+            class="lesson-status"
+            style="color:#555;"
+          >
+            COMING SOON
+          </span>
+
+        </div>
+
+
+        <div class="lesson-action">
+
+          <span class="coming-soon">
+            Coming Soon
+          </span>
+
+        </div>
+
+
+      </article>
+
+
+
+      <!-- LESSON 05 -->
+
+      <article class="lesson">
+
+
+        <div class="lesson-number">
+          05
+        </div>
+
+
+        <div class="lesson-content">
+
+          <h3>
+            Final Practice
+          </h3>
+
+          <p>
+            Final practice এবং
+            skill assessment।
+          </p>
+
+          <span
+            class="lesson-status"
+            style="color:#555;"
+          >
+            COMING SOON
+          </span>
+
+        </div>
+
+
+        <div class="lesson-action">
+
+          <span class="coming-soon">
+            Coming Soon
+          </span>
+
+        </div>
+
+
+      </article>
+
+
+    </div>
+
+
+
+    <!-- CTA -->
+
+    <div class="free-cta">
+
+
+      <div>
+
+        <h3>
+          🎓 Free Course — Start Today
+        </h3>
+
+        <p>
+          কোনো payment লাগবে না।
+          শুধু Login / Sign Up করে শেখা শুরু করুন।
+        </p>
+
+      </div>
+
+
+      <a
+        href="https://snkitinstitute.github.io/login.html"
+        class="start-btn"
+      >
+        Login / Sign Up →
+      </a>
+
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =================================
+     FOOTER
+================================= -->
+
+<footer class="footer">
+
+  <div class="container footer-inner">
+
+
+    <div>
+
+      <div class="footer-brand">
+
+        SNK <span>Academy</span>
+
+      </div>
+
+      <small>
+        Learn • Practice • Grow
+      </small>
+
+    </div>
+
+
+    <small>
+
+      © 2026 SNK Academy.
+      সর্বস্বত্ব সংরক্ষিত।
+
+    </small>
+
+
+  </div>
+
+</footer>
+
+
+</body>
+
+</html>
+```
