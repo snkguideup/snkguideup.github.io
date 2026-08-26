@@ -53,10 +53,8 @@ img {
   align-items: center;
   gap: 8px;
   flex-shrink: 0;
-}
-
 .logo img {
-  height: 84px;
+  height: 80px;
   width: auto;
 }
 .logo-text {
