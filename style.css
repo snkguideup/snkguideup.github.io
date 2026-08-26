@@ -304,18 +304,41 @@ img {
   margin-bottom: 14px;
 }
 
+.partner-logos-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  padding: 16px 18px;
+}
+
 .partner-logos {
   display: flex;
   flex-wrap: wrap;
-  gap: 18px 24px;
+  gap: 10px 8px;
 }
 
-.p-logo {
+.p-logo-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 16px;
   font-size: 13px;
   font-weight: 600;
   color: #6b7280;
   opacity: 0.85;
   white-space: nowrap;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  border-radius: 8px;
+  transition: opacity 0.15s, background 0.15s;
+}
+
+.p-logo-box:hover {
+  opacity: 1;
+  background: #f9fafb;
 }
 
 /* --- ডান পাশ ব্যানার --- */
@@ -330,10 +353,28 @@ img {
   padding: 40px;
   min-height: 320px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
   position: relative;
   overflow: hidden;
+}
+
+.banner-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.banner-illustration {
+  flex-shrink: 0;
+  width: 45%;
+  max-width: 220px;
+}
+
+.banner-illustration svg {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .banner-tag {
@@ -348,16 +389,16 @@ img {
   margin-bottom: 18px;
 }
 
-.banner-card h2 {
+.banner-text h2 {
   color: #f3f4f6;
-  font-size: 26px;
+  font-size: 24px;
   line-height: 1.4;
   font-weight: 600;
 }
 
-.banner-card h2 strong {
+.banner-text h2 strong {
   color: #ffb020;
-  font-size: 28px;
+  font-size: 26px;
 }
 
 /* ============================================
@@ -379,9 +420,8 @@ img {
   .hero-left h1 {
     font-size: 30px;
   }
-  .header-right .lang-select,
-  .header-right .all-courses {
-    display: none;
+  .banner-illustration {
+    max-width: 160px;
   }
 }
 
