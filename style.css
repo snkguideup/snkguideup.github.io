@@ -1,327 +1,449 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>SNK GuideUp Academy</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: #f7f9fc;
-            color: #222;
-        }
-
-        /* =========================
-           NAVBAR
-        ========================== */
-
-        .navbar {
-            width: 100%;
-            height: 70px;
-            background: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 6%;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        /* Logo */
-
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: #2563eb;
-            text-decoration: none;
-        }
-
-        .logo span {
-            color: #111827;
-        }
-
-        /* Menu */
-
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-menu li a {
-            text-decoration: none;
-            color: #222;
-            font-size: 15px;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        .nav-menu li a:hover {
-            color: #2563eb;
-        }
-
-        /* Menu Button */
-
-        .menu-btn {
-            display: none;
-            border: none;
-            background: transparent;
-            font-size: 30px;
-            cursor: pointer;
-            color: #222;
-        }
-
-        /* =========================
-           HERO
-        ========================== */
-
-        .hero {
-            min-height: calc(100vh - 70px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 60px 20px;
-        }
-
-        .hero-content {
-            max-width: 800px;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            color: #111827;
-        }
-
-        .hero h1 span {
-            color: #2563eb;
-        }
-
-        .hero p {
-            font-size: 18px;
-            line-height: 1.7;
-            color: #6b7280;
-            margin-bottom: 30px;
-        }
-
-        .hero-btn {
-            display: inline-block;
-            padding: 14px 28px;
-            background: #2563eb;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        .hero-btn:hover {
-            background: #1d4ed8;
-        }
-
-        /* =========================
-           MOBILE
-        ========================== */
-
-        @media (max-width: 768px) {
-
-            .navbar {
-                height: 65px;
-                padding: 0 20px;
-            }
-
-            .logo {
-                font-size: 20px;
-            }
-
-            .menu-btn {
-                display: block;
-            }
-
-            .nav-menu {
-                position: absolute;
-                top: 65px;
-                left: 0;
-                width: 100%;
-                background: white;
-
-                display: none;
-                flex-direction: column;
-                align-items: flex-start;
-
-                padding: 20px;
-                gap: 0;
-
-                box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
-            }
-
-            .nav-menu.active {
-                display: flex;
-            }
-
-            .nav-menu li {
-                width: 100%;
-            }
-
-            .nav-menu li a {
-                display: block;
-                width: 100%;
-                padding: 14px 5px;
-                border-bottom: 1px solid #eeeeee;
-            }
+/* ========================================
+   GLOBAL RESET
+======================================== */
 
-            .hero {
-                min-height: calc(100vh - 65px);
-                padding: 40px 20px;
-            }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-            .hero h1 {
-                font-size: 34px;
-            }
+html {
+    scroll-behavior: smooth;
+}
 
-            .hero p {
-                font-size: 16px;
-            }
-        }
-    </style>
-</head>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7f9fc;
+    color: #222222;
+    line-height: 1.6;
+}
 
-<body>
+a {
+    text-decoration: none;
+}
 
-    <!-- =========================
-         NAVBAR
-    ========================== -->
+button {
+    font-family: inherit;
+}
 
-    <header class="navbar">
 
-        <!-- Logo -->
-        <a href="#" class="logo">
-            SNK <span>GuideUp Academy</span>
-        </a>
+/* ========================================
+   NAVBAR
+======================================== */
 
-        <!-- Mobile Menu Button -->
-        <button class="menu-btn" id="menuBtn">
-            ☰
-        </button>
+.navbar {
+    width: 100%;
+    height: 70px;
 
-        <!-- Navigation -->
-        <ul class="nav-menu" id="navMenu">
+    background: #ffffff;
 
-            <li>
-                <a href="#home">Home</a>
-            </li>
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-            <li>
-                <a href="#free-course">FREE COURSE</a>
-            </li>
+    padding: 0 6%;
 
-            <li>
-                <a href="#paid-course">PAID COURSE</a>
-            </li>
+    position: sticky;
+    top: 0;
+    left: 0;
 
-            <li>
-                <a href="#resources">RESOURCES</a>
-            </li>
+    z-index: 1000;
 
-            <li>
-                <a href="#blog">BLOG</a>
-            </li>
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
 
-            <li>
-                <a href="#about">About</a>
-            </li>
 
-            <li>
-                <a href="#contact">Contact</a>
-            </li>
+/* ========================================
+   LOGO
+======================================== */
 
-        </ul>
+.logo {
+    display: inline-block;
 
-    </header>
+    font-size: 24px;
+    font-weight: 700;
 
+    color: #2563eb;
 
-    <!-- =========================
-         HERO SECTION
-    ========================== -->
+    white-space: nowrap;
+}
 
-    <main id="home">
+.logo span {
+    color: #111827;
+}
 
-        <section class="hero">
 
-            <div class="hero-content">
+/* ========================================
+   NAVIGATION MENU
+======================================== */
 
-                <h1>
-                    Welcome to
-                    <span>SNK GuideUp Academy</span>
-                </h1>
+.nav-menu {
+    display: flex;
+    align-items: center;
 
-                <p>
-                    Learn, grow and build your future with
-                    quality educational resources and courses.
-                </p>
+    gap: 30px;
 
-                <a href="#free-course" class="hero-btn">
-                    Explore Free Courses
-                </a>
+    list-style: none;
+}
 
-            </div>
+.nav-menu li {
+    list-style: none;
+}
 
-        </section>
+.nav-menu li a {
+    display: inline-block;
 
-    </main>
+    color: #222222;
 
+    font-size: 15px;
+    font-weight: 600;
 
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
+    padding: 8px 0;
 
-    <script>
+    position: relative;
 
-        const menuBtn = document.getElementById("menuBtn");
-        const navMenu = document.getElementById("navMenu");
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
 
-        menuBtn.addEventListener("click", function () {
 
-            navMenu.classList.toggle("active");
+/* Hover */
 
-            if (navMenu.classList.contains("active")) {
-                menuBtn.innerHTML = "✕";
-            } else {
-                menuBtn.innerHTML = "☰";
-            }
+.nav-menu li a:hover {
+    color: #2563eb;
+}
 
-        });
 
+/* Underline Animation */
 
-        // Mobile menu item click করলে menu বন্ধ হবে
+.nav-menu li a::after {
+    content: "";
 
-        const navLinks = document.querySelectorAll(".nav-menu a");
+    position: absolute;
 
-        navLinks.forEach(function(link) {
+    left: 0;
+    bottom: 0;
 
-            link.addEventListener("click", function() {
+    width: 0;
+    height: 2px;
 
-                navMenu.classList.remove("active");
-                menuBtn.innerHTML = "☰";
+    background: #2563eb;
 
-            });
+    transition: width 0.3s ease;
+}
 
-        });
+.nav-menu li a:hover::after {
+    width: 100%;
+}
 
-    </script>
 
-</body>
-</html>
+/* ========================================
+   MOBILE MENU BUTTON
+======================================== */
+
+.menu-btn {
+    display: none;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: #222222;
+
+    font-size: 30px;
+
+    cursor: pointer;
+
+    padding: 5px;
+
+    line-height: 1;
+
+    transition: 0.3s ease;
+}
+
+.menu-btn:hover {
+    color: #2563eb;
+}
+
+
+/* ========================================
+   HERO SECTION
+======================================== */
+
+.hero {
+    width: 100%;
+    min-height: calc(100vh - 70px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8fbff 0%,
+            #eef4ff 100%
+        );
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+
+/* ========================================
+   HERO TITLE
+======================================== */
+
+.hero h1 {
+    font-size: 52px;
+
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    color: #111827;
+
+    margin-bottom: 22px;
+}
+
+.hero h1 span {
+    color: #2563eb;
+}
+
+
+/* ========================================
+   HERO DESCRIPTION
+======================================== */
+
+.hero p {
+    max-width: 700px;
+
+    margin: 0 auto 32px;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    color: #6b7280;
+}
+
+
+/* ========================================
+   HERO BUTTON
+======================================== */
+
+.hero-btn {
+    display: inline-block;
+
+    padding: 14px 30px;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    border-radius: 8px;
+
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.25);
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.hero-btn:hover {
+    background: #1d4ed8;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+}
+
+
+/* ========================================
+   MOBILE RESPONSIVE
+======================================== */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        padding: 0 4%;
+    }
+
+    .nav-menu {
+        gap: 20px;
+    }
+
+    .nav-menu li a {
+        font-size: 14px;
+    }
+
+    .hero h1 {
+        font-size: 44px;
+    }
+}
+
+
+/* ========================================
+   TABLET / MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+
+    /* Navbar */
+
+    .navbar {
+        height: 65px;
+
+        padding: 0 20px;
+    }
+
+
+    /* Logo */
+
+    .logo {
+        font-size: 20px;
+    }
+
+
+    /* Menu Button */
+
+    .menu-btn {
+        display: block;
+    }
+
+
+    /* Navigation */
+
+    .nav-menu {
+        position: absolute;
+
+        top: 65px;
+        left: 0;
+
+        width: 100%;
+
+        background: #ffffff;
+
+        display: none;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 0;
+
+        padding: 10px 20px 20px;
+
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+
+    /* Open Menu */
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+
+    /* Menu Items */
+
+    .nav-menu li {
+        width: 100%;
+    }
+
+    .nav-menu li a {
+        display: block;
+
+        width: 100%;
+
+        padding: 14px 5px;
+
+        font-size: 15px;
+
+        border-bottom: 1px solid #eeeeee;
+    }
+
+
+    /* Remove desktop underline */
+
+    .nav-menu li a::after {
+        display: none;
+    }
+
+
+    /* Hero */
+
+    .hero {
+        min-height: calc(100vh - 65px);
+
+        padding: 60px 20px;
+    }
+
+
+    .hero h1 {
+        font-size: 36px;
+
+        line-height: 1.25;
+    }
+
+
+    .hero p {
+        font-size: 16px;
+
+        line-height: 1.7;
+    }
+}
+
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+
+    .navbar {
+        padding: 0 16px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .menu-btn {
+        font-size: 28px;
+    }
+
+    .hero {
+        padding: 50px 18px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .hero p {
+        font-size: 15px;
+
+        margin-bottom: 25px;
+    }
+
+    .hero-btn {
+        padding: 12px 24px;
+
+        font-size: 15px;
+    }
+}
