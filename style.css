@@ -1,19 +1,13 @@
 /* =========================================================
    SNK GUIDEUP
-   DARK + GOLDEN ACADEMY DESIGN
-   Updated: 2026
-========================================================= */
-
-
-/* =========================================================
-   ROOT VARIABLES
+   DARK + GOLDEN ACADEMY
 ========================================================= */
 
 :root {
     --bg: #070707;
     --bg-soft: #0c0c0c;
-    --bg-card: #111111;
-    --bg-card-hover: #161616;
+    --card: #111111;
+    --card-hover: #161616;
 
     --gold: #d4af37;
     --gold-light: #f3d675;
@@ -33,9 +27,6 @@
     --radius-sm: 8px;
     --radius-md: 12px;
     --radius-lg: 18px;
-
-    --shadow:
-        0 20px 60px rgba(0, 0, 0, 0.35);
 }
 
 
@@ -63,15 +54,8 @@ body {
     background: var(--bg);
     color: var(--white);
 
-    overflow-x: hidden;
-
     line-height: 1.5;
-}
-
-body,
-button,
-a {
-    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
 }
 
 a {
@@ -117,7 +101,7 @@ img {
 
 
 /* =========================================================
-   COMMON CONTAINER
+   CONTAINER
 ========================================================= */
 
 .container {
@@ -132,7 +116,6 @@ img {
 
 .header {
     position: fixed;
-
     top: 0;
     left: 0;
 
@@ -140,8 +123,7 @@ img {
 
     z-index: 9999;
 
-    background:
-        rgba(8, 8, 8, 0.82);
+    background: rgba(8, 8, 8, 0.82);
 
     border-bottom:
         1px solid
@@ -150,9 +132,7 @@ img {
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
 
-    transition:
-        background 0.3s ease,
-        box-shadow 0.3s ease;
+    transition: 0.3s ease;
 }
 
 .header::after {
@@ -170,11 +150,9 @@ img {
         linear-gradient(
             90deg,
             transparent,
-            rgba(212, 175, 55, 0.18),
+            rgba(212, 175, 55, 0.2),
             transparent
         );
-
-    pointer-events: none;
 }
 
 
@@ -186,9 +164,7 @@ img {
     min-height: 78px;
 
     display: flex;
-
     align-items: center;
-    justify-content: space-between;
 
     gap: 25px;
 }
@@ -200,7 +176,6 @@ img {
 
 .logo {
     display: flex;
-
     align-items: center;
 
     gap: 11px;
@@ -217,7 +192,7 @@ img {
     filter:
         drop-shadow(
             0 0 15px
-            rgba(212, 175, 55, 0.08)
+            rgba(212, 175, 55, 0.1)
         );
 }
 
@@ -229,9 +204,7 @@ img {
     font-size: 18px;
     font-weight: 900;
 
-    line-height: 1.05;
-
-    letter-spacing: -0.4px;
+    line-height: 1;
 }
 
 .logo-text strong span {
@@ -253,12 +226,11 @@ img {
 
 
 /* =========================================================
-   DESKTOP NAVIGATION
+   DESKTOP NAV
 ========================================================= */
 
 .desktop-nav {
     display: flex;
-
     align-items: center;
 
     gap: 27px;
@@ -271,7 +243,6 @@ img {
     position: relative;
 
     border: 0;
-
     outline: none;
 
     background: transparent;
@@ -283,8 +254,7 @@ img {
 
     cursor: pointer;
 
-    transition:
-        color 0.25s ease;
+    transition: 0.25s ease;
 }
 
 .nav-link:hover,
@@ -308,11 +278,7 @@ img {
 
     background: var(--gold);
 
-    border-radius: 10px;
-
-    box-shadow:
-        0 0 10px
-        rgba(212, 175, 55, 0.35);
+    border-radius: 20px;
 }
 
 
@@ -326,17 +292,13 @@ img {
 
 .dropdown-button {
     display: flex;
-
     align-items: center;
 
     gap: 6px;
 }
 
 .arrow {
-    font-size: 11px;
-
-    transition:
-        transform 0.25s ease;
+    transition: 0.25s ease;
 }
 
 .dropdown:hover .arrow {
@@ -360,53 +322,19 @@ img {
         translateX(-50%)
         translateY(10px);
 
-    background:
-        rgba(15, 15, 15, 0.98);
+    background: #0f0f0f;
 
     border:
         1px solid
         var(--border);
 
-    border-radius:
-        var(--radius-md);
+    border-radius: var(--radius-md);
 
     box-shadow:
         0 25px 70px
-        rgba(0, 0, 0, 0.55),
+        rgba(0, 0, 0, 0.55);
 
-        0 0 30px
-        rgba(212, 175, 55, 0.04);
-
-    transition:
-        opacity 0.25s ease,
-        visibility 0.25s ease,
-        transform 0.25s ease;
-}
-
-.dropdown-menu::before {
-    content: "";
-
-    position: absolute;
-
-    top: -6px;
-    left: 50%;
-
-    width: 10px;
-    height: 10px;
-
-    transform:
-        translateX(-50%)
-        rotate(45deg);
-
-    background: #0f0f0f;
-
-    border-left:
-        1px solid
-        var(--border);
-
-    border-top:
-        1px solid
-        var(--border);
+    transition: 0.25s ease;
 }
 
 .dropdown:hover .dropdown-menu {
@@ -430,9 +358,7 @@ img {
     font-size: 12px;
     font-weight: 600;
 
-    transition:
-        color 0.2s ease,
-        background 0.2s ease;
+    transition: 0.2s ease;
 }
 
 .dropdown-menu a:hover {
@@ -444,12 +370,11 @@ img {
 
 
 /* =========================================================
-   NAV ACTIONS
+   NAV BUTTONS
 ========================================================= */
 
 .nav-actions {
     display: flex;
-
     align-items: center;
 
     gap: 10px;
@@ -469,26 +394,18 @@ img {
         1px solid
         #303030;
 
-    border-radius:
-        var(--radius-sm);
+    border-radius: var(--radius-sm);
 
     font-size: 11px;
     font-weight: 700;
 
-    transition:
-        color 0.25s ease,
-        border-color 0.25s ease,
-        background 0.25s ease;
+    transition: 0.25s ease;
 }
 
 .login-btn:hover {
     color: var(--gold-light);
 
-    border-color:
-        var(--gold-dark);
-
-    background:
-        rgba(212, 175, 55, 0.04);
+    border-color: var(--gold-dark);
 }
 
 
@@ -516,9 +433,7 @@ img {
         );
 
     border: 0;
-
-    border-radius:
-        var(--radius-sm);
+    border-radius: var(--radius-sm);
 
     font-size: 11px;
     font-weight: 900;
@@ -527,21 +442,15 @@ img {
         0 10px 30px
         rgba(212, 175, 55, 0.12);
 
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
+    transition: 0.25s ease;
 }
 
 .gold-btn:hover {
     transform: translateY(-2px);
 
     box-shadow:
-        0 14px 38px
+        0 15px 40px
         rgba(212, 175, 55, 0.25);
-}
-
-.gold-btn span {
-    font-size: 14px;
 }
 
 
@@ -555,7 +464,7 @@ img {
     width: 42px;
     height: 42px;
 
-    padding: 0;
+    margin-left: auto;
 
     background:
         rgba(255, 255, 255, 0.02);
@@ -564,8 +473,7 @@ img {
         1px solid
         #303030;
 
-    border-radius:
-        var(--radius-sm);
+    border-radius: var(--radius-sm);
 
     cursor: pointer;
 }
@@ -581,10 +489,6 @@ img {
     background: var(--gold-light);
 
     border-radius: 20px;
-
-    transition:
-        transform 0.25s ease,
-        opacity 0.25s ease;
 }
 
 
@@ -595,8 +499,7 @@ img {
 .mobile-menu {
     display: none;
 
-    padding:
-        8px 0 20px;
+    padding: 8px 0 20px;
 
     background:
         rgba(8, 8, 8, 0.98);
@@ -617,10 +520,6 @@ img {
 
     font-size: 13px;
     font-weight: 600;
-
-    transition:
-        color 0.2s ease,
-        background 0.2s ease;
 }
 
 .mobile-menu a:hover {
@@ -666,7 +565,6 @@ img {
     min-height: 100vh;
 
     display: flex;
-
     align-items: center;
 
     overflow: hidden;
@@ -708,8 +606,6 @@ img {
         );
 
     filter: blur(20px);
-
-    pointer-events: none;
 }
 
 .hero::after {
@@ -733,13 +629,6 @@ img {
         );
 
     background-size: 70px 70px;
-
-    mask-image:
-        linear-gradient(
-            to bottom,
-            black,
-            transparent 80%
-        );
 
     pointer-events: none;
 }
@@ -773,8 +662,7 @@ img {
 ========================================================= */
 
 .hero-content {
-    padding:
-        70px 0;
+    padding: 70px 0;
 }
 
 .hero-badge {
@@ -784,8 +672,7 @@ img {
 
     gap: 9px;
 
-    padding:
-        8px 14px;
+    padding: 8px 14px;
 
     margin-bottom: 23px;
 
@@ -810,23 +697,18 @@ img {
     width: 6px;
     height: 6px;
 
-    flex-shrink: 0;
-
     background: var(--gold);
 
     border-radius: 50%;
 
     box-shadow:
         0 0 0 5px
-        rgba(212, 175, 55, 0.08),
-
-        0 0 12px
-        rgba(212, 175, 55, 0.4);
+        rgba(212, 175, 55, 0.08);
 }
 
 
 /* =========================================================
-   HERO HEADING
+   HERO TITLE
 ========================================================= */
 
 .hero h1 {
@@ -848,10 +730,6 @@ img {
 
 .hero h1 .gold {
     color: var(--gold-light);
-
-    text-shadow:
-        0 0 35px
-        rgba(212, 175, 55, 0.10);
 }
 
 
@@ -886,22 +764,15 @@ img {
     gap: 11px;
 }
 
-.hero-buttons .gold-btn {
-    min-height: 44px;
-}
-
 .outline-btn {
     display: inline-flex;
 
     align-items: center;
     justify-content: center;
 
-    gap: 8px;
-
     min-height: 44px;
 
-    padding:
-        12px 18px;
+    padding: 12px 18px;
 
     color: #dddddd;
 
@@ -912,27 +783,18 @@ img {
         1px solid
         #353535;
 
-    border-radius:
-        var(--radius-sm);
+    border-radius: var(--radius-sm);
 
     font-size: 11px;
     font-weight: 800;
 
-    transition:
-        color 0.25s ease,
-        border-color 0.25s ease,
-        background 0.25s ease,
-        transform 0.25s ease;
+    transition: 0.25s ease;
 }
 
 .outline-btn:hover {
     color: var(--gold-light);
 
-    border-color:
-        var(--gold-dark);
-
-    background:
-        rgba(212, 175, 55, 0.04);
+    border-color: var(--gold-dark);
 
     transform: translateY(-2px);
 }
@@ -961,13 +823,11 @@ img {
     height: 32px;
 
     display: grid;
-
     place-items: center;
 
     margin-left: -7px;
 
-    background:
-        #171717;
+    background: #171717;
 
     border:
         2px solid
@@ -976,10 +836,6 @@ img {
     border-radius: 50%;
 
     font-size: 15px;
-
-    box-shadow:
-        0 5px 15px
-        rgba(0, 0, 0, 0.3);
 }
 
 .avatars span:first-child {
@@ -992,8 +848,6 @@ img {
     color: var(--gold-light);
 
     font-size: 14px;
-
-    line-height: 1.2;
 }
 
 .trust-text span {
@@ -1040,8 +894,6 @@ img {
         );
 
     filter: blur(12px);
-
-    pointer-events: none;
 }
 
 .hero-visual::after {
@@ -1054,20 +906,14 @@ img {
 
     border:
         1px solid
-        rgba(212, 175, 55, 0.10);
+        rgba(212, 175, 55, 0.1);
 
     border-radius: 50%;
-
-    box-shadow:
-        0 0 80px
-        rgba(212, 175, 55, 0.04);
-
-    pointer-events: none;
 }
 
 
 /* =========================================================
-   HERO SVG IMAGE
+   HERO IMAGE
 ========================================================= */
 
 .hero-banner-image {
@@ -1097,26 +943,13 @@ img {
     animation:
         heroFloat 6s ease-in-out infinite;
 
-    transition:
-        transform 0.4s ease,
-        filter 0.4s ease;
+    transition: 0.4s ease;
 }
 
 .hero-banner-image:hover {
     transform:
         translateY(-6px)
         scale(1.015);
-
-    filter:
-        drop-shadow(
-            0 30px 65px
-            rgba(0, 0, 0, 0.5)
-        )
-
-        drop-shadow(
-            0 0 45px
-            rgba(212, 175, 55, 0.15)
-        );
 }
 
 @keyframes heroFloat {
@@ -1133,7 +966,7 @@ img {
 
 
 /* =========================================================
-   HERO BOTTOM LINE
+   HERO BOTTOM
 ========================================================= */
 
 .hero-bottom {
@@ -1168,8 +1001,7 @@ img {
 
     z-index: 10;
 
-    background:
-        #0a0a0a;
+    background: #0a0a0a;
 
     border-top:
         1px solid
@@ -1177,7 +1009,7 @@ img {
 
     border-bottom:
         1px solid
-        rgba(212, 175, 55, 0.10);
+        rgba(212, 175, 55, 0.1);
 }
 
 .features {
@@ -1188,8 +1020,7 @@ img {
 }
 
 .feature {
-    padding:
-        25px 15px;
+    padding: 25px 15px;
 
     text-align: center;
 
@@ -1197,8 +1028,7 @@ img {
         1px solid
         rgba(255, 255, 255, 0.055);
 
-    transition:
-        background 0.25s ease;
+    transition: 0.25s ease;
 }
 
 .feature:hover {
@@ -1225,22 +1055,19 @@ img {
     color: #707070;
 
     font-size: 10px;
-    font-weight: 500;
 }
 
 
 /* =========================================================
-   COMMON SECTION
+   SECTIONS
 ========================================================= */
 
 .coming-section {
     position: relative;
 
-    padding:
-        105px 0;
+    padding: 105px 0;
 
-    background:
-        var(--bg);
+    background: var(--bg);
 
     overflow: hidden;
 }
@@ -1264,8 +1091,6 @@ img {
             rgba(212, 175, 55, 0.035),
             transparent 70%
         );
-
-    pointer-events: none;
 }
 
 
@@ -1351,7 +1176,7 @@ img {
 .course-card {
     position: relative;
 
-    min-height: 245px;
+    min-height: 330px;
 
     padding: 25px;
 
@@ -1399,8 +1224,7 @@ img {
 
     opacity: 0;
 
-    transition:
-        opacity 0.3s ease;
+    transition: 0.3s ease;
 }
 
 .course-card:hover {
@@ -1418,14 +1242,25 @@ img {
 
     box-shadow:
         0 20px 55px
-        rgba(0, 0, 0, 0.38),
-
-        0 0 35px
-        rgba(212, 175, 55, 0.035);
+        rgba(0, 0, 0, 0.38);
 }
 
 .course-card:hover::before {
     opacity: 1;
+}
+
+
+/* =========================================================
+   CARD TOP
+========================================================= */
+
+.course-card-top {
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+
+    margin-bottom: 12px;
 }
 
 
@@ -1438,10 +1273,7 @@ img {
     height: 46px;
 
     display: grid;
-
     place-items: center;
-
-    margin-bottom: 15px;
 
     color: var(--gold-light);
 
@@ -1452,14 +1284,11 @@ img {
         1px solid
         rgba(212, 175, 55, 0.17);
 
-    border-radius:
-        11px;
+    border-radius: 11px;
 
     font-size: 20px;
 
-    transition:
-        transform 0.3s ease,
-        background 0.3s ease;
+    transition: 0.3s ease;
 }
 
 .course-card:hover .course-icon {
@@ -1477,13 +1306,7 @@ img {
 ========================================================= */
 
 .course-badge {
-    position: absolute;
-
-    top: 24px;
-    right: 22px;
-
-    padding:
-        5px 8px;
+    padding: 5px 8px;
 
     color: var(--gold-light);
 
@@ -1504,6 +1327,22 @@ img {
 
 
 /* =========================================================
+   COURSE LEVEL
+========================================================= */
+
+.course-level {
+    margin-bottom: 6px;
+
+    color: var(--gold);
+
+    font-size: 8px;
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* =========================================================
    COURSE TITLE
 ========================================================= */
 
@@ -1514,14 +1353,12 @@ img {
 
     font-size: 18px;
     font-weight: 800;
-
-    letter-spacing: -0.3px;
 }
 
 .course-card p {
     max-width: 290px;
 
-    margin-bottom: 18px;
+    margin-bottom: 0;
 
     color: #717171;
 
@@ -1532,30 +1369,161 @@ img {
 
 
 /* =========================================================
-   COURSE LINK
+   COURSE INFO
 ========================================================= */
 
-.course-link {
+.course-info {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 17px;
+}
+
+.course-info span {
     display: inline-flex;
 
     align-items: center;
 
-    gap: 5px;
+    padding: 6px 8px;
 
-    color: var(--gold-light);
+    color: #858585;
 
-    font-size: 10px;
-    font-weight: 800;
+    background:
+        rgba(255, 255, 255, 0.025);
 
-    transition:
-        gap 0.25s ease,
-        color 0.25s ease;
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.06);
+
+    border-radius: 5px;
+
+    font-size: 8px;
+    font-weight: 600;
 }
 
-.course-link:hover {
-    gap: 9px;
 
-    color: var(--gold-bright);
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.progress-area {
+    margin-top: 17px;
+}
+
+.progress-label {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 7px;
+
+    color: #656565;
+
+    font-size: 8px;
+    font-weight: 600;
+}
+
+.progress-label span:last-child {
+    color: var(--gold-light);
+
+    font-weight: 800;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 4px;
+
+    overflow: hidden;
+
+    background: #222222;
+
+    border-radius: 20px;
+}
+
+.progress-bar span {
+    display: block;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold-dark),
+            var(--gold-light)
+        );
+
+    border-radius: inherit;
+
+    transition: width 0.6s ease;
+}
+
+
+/* =========================================================
+   VIEW COURSE BUTTON
+========================================================= */
+
+.view-course-btn {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    margin-top: 19px;
+
+    padding: 11px 13px;
+
+    color: #dcdcdc;
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.07);
+
+    border-radius: 7px;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    transition: 0.25s ease;
+}
+
+.view-course-btn span:last-child {
+    color: var(--gold-light);
+
+    font-size: 14px;
+
+    transition: 0.25s ease;
+}
+
+.view-course-btn:hover {
+    color: #080808;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold-light),
+            var(--gold)
+        );
+
+    border-color: var(--gold);
+
+    transform: translateY(-2px);
+}
+
+.view-course-btn:hover span:last-child {
+    color: #080808;
+
+    transform: translateX(4px);
 }
 
 
@@ -1575,27 +1543,12 @@ img {
         rgba(212, 175, 55, 0.25);
 }
 
-.featured-course::after {
-    content: "";
-
-    position: absolute;
-
-    right: -70px;
-    bottom: -90px;
-
-    width: 200px;
-    height: 200px;
-
-    border-radius: 50%;
-
+.featured-course .view-course-btn {
     background:
-        radial-gradient(
-            circle,
-            rgba(212, 175, 55, 0.10),
-            transparent 70%
-        );
+        rgba(212, 175, 55, 0.055);
 
-    pointer-events: none;
+    border-color:
+        rgba(212, 175, 55, 0.17);
 }
 
 
@@ -1606,12 +1559,7 @@ img {
 .paid-preview {
     padding-top: 70px;
 
-    background:
-        #090909;
-}
-
-.paid-preview .section-heading {
-    margin-bottom: 28px;
+    background: #090909;
 }
 
 .paid-card {
@@ -1620,16 +1568,10 @@ img {
     min-height: auto;
 }
 
-.paid-card .course-icon {
-    background:
-        rgba(212, 175, 55, 0.045);
-}
-
 .coming-label {
     display: inline-flex;
 
-    padding:
-        6px 9px;
+    padding: 6px 9px;
 
     color: #8f8f8f;
 
@@ -1650,7 +1592,7 @@ img {
 
 
 /* =========================================================
-   MENTORS / ABOUT / LOGIN
+   OTHER SECTIONS
 ========================================================= */
 
 #mentors,
@@ -1667,11 +1609,9 @@ img {
 ========================================================= */
 
 footer {
-    padding:
-        35px 0;
+    padding: 35px 0;
 
-    background:
-        #050505;
+    background: #050505;
 
     border-top:
         1px solid
@@ -1729,7 +1669,7 @@ footer {
 
 
 /* =========================================================
-   TABLET / SMALL DESKTOP
+   TABLET
 ========================================================= */
 
 @media (max-width: 900px) {
@@ -1752,11 +1692,10 @@ footer {
     }
 
     .hero-content {
-        padding:
-            55px 0 10px;
+        padding: 55px 0 10px;
     }
 
-    .hero-content .hero-description {
+    .hero-description {
         margin-left: auto;
         margin-right: auto;
     }
@@ -1801,10 +1740,6 @@ footer {
         min-height: 68px;
     }
 
-    .logo {
-        gap: 9px;
-    }
-
     .logo img {
         width: 41px;
         height: 41px;
@@ -1816,7 +1751,6 @@ footer {
 
     .logo-text small {
         font-size: 5.5px;
-
         letter-spacing: 1.1px;
     }
 
@@ -1834,15 +1768,13 @@ footer {
     }
 
     .hero-content {
-        padding:
-            55px 0 0;
+        padding: 55px 0 0;
     }
 
     .hero-badge {
         font-size: 7px;
 
-        padding:
-            7px 11px;
+        padding: 7px 11px;
     }
 
     .hero h1 {
@@ -1880,8 +1812,6 @@ footer {
         min-height: 390px;
 
         margin-top: 10px;
-
-        overflow: hidden;
     }
 
     .hero-visual::before {
@@ -1911,8 +1841,7 @@ footer {
     }
 
     .feature {
-        padding:
-            21px 10px;
+        padding: 21px 10px;
 
         border-bottom:
             1px solid
@@ -1940,8 +1869,7 @@ footer {
     /* SECTIONS */
 
     .coming-section {
-        padding:
-            78px 0;
+        padding: 78px 0;
     }
 
     .section-heading {
@@ -1950,24 +1878,21 @@ footer {
 
     .section-heading small {
         font-size: 8px;
-
         letter-spacing: 1.8px;
     }
 
     .section-heading h2 {
         font-size: 38px;
-
         letter-spacing: -2px;
     }
 
     .section-heading p {
         font-size: 12px;
-
         line-height: 1.8;
     }
 
 
-    /* COURSE GRID */
+    /* COURSES */
 
     .course-preview {
         grid-template-columns: 1fr;
@@ -1976,18 +1901,25 @@ footer {
     }
 
     .course-card {
-        min-height: 220px;
+        min-height: 330px;
 
         padding: 22px;
     }
 
+    .course-info {
+        gap: 6px;
+    }
+
+    .course-info span {
+        font-size: 7.5px;
+    }
+
+    .view-course-btn {
+        min-height: 42px;
+    }
+
 
     /* FOOTER */
-
-    footer {
-        padding:
-            30px 0;
-    }
 
     .footer-content {
         flex-direction: column;
@@ -2022,15 +1954,11 @@ footer {
     .section-heading h2 {
         font-size: 34px;
     }
-
-    .course-card {
-        padding: 20px;
-    }
 }
 
 
 /* =========================================================
-   VERY SMALL DEVICES
+   VERY SMALL
 ========================================================= */
 
 @media (max-width: 340px) {
@@ -2041,10 +1969,6 @@ footer {
 
     .hero h1 {
         font-size: 32px;
-    }
-
-    .hero-badge {
-        font-size: 6px;
     }
 }
 
@@ -2062,8 +1986,7 @@ footer {
     *,
     *::before,
     *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+        animation: none !important;
+        transition: none !important;
     }
 }
