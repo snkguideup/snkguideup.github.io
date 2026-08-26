@@ -1,2462 +1,380 @@
-/* =========================================================
-   SNK GUIDEUP ACADEMY
-   COMPLETE STYLE.CSS
-   DARK + GOLDEN THEME
-========================================================= */
-
-
-/* =========================================================
-   ROOT
-========================================================= */
-
-:root {
-
-    --bg: #080a0f;
-    --bg-soft: #0d1017;
-    --bg-card: #11151d;
-    --bg-card-2: #151a23;
-
-    --gold: #f5c451;
-    --gold-light: #ffd970;
-    --gold-dark: #b88920;
-
-    --white: #ffffff;
-    --text: #f5f5f5;
-    --text-soft: #b7bdc8;
-    --text-muted: #7f8794;
-
-    --border: rgba(245, 196, 81, 0.18);
-    --border-light: rgba(255, 255, 255, 0.08);
-
-    --shadow:
-        0 20px 60px rgba(0, 0, 0, 0.35);
-
-    --radius: 18px;
-
-    --container: 1180px;
-
-}
-
-
-/* =========================================================
-   RESET
-========================================================= */
-
+/* ============================================
+   SNK IT Institute — Global Reset & Base
+   ============================================ */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 90px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-
-    background:
-        radial-gradient(
-            circle at 15% 10%,
-            rgba(245, 196, 81, 0.07),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 85% 30%,
-            rgba(245, 196, 81, 0.04),
-            transparent 30%
-        ),
-        var(--bg);
-
-    color: var(--text);
-
-    font-family:
-        "Inter",
-        "Hind Siliguri",
-        sans-serif;
-
-    line-height: 1.6;
-
-    overflow-x: hidden;
-}
-
-body.mobile-menu-open {
-    overflow: hidden;
-}
-
-img {
-    display: block;
-    max-width: 100%;
+  font-family: 'Hind Siliguri', sans-serif;
+  color: #111827;
+  background: #ffffff;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
-}
-
-button {
-    font: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
-
-/* =========================================================
-   CONTAINER
-========================================================= */
-
-.container {
-
-    width: min(
-        calc(100% - 40px),
-        var(--container)
-    );
-
-    margin-inline: auto;
-
+img {
+  max-width: 100%;
+  display: block;
 }
 
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-.site-header {
-
-    position: sticky;
-
-    top: 0;
-
-    z-index: 9999;
-
-    background:
-        rgba(8, 10, 15, 0.92);
-
-    backdrop-filter: blur(18px);
-
-    -webkit-backdrop-filter: blur(18px);
-
-    border-bottom:
-        1px solid var(--border-light);
-
+/* ============================================
+   HEADER / NAVBAR
+   ============================================ */
+.header {
+  border-bottom: 1px solid #eef0f2;
+  background: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-
-/* =========================================================
-   NAVBAR
-========================================================= */
-
-.navbar {
-
-    min-height: 76px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 28px;
-
+.header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 14px 32px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
 }
 
-
-/* =========================================================
-   LOGO
-========================================================= */
-
+/* --- লোগো --- */
 .logo {
-
-    width: 145px;
-
-    height: 52px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: flex-start;
-
-    flex-shrink: 0;
-
-    overflow: hidden;
-
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
 .logo img {
+  height: 34px;
+  width: 34px;
+}
+
+.logo-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+  white-space: nowrap;
+}
+
+.logo-text span {
+  font-weight: 500;
+  color: #4b5563;
+  font-size: 15px;
+  display: block;
+  margin-top: -2px;
+}
+
+/* --- সার্চ বার --- */
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f3f4f6;
+  border-radius: 999px;
+  padding: 10px 16px;
+  width: 230px;
+  flex-shrink: 0;
+}
+
+.search-box input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: inherit;
+  font-size: 14px;
+  width: 100%;
+  color: #374151;
+}
+
+/* --- মাঝের নেভিগেশন মেনু --- */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex: 1;
+}
+
+.btn-offer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #3b1f1f;
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937;
+  white-space: nowrap;
+}
+
+.emoji {
+  font-size: 15px;
+}
+
+/* --- ডান পাশ --- */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.lang-select {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937;
+  white-space: nowrap;
+}
 
-    display: block;
-
-    width: 145px;
-
-    height: auto;
-
-    max-width: 145px;
-
-    max-height: 48px;
-
-    object-fit: contain;
-
-    background: transparent;
-
-}
-
-
-/* =========================================================
-   DESKTOP NAVIGATION
-========================================================= */
-
-.desktop-navigation {
-
-    margin-left: auto;
-
-}
-
-.desktop-nav {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 4px;
-
-}
-
-.desktop-nav > li {
-
-    position: relative;
-
-}
-
-.desktop-nav > li > a,
-.nav-dropdown-button {
-
-    min-height: 42px;
-
-    padding: 0 13px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 7px;
-
-    border: 0;
-
-    background: transparent;
-
-    color: var(--text-soft);
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    letter-spacing: 0.03em;
-
-    cursor: pointer;
-
-    transition:
-        color 0.25s ease,
-        background 0.25s ease;
-
-}
-
-.desktop-nav > li > a:hover,
-.nav-dropdown-button:hover {
-
-    color: var(--gold-light);
-
-}
-
-
-/* =========================================================
-   ACTIVE NAV
-========================================================= */
-
-.desktop-nav > li > a.active {
-
-    color: var(--gold);
-
-}
-
-
-/* =========================================================
-   DROPDOWN ARROW
-========================================================= */
-
-.nav-arrow {
-
-    color: var(--gold);
-
-    font-size: 14px;
-
-    line-height: 1;
-
-    transition:
-        transform 0.25s ease;
-
-}
-
-.nav-dropdown.open
-.nav-arrow {
-
-    transform: rotate(180deg);
-
-}
-
-
-/* =========================================================
-   DESKTOP DROPDOWN
-========================================================= */
-
-.nav-dropdown-menu {
-
-    position: absolute;
-
-    top: calc(100% + 12px);
-
-    left: 50%;
-
-    transform:
-        translate(-50%, -8px);
-
-    width: 350px;
-
-    padding: 12px;
-
-    background:
-        rgba(15, 18, 25, 0.98);
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 16px;
-
-    box-shadow: var(--shadow);
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
-
-    transition:
-        opacity 0.2s ease,
-        transform 0.2s ease,
-        visibility 0.2s ease;
-
-}
-
-.nav-dropdown.open
-.nav-dropdown-menu {
-
-    opacity: 1;
-
-    visibility: visible;
-
-    pointer-events: auto;
-
-    transform:
-        translate(-50%, 0);
-
-}
-
-
-/* =========================================================
-   DROPDOWN SECTION
-========================================================= */
-
-.nav-dropdown-section {
-
-    padding: 8px;
-
-}
-
-.nav-dropdown-section + .nav-dropdown-section {
-
-    margin-top: 5px;
-
-    padding-top: 13px;
-
-    border-top:
-        1px solid var(--border-light);
-
-}
-
-
-/* =========================================================
-   DROPDOWN TITLE
-========================================================= */
-
-.nav-dropdown-title {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 11px;
-
-    padding: 8px 8px 12px;
-
-}
-
-.nav-icon {
-
-    width: 38px;
-
-    height: 38px;
-
-    display: grid;
-
-    place-items: center;
-
-    flex-shrink: 0;
-
-    border-radius: 11px;
-
-    background:
-        rgba(245, 196, 81, 0.10);
-
-    border:
-        1px solid var(--border);
-
-}
-
-.nav-dropdown-title strong {
-
-    display: block;
-
-    color: var(--gold-light);
-
-    font-size: 12px;
-
-    letter-spacing: 0.04em;
-
-}
-
-.nav-dropdown-title small {
-
-    display: block;
-
-    margin-top: 1px;
-
-    color: var(--text-muted);
-
-    font-size: 11px;
-
-}
-
-
-/* =========================================================
-   DROPDOWN LINKS
-========================================================= */
-
-.nav-dropdown-section > a {
-
-    display: grid;
-
-    grid-template-columns: 32px 1fr auto;
-
-    align-items: center;
-
-    gap: 8px;
-
-    min-height: 40px;
-
-    padding: 7px 9px;
-
-    border-radius: 9px;
-
-    color: var(--text-soft);
-
-    font-size: 12px;
-
-    font-weight: 600;
-
-    transition:
-        background 0.2s ease,
-        color 0.2s ease,
-        transform 0.2s ease;
-
-}
-
-.nav-dropdown-section > a:hover {
-
-    background:
-        rgba(245, 196, 81, 0.08);
-
-    color: var(--gold-light);
-
-    transform: translateX(3px);
-
-}
-
-.nav-dropdown-section > a span {
-
-    width: 28px;
-
-    height: 26px;
-
-    display: grid;
-
-    place-items: center;
-
-    border-radius: 7px;
-
-    background:
-        rgba(255, 255, 255, 0.04);
-
-    color: var(--gold);
-
-    font-size: 10px;
-
-    font-weight: 800;
-
-}
-
-.nav-dropdown-section > a b {
-
-    color: var(--text-muted);
-
-    font-size: 15px;
-
-}
-
-
-/* =========================================================
-   HEADER BUTTON
-========================================================= */
-
-.header-btn {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    min-height: 42px;
-
-    padding: 0 18px;
-
-    border-radius: 10px;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--gold-light),
-            var(--gold)
-        );
-
-    color: #111;
-
-    font-size: 11px;
-
-    font-weight: 800;
-
-    white-space: nowrap;
-
-    box-shadow:
-        0 8px 25px rgba(245, 196, 81, 0.12);
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-
-}
-
-.header-btn:hover {
-
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 12px 30px rgba(245, 196, 81, 0.22);
-
-}
-
-
-/* =========================================================
-   MOBILE MENU BUTTON
-========================================================= */
-
-.mobile-menu-btn {
-
-    display: none;
-
-    width: 43px;
-
-    height: 43px;
-
-    margin-left: auto;
-
-    align-items: center;
-
-    justify-content: center;
-
-    flex-direction: column;
-
-    gap: 5px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 10px;
-
-    background:
-        rgba(245, 196, 81, 0.05);
-
-    cursor: pointer;
-
-}
-
-.mobile-menu-btn span {
-
-    width: 20px;
-
-    height: 2px;
-
-    border-radius: 2px;
-
-    background: var(--gold);
-
-    transition:
-        transform 0.25s ease,
-        opacity 0.25s ease;
-
-}
-
-.mobile-menu-btn.active span:nth-child(1) {
-
-    transform:
-        translateY(7px)
-        rotate(45deg);
-
-}
-
-.mobile-menu-btn.active span:nth-child(2) {
-
-    opacity: 0;
-
-}
-
-.mobile-menu-btn.active span:nth-child(3) {
-
-    transform:
-        translateY(-7px)
-        rotate(-45deg);
-
-}
-
-
-/* =========================================================
-   MOBILE NAVIGATION
-========================================================= */
-
-.mobile-navigation {
-
-    display: none;
-
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero {
-
-    position: relative;
-
-    min-height: 680px;
-
-    display: flex;
-
-    align-items: center;
-
-    padding:
-        90px 0 100px;
-
-    overflow: hidden;
-
-}
-
-.hero::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 520px;
-
-    height: 520px;
-
-    left: -220px;
-
-    top: 80px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(245, 196, 81, 0.10),
-            transparent 70%
-        );
-
-    pointer-events: none;
-
-}
-
-.hero-container {
-
-    display: grid;
-
-    grid-template-columns:
-        minmax(0, 1.05fr)
-        minmax(400px, 0.95fr);
-
-    align-items: center;
-
-    gap: 70px;
-
-}
-
-
-/* =========================================================
-   HERO CONTENT
-========================================================= */
-
-.hero-content {
-
-    position: relative;
-
-    z-index: 2;
-
-}
-
-.hero-badge {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    padding:
-        7px 12px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 999px;
-
-    background:
-        rgba(245, 196, 81, 0.06);
-
-    color: var(--gold-light);
-
-    font-size: 10px;
-
-    font-weight: 800;
-
-    letter-spacing: 0.08em;
-
-}
-
-.hero-badge-dot {
-
-    width: 7px;
-
-    height: 7px;
-
-    border-radius: 50%;
-
-    background: var(--gold);
-
-    box-shadow:
-        0 0 12px var(--gold);
-
-}
-
-.hero h1 {
-
-    max-width: 700px;
-
-    margin-top: 22px;
-
-    font-size:
-        clamp(48px, 6vw, 76px);
-
-    line-height: 1.04;
-
-    letter-spacing: -0.05em;
-
-    font-weight: 900;
-
-}
-
-.hero h1 span {
-
-    color: var(--gold);
-
-}
-
-.hero-description {
-
-    max-width: 620px;
-
-    margin-top: 24px;
-
-    color: var(--text-soft);
-
-    font-size: 16px;
-
-    line-height: 1.9;
-
-}
-
-.hero-buttons {
-
-    display: flex;
-
-    align-items: center;
-
-    flex-wrap: wrap;
-
-    gap: 12px;
-
-    margin-top: 32px;
-
-}
-
-.hero-primary-btn,
-.hero-secondary-btn {
-
-    min-height: 48px;
-
-    padding:
-        0 20px;
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-radius: 11px;
-
-    font-size: 12px;
-
-    font-weight: 800;
-
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease,
-        border-color 0.2s ease;
-
-}
-
-.hero-primary-btn {
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--gold-light),
-            var(--gold)
-        );
-
-    color: #111;
-
-}
-
-.hero-secondary-btn {
-
-    border:
-        1px solid var(--border);
-
-    color: var(--text-soft);
-
-    background:
-        rgba(255, 255, 255, 0.02);
-
-}
-
-.hero-primary-btn:hover,
-.hero-secondary-btn:hover {
-
-    transform: translateY(-3px);
-
-}
-
-.hero-secondary-btn:hover {
-
-    color: var(--gold-light);
-
-    border-color:
-        rgba(245, 196, 81, 0.4);
-
-}
-
-
-/* =========================================================
-   HERO STATS
-========================================================= */
-
-.hero-stats {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 35px;
-
-    margin-top: 45px;
-
-}
-
-.hero-stat strong {
-
-    display: block;
-
-    color: var(--gold-light);
-
-    font-size: 22px;
-
-    line-height: 1.1;
-
-}
-
-.hero-stat span {
-
-    display: block;
-
-    margin-top: 3px;
-
-    color: var(--text-muted);
-
-    font-size: 11px;
-
-}
-
-
-/* =========================================================
-   HERO VISUAL
-========================================================= */
-
-.hero-visual {
-
-    position: relative;
-
-    z-index: 2;
-
-}
-
-.hero-card-main {
-
-    position: relative;
-
-    padding: 25px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 24px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(21, 26, 35, 0.98),
-            rgba(12, 15, 21, 0.98)
-        );
-
-    box-shadow:
-        0 30px 80px rgba(0, 0, 0, 0.4);
-
-}
-
-.hero-card-main::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: -1px;
-
-    border-radius: 24px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(245, 196, 81, 0.20),
-            transparent 35%
-        );
-
-    pointer-events: none;
-
-}
-
-.hero-card-top {
-
-    position: relative;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    padding-bottom: 20px;
-
-    border-bottom:
-        1px solid var(--border-light);
-
-}
-
-.hero-card-label {
-
-    display: block;
-
-    color: var(--gold);
-
-    font-size: 9px;
-
-    font-weight: 800;
-
-    letter-spacing: 0.12em;
-
-}
-
-.hero-card-top h3 {
-
-    margin-top: 3px;
-
-    font-size: 21px;
-
-}
-
-.hero-card-icon {
-
-    width: 48px;
-
-    height: 48px;
-
-    display: grid;
-
-    place-items: center;
-
-    border-radius: 14px;
-
-    background:
-        rgba(245, 196, 81, 0.10);
-
-    border:
-        1px solid var(--border);
-
-    font-size: 22px;
-
-}
-
-
-/* =========================================================
-   HERO COURSE LIST
-========================================================= */
-
-.hero-course-list {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 8px;
-
-    margin-top: 18px;
-
-}
-
-.hero-course-item {
-
-    display: grid;
-
-    grid-template-columns:
-        43px 1fr auto;
-
-    align-items: center;
-
-    gap: 11px;
-
-    padding: 11px;
-
-    border-radius: 12px;
-
-    background:
-        rgba(255, 255, 255, 0.025);
-
-    border:
-        1px solid transparent;
-
-    transition:
-        border-color 0.2s ease,
-        background 0.2s ease;
-
-}
-
-.hero-course-item:hover {
-
-    border-color: var(--border);
-
-    background:
-        rgba(245, 196, 81, 0.04);
-
-}
-
-.hero-course-icon {
-
-    width: 40px;
-
-    height: 40px;
-
-    display: grid;
-
-    place-items: center;
-
-    border-radius: 10px;
-
-    background:
-        rgba(245, 196, 81, 0.08);
-
-}
-
-.hero-course-info strong {
-
-    display: block;
-
-    font-size: 12px;
-
-}
-
-.hero-course-info span {
-
-    display: block;
-
-    margin-top: 1px;
-
-    color: var(--text-muted);
-
-    font-size: 10px;
-
-}
-
-.hero-course-arrow {
-
-    color: var(--gold);
-
-    font-size: 17px;
-
-}
-
-
-/* =========================================================
-   HERO PROGRESS
-========================================================= */
-
-.hero-progress {
-
-    margin-top: 20px;
-
-    padding-top: 18px;
-
-    border-top:
-        1px solid var(--border-light);
-
-}
-
-.hero-progress-header {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    color: var(--text-muted);
-
-    font-size: 10px;
-
-}
-
-.hero-progress-header strong {
-
-    color: var(--gold);
-
-}
-
-.hero-progress-bar {
-
-    height: 6px;
-
-    margin-top: 8px;
-
-    overflow: hidden;
-
-    border-radius: 999px;
-
-    background:
-        rgba(255, 255, 255, 0.07);
-
-}
-
-.hero-progress-bar span {
-
-    display: block;
-
-    width: 72%;
-
-    height: 100%;
-
-    border-radius: inherit;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--gold-dark),
-            var(--gold-light)
-        );
-
-}
-
-.hero-card-bottom {
-
-    display: flex;
-
-    align-items: flex-end;
-
-    justify-content: space-between;
-
-    margin-top: 18px;
-
-}
-
-.hero-card-bottom strong {
-
-    display: block;
-
-    color: var(--gold-light);
-
-    font-size: 11px;
-
-}
-
-.hero-card-bottom span {
-
-    color: var(--text-muted);
-
-    font-size: 9px;
-
-    font-weight: 700;
-
-}
-
-
-/* =========================================================
-   SECTION
-========================================================= */
-
-.courses-section,
-.about-section,
-.contact-section {
-
-    padding:
-        100px 0;
-
-}
-
-.it-section {
-
-    background:
-        rgba(255, 255, 255, 0.015);
-
-    border-top:
-        1px solid var(--border-light);
-
-    border-bottom:
-        1px solid var(--border-light);
-
-}
-
-.section-heading {
-
-    max-width: 680px;
-
-    margin:
-        0 auto 50px;
-
-    text-align: center;
-
-}
-
-.section-label {
-
-    color: var(--gold);
-
-    font-size: 10px;
-
-    font-weight: 800;
-
-    letter-spacing: 0.12em;
-
-}
-
-.section-heading h2 {
-
-    margin-top: 8px;
-
-    font-size:
-        clamp(30px, 4vw, 45px);
-
-    line-height: 1.15;
-
-    letter-spacing: -0.035em;
-
-}
-
-.section-heading p {
-
-    margin-top: 13px;
-
-    color: var(--text-muted);
-
-    font-size: 14px;
-
-}
-
-
-/* =========================================================
-   COURSE GRID
-========================================================= */
-
-.course-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 18px;
-
-}
-
-
-/* =========================================================
-   COURSE CARD
-========================================================= */
-
-.course-card {
-
-    position: relative;
-
-    padding: 23px;
-
-    min-height: 290px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    border:
-        1px solid var(--border-light);
-
-    border-radius: var(--radius);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(21, 26, 35, 0.9),
-            rgba(12, 15, 21, 0.9)
-        );
-
-    overflow: hidden;
-
-    transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
-
-}
-
-.course-card::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 150px;
-
-    height: 150px;
-
-    right: -70px;
-
-    top: -70px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(245, 196, 81, 0.06);
-
-}
-
-.course-card:hover {
-
-    transform: translateY(-6px);
-
-    border-color:
-        rgba(245, 196, 81, 0.30);
-
-    box-shadow:
-        0 20px 45px rgba(0, 0, 0, 0.3);
-
-}
-
-.course-card-icon {
-
-    position: relative;
-
-    width: 47px;
-
-    height: 47px;
-
-    display: grid;
-
-    place-items: center;
-
-    border-radius: 13px;
-
-    background:
-        rgba(245, 196, 81, 0.09);
-
-    border:
-        1px solid var(--border);
-
-    font-size: 20px;
-
-}
-
-.course-card-top {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    margin-top: 20px;
-
-}
-
-.course-card-top span {
-
-    color: var(--text-muted);
-
-    font-size: 9px;
-
-    font-weight: 800;
-
-    letter-spacing: 0.1em;
-
-}
-
-.course-card-top small {
-
-    padding:
-        4px 7px;
-
-    border-radius: 5px;
-
-    background:
-        rgba(245, 196, 81, 0.10);
-
-    color: var(--gold);
-
-    font-size: 8px;
-
-    font-weight: 800;
-
-}
-
-.course-card h3 {
-
-    margin-top: 5px;
-
-    font-size: 21px;
-
-}
-
-.course-card p {
-
-    margin-top: 8px;
-
-    color: var(--text-muted);
-
-    font-size: 12px;
-
-    line-height: 1.7;
-
-}
-
-.course-card-meta {
-
-    margin-top: 14px;
-
-    color: var(--text-soft);
-
-    font-size: 10px;
-
-}
-
-.course-card-btn {
-
-    margin-top: auto;
-
-    padding-top: 18px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    color: var(--gold-light);
-
-    font-size: 11px;
-
-    font-weight: 800;
-
-}
-
-.course-card-btn span {
-
-    font-size: 16px;
-
-    transition:
-        transform 0.2s ease;
-
-}
-
-.course-card-btn:hover span {
-
-    transform: translateX(5px);
-
-}
-
-.special-card {
-
-    border-color:
-        rgba(245, 196, 81, 0.25);
-
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.site-footer {
-
-    padding:
-        35px 0;
-
-    border-top:
-        1px solid var(--border-light);
-
-    background:
-        #06080c;
-
-}
-
-.footer-content {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 20px;
-
+.all-courses {
+  background: #f3f4f6;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937;
+  white-space: nowrap;
 }
-
-.footer-content strong {
-
-    color: var(--gold-light);
-
-    font-size: 12px;
 
-    letter-spacing: 0.05em;
-
+.btn-login {
+  background: #ffc72c;
+  color: #111827;
+  padding: 11px 20px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 0.2s;
 }
-
-.footer-content p {
-
-    color: var(--text-muted);
-
-    font-size: 10px;
 
+.btn-login:hover {
+  background: #f5b800;
 }
 
-.copyright {
-
-    text-align: right;
-
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 28px 32px 60px;
 }
-
-
-/* =========================================================
-   MOBILE NAV INTERNAL
-========================================================= */
 
-.mobile-nav-inner {
-
-    padding:
-        14px 0 25px;
-
+/* --- নতুন ব্যাজ --- */
+.new-badge-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 26px;
 }
-
-.mobile-nav-link,
-.mobile-courses-toggle {
-
-    width: 100%;
 
-    min-height: 50px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    padding:
-        0 14px;
-
-    margin-bottom: 5px;
-
-    border:
-        1px solid transparent;
-
-    border-radius: 11px;
-
-    background: transparent;
-
-    color: var(--text-soft);
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    cursor: pointer;
-
+.new-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #eef2f6;
+  border-radius: 999px;
+  padding: 8px 8px 8px 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937;
 }
-
-.mobile-nav-link:hover,
-.mobile-courses-toggle:hover,
-.mobile-courses-toggle.active {
-
-    color: var(--gold-light);
-
-    background:
-        rgba(245, 196, 81, 0.05);
 
-    border-color: var(--border);
-
+.badge-tag {
+  background: #16a34a;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
 }
-
-.mobile-link-left {
-
-    display: flex;
-
-    align-items: center;
 
-    gap: 11px;
-
+.badge-emoji {
+  font-size: 15px;
 }
-
-.mobile-link-icon {
-
-    width: 31px;
-
-    height: 31px;
 
-    display: grid;
-
-    place-items: center;
-
-    border-radius: 8px;
-
-    background:
-        rgba(245, 196, 81, 0.08);
-
+.new-badge .arrow {
+  color: #6b7280;
+  font-size: 16px;
+  margin-left: 2px;
 }
 
-.mobile-course-arrow {
-
-    color: var(--gold);
-
-    transition:
-        transform 0.2s ease;
-
+/* --- হিরো কার্ড --- */
+.hero-card {
+  background: linear-gradient(135deg, #eef8f0 0%, #eaf3f6 100%);
+  border-radius: 28px;
+  padding: 48px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
 }
-
-.mobile-courses-toggle.active
-.mobile-course-arrow {
 
-    transform: rotate(180deg);
-
+.hero-left {
+  flex: 1;
+  min-width: 0;
 }
-
-
-/* =========================================================
-   MOBILE COURSE MENU
-========================================================= */
-
-.mobile-courses-menu {
 
-    display: none;
-
-    padding:
-        4px 0 10px 14px;
-
+.hero-left h1 {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #111827;
+  margin-bottom: 16px;
 }
-
-.mobile-courses-menu.active {
-
-    display: block;
 
+.hero-left h1 .highlight {
+  color: #e11d48;
 }
 
-.mobile-course-section {
-
-    padding: 10px;
-
-    border:
-        1px solid var(--border-light);
-
-    border-radius: 12px;
-
-    background:
-        rgba(255, 255, 255, 0.018);
-
+.hero-left h1 .dot {
+  font-size: 26px;
+  vertical-align: middle;
 }
-
-.mobile-course-section + .mobile-course-section {
 
-    margin-top: 8px;
-
+.hero-sub {
+  font-size: 16px;
+  color: #4b5563;
+  margin-bottom: 24px;
 }
-
-.mobile-course-heading {
 
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    padding: 4px 4px 10px;
-
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffc72c;
+  color: #111827;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 14px 26px;
+  border-radius: 999px;
+  margin-bottom: 32px;
+  transition: background 0.2s, transform 0.15s;
 }
-
-.mobile-course-heading > span {
-
-    width: 34px;
-
-    height: 34px;
-
-    display: grid;
 
-    place-items: center;
-
-    border-radius: 9px;
-
-    background:
-        rgba(245, 196, 81, 0.08);
-
+.btn-cta:hover {
+  background: #f5b800;
+  transform: translateX(2px);
 }
-
-.mobile-course-heading strong {
 
-    display: block;
-
-    color: var(--gold-light);
-
-    font-size: 10px;
-
+.grad-line {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 14px;
 }
-
-.mobile-course-heading small {
 
-    display: block;
-
-    color: var(--text-muted);
-
-    font-size: 9px;
-
+.partner-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 24px;
 }
-
-.mobile-course-group {
 
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 3px;
-
+.p-logo {
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+  opacity: 0.85;
+  white-space: nowrap;
 }
-
-.mobile-course-group a {
-
-    min-height: 40px;
-
-    display: grid;
-
-    grid-template-columns:
-        30px 1fr auto;
-
-    align-items: center;
-
-    gap: 7px;
-
-    padding:
-        5px 7px;
-
-    border-radius: 8px;
-
-    color: var(--text-soft);
 
-    font-size: 11px;
-
-    font-weight: 600;
-
+/* --- ডান পাশ ব্যানার --- */
+.hero-right {
+  flex: 1;
+  min-width: 0;
 }
-
-.mobile-course-group a:hover {
-
-    background:
-        rgba(245, 196, 81, 0.06);
 
-    color: var(--gold-light);
-
+.banner-card {
+  background: linear-gradient(135deg, #14213d 0%, #1b1b1b 60%, #5b3a00 100%);
+  border-radius: 20px;
+  padding: 40px;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
-
-.mobile-course-group a span {
-
-    width: 27px;
-
-    height: 25px;
 
-    display: grid;
-
-    place-items: center;
-
-    border-radius: 6px;
-
-    background:
-        rgba(255, 255, 255, 0.04);
-
-    color: var(--gold);
-
-    font-size: 9px;
-
-    font-weight: 800;
-
+.banner-tag {
+  display: inline-block;
+  background: #ff7a1a;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 6px;
+  width: fit-content;
+  margin-bottom: 18px;
 }
-
-.mobile-course-group a b {
 
-    color: var(--text-muted);
-
+.banner-card h2 {
+  color: #f3f4f6;
+  font-size: 26px;
+  line-height: 1.4;
+  font-weight: 600;
 }
-
-
-/* =========================================================
-   MOBILE START BUTTON
-========================================================= */
-
-.mobile-start-btn {
-
-    min-height: 48px;
-
-    margin-top: 12px;
-
-    display: flex;
-
-    align-items: center;
 
-    justify-content: space-between;
-
-    padding:
-        0 16px;
-
-    border-radius: 10px;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--gold-light),
-            var(--gold)
-        );
-
-    color: #111;
-
-    font-size: 11px;
-
-    font-weight: 800;
-
+.banner-card h2 strong {
+  color: #ffb020;
+  font-size: 28px;
 }
-
-
-/* =========================================================
-   TABLET
-========================================================= */
 
+/* ============================================
+   RESPONSIVE — মোবাইল/ট্যাবলেট
+   ============================================ */
 @media (max-width: 1100px) {
-
-    .navbar {
-
-        gap: 15px;
-
-    }
-
-    .desktop-nav > li > a,
-    .nav-dropdown-button {
-
-        padding: 0 8px;
-
-        font-size: 10px;
-
-    }
-
-    .header-btn {
-
-        padding:
-            0 13px;
-
-        font-size: 10px;
-
-    }
-
-    .hero-container {
-
-        gap: 40px;
-
-    }
-
+  .nav-menu {
+    display: none;
+  }
+  .search-box {
+    display: none;
+  }
 }
 
-
-/* =========================================================
-   TABLET / SMALL DESKTOP
-========================================================= */
-
-@media (max-width: 950px) {
-
-    .desktop-navigation,
-    .header-btn {
-
-        display: none;
-
-    }
-
-    .mobile-menu-btn {
-
-        display: flex;
-
-    }
-
-    .mobile-navigation {
-
-        display: block;
-
-        position: fixed;
-
-        top: 76px;
-
-        left: 0;
-
-        right: 0;
-
-        height:
-            calc(100vh - 76px);
-
-        overflow-y: auto;
-
-        background:
-            rgba(8, 10, 15, 0.98);
-
-        backdrop-filter: blur(18px);
-
-        -webkit-backdrop-filter: blur(18px);
-
-        border-top:
-            1px solid var(--border-light);
-
-        opacity: 0;
-
-        visibility: hidden;
-
-        pointer-events: none;
-
-        transform:
-            translateY(-10px);
-
-        transition:
-            opacity 0.25s ease,
-            visibility 0.25s ease,
-            transform 0.25s ease;
-
-    }
-
-    .mobile-navigation.active {
-
-        opacity: 1;
-
-        visibility: visible;
-
-        pointer-events: auto;
-
-        transform:
-            translateY(0);
-
-    }
-
-    .hero-container {
-
-        grid-template-columns: 1fr;
-
-    }
-
-    .hero-content {
-
-        max-width: 760px;
-
-    }
-
-    .hero-visual {
-
-        max-width: 650px;
-
-        width: 100%;
-
-        margin-inline: auto;
-
-    }
-
-    .course-grid {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
-    }
-
+@media (max-width: 860px) {
+  .hero-card {
+    flex-direction: column;
+  }
+  .hero-left h1 {
+    font-size: 30px;
+  }
+  .header-right .lang-select,
+  .header-right .all-courses {
+    display: none;
+  }
 }
 
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 600px) {
-
-    .container {
-
-        width:
-            min(
-                calc(100% - 28px),
-                var(--container)
-            );
-
-    }
-
-
-    /* HEADER */
-
-    .navbar {
-
-        min-height: 64px;
-
-    }
-
-    .logo {
-
-        width: 105px;
-
-        height: 40px;
-
-    }
-
-    .logo img {
-
-        width: 105px;
-
-        max-width: 105px;
-
-        max-height: 38px;
-
-    }
-
-    .mobile-navigation {
-
-        top: 64px;
-
-        height:
-            calc(100vh - 64px);
-
-    }
-
-
-    /* HERO */
-
-    .hero {
-
-        min-height: auto;
-
-        padding:
-            65px 0 75px;
-
-    }
-
-    .hero-container {
-
-        gap: 45px;
-
-    }
-
-    .hero h1 {
-
-        font-size:
-            clamp(40px, 13vw, 58px);
-
-    }
-
-    .hero-description {
-
-        margin-top: 18px;
-
-        font-size: 13px;
-
-        line-height: 1.8;
-
-    }
-
-    .hero-buttons {
-
-        margin-top: 25px;
-
-    }
-
-    .hero-primary-btn,
-    .hero-secondary-btn {
-
-        min-height: 45px;
-
-        padding:
-            0 16px;
-
-        font-size: 10px;
-
-    }
-
-    .hero-stats {
-
-        gap: 22px;
-
-        margin-top: 32px;
-
-    }
-
-    .hero-stat strong {
-
-        font-size: 18px;
-
-    }
-
-    .hero-stat span {
-
-        font-size: 9px;
-
-    }
-
-
-    /* HERO CARD */
-
-    .hero-card-main {
-
-        padding: 18px;
-
-        border-radius: 18px;
-
-    }
-
-    .hero-card-main::before {
-
-        border-radius: 18px;
-
-    }
-
-    .hero-card-top h3 {
-
-        font-size: 18px;
-
-    }
-
-    .hero-course-item {
-
-        grid-template-columns:
-            38px 1fr auto;
-
-        padding: 9px;
-
-    }
-
-    .hero-course-icon {
-
-        width: 36px;
-
-        height: 36px;
-
-    }
-
-    .hero-course-info strong {
-
-        font-size: 10px;
-
-    }
-
-    .hero-course-info span {
-
-        font-size: 8px;
-
-    }
-
-
-    /* SECTIONS */
-
-    .courses-section,
-    .about-section,
-    .contact-section {
-
-        padding:
-            75px 0;
-
-    }
-
-    .section-heading {
-
-        margin-bottom: 35px;
-
-    }
-
-    .section-heading h2 {
-
-        font-size: 29px;
-
-    }
-
-    .section-heading p {
-
-        font-size: 12px;
-
-    }
-
-
-    /* CARDS */
-
-    .course-grid {
-
-        grid-template-columns: 1fr;
-
-        gap: 13px;
-
-    }
-
-    .course-card {
-
-        min-height: 265px;
-
-        padding: 19px;
-
-    }
-
-
-    /* FOOTER */
-
-    .footer-content {
-
-        flex-direction: column;
-
-        align-items: flex-start;
-
-    }
-
-    .copyright {
-
-        text-align: left;
-
-    }
-
-}
-
-
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
-
-@media (max-width: 400px) {
-
-    .container {
-
-        width:
-            calc(100% - 22px);
-
-    }
-
-    .logo {
-
-        width: 92px;
-
-        height: 36px;
-
-    }
-
-    .logo img {
-
-        width: 92px;
-
-        max-width: 92px;
-
-        max-height: 34px;
-
-    }
-
-    .mobile-menu-btn {
-
-        width: 40px;
-
-        height: 40px;
-
-    }
-
-    .hero {
-
-        padding-top: 50px;
-
-    }
-
-    .hero h1 {
-
-        font-size: 38px;
-
-    }
-
-    .hero-stats {
-
-        gap: 15px;
-
-    }
-
-    .hero-stat strong {
-
-        font-size: 16px;
-
-    }
-
-    .hero-stat span {
-
-        font-size: 8px;
-
-    }
-
-    .hero-course-info span {
-
-        max-width: 180px;
-
-        overflow: hidden;
-
-        white-space: nowrap;
-
-        text-overflow: ellipsis;
-
-    }
-
-}
-
-
-/* =========================================================
-   VERY SMALL SCREEN
-========================================================= */
-
-@media (max-width: 340px) {
-
-    .logo {
-
-        width: 82px;
-
-    }
-
-    .logo img {
-
-        width: 82px;
-
-        max-width: 82px;
-
-    }
-
-    .hero-buttons {
-
-        flex-direction: column;
-
-        align-items: stretch;
-
-    }
-
-    .hero-primary-btn,
-    .hero-secondary-btn {
-
-        width: 100%;
-
-    }
-
-}
-
-
-/* =========================================================
-   ACCESSIBILITY
-========================================================= */
-
-a:focus-visible,
-button:focus-visible {
-
-    outline:
-        2px solid var(--gold);
-
-    outline-offset: 3px;
-
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-
-        scroll-behavior: auto !important;
-
-        transition: none !important;
-
-        animation: none !important;
-
-    }
-
+@media (max-width: 560px) {
+  .header-inner {
+    padding: 12px 16px;
+  }
+  .logo-text {
+    font-size: 16px;
+  }
+  .hero-wrapper {
+    padding: 20px 16px 40px;
+  }
+  .hero-card {
+    padding: 24px;
+    border-radius: 18px;
+  }
 }
