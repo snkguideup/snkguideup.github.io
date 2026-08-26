@@ -1,5 +1,5 @@
 /* ============================================
-   SNK Ai Academy — Global Reset & Base
+   SNK IT Institute — Global Reset & Base
    ============================================ */
 * {
   margin: 0;
@@ -36,40 +36,47 @@ img {
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
 }
 
 .header-inner {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 14px 32px;
+  padding: 18px 32px;
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 32px;
 }
 
 /* --- লোগো --- */
 .logo {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   flex-shrink: 0;
-.logo img {
-  height: 80px;
-  width: auto;
 }
+
+.logo img {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+}
+
 .logo-text {
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 700;
   color: #111827;
   white-space: nowrap;
+  letter-spacing: -0.3px;
 }
 
 .logo-text span {
   font-weight: 500;
-  color: #4b5563;
-  font-size: 15px;
+  color: #6b7280;
+  font-size: 13px;
   display: block;
-  margin-top: -2px;
+  margin-top: -3px;
+  letter-spacing: 0.2px;
 }
 
 /* --- সার্চ বার --- */
@@ -77,11 +84,18 @@ img {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: #f3f4f6;
+  background: #f5f6f8;
   border-radius: 999px;
-  padding: 10px 16px;
-  width: 230px;
+  padding: 11px 18px;
+  width: 250px;
   flex-shrink: 0;
+  border: 1px solid transparent;
+  transition: border-color 0.15s;
+}
+
+.search-box:focus-within {
+  border-color: #ffc72c;
+  background: #ffffff;
 }
 
 .search-box input {
@@ -98,7 +112,7 @@ img {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 26px;
   flex: 1;
 }
 
@@ -106,8 +120,8 @@ img {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 600;
   color: #1f2937;
   white-space: nowrap;
   padding: 8px 2px;
@@ -167,16 +181,17 @@ img {
 .btn-login {
   background: #ffc72c;
   color: #111827;
-  padding: 11px 20px;
+  padding: 12px 22px;
   border-radius: 999px;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
   white-space: nowrap;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.15s;
 }
 
 .btn-login:hover {
   background: #f5b800;
+  transform: translateY(-1px);
 }
 
 /* ============================================
@@ -363,6 +378,10 @@ img {
   }
   .hero-left h1 {
     font-size: 30px;
+  }
+  .header-right .lang-select,
+  .header-right .all-courses {
+    display: none;
   }
 }
 
