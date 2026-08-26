@@ -1,2336 +1,327 @@
-/* =========================================================
-   SNK GUIDEUP ACADEMY
-   COMPLETE STYLE.CSS
-   Dark + Golden Premium Education Theme
-========================================================= */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SNK GuideUp Academy</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f9fc;
+            color: #222;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        .navbar {
+            width: 100%;
+            height: 70px;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Logo */
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #111827;
+        }
+
+        /* Menu */
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-menu li a {
+            text-decoration: none;
+            color: #222;
+            font-size: 15px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-menu li a:hover {
+            color: #2563eb;
+        }
+
+        /* Menu Button */
+
+        .menu-btn {
+            display: none;
+            border: none;
+            background: transparent;
+            font-size: 30px;
+            cursor: pointer;
+            color: #222;
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            min-height: calc(100vh - 70px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #111827;
+        }
+
+        .hero h1 span {
+            color: #2563eb;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #6b7280;
+            margin-bottom: 30px;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .hero-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                height: 65px;
+                padding: 0 20px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-menu {
+                position: absolute;
+                top: 65px;
+                left: 0;
+                width: 100%;
+                background: white;
+
+                display: none;
+                flex-direction: column;
+                align-items: flex-start;
+
+                padding: 20px;
+                gap: 0;
+
+                box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                width: 100%;
+            }
+
+            .nav-menu li a {
+                display: block;
+                width: 100%;
+                padding: 14px 5px;
+                border-bottom: 1px solid #eeeeee;
+            }
 
+            .hero {
+                min-height: calc(100vh - 65px);
+                padding: 40px 20px;
+            }
 
-/* =========================================================
-   01. ROOT VARIABLES
-========================================================= */
+            .hero h1 {
+                font-size: 34px;
+            }
 
-:root {
+            .hero p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
 
-    --gold: #d4af37;
-    --gold-light: #f0cf67;
-    --gold-dark: #a88620;
+<body>
 
-    --black: #050505;
-    --dark: #070707;
-    --dark-2: #0a0a0a;
-    --dark-3: #0d0d0d;
-    --card: #111111;
+    <!-- =========================
+         NAVBAR
+    ========================== -->
 
-    --white: #f5f5f5;
-    --text: #dddddd;
-    --muted: #888888;
-    --muted-dark: #555555;
+    <header class="navbar">
 
-    --border:
-        rgba(255, 255, 255, 0.07);
+        <!-- Logo -->
+        <a href="#" class="logo">
+            SNK <span>GuideUp Academy</span>
+        </a>
 
-    --gold-border:
-        rgba(212, 175, 55, 0.18);
+        <!-- Mobile Menu Button -->
+        <button class="menu-btn" id="menuBtn">
+            ☰
+        </button>
 
-    --container: 1180px;
+        <!-- Navigation -->
+        <ul class="nav-menu" id="navMenu">
 
-}
+            <li>
+                <a href="#home">Home</a>
+            </li>
 
+            <li>
+                <a href="#free-course">FREE COURSE</a>
+            </li>
 
-/* =========================================================
-   02. RESET
-========================================================= */
+            <li>
+                <a href="#paid-course">PAID COURSE</a>
+            </li>
 
-* {
+            <li>
+                <a href="#resources">RESOURCES</a>
+            </li>
 
-    margin: 0;
-    padding: 0;
+            <li>
+                <a href="#blog">BLOG</a>
+            </li>
 
-    box-sizing: border-box;
+            <li>
+                <a href="#about">About</a>
+            </li>
 
-}
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
 
+        </ul>
 
-html {
+    </header>
 
-    scroll-behavior: smooth;
 
-}
+    <!-- =========================
+         HERO SECTION
+    ========================== -->
 
+    <main id="home">
 
-body {
+        <section class="hero">
 
-    min-height: 100vh;
+            <div class="hero-content">
 
-    background:
-        var(--dark);
+                <h1>
+                    Welcome to
+                    <span>SNK GuideUp Academy</span>
+                </h1>
 
-    color:
-        var(--text);
+                <p>
+                    Learn, grow and build your future with
+                    quality educational resources and courses.
+                </p>
 
-    font-family:
-        "Inter",
-        "Hind Siliguri",
-        sans-serif;
+                <a href="#free-course" class="hero-btn">
+                    Explore Free Courses
+                </a>
 
-    overflow-x: hidden;
+            </div>
 
-}
+        </section>
 
+    </main>
 
-img {
 
-    max-width: 100%;
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
 
-    display: block;
+    <script>
 
-}
+        const menuBtn = document.getElementById("menuBtn");
+        const navMenu = document.getElementById("navMenu");
 
+        menuBtn.addEventListener("click", function () {
 
-a {
+            navMenu.classList.toggle("active");
 
-    color: inherit;
+            if (navMenu.classList.contains("active")) {
+                menuBtn.innerHTML = "✕";
+            } else {
+                menuBtn.innerHTML = "☰";
+            }
 
-    text-decoration: none;
+        });
 
-}
 
+        // Mobile menu item click করলে menu বন্ধ হবে
 
-button,
-input,
-textarea,
-select {
+        const navLinks = document.querySelectorAll(".nav-menu a");
 
-    font: inherit;
+        navLinks.forEach(function(link) {
 
-}
+            link.addEventListener("click", function() {
 
+                navMenu.classList.remove("active");
+                menuBtn.innerHTML = "☰";
 
-button {
+            });
 
-    cursor: pointer;
+        });
 
-}
+    </script>
 
-
-ul,
-ol {
-
-    list-style: none;
-
-}
-
-
-/* =========================================================
-   03. COMMON CONTAINER
-========================================================= */
-
-.container {
-
-    width:
-        min(
-            var(--container),
-            calc(100% - 40px)
-        );
-
-    margin:
-        0 auto;
-
-}
-
-
-/* =========================================================
-   04. HEADER
-========================================================= */
-
-.site-header {
-
-    position: sticky;
-
-    top: 0;
-
-    z-index: 10000;
-
-    width: 100%;
-
-    background:
-        rgba(5, 5, 5, 0.92);
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.06);
-
-    backdrop-filter:
-        blur(18px);
-
-    -webkit-backdrop-filter:
-        blur(18px);
-
-}
-
-
-.navbar {
-
-    height: 76px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-}
-
-
-/* =========================================================
-   05. LOGO
-========================================================= */
-
-.logo {
-
-    display: flex;
-
-    align-items: center;
-
-    flex-shrink: 0;
-
-}
-
-
-.logo img {
-
-    width: 145px;
-
-    height: auto;
-
-    object-fit: contain;
-
-}
-
-
-/* =========================================================
-   06. DESKTOP NAVIGATION
-========================================================= */
-
-.desktop-nav {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 28px;
-
-}
-
-
-.desktop-nav > li {
-
-    position: relative;
-
-}
-
-
-.desktop-nav > li > a {
-
-    display: flex;
-
-    align-items: center;
-
-    color: #929292;
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    transition:
-        color .2s ease;
-
-}
-
-
-.desktop-nav > li > a:hover {
-
-    color:
-        var(--gold-light);
-
-}
-
-
-/* =========================================================
-   07. COURSES DROPDOWN
-========================================================= */
-
-.courses-dropdown {
-
-    position: relative;
-
-}
-
-
-.courses-dropdown-button {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 6px;
-
-    padding: 0;
-
-    border: 0;
-
-    outline: none;
-
-    background:
-        transparent;
-
-    color: #929292;
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    transition:
-        color .2s ease;
-
-}
-
-
-.courses-dropdown-button:hover {
-
-    color:
-        var(--gold-light);
-
-}
-
-
-.courses-arrow {
-
-    display: inline-block;
-
-    font-size: 12px;
-
-    line-height: 1;
-
-    transition:
-        transform .2s ease;
-
-}
-
-
-.courses-dropdown:hover
-.courses-arrow {
-
-    transform:
-        rotate(180deg);
-
-}
-
-
-/* =========================================================
-   08. COURSES MEGA MENU
-========================================================= */
-
-.courses-mega-menu {
-
-    position: absolute;
-
-    top:
-        calc(100% + 22px);
-
-    left: 50%;
-
-    z-index: 99999;
-
-    width: 650px;
-
-    max-width:
-        calc(100vw - 30px);
-
-    display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    padding: 12px;
-
-    background:
-        rgba(13,13,13,.98);
-
-    border:
-        1px solid
-        var(--gold-border);
-
-    border-radius: 16px;
-
-    box-shadow:
-        0 30px 80px
-        rgba(0,0,0,.70);
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
-
-    transform:
-        translateX(-50%)
-        translateY(10px);
-
-    transition:
-        opacity .22s ease,
-        visibility .22s ease,
-        transform .22s ease;
-
-}
-
-
-/* Desktop hover */
-
-.courses-dropdown:hover
-.courses-mega-menu {
-
-    opacity: 1;
-
-    visibility: visible;
-
-    pointer-events: auto;
-
-    transform:
-        translateX(-50%)
-        translateY(0);
-
-}
-
-
-/* Invisible bridge */
-
-.courses-mega-menu::before {
-
-    content: "";
-
-    position: absolute;
-
-    top: -22px;
-
-    left: 0;
-
-    width: 100%;
-
-    height: 22px;
-
-}
-
-
-/* =========================================================
-   09. DROPDOWN COLUMNS
-========================================================= */
-
-.course-menu-column {
-
-    padding: 17px;
-
-}
-
-
-.paid-column {
-
-    border-left:
-        1px solid
-        rgba(255,255,255,.06);
-
-}
-
-
-/* =========================================================
-   10. DROPDOWN TITLE
-========================================================= */
-
-.course-menu-title {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    margin-bottom: 17px;
-
-}
-
-
-.menu-title-icon {
-
-    width: 38px;
-
-    height: 38px;
-
-    display: grid;
-
-    place-items: center;
-
-    flex-shrink: 0;
-
-    background:
-        rgba(212,175,55,.08);
-
-    border:
-        1px solid
-        rgba(212,175,55,.14);
-
-    border-radius: 9px;
-
-    font-size: 16px;
-
-}
-
-
-.course-menu-title strong {
-
-    display: block;
-
-    color:
-        var(--gold-light);
-
-    font-size: 9px;
-
-    font-weight: 900;
-
-    letter-spacing: .8px;
-
-}
-
-
-.course-menu-title small {
-
-    display: block;
-
-    margin-top: 3px;
-
-    color: #555;
-
-    font-size: 7px;
-
-}
-
-
-/* =========================================================
-   11. DROPDOWN GROUP
-========================================================= */
-
-.course-menu-group {
-
-    margin-bottom: 17px;
-
-}
-
-
-.course-group-title {
-
-    margin-bottom: 5px;
-
-    color: #888;
-
-    font-size: 8px;
-
-    font-weight: 800;
-
-}
-
-
-/* =========================================================
-   12. DROPDOWN LINKS
-========================================================= */
-
-.course-menu-group a {
-
-    min-height: 31px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    padding: 5px 7px;
-
-    color: #777;
-
-    border-radius: 6px;
-
-    font-family:
-        "Inter",
-        "Hind Siliguri",
-        sans-serif;
-
-    font-size: 8px;
-
-    transition:
-        color .2s ease,
-        background .2s ease,
-        transform .2s ease;
-
-}
-
-
-.course-menu-group a span {
-
-    width: 22px;
-
-    height: 22px;
-
-    display: grid;
-
-    place-items: center;
-
-    flex-shrink: 0;
-
-    background:
-        rgba(255,255,255,.035);
-
-    border-radius: 5px;
-
-    font-size: 8px;
-
-}
-
-
-.course-menu-group a:hover {
-
-    color:
-        var(--gold-light);
-
-    background:
-        rgba(212,175,55,.06);
-
-    transform:
-        translateX(3px);
-
-}
-
-
-.course-menu-group a:hover span {
-
-    background:
-        rgba(212,175,55,.09);
-
-}
-
-
-/* External link */
-
-.snk-it-link b {
-
-    margin-left: auto;
-
-    color:
-        var(--gold);
-
-    font-size: 11px;
-
-}
-
-
-/* =========================================================
-   13. PAID COURSE INFO
-========================================================= */
-
-.paid-info {
-
-    display: flex;
-
-    align-items: flex-start;
-
-    gap: 9px;
-
-    padding: 11px;
-
-    background:
-        rgba(212,175,55,.035);
-
-    border:
-        1px solid
-        rgba(212,175,55,.08);
-
-    border-radius: 9px;
-
-}
-
-
-.paid-info-icon {
-
-    color:
-        var(--gold);
-
-    font-size: 11px;
-
-}
-
-
-.paid-info strong {
-
-    display: block;
-
-    color: #aaa;
-
-    font-size: 7px;
-
-    font-weight: 800;
-
-}
-
-
-.paid-info p {
-
-    margin-top: 3px;
-
-    color: #555;
-
-    font-family:
-        "Hind Siliguri",
-        sans-serif;
-
-    font-size: 6px;
-
-    line-height: 1.6;
-
-}
-
-
-/* =========================================================
-   14. HEADER CTA
-========================================================= */
-
-.header-btn {
-
-    padding:
-        9px 14px !important;
-
-    color:
-        #080808 !important;
-
-    background:
-        var(--gold);
-
-    border-radius: 6px;
-
-    font-size:
-        9px !important;
-
-    font-weight:
-        900 !important;
-
-    transition:
-        background .2s ease,
-        transform .2s ease;
-
-}
-
-
-.header-btn:hover {
-
-    color:
-        #080808 !important;
-
-    background:
-        var(--gold-light);
-
-    transform:
-        translateY(-1px);
-
-}
-
-
-/* =========================================================
-   15. MOBILE MENU BUTTON
-========================================================= */
-
-.mobile-menu-btn {
-
-    display: none;
-
-    width: 38px;
-
-    height: 38px;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border:
-        1px solid
-        rgba(255,255,255,.08);
-
-    outline: none;
-
-    background:
-        rgba(255,255,255,.03);
-
-    color: #aaa;
-
-    border-radius: 7px;
-
-    font-size: 17px;
-
-}
-
-
-/* =========================================================
-   16. HERO
-========================================================= */
-
-.hero {
-
-    position: relative;
-
-    min-height:
-        calc(100vh - 76px);
-
-    display: flex;
-
-    align-items: center;
-
-    overflow: hidden;
-
-    background:
-
-        radial-gradient(
-            circle at 78% 30%,
-            rgba(212,175,55,.10),
-            transparent 30%
-        ),
-
-        radial-gradient(
-            circle at 10% 80%,
-            rgba(212,175,55,.045),
-            transparent 28%
-        ),
-
-        var(--dark);
-
-}
-
-
-.hero::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    background-image:
-        linear-gradient(
-            rgba(255,255,255,.015) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.015) 1px,
-            transparent 1px
-        );
-
-    background-size:
-        70px 70px;
-
-    mask-image:
-        linear-gradient(
-            to bottom,
-            black,
-            transparent
-        );
-
-    opacity: .3;
-
-}
-
-
-.hero-container {
-
-    position: relative;
-
-    z-index: 2;
-
-    min-height:
-        calc(100vh - 76px);
-
-    display: grid;
-
-    grid-template-columns:
-        1.02fr .98fr;
-
-    align-items: center;
-
-    gap: 70px;
-
-    padding-top: 70px;
-
-    padding-bottom: 80px;
-
-}
-
-
-/* =========================================================
-   17. HERO CONTENT
-========================================================= */
-
-.hero-content {
-
-    max-width: 650px;
-
-}
-
-
-.hero-badge {
-
-    width: fit-content;
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    padding:
-        8px 12px;
-
-    color:
-        var(--gold-light);
-
-    background:
-        rgba(212,175,55,.055);
-
-    border:
-        1px solid
-        rgba(212,175,55,.15);
-
-    border-radius: 100px;
-
-    font-size: 8px;
-
-    font-weight: 900;
-
-    letter-spacing: 1px;
-
-}
-
-
-.hero-badge-dot {
-
-    width: 6px;
-
-    height: 6px;
-
-    display: block;
-
-    background:
-        var(--gold);
-
-    border-radius: 50%;
-
-    box-shadow:
-        0 0 12px
-        rgba(212,175,55,.8);
-
-    animation:
-        heroPulse 2s ease-in-out infinite;
-
-}
-
-
-@keyframes heroPulse {
-
-    0%,
-    100% {
-
-        opacity: 1;
-
-        transform:
-            scale(1);
-
-    }
-
-    50% {
-
-        opacity: .45;
-
-        transform:
-            scale(.75);
-
-    }
-
-}
-
-
-/* =========================================================
-   18. HERO TITLE
-========================================================= */
-
-.hero h1 {
-
-    max-width: 680px;
-
-    margin-top: 24px;
-
-    color:
-        var(--white);
-
-    font-size:
-        clamp(48px,5.5vw,76px);
-
-    line-height: 1.02;
-
-    letter-spacing: -4px;
-
-    font-weight: 900;
-
-}
-
-
-.hero h1 span {
-
-    display: block;
-
-    color:
-        var(--gold-light);
-
-}
-
-
-/* =========================================================
-   19. HERO DESCRIPTION
-========================================================= */
-
-.hero-description {
-
-    max-width: 570px;
-
-    margin-top: 25px;
-
-    color:
-        #858585;
-
-    font-family:
-        "Hind Siliguri",
-        sans-serif;
-
-    font-size: 14px;
-
-    line-height: 1.9;
-
-}
-
-
-/* =========================================================
-   20. HERO BUTTONS
-========================================================= */
-
-.hero-buttons {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 11px;
-
-    margin-top: 32px;
-
-}
-
-
-.hero-primary-btn {
-
-    min-height: 46px;
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 15px;
-
-    padding:
-        0 17px 0 20px;
-
-    color:
-        #080808;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--gold-light),
-            var(--gold)
-        );
-
-    border-radius: 8px;
-
-    font-size: 10px;
-
-    font-weight: 900;
-
-    box-shadow:
-        0 10px 35px
-        rgba(212,175,55,.14);
-
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease;
-
-}
-
-
-.hero-primary-btn span {
-
-    width: 25px;
-
-    height: 25px;
-
-    display: grid;
-
-    place-items: center;
-
-    background:
-        rgba(0,0,0,.12);
-
-    border-radius: 5px;
-
-    font-size: 14px;
-
-}
-
-
-.hero-primary-btn:hover {
-
-    transform:
-        translateY(-3px);
-
-    box-shadow:
-        0 15px 40px
-        rgba(212,175,55,.25);
-
-}
-
-
-.hero-secondary-btn {
-
-    min-height: 46px;
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding:
-        0 18px;
-
-    color:
-        #aaa;
-
-    background:
-        rgba(255,255,255,.025);
-
-    border:
-        1px solid
-        rgba(255,255,255,.09);
-
-    border-radius: 8px;
-
-    font-size: 10px;
-
-    font-weight: 700;
-
-    transition:
-        color .2s ease,
-        border-color .2s ease,
-        background .2s ease;
-
-}
-
-
-.hero-secondary-btn:hover {
-
-    color:
-        var(--gold-light);
-
-    background:
-        rgba(212,175,55,.04);
-
-    border-color:
-        rgba(212,175,55,.3);
-
-}
-
-
-/* =========================================================
-   21. HERO VISUAL
-========================================================= */
-
-.hero-visual {
-
-    position: relative;
-
-    min-height: 500px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-}
-
-
-/* =========================================================
-   22. HERO MAIN CARD
-========================================================= */
-
-.hero-card-main {
-
-    position: relative;
-
-    z-index: 2;
-
-    width:
-        min(100%,430px);
-
-    padding: 22px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(24,24,24,.98),
-            rgba(10,10,10,.98)
-        );
-
-    border:
-        1px solid
-        rgba(212,175,55,.16);
-
-    border-radius: 20px;
-
-    box-shadow:
-
-        0 35px 90px
-        rgba(0,0,0,.55),
-
-        inset 0 1px 0
-        rgba(255,255,255,.035);
-
-    backdrop-filter:
-        blur(15px);
-
-    animation:
-        heroCardFloat 6s ease-in-out infinite;
-
-}
-
-
-@keyframes heroCardFloat {
-
-    0%,
-    100% {
-
-        transform:
-            translateY(0);
-
-    }
-
-    50% {
-
-        transform:
-            translateY(-8px);
-
-    }
-
-}
-
-
-/* =========================================================
-   23. HERO CARD TOP
-========================================================= */
-
-.hero-card-top {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    padding-bottom: 20px;
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.06);
-
-}
-
-
-.hero-card-label {
-
-    display: block;
-
-    color:
-        var(--gold);
-
-    font-size: 7px;
-
-    font-weight: 900;
-
-    letter-spacing: 1.3px;
-
-}
-
-
-.hero-card-top h3 {
-
-    margin-top: 5px;
-
-    color:
-        #ededed;
-
-    font-size: 23px;
-
-    font-weight: 900;
-
-}
-
-
-.hero-card-icon {
-
-    width: 48px;
-
-    height: 48px;
-
-    display: grid;
-
-    place-items: center;
-
-    background:
-        rgba(212,175,55,.08);
-
-    border:
-        1px solid
-        rgba(212,175,55,.14);
-
-    border-radius: 12px;
-
-    font-size: 21px;
-
-}
-
-
-/* =========================================================
-   24. HERO COURSE LIST
-========================================================= */
-
-.hero-course-list {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 8px;
-
-    padding:
-        18px 0;
-
-}
-
-
-.hero-course-item {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 11px;
-
-    padding: 11px;
-
-    background:
-        rgba(255,255,255,.025);
-
-    border:
-        1px solid
-        rgba(255,255,255,.045);
-
-    border-radius: 10px;
-
-    transition:
-        background .25s ease,
-        border-color .25s ease,
-        transform .25s ease;
-
-}
-
-
-.hero-course-item:hover {
-
-    transform:
-        translateX(4px);
-
-    background:
-        rgba(212,175,55,.045);
-
-    border-color:
-        rgba(212,175,55,.13);
-
-}
-
-
-.hero-course-icon {
-
-    width: 36px;
-
-    height: 36px;
-
-    display: grid;
-
-    place-items: center;
-
-    flex-shrink: 0;
-
-    background:
-        rgba(212,175,55,.07);
-
-    border-radius: 8px;
-
-    font-size: 15px;
-
-}
-
-
-.hero-course-info {
-
-    flex: 1;
-
-}
-
-
-.hero-course-info strong {
-
-    display: block;
-
-    color:
-        #cfcfcf;
-
-    font-size: 9px;
-
-    font-weight: 800;
-
-}
-
-
-.hero-course-info span {
-
-    display: block;
-
-    margin-top: 2px;
-
-    color:
-        #555;
-
-    font-size: 7px;
-
-}
-
-
-.hero-course-arrow {
-
-    color:
-        var(--gold);
-
-    font-size: 13px;
-
-}
-
-
-/* =========================================================
-   25. HERO PROGRESS
-========================================================= */
-
-.hero-progress {
-
-    padding:
-        10px 0 18px;
-
-}
-
-
-.hero-progress-header {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    margin-bottom: 7px;
-
-}
-
-
-.hero-progress-header span {
-
-    color:
-        #626262;
-
-    font-size: 7px;
-
-}
-
-
-.hero-progress-header strong {
-
-    color:
-        var(--gold-light);
-
-    font-size: 7px;
-
-}
-
-
-.hero-progress-bar {
-
-    width: 100%;
-
-    height: 5px;
-
-    overflow: hidden;
-
-    background:
-        #1b1b1b;
-
-    border-radius: 100px;
-
-}
-
-
-.hero-progress-bar span {
-
-    display: block;
-
-    width: 76%;
-
-    height: 100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--gold),
-            var(--gold-light)
-        );
-
-    border-radius: inherit;
-
-    animation:
-        progressLoad 1.4s ease;
-
-}
-
-
-@keyframes progressLoad {
-
-    from {
-
-        width: 0;
-
-    }
-
-    to {
-
-        width: 76%;
-
-    }
-
-}
-
-
-/* =========================================================
-   26. HERO CARD BOTTOM
-========================================================= */
-
-.hero-card-bottom {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    padding-top: 15px;
-
-    border-top:
-        1px solid
-        rgba(255,255,255,.05);
-
-}
-
-
-.hero-card-bottom strong {
-
-    display: block;
-
-    color:
-        #8a8a8a;
-
-    font-size: 8px;
-
-}
-
-
-.hero-card-bottom span {
-
-    display: block;
-
-    margin-top: 2px;
-
-    color:
-        #4e4e4e;
-
-    font-size: 7px;
-
-}
-
-
-/* =========================================================
-   27. COURSES SECTION
-========================================================= */
-
-.courses-section {
-
-    position: relative;
-
-    padding:
-        100px 0;
-
-    background:
-        #090909;
-
-}
-
-
-.courses-section::before {
-
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-
-    left: 50%;
-
-    width: 80%;
-
-    height: 1px;
-
-    transform:
-        translateX(-50%);
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(212,175,55,.25),
-            transparent
-        );
-
-}
-
-
-/* =========================================================
-   28. SECTION HEADING
-========================================================= */
-
-.section-heading {
-
-    max-width: 650px;
-
-    margin-bottom: 45px;
-
-}
-
-
-.section-label {
-
-    color:
-        var(--gold);
-
-    font-size: 9px;
-
-    font-weight: 900;
-
-    letter-spacing: 1.2px;
-
-}
-
-
-.section-heading h2 {
-
-    margin-top: 10px;
-
-    color:
-        #eeeeee;
-
-    font-size:
-        clamp(32px,4vw,48px);
-
-    line-height: 1.1;
-
-    letter-spacing: -2px;
-
-    font-weight: 900;
-
-}
-
-
-.section-heading p {
-
-    max-width: 600px;
-
-    margin-top: 12px;
-
-    color:
-        #666;
-
-    font-family:
-        "Hind Siliguri",
-        sans-serif;
-
-    font-size: 13px;
-
-    line-height: 1.8;
-
-}
-
-
-/* =========================================================
-   29. COURSE GRID
-========================================================= */
-
-.course-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap: 18px;
-
-}
-
-
-/* =========================================================
-   30. COURSE CARD
-========================================================= */
-
-.course-card {
-
-    position: relative;
-
-    padding: 24px;
-
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            145deg,
-            #131313,
-            #0e0e0e
-        );
-
-    border:
-        1px solid
-        rgba(255,255,255,.06);
-
-    border-radius: 14px;
-
-    transition:
-        transform .25s ease,
-        border-color .25s ease,
-        box-shadow .25s ease;
-
-}
-
-
-.course-card::before {
-
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-
-    left: 0;
-
-    width: 100%;
-
-    height: 1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(212,175,55,.3),
-            transparent
-        );
-
-    opacity: 0;
-
-    transition:
-        opacity .25s ease;
-
-}
-
-
-.course-card:hover {
-
-    transform:
-        translateY(-6px);
-
-    border-color:
-        rgba(212,175,55,.20);
-
-    box-shadow:
-        0 20px 50px
-        rgba(0,0,0,.35);
-
-}
-
-
-.course-card:hover::before {
-
-    opacity: 1;
-
-}
-
-
-/* =========================================================
-   31. COURSE CARD ICON
-========================================================= */
-
-.course-card-icon {
-
-    width: 45px;
-
-    height: 45px;
-
-    display: grid;
-
-    place-items: center;
-
-    background:
-        rgba(212,175,55,.07);
-
-    border:
-        1px solid
-        rgba(212,175,55,.08);
-
-    border-radius: 10px;
-
-    font-size: 20px;
-
-}
-
-
-/* =========================================================
-   32. COURSE CARD TEXT
-========================================================= */
-
-.course-card h3 {
-
-    margin-top: 18px;
-
-    color:
-        #dddddd;
-
-    font-size: 16px;
-
-    font-weight: 800;
-
-}
-
-
-.course-card p {
-
-    min-height: 48px;
-
-    margin-top: 7px;
-
-    color:
-        #666;
-
-    font-family:
-        "Hind Siliguri",
-        sans-serif;
-
-    font-size: 11px;
-
-    line-height: 1.7;
-
-}
-
-
-/* =========================================================
-   33. COURSE CARD BUTTON
-========================================================= */
-
-.course-card-btn {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 5px;
-
-    margin-top: 18px;
-
-    color:
-        var(--gold-light);
-
-    font-size: 9px;
-
-    font-weight: 800;
-
-    transition:
-        gap .2s ease;
-
-}
-
-
-.course-card-btn:hover {
-
-    gap: 9px;
-
-}
-
-
-/* =========================================================
-   34. FOOTER
-========================================================= */
-
-footer {
-
-    padding:
-        40px 0;
-
-    background:
-        #060606;
-
-    border-top:
-        1px solid
-        rgba(255,255,255,.05);
-
-    text-align: center;
-
-}
-
-
-footer p {
-
-    color:
-        #555;
-
-    font-size: 9px;
-
-}
-
-
-footer span {
-
-    color:
-        var(--gold);
-
-}
-
-
-/* =========================================================
-   35. TABLET
-========================================================= */
-
-@media (max-width: 1050px) {
-
-    .desktop-nav {
-
-        gap: 20px;
-
-    }
-
-
-    .hero-container {
-
-        gap: 40px;
-
-    }
-
-
-    .hero h1 {
-
-        font-size:
-            clamp(45px,5.5vw,65px);
-
-    }
-
-
-    .courses-mega-menu {
-
-        width: 600px;
-
-    }
-
-}
-
-
-/* =========================================================
-   36. MOBILE NAV
-========================================================= */
-
-@media (max-width: 900px) {
-
-    .desktop-nav {
-
-        display: none;
-
-    }
-
-
-    .mobile-menu-btn {
-
-        display: flex;
-
-    }
-
-
-    .hero {
-
-        min-height: auto;
-
-    }
-
-
-    .hero-container {
-
-        min-height: auto;
-
-        grid-template-columns: 1fr;
-
-        gap: 40px;
-
-        padding-top: 60px;
-
-        padding-bottom: 70px;
-
-    }
-
-
-    .hero-content {
-
-        max-width: 680px;
-
-        margin:
-            0 auto;
-
-        text-align: center;
-
-    }
-
-
-    .hero-badge {
-
-        margin:
-            0 auto;
-
-    }
-
-
-    .hero h1 {
-
-        font-size:
-            clamp(42px,8vw,60px);
-
-    }
-
-
-    .hero-description {
-
-        margin-left: auto;
-
-        margin-right: auto;
-
-    }
-
-
-    .hero-buttons {
-
-        justify-content: center;
-
-    }
-
-
-    .hero-visual {
-
-        min-height: 440px;
-
-    }
-
-
-    .course-grid {
-
-        grid-template-columns:
-            repeat(2,1fr);
-
-    }
-
-
-    /*
-       Dropdown is hidden on mobile.
-       Mobile menu will be added separately.
-    */
-
-    .courses-mega-menu {
-
-        display: none !important;
-
-    }
-
-}
-
-
-/* =========================================================
-   37. SMALL MOBILE
-========================================================= */
-
-@media (max-width: 600px) {
-
-    .container {
-
-        width:
-            calc(100% - 28px);
-
-    }
-
-
-    .navbar {
-
-        height: 68px;
-
-    }
-
-
-    .logo img {
-
-        width: 125px;
-
-    }
-
-
-    .hero-container {
-
-        padding-top: 50px;
-
-        padding-bottom: 60px;
-
-        gap: 35px;
-
-    }
-
-
-    .hero h1 {
-
-        font-size:
-            clamp(37px,11vw,52px);
-
-        letter-spacing:
-            -2px;
-
-    }
-
-
-    .hero-description {
-
-        font-size: 11px;
-
-        line-height: 1.8;
-
-    }
-
-
-    .hero-buttons {
-
-        width: 100%;
-
-        flex-direction: column;
-
-    }
-
-
-    .hero-primary-btn,
-    .hero-secondary-btn {
-
-        width: 100%;
-
-    }
-
-
-    .hero-visual {
-
-        min-height: 410px;
-
-    }
-
-
-    .hero-card-main {
-
-        width:
-            calc(100% - 10px);
-
-        padding: 17px;
-
-        border-radius: 16px;
-
-    }
-
-
-    .hero-card-top h3 {
-
-        font-size: 20px;
-
-    }
-
-
-    .hero-card-icon {
-
-        width: 42px;
-
-        height: 42px;
-
-    }
-
-
-    .courses-section {
-
-        padding:
-            75px 0;
-
-    }
-
-
-    .section-heading {
-
-        margin-bottom: 30px;
-
-    }
-
-
-    .section-heading h2 {
-
-        font-size: 34px;
-
-    }
-
-
-    .course-grid {
-
-        grid-template-columns: 1fr;
-
-    }
-
-
-    .course-card p {
-
-        min-height: auto;
-
-    }
-
-}
-
-
-/* =========================================================
-   38. VERY SMALL MOBILE
-========================================================= */
-
-@media (max-width: 380px) {
-
-    .hero h1 {
-
-        font-size: 35px;
-
-    }
-
-
-    .hero-card-main {
-
-        width:
-            calc(100% - 2px);
-
-    }
-
-
-    .hero-course-item {
-
-        padding: 9px;
-
-    }
-
-
-    .hero-course-icon {
-
-        width: 32px;
-
-        height: 32px;
-
-    }
-
-}
-
-
-/* =========================================================
-   39. ACCESSIBILITY
-========================================================= */
-
-a:focus-visible,
-button:focus-visible {
-
-    outline:
-        2px solid
-        var(--gold-light);
-
-    outline-offset: 3px;
-
-}
-
-
-/* =========================================================
-   40. REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    html {
-
-        scroll-behavior: auto;
-
-    }
-
-
-    *,
-    *::before,
-    *::after {
-
-        animation-duration:
-            .01ms !important;
-
-        animation-iteration-count:
-            1 !important;
-
-        transition-duration:
-            .01ms !important;
-
-    }
-
-}
+</body>
+</html>
