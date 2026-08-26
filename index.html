@@ -2,6 +2,7 @@
 <html lang="bn">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -9,38 +10,60 @@
         content="width=device-width, initial-scale=1.0"
     >
 
+    <meta
+        name="description"
+        content="SNK GuideUp - Free Learning Academy for students. Class 5-10, IT and Programming."
+    >
+
+    <meta
+        name="theme-color"
+        content="#070707"
+    >
+
     <title>
         SNK GuideUp | Free Learning Academy
     </title>
 
-    <meta
-        name="description"
-        content="SNK GuideUp — Free Learning Academy for students. Class 5-10, IT and Programming."
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
     >
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap"
         rel="stylesheet"
     >
 
-    <!-- Main CSS -->
+
+    <!-- =====================================================
+         CSS
+    ====================================================== -->
+
     <link
         rel="stylesheet"
         href="style.css"
     >
+
 </head>
 
 
 <body>
 
 
-<!-- =====================================================
+<!-- =========================================================
      HEADER
-===================================================== -->
+========================================================= -->
 
 <header class="header">
 
@@ -74,12 +97,12 @@
         </a>
 
 
-        <!-- DESKTOP NAV -->
+        <!-- =================================================
+             DESKTOP NAVIGATION
+        ================================================== -->
 
-        <nav
-            class="desktop-nav"
-            aria-label="Main Navigation"
-        >
+        <nav class="desktop-nav">
+
 
             <a
                 href="#home"
@@ -89,42 +112,328 @@
             </a>
 
 
-            <!-- Academy -->
+            <!-- =================================================
+                 COURSES MEGA DROPDOWN
+            ================================================== -->
 
-            <div class="dropdown">
+            <div class="courses-dropdown">
 
                 <button
                     type="button"
-                    class="dropdown-button"
+                    class="courses-dropdown-button"
                 >
 
-                    Academy
+                    Courses
 
-                    <span class="arrow">
-                       ⌄
+                    <span class="courses-arrow">
+                        ⌄
                     </span>
 
                 </button>
 
 
-                <div class="dropdown-menu">
+                <div class="courses-mega-menu">
 
-                    <a href="#free-academy">
-                        🎓 Free Academy
-                    </a>
 
-                    <a href="#classes">
-                        📚 Class 5–10
-                    </a>
+                    <!-- =========================================
+                         FREE COURSE
+                    ========================================== -->
 
-                    <a href="#it-courses">
-                        💻 IT Courses
-                    </a>
+                    <div class="course-menu-column">
+
+
+                        <div class="course-menu-title free-title">
+
+                            <span class="menu-title-icon">
+                                🎓
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    1. FREE COURSE
+                                </strong>
+
+                                <small>
+                                    Learn completely free
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- FREE ACADEMY -->
+
+                        <div class="course-menu-group">
+
+                            <div class="course-group-title">
+
+                                <span>
+                                    1.1
+                                </span>
+
+                                Free Academy
+
+                            </div>
+
+
+                            <a href="#class-5">
+                                <span>📚</span>
+                                Class 5
+                            </a>
+
+
+                            <a href="#class-6">
+                                <span>📚</span>
+                                Class 6
+                            </a>
+
+
+                            <a href="#class-7">
+                                <span>📚</span>
+                                Class 7
+                            </a>
+
+
+                            <a href="#class-8">
+                                <span>📚</span>
+                                Class 8
+                            </a>
+
+
+                            <a href="#class-9">
+                                <span>📚</span>
+                                Class 9
+                            </a>
+
+
+                            <a href="#class-10">
+                                <span>📚</span>
+                                Class 10
+                            </a>
+
+
+                            <a
+                                href="#class-5-exam"
+                                class="exam-link"
+                            >
+
+                                <span>
+                                    📝
+                                </span>
+
+                                Class 5 সমাপনী পরীক্ষা
+
+                            </a>
+
+                        </div>
+
+
+                        <!-- FREE IT COURSE -->
+
+                        <div class="course-menu-group">
+
+                            <div class="course-group-title">
+
+                                <span>
+                                    1.2
+                                </span>
+
+                                Free IT Course
+
+                            </div>
+
+
+                            <a href="#html-course">
+
+                                <span>
+                                    🌐
+                                </span>
+
+                                HTML
+
+                            </a>
+
+
+                            <a href="#css-course">
+
+                                <span>
+                                    🎨
+                                </span>
+
+                                CSS
+
+                            </a>
+
+
+                            <a href="#javascript-course">
+
+                                <span>
+                                    ⚡
+                                </span>
+
+                                JavaScript
+
+                            </a>
+
+
+                            <a href="#programming-course">
+
+                                <span>
+                                    💻
+                                </span>
+
+                                Programming
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =========================================
+                         PAID COURSE
+                    ========================================== -->
+
+                    <div class="course-menu-column paid-column">
+
+
+                        <div class="course-menu-title paid-title">
+
+                            <span class="menu-title-icon">
+                                💎
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    2. PAID COURSE
+                                </strong>
+
+                                <small>
+                                    Advanced learning
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PAID ACADEMY -->
+
+                        <div class="course-menu-group">
+
+                            <div class="course-group-title">
+
+                                <span>
+                                    2.1
+                                </span>
+
+                                Paid Academy
+
+                                <em>
+                                    Coming Soon
+                                </em>
+
+                            </div>
+
+
+                            <a
+                                href="#paid-academy"
+                                class="coming-link"
+                            >
+
+                                <span>
+                                    🚀
+                                </span>
+
+                                Paid Academy
+
+                                <b>
+                                    Soon
+                                </b>
+
+                            </a>
+
+                        </div>
+
+
+                        <!-- PAID IT -->
+
+                        <div class="course-menu-group">
+
+                            <div class="course-group-title">
+
+                                <span>
+                                    2.2
+                                </span>
+
+                                Paid IT
+
+                            </div>
+
+
+                            <!--
+                                Replace the URL below with
+                                the actual SNK IT Institute URL.
+                            -->
+
+                            <a
+                                href="https://snkitinstitute.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="snk-it-link"
+                            >
+
+                                <span>
+                                    💻
+                                </span>
+
+                                SNK IT Institute
+
+                                <b>
+                                    ↗
+                                </b>
+
+                            </a>
+
+                        </div>
+
+
+                        <!-- PAID INFORMATION -->
+
+                        <div class="paid-info">
+
+                            <span class="paid-info-icon">
+                                ✦
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Premium Learning
+                                </strong>
+
+                                <p>
+                                    Advanced courses and
+                                    professional skills.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
             </div>
 
+
+            <!-- NORMAL NAV LINKS -->
 
             <a
                 href="#free-academy"
@@ -143,14 +452,6 @@
 
 
             <a
-                href="#mentors"
-                class="nav-link"
-            >
-                Mentors
-            </a>
-
-
-            <a
                 href="#about"
                 class="nav-link"
             >
@@ -160,9 +461,12 @@
         </nav>
 
 
-        <!-- DESKTOP ACTIONS -->
+        <!-- =================================================
+             NAV ACTIONS
+        ================================================== -->
 
         <div class="nav-actions">
+
 
             <a
                 href="#login"
@@ -176,14 +480,21 @@
                 href="#free-academy"
                 class="gold-btn"
             >
+
                 Start Learning
-                <span>→</span>
+
+                <span>
+                    →
+                </span>
+
             </a>
 
         </div>
 
 
-        <!-- MOBILE BUTTON -->
+        <!-- =================================================
+             MOBILE MENU BUTTON
+        ================================================== -->
 
         <button
             class="mobile-button"
@@ -202,7 +513,9 @@
     </div>
 
 
-    <!-- MOBILE MENU -->
+    <!-- =====================================================
+         MOBILE MENU
+    ====================================================== -->
 
     <div
         class="mobile-menu"
@@ -211,42 +524,150 @@
 
         <div class="container">
 
+
             <a href="#home">
                 Home
             </a>
 
-            <a href="#free-academy">
-                Academy
-            </a>
 
-            <a href="#free-academy">
-                Free Courses
-            </a>
+            <!-- MOBILE COURSES -->
 
-            <a href="#it-courses">
-                IT Courses
-            </a>
+            <div class="mobile-course-section">
 
-            <a href="#mentors">
-                Mentors
-            </a>
+
+                <div class="mobile-course-heading">
+
+                    <span>
+                        📚
+                    </span>
+
+                    COURSES
+
+                </div>
+
+
+                <!-- FREE COURSE -->
+
+                <div class="mobile-course-title">
+
+                    1. FREE COURSE
+
+                </div>
+
+
+                <a href="#free-academy">
+
+                    🎓 Free Academy
+
+                </a>
+
+
+                <a href="#class-5">
+
+                    └─ Class 5
+
+                </a>
+
+
+                <a href="#class-6">
+
+                    └─ Class 6
+
+                </a>
+
+
+                <a href="#class-7">
+
+                    └─ Class 7
+
+                </a>
+
+
+                <a href="#class-8">
+
+                    └─ Class 8
+
+                </a>
+
+
+                <a href="#class-9">
+
+                    └─ Class 9
+
+                </a>
+
+
+                <a href="#class-10">
+
+                    └─ Class 10
+
+                </a>
+
+
+                <a href="#class-5-exam">
+
+                    📝 Class 5 সমাপনী পরীক্ষা
+
+                </a>
+
+
+                <a href="#it-courses">
+
+                    💻 Free IT Course
+
+                </a>
+
+
+                <!-- PAID COURSE -->
+
+                <div class="mobile-course-title">
+
+                    2. PAID COURSE
+
+                </div>
+
+
+                <a href="#paid-academy">
+
+                    💎 Paid Academy
+
+                    <small>
+                        Coming Soon
+                    </small>
+
+                </a>
+
+
+                <a
+                    href="https://snkitinstitute.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    💻 SNK IT Institute ↗
+
+                </a>
+
+            </div>
+
 
             <a href="#about">
                 About
             </a>
 
-            <a
-                href="#login"
-                class="mobile-login"
-            >
+
+            <a href="#login">
                 Login
             </a>
+
 
             <a
                 href="#free-academy"
                 class="mobile-start"
             >
+
                 Start Learning →
+
             </a>
 
         </div>
@@ -257,1072 +678,1603 @@
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      MAIN
-===================================================== -->
+========================================================= -->
 
 <main>
 
 
-    <!-- =================================================
-         HERO
-    ================================================= -->
+<!-- =========================================================
+     HERO
+========================================================= -->
 
-    <section
-        class="hero"
-        id="home"
-    >
+<section
+    class="hero"
+    id="home"
+>
 
-        <div class="container hero-container">
-
-
-            <!-- HERO CONTENT -->
-
-            <div class="hero-content">
+    <div class="container hero-container">
 
 
-                <div class="hero-badge">
+        <!-- HERO CONTENT -->
 
-                    <span class="badge-dot"></span>
+        <div class="hero-content">
 
-                    100% FREE LEARNING PLATFORM
+
+            <div class="hero-badge">
+
+                <span class="badge-dot"></span>
+
+                100% FREE LEARNING PLATFORM
+
+            </div>
+
+
+            <h1>
+
+                Learn Free.
+
+                <br>
+
+                <span class="gold">
+                    Build Skills.
+                </span>
+
+                <br>
+
+                Grow Future.
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                Class 5 থেকে 10, IT এবং Programming —
+                সহজভাবে শিখুন একদম ফ্রিতে।
+                Practice করুন, নতুন skill তৈরি করুন
+                এবং নিজের future-এর জন্য প্রস্তুত হোন।
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+
+                <a
+                    href="#free-academy"
+                    class="gold-btn"
+                >
+
+                    🎓 Start Free Learning →
+
+                </a>
+
+
+                <a
+                    href="#free-academy"
+                    class="outline-btn"
+                >
+
+                    Explore Academy →
+
+                </a>
+
+            </div>
+
+
+            <div class="hero-trust">
+
+
+                <div class="avatars">
+
+                    <span>
+                        👨‍🎓
+                    </span>
+
+                    <span>
+                        👩‍🎓
+                    </span>
+
+                    <span>
+                        👨‍💻
+                    </span>
 
                 </div>
 
 
-                <h1>
+                <div class="trust-text">
 
-                    Learn Free.
+                    <strong>
+                        Student First
+                    </strong>
 
-                    <br>
-
-                    <span class="gold">
-                        Build Skills.
+                    <span>
+                        Learn • Practice • Grow
                     </span>
 
-                    <br>
+                </div>
 
-                    Grow Future.
+            </div>
 
-                </h1>
+        </div>
 
 
-                <p class="hero-description">
 
-                    Class 5 থেকে 10, IT এবং Programming —
-                    সহজভাবে শিখুন একদম ফ্রিতে।
-                    Practice করুন, নতুন skill তৈরি করুন
-                    এবং নিজের future-এর জন্য প্রস্তুত হোন।
+        <!-- HERO IMAGE -->
 
+        <div class="hero-visual">
+
+            <img
+                class="hero-banner-image"
+                src="https://raw.githubusercontent.com/snkguideup/assets/315c4a5b5531a76c97340aacf30bec90cc3cc1ed/hero%20bannar%2002.svg"
+                alt="SNK GuideUp Learning Academy"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-bottom"></div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FEATURE BAR
+========================================================= -->
+
+<section class="feature-bar">
+
+    <div class="container">
+
+        <div class="features">
+
+
+            <div class="feature">
+
+                <strong>
+                    100%
+                </strong>
+
+                <span>
+                    Free Learning
+                </span>
+
+            </div>
+
+
+            <div class="feature">
+
+                <strong>
+                    5–10
+                </strong>
+
+                <span>
+                    School Classes
+                </span>
+
+            </div>
+
+
+            <div class="feature">
+
+                <strong>
+                    IT
+                </strong>
+
+                <span>
+                    IT & Programming
+                </span>
+
+            </div>
+
+
+            <div class="feature">
+
+                <strong>
+                    FREE
+                </strong>
+
+                <span>
+                    Student Resources
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FREE ACADEMY
+========================================================= -->
+
+<section
+    class="coming-section"
+    id="free-academy"
+>
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <small>
+                1.1 FREE ACADEMY
+            </small>
+
+
+            <h2>
+
+                Learn Today.
+
+                <br>
+
+                <span>
+                    Grow Tomorrow.
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                Class 5 থেকে Class 10 পর্যন্ত
+                students-এর জন্য free academic
+                learning resources।
+
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             ACADEMY COURSE CARDS
+        ================================================== -->
+
+        <div
+            class="course-preview"
+            id="classes"
+        >
+
+
+            <!-- CLASS 5 -->
+
+            <article
+                class="course-card"
+                id="class-5"
+            >
+
+                <div class="course-card-top">
+
+                    <div class="course-icon">
+                        📚
+                    </div>
+
+                    <span class="course-badge">
+                        FREE
+                    </span>
+
+                </div>
+
+
+                <div class="course-level">
+                    CLASS 05
+                </div>
+
+
+                <h3>
+                    Class 5
+                </h3>
+
+
+                <p>
+                    Class 5 students-এর জন্য
+                    সহজ ও structured learning journey।
                 </p>
 
 
-                <div class="hero-buttons">
+                <div class="course-info">
 
-                    <a
-                        href="#free-academy"
-                        class="gold-btn"
-                    >
-                        🎓 Start Free Learning →
-                    </a>
+                    <span>
+                        📖 6 Subjects
+                    </span>
 
-
-                    <a
-                        href="#free-academy"
-                        class="outline-btn"
-                    >
-                        Explore Academy →
-                    </a>
+                    <span>
+                        🎬 48 Lessons
+                    </span>
 
                 </div>
 
 
-                <div class="hero-trust">
+                <div class="progress-area">
 
-                    <div class="avatars">
-
-                        <span>👨‍🎓</span>
-                        <span>👩‍🎓</span>
-                        <span>👨‍💻</span>
-
-                    </div>
-
-
-                    <div class="trust-text">
-
-                        <strong>
-                            Student First
-                        </strong>
+                    <div class="progress-label">
 
                         <span>
-                            Learn • Practice • Grow
+                            Course Progress
+                        </span>
+
+                        <span>
+                            0%
                         </span>
 
                     </div>
 
+
+                    <div class="progress-bar">
+
+                        <span style="width: 0%;"></span>
+
+                    </div>
+
                 </div>
 
-            </div>
+
+                <a
+                    href="#"
+                    class="view-course-btn"
+                >
+
+                    <span>
+                        View Course
+                    </span>
+
+                    <span>
+                        →
+                    </span>
+
+                </a>
+
+            </article>
+
+
+
+            <!-- CLASS 6 -->
+
+            <article
+                class="course-card"
+                id="class-6"
+            >
+
+                <div class="course-card-top">
+
+                    <div class="course-icon">
+                        🎓
+                    </div>
+
+                    <span class="course-badge">
+                        FREE
+                    </span>
+
+                </div>
+
+
+                <div class="course-level">
+                    CLASS 06
+                </div>
+
+
+                <h3>
+                    Class 6
+                </h3>
+
+
+                <p>
+                    Class 6 students-এর জন্য
+                    organized academic resources।
+                </p>
+
+
+                <div class="course-info">
+
+                    <span>
+                        📖 7 Subjects
+                    </span>
+
+                    <span>
+                        🎬 56 Lessons
+                    </span>
+
+                </div>
+
+
+                <div class="progress-area">
+
+                    <div class="progress-label">
+
+                        <span>
+                            Course Progress
+                        </span>
+
+                        <span>
+                            0%
+                        </span>
+
+                    </div>
+
+
+                    <div class="progress-bar">
+
+                        <span style="width: 0%;"></span>
+
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="#"
+                    class="view-course-btn"
+                >
+
+                    <span>
+                        View Course
+                    </span>
+
+                    <span>
+                        →
+                    </span>
+
+                </a>
+
+            </article>
+
+
+
+            <!-- CLASS 7 -->
+
+            <article
+                class="course-card"
+                id="class-7"
+            >
+
+                <div class="course-card-top">
+
+                    <div class="course-icon">
+                        🧠
+                    </div>
+
+                    <span class="course-badge">
+                        FREE
+                    </span>
+
+                </div>
+
+
+                <div class="course-level">
+                    CLASS 07
+                </div>
+
+
+                <h3>
+                    Class 7
+                </h3>
+
+
+                <p>
+                    Class 7-এর academic foundation
+                    আরও শক্ত করার জন্য resources।
+                </p>
+
+
+                <div class="course-info">
+
+                    <span>
+                        📖 7 Subjects
+                    </span>
+
+                    <span>
+                        🎬 64 Lessons
+                    </span>
+
+                </div>
+
+
+                <div class="progress-area">
+
+                    <div class="progress-label">
+
+                        <span>
+                            Course Progress
+                        </span>
+
+                        <span>
+                            0%
+                        </span>
+
+                    </div>
+
+
+                    <div class="progress-bar">
+
+                        <span style="width: 0%;"></span>
+
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="#"
+                    class="view-course-btn"
+                >
+
+                    <span>
+                        View Course
+                    </span>
+
+                    <span>
+                        →
+                    </span>
+
+                </a>
+
+            </article>
+
+
+
+            <!-- CLASS 8 -->
+
+            <article
+                class="course-card"
+                id="class-8"
+            >
+
+                <div class="course-card-top">
+
+                    <div class="course-icon">
+                        ✏️
+                    </div>
+
+                    <span class="course-badge">
+                        FREE
+                    </span>
+
+                </div>
+
+
+                <div class="course-level">
+                    CLASS 08
+                </div>
+
+
+                <h3>
+                    Class 8
+                </h3>
+
+
+                <p>
+                    Class 8 students-এর জন্য
+                    complete learning resources।
+                </p>
+
+
+                <div class="course-info">
+
+                    <span>
+                        📖 8 Subjects
+                    </span>
+
+                    <span>
+                        🎬 72 Lessons
+                    </span>
+
+                </div>
+
+
+                <div class="progress-area">
+
+                    <div class="progress-label">
+
+                        <span>
+                            Course Progress
+                        </span>
+
+                        <span>
+                            0%
+                        </span>
+
+                    </div>
+
+
+                    <div class="progress-bar">
+
+                        <span style="width: 0%;"></span>
+
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="#"
+                    class="view-course-btn"
+                >
+
+                    <span>
+                        View Course
+                    </span>
+
+                    <span>
+                        →
+                    </span>
+
+                </a>
+
+            </article>
+
+
+
+            <!-- CLASS 9 -->
+
+            <article
+                class="course-card"
+                id="class-9"
+            >
+
+                <div class="course-card-top">
+
+                    <div class="course-icon">
+                        🔬
+                    </div>
+
+                    <span class="course-badge">
+                        FREE
+                    </span>
+
+                </div>
+
+
+                <div class="course-level">
+                    CLASS 09
+                </div>
+
+
+                <h3>
+                    Class 9
+                </h3>
+
+
+                <p>
+                    Class 9-এর academic preparation
+                    ও subject-based learning।
+                </p>
+
+
+                <div class="course-info">
+
+                    <span>
+                        📖 9 Subjects
+                    </span>
+
+                    <span>
+                        🎬 80 Lessons
+                    </span>
+
+                </div>
+
+
+                <div class="progress-area">
+
+                    <div class="progress-label">
+
+                        <span>
+                            Course Progress
+                        </span>
+
+                        <span>
+                            0%
+                        </span>
+
+                    </div>
+
+
+                    <div class="progress-bar">
+
+                        <span style="width: 0%;"></span>
+
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="#"
+                    class="view-course-btn"
+                >
+
+                    <span>
+                        View Course
+                    </span>
+
+                    <span>
+                        →
+                    </span>
+
+                </a>
+
+            </article>
+
+
+
+            <!-- CLASS 10 -->
+
+            <article
+                class="course-card"
+                id="class-10"
+            >
+
+                <div class="course-card-top">
+
+                    <div class="course-icon">
+                        🏆
+                    </div>
+
+                    <span class="course-badge">
+                        FREE
+                    </span>
+
+                </div>
+
+
+                <div class="course-level">
+                    CLASS 10
+                </div>
+
+
+                <h3>
+                    Class 10
+                </h3>
+
+
+                <p>
+                    Class 10 students-এর জন্য
+                    focused preparation ও resources।
+                </p>
+
+
+                <div class="course-info">
+
+                    <span>
+                        📖 9 Subjects
+                    </span>
+
+                    <span>
+                        🎬 90 Lessons
+                    </span>
+
+                </div>
+
+
+                <div class="progress-area">
+
+                    <div class="progress-label">
+
+                        <span>
+                            Course Progress
+                        </span>
+
+                        <span>
+                            0%
+                        </span>
+
+                    </div>
+
+
+                    <div class="progress-bar">
+
+                        <span style="width: 0%;"></span>
+
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="#"
+                    class="view-course-btn"
+                >
+
+                    <span>
+                        View Course
+                    </span>
+
+                    <span>
+                        →
+                    </span>
+
+                </a>
+
+            </article>
 
 
 
             <!-- =================================================
-                 HERO IMAGE
-            ================================================= -->
+                 CLASS 5 EXAM
+            ================================================== -->
 
-            <div class="hero-visual">
+            <article
+                class="course-card featured-course"
+                id="class-5-exam"
+            >
 
-                <img
-                    class="hero-banner-image"
-                    src="https://raw.githubusercontent.com/snkguideup/assets/315c4a5b5531a76c97340aacf30bec90cc3cc1ed/hero%20bannar%2002.svg"
-                    alt="SNK GuideUp Learning Academy"
-                >
+                <div class="course-card-top">
 
-            </div>
+                    <div class="course-icon">
+                        📝
+                    </div>
 
-        </div>
-
-
-        <div class="hero-bottom"></div>
-
-    </section>
-
-
-
-    <!-- =================================================
-         FEATURE BAR
-    ================================================= -->
-
-    <section class="feature-bar">
-
-        <div class="container">
-
-            <div class="features">
-
-
-                <div class="feature">
-
-                    <strong>
-                        100%
-                    </strong>
-
-                    <span>
-                        Free Learning
-                    </span>
-
-                </div>
-
-
-                <div class="feature">
-
-                    <strong>
-                        5–10
-                    </strong>
-
-                    <span>
-                        School Classes
-                    </span>
-
-                </div>
-
-
-                <div class="feature">
-
-                    <strong>
-                        IT
-                    </strong>
-
-                    <span>
-                        IT & Programming
-                    </span>
-
-                </div>
-
-
-                <div class="feature">
-
-                    <strong>
+                    <span class="course-badge">
                         FREE
-                    </strong>
-
-                    <span>
-                        Student Resources
                     </span>
 
                 </div>
 
-            </div>
 
-        </div>
-
-    </section>
-
-
-
-    <!-- =================================================
-         FREE ACADEMY
-    ================================================= -->
-
-    <section
-        class="coming-section"
-        id="free-academy"
-    >
-
-        <div class="container">
-
-
-            <div class="section-heading">
-
-                <small>
-                    FREE ACADEMY
-                </small>
-
-
-                <h2>
-
-                    Learn Today.
-
-                    <br>
-
-                    <span>
-                        Grow Tomorrow.
-                    </span>
-
-                </h2>
-
-
-                <p>
-
-                    স্কুলের পড়াশোনা থেকে IT ও Programming —
-                    প্রয়োজনীয় learning resources এক জায়গায়।
-
-                </p>
-
-            </div>
-
-
-           <!-- =================================================
-     FREE ACADEMY COURSE CARDS
-================================================= -->
-
-<div class="course-preview" id="classes">
-
-
-    <!-- ================= CLASS 5 ================= -->
-
-    <article class="course-card">
-
-        <div class="course-card-top">
-
-            <div class="course-icon">
-                📚
-            </div>
-
-            <span class="course-badge">
-                FREE
-            </span>
-
-        </div>
-
-        <div class="course-level">
-            CLASS 05
-        </div>
-
-        <h3>
-            Class 5
-        </h3>
-
-        <p>
-            Class 5 students-এর জন্য
-            সহজ ও structured learning journey।
-        </p>
-
-
-        <!-- COURSE INFO -->
-
-        <div class="course-info">
-
-            <span>
-                📖 6 Subjects
-            </span>
-
-            <span>
-                🎬 48 Lessons
-            </span>
-
-        </div>
-
-
-        <!-- PROGRESS -->
-
-        <div class="progress-area">
-
-            <div class="progress-label">
-
-                <span>
-                    Course Progress
-                </span>
-
-                <span>
-                    0%
-                </span>
-
-            </div>
-
-            <div class="progress-bar">
-
-                <span style="width: 0%;"></span>
-
-            </div>
-
-        </div>
-
-
-        <!-- BUTTON -->
-
-        <a
-            href="#"
-            class="view-course-btn"
-        >
-            View Course
-
-            <span>
-                →
-            </span>
-
-        </a>
-
-    </article>
-
-
-
-    <!-- ================= CLASS 6 ================= -->
-
-    <article class="course-card">
-
-        <div class="course-card-top">
-
-            <div class="course-icon">
-                🎓
-            </div>
-
-            <span class="course-badge">
-                FREE
-            </span>
-
-        </div>
-
-        <div class="course-level">
-            CLASS 06
-        </div>
-
-        <h3>
-            Class 6
-        </h3>
-
-        <p>
-            Class 6 students-এর জন্য
-            organized academic resources।
-        </p>
-
-
-        <div class="course-info">
-
-            <span>
-                📖 7 Subjects
-            </span>
-
-            <span>
-                🎬 56 Lessons
-            </span>
-
-        </div>
-
-
-        <div class="progress-area">
-
-            <div class="progress-label">
-
-                <span>
-                    Course Progress
-                </span>
-
-                <span>
-                    0%
-                </span>
-
-            </div>
-
-            <div class="progress-bar">
-
-                <span style="width: 0%;"></span>
-
-            </div>
-
-        </div>
-
-
-        <a
-            href="#"
-            class="view-course-btn"
-        >
-            View Course
-
-            <span>
-                →
-            </span>
-
-        </a>
-
-    </article>
-
-
-
-    <!-- ================= CLASS 7 ================= -->
-
-    <article class="course-card">
-
-        <div class="course-card-top">
-
-            <div class="course-icon">
-                🧠
-            </div>
-
-            <span class="course-badge">
-                FREE
-            </span>
-
-        </div>
-
-        <div class="course-level">
-            CLASS 07
-        </div>
-
-        <h3>
-            Class 7
-        </h3>
-
-        <p>
-            Class 7-এর academic foundation
-            আরও শক্ত করার জন্য resources।
-        </p>
-
-
-        <div class="course-info">
-
-            <span>
-                📖 7 Subjects
-            </span>
-
-            <span>
-                🎬 64 Lessons
-            </span>
-
-        </div>
-
-
-        <div class="progress-area">
-
-            <div class="progress-label">
-
-                <span>
-                    Course Progress
-                </span>
-
-                <span>
-                    0%
-                </span>
-
-            </div>
-
-            <div class="progress-bar">
-
-                <span style="width: 0%;"></span>
-
-            </div>
-
-        </div>
-
-
-        <a
-            href="#"
-            class="view-course-btn"
-        >
-            View Course
-
-            <span>
-                →
-            </span>
-
-        </a>
-
-    </article>
-
-
-
-    <!-- ================= CLASS 8 ================= -->
-
-    <article class="course-card">
-
-        <div class="course-card-top">
-
-            <div class="course-icon">
-                ✏️
-            </div>
-
-            <span class="course-badge">
-                FREE
-            </span>
-
-        </div>
-
-        <div class="course-level">
-            CLASS 08
-        </div>
-
-        <h3>
-            Class 8
-        </h3>
-
-        <p>
-            Class 8 students-এর জন্য
-            complete learning resources।
-        </p>
-
-
-        <div class="course-info">
-
-            <span>
-                📖 8 Subjects
-            </span>
-
-            <span>
-                🎬 72 Lessons
-            </span>
-
-        </div>
-
-
-        <div class="progress-area">
-
-            <div class="progress-label">
-
-                <span>
-                    Course Progress
-                </span>
-
-                <span>
-                    0%
-                </span>
-
-            </div>
-
-            <div class="progress-bar">
-
-                <span style="width: 0%;"></span>
-
-            </div>
-
-        </div>
-
-
-        <a
-            href="#"
-            class="view-course-btn"
-        >
-            View Course
-
-            <span>
-                →
-            </span>
-
-        </a>
-
-    </article>
-
-
-
-    <!-- ================= CLASS 9 ================= -->
-
-    <article class="course-card">
-
-        <div class="course-card-top">
-
-            <div class="course-icon">
-                🔬
-            </div>
-
-            <span class="course-badge">
-                FREE
-            </span>
-
-        </div>
-
-        <div class="course-level">
-            CLASS 09
-        </div>
-
-        <h3>
-            Class 9
-        </h3>
-
-        <p>
-            Class 9-এর academic preparation
-            ও subject-based learning।
-        </p>
-
-
-        <div class="course-info">
-
-            <span>
-                📖 9 Subjects
-            </span>
-
-            <span>
-                🎬 80 Lessons
-            </span>
-
-        </div>
-
-
-        <div class="progress-area">
-
-            <div class="progress-label">
-
-                <span>
-                    Course Progress
-                </span>
-
-                <span>
-                    0%
-                </span>
-
-            </div>
-
-            <div class="progress-bar">
-
-                <span style="width: 0%;"></span>
-
-            </div>
-
-        </div>
-
-
-        <a
-            href="#"
-            class="view-course-btn"
-        >
-            View Course
-
-            <span>
-                →
-            </span>
-
-        </a>
-
-    </article>
-
-
-
-    <!-- ================= CLASS 10 ================= -->
-
-    <article class="course-card">
-
-        <div class="course-card-top">
-
-            <div class="course-icon">
-                🏆
-            </div>
-
-            <span class="course-badge">
-                FREE
-            </span>
-
-        </div>
-
-        <div class="course-level">
-            CLASS 10
-        </div>
-
-        <h3>
-            Class 10
-        </h3>
-
-        <p>
-            Class 10 students-এর জন্য
-            focused preparation ও resources।
-        </p>
-
-
-        <div class="course-info">
-
-            <span>
-                📖 9 Subjects
-            </span>
-
-            <span>
-                🎬 90 Lessons
-            </span>
-
-        </div>
-
-
-        <div class="progress-area">
-
-            <div class="progress-label">
-
-                <span>
-                    Course Progress
-                </span>
-
-                <span>
-                    0%
-                </span>
-
-            </div>
-
-            <div class="progress-bar">
-
-                <span style="width: 0%;"></span>
-
-            </div>
-
-        </div>
-
-
-        <a
-            href="#"
-            class="view-course-btn"
-        >
-            View Course
-
-            <span>
-                →
-            </span>
-
-        </a>
-
-    </article>
-
-
-
-    <!-- ================= IT & PROGRAMMING ================= -->
-
-    <article
-        class="course-card featured-course"
-        id="it-courses"
-    >
-
-        <div class="course-card-top">
-
-            <div class="course-icon">
-                💻
-            </div>
-
-            <span class="course-badge">
-                FREE
-            </span>
-
-        </div>
-
-        <div class="course-level">
-            IT & PROGRAMMING
-        </div>
-
-        <h3>
-            IT & Programming
-        </h3>
-
-        <p>
-            Web development, programming এবং
-            digital skills শেখার resources।
-        </p>
-
-
-        <div class="course-info">
-
-            <span>
-                💻 5 Tracks
-            </span>
-
-            <span>
-                🎬 60+ Lessons
-            </span>
-
-        </div>
-
-
-        <div class="progress-area">
-
-            <div class="progress-label">
-
-                <span>
-                    Course Progress
-                </span>
-
-                <span>
-                    0%
-                </span>
-
-            </div>
-
-            <div class="progress-bar">
-
-                <span style="width: 0%;"></span>
-
-            </div>
-
-        </div>
-
-
-        <a
-            href="#"
-            class="view-course-btn"
-        >
-            View Course
-
-            <span>
-                →
-            </span>
-
-        </a>
-
-    </article>
-
-</div>
-
-    <!-- =================================================
-         FUTURE PAID ACADEMY
-    ================================================= -->
-
-    <section class="coming-section paid-preview">
-
-        <div class="container">
-
-            <div class="section-heading">
-
-                <small>
-                    COMING SOON
-                </small>
-
-
-                <h2>
-
-                    Future
-
-                    <br>
-
-                    <span>
-                        Paid Academy.
-                    </span>
-
-                </h2>
-
-
-                <p>
-
-                    Advanced student courses ভবিষ্যতে
-                    এখানে যুক্ত হবে। বর্তমানে SNK GuideUp-এর
-                    মূল focus হলো free learning।
-
-                </p>
-
-            </div>
-
-
-            <div class="course-card paid-card">
-
-                <div class="course-icon">
-                    🚀
+                <div class="course-level">
+                    CLASS 05
                 </div>
+
 
                 <h3>
-                    Advanced Courses
+                    সমাপনী পরীক্ষা
                 </h3>
 
+
                 <p>
-                    Future-এ premium এবং advanced
-                    learning programs এখানে যুক্ত হবে।
+                    Class 5-এর জন্য online
+                    সমাপনী পরীক্ষা ও practice
+                    করার সুযোগ।
                 </p>
+
+
+                <div class="course-info">
+
+                    <span>
+                        📝 Model Tests
+                    </span>
+
+                    <span>
+                        🎯 Practice
+                    </span>
+
+                </div>
+
+
+                <div class="progress-area">
+
+                    <div class="progress-label">
+
+                        <span>
+                            Exam Status
+                        </span>
+
+                        <span>
+                            Ready
+                        </span>
+
+                    </div>
+
+
+                    <div class="progress-bar">
+
+                        <span style="width: 100%;"></span>
+
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="#"
+                    class="view-course-btn"
+                >
+
+                    <span>
+                        Start Exam
+                    </span>
+
+                    <span>
+                        →
+                    </span>
+
+                </a>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FREE IT COURSE
+========================================================= -->
+
+<section
+    class="coming-section"
+    id="it-courses"
+>
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <small>
+                1.2 FREE IT COURSE
+            </small>
+
+
+            <h2>
+
+                Build Your
+
+                <br>
+
+                <span>
+                    Digital Skills.
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                Beginner-friendly IT ও Programming
+                courses — students যেন নিজের skill
+                development শুরু করতে পারে।
+
+            </p>
+
+        </div>
+
+
+        <div class="course-preview">
+
+
+            <!-- HTML -->
+
+            <article
+                class="course-card"
+                id="html-course"
+            >
+
+                <div class="course-card-top">
+
+                    <div class="course-icon">
+                        🌐
+                    </div>
+
+                    <span class="course-badge">
+                        FREE
+                    </span>
+
+                </div>
+
+
+                <div class="course-level">
+                    WEB DEVELOPMENT
+                </div>
+
+
+                <h3>
+                    HTML
+                </h3>
+
+
+                <p>
+                    Website-এর basic structure
+                    তৈরি করা শিখুন।
+                </p>
+
+
+                <div class="course-info">
+
+                    <span>
+                        🎬 12 Lessons
+                    </span>
+
+                    <span>
+                        💻 Beginner
+                    </span>
+
+                </div>
+
+
+                <a
+                    href="#"
+                    class="view-course-btn"
+                >
+
+                    <span>
+                        View Course
+                    </span>
+
+                    <span>
+                        →
+                    </span>
+
+                </a>
+
+            </article>
+
+
+
+            <!-- CSS -->
+
+            <article
+                class="course-card"
+                id="css-course"
+            >
+
+                <div class="course-card-top">
+
+                    <div class="course-icon">
+                        🎨
+                    </div>
+
+                    <span class="course-badge">
+                        FREE
+                    </span>
+
+                </div>
+
+
+                <div class="course-level">
+                    WEB DEVELOPMENT
+                </div>
+
+
+                <h3>
+                    CSS
+                </h3>
+
+
+                <p>
+                    Website সুন্দর ও responsive
+                    design করা শিখুন।
+                </p>
+
+
+                <div class="course-info">
+
+                    <span>
+                        🎬 15 Lessons
+                    </span>
+
+                    <span>
+                        💻 Beginner
+                    </span>
+
+                </div>
+
+
+                <a
+                    href="#"
+                    class="view-course-btn"
+                >
+
+                    <span>
+                        View Course
+                    </span>
+
+                    <span>
+                        →
+                    </span>
+
+                </a>
+
+            </article>
+
+
+
+            <!-- JAVASCRIPT -->
+
+            <article
+                class="course-card"
+                id="javascript-course"
+            >
+
+                <div class="course-card-top">
+
+                    <div class="course-icon">
+                        ⚡
+                    </div>
+
+                    <span class="course-badge">
+                        FREE
+                    </span>
+
+                </div>
+
+
+                <div class="course-level">
+                    PROGRAMMING
+                </div>
+
+
+                <h3>
+                    JavaScript
+                </h3>
+
+
+                <p>
+                    Website interactive করার
+                    জন্য JavaScript-এর basics শিখুন।
+                </p>
+
+
+                <div class="course-info">
+
+                    <span>
+                        🎬 20 Lessons
+                    </span>
+
+                    <span>
+                        💻 Beginner
+                    </span>
+
+                </div>
+
+
+                <a
+                    href="#"
+                    class="view-course-btn"
+                >
+
+                    <span>
+                        View Course
+                    </span>
+
+                    <span>
+                        →
+                    </span>
+
+                </a>
+
+            </article>
+
+
+
+            <!-- PROGRAMMING -->
+
+            <article
+                class="course-card"
+                id="programming-course"
+            >
+
+                <div class="course-card-top">
+
+                    <div class="course-icon">
+                        💻
+                    </div>
+
+                    <span class="course-badge">
+                        FREE
+                    </span>
+
+                </div>
+
+
+                <div class="course-level">
+                    PROGRAMMING
+                </div>
+
+
+                <h3>
+                    Programming Basics
+                </h3>
+
+
+                <p>
+                    Programming-এর fundamental
+                    concepts সহজভাবে শিখুন।
+                </p>
+
+
+                <div class="course-info">
+
+                    <span>
+                        🎬 18 Lessons
+                    </span>
+
+                    <span>
+                        💻 Beginner
+                    </span>
+
+                </div>
+
+
+                <a
+                    href="#"
+                    class="view-course-btn"
+                >
+
+                    <span>
+                        View Course
+                    </span>
+
+                    <span>
+                        →
+                    </span>
+
+                </a>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     PAID ACADEMY
+========================================================= -->
+
+<section
+    class="coming-section paid-preview"
+    id="paid-academy"
+>
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <small>
+                2.1 PAID ACADEMY
+            </small>
+
+
+            <h2>
+
+                Premium Academy
+
+                <br>
+
+                <span>
+                    Coming Soon.
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                Future-এ advanced academic courses,
+                special batches এবং premium learning
+                programs এখানে যুক্ত হবে।
+
+            </p>
+
+        </div>
+
+
+        <div class="course-preview">
+
+
+            <article class="course-card paid-card">
+
+                <div class="course-card-top">
+
+                    <div class="course-icon">
+                        💎
+                    </div>
+
+                    <span class="course-badge">
+                        SOON
+                    </span>
+
+                </div>
+
+
+                <div class="course-level">
+                    PAID ACADEMY
+                </div>
+
+
+                <h3>
+                    Advanced Academy
+                </h3>
+
+
+                <p>
+                    Premium academic learning
+                    programs — coming soon.
+                </p>
+
+
+                <div class="course-info">
+
+                    <span>
+                        🎓 Advanced
+                    </span>
+
+                    <span>
+                        🔒 Premium
+                    </span>
+
+                </div>
+
 
                 <span class="coming-label">
                     COMING SOON
                 </span>
 
-            </div>
+            </article>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
 
-    <!-- =================================================
-         MENTORS
-    ================================================= -->
+<!-- =========================================================
+     PAID IT / SNK IT INSTITUTE
+========================================================= -->
 
-    <section
-        class="coming-section"
-        id="mentors"
-    >
+<section
+    class="coming-section"
+    id="paid-it"
+>
 
-        <div class="container">
-
-            <div class="section-heading">
-
-                <small>
-                    MENTORS
-                </small>
+    <div class="container">
 
 
-                <h2>
+        <div class="section-heading">
 
-                    Learn From
+            <small>
+                2.2 PAID IT
+            </small>
 
-                    <br>
 
-                    <span>
-                        The Right People.
+            <h2>
+
+                Learn Advanced
+
+                <br>
+
+                <span>
+                    IT Skills.
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                Advanced IT এবং professional
+                courses-এর জন্য SNK IT Institute
+                platform-এ visit করুন।
+
+            </p>
+
+        </div>
+
+
+        <div class="course-preview">
+
+
+            <article class="course-card featured-course">
+
+                <div class="course-card-top">
+
+                    <div class="course-icon">
+                        💻
+                    </div>
+
+                    <span class="course-badge">
+                        PAID
                     </span>
 
-                </h2>
+                </div>
+
+
+                <div class="course-level">
+                    2.2 PAID IT
+                </div>
+
+
+                <h3>
+                    SNK IT Institute
+                </h3>
 
 
                 <p>
-
-                    Future-এ এখানে mentors এবং
-                    instructors-এর profiles যুক্ত করা হবে।
-
+                    Professional IT ও advanced
+                    skill development courses-এর
+                    জন্য SNK IT Institute।
                 </p>
 
-            </div>
 
-        </div>
-
-    </section>
-
-
-
-    <!-- =================================================
-         ABOUT
-    ================================================= -->
-
-    <section
-        class="coming-section"
-        id="about"
-    >
-
-        <div class="container">
-
-            <div class="section-heading">
-
-                <small>
-                    ABOUT SNK GUIDEUP
-                </small>
-
-
-                <h2>
-
-                    Students First.
-
-                    <br>
+                <div class="course-info">
 
                     <span>
-                        Learning Always.
+                        💻 IT Skills
                     </span>
-
-                </h2>
-
-
-                <p>
-
-                    SNK GuideUp-এর উদ্দেশ্য হলো students-এর
-                    জন্য quality learning resources সহজে
-                    accessible করা এবং future skill development
-                    এর সুযোগ তৈরি করা।
-
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =================================================
-         LOGIN PLACEHOLDER
-    ================================================= -->
-
-    <section
-        class="coming-section"
-        id="login"
-    >
-
-        <div class="container">
-
-            <div class="section-heading">
-
-                <small>
-                    STUDENT AREA
-                </small>
-
-
-                <h2>
-
-                    Your Learning
-
-                    <br>
 
                     <span>
-                        Journey Starts Here.
+                        🚀 Advanced
                     </span>
 
-                </h2>
+                </div>
 
 
-                <p>
+                <a
+                    href="https://snkitinstitute.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="view-course-btn"
+                >
 
-                    Student login এবং personal dashboard
-                    পরবর্তী development phase-এ যুক্ত হবে।
+                    <span>
+                        Visit SNK IT Institute
+                    </span>
 
-                </p>
+                    <span>
+                        ↗
+                    </span>
 
-            </div>
+                </a>
+
+            </article>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
+
+<section
+    class="coming-section"
+    id="about"
+>
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <small>
+                ABOUT SNK GUIDEUP
+            </small>
+
+
+            <h2>
+
+                Students First.
+
+                <br>
+
+                <span>
+                    Learning Always.
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                SNK GuideUp-এর উদ্দেশ্য হলো students-এর
+                জন্য quality learning resources সহজে
+                accessible করা এবং future skill development
+                এর সুযোগ তৈরি করা।
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     LOGIN / STUDENT AREA
+========================================================= -->
+
+<section
+    class="coming-section"
+    id="login"
+>
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <small>
+                STUDENT AREA
+            </small>
+
+
+            <h2>
+
+                Your Learning
+
+                <br>
+
+                <span>
+                    Journey Starts Here.
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                Student login এবং personal learning
+                dashboard system future-এ যুক্ত করা হবে।
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
 
 </main>
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      FOOTER
-===================================================== -->
+========================================================= -->
 
 <footer>
 
-    <div class="container footer-content">
-
-        <div class="footer-brand">
-
-            © 2026
-
-            <strong>
-                SNK GuideUp
-            </strong>
-
-            — Free Learning Academy
-
-        </div>
+    <div class="container">
 
 
-        <div class="footer-copy">
+        <div class="footer-content">
 
-            Learn • Practice • Grow
+
+            <div class="footer-brand">
+
+                <strong>
+                    SNK GuideUp
+                </strong>
+
+                —
+
+                Learn Free. Grow Future.
+
+            </div>
+
+
+            <div class="footer-copy">
+
+                © 2026 SNK GuideUp.
+                All rights reserved.
+
+            </div>
 
         </div>
 
@@ -1332,17 +2284,11 @@
 
 
 
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
+<!-- =========================================================
+     MOBILE MENU SCRIPT
+========================================================= -->
 
 <script>
-
-    /*
-    -----------------------------------------------
-    MOBILE MENU
-    -----------------------------------------------
-    */
 
     const mobileButton =
         document.getElementById("mobileButton");
@@ -1353,10 +2299,11 @@
 
     mobileButton.addEventListener(
         "click",
-        () => {
+        function () {
 
             const isOpen =
                 mobileMenu.classList.toggle("show");
+
 
             mobileButton.setAttribute(
                 "aria-expanded",
@@ -1367,19 +2314,18 @@
     );
 
 
-    /*
-    -----------------------------------------------
-    CLOSE MOBILE MENU
-    -----------------------------------------------
-    */
+    /* Close mobile menu after clicking a link */
 
-    document
-        .querySelectorAll(".mobile-menu a")
-        .forEach((link) => {
+    const mobileLinks =
+        mobileMenu.querySelectorAll("a");
+
+
+    mobileLinks.forEach(
+        function (link) {
 
             link.addEventListener(
                 "click",
-                () => {
+                function () {
 
                     mobileMenu.classList.remove(
                         "show"
@@ -1393,40 +2339,13 @@
                 }
             );
 
-        });
-
-
-    /*
-    -----------------------------------------------
-    HEADER SCROLL EFFECT
-    -----------------------------------------------
-    */
-
-    const header =
-        document.querySelector(".header");
-
-
-    window.addEventListener(
-        "scroll",
-        () => {
-
-            if (window.scrollY > 30) {
-
-                header.style.background =
-                    "rgba(5, 5, 5, 0.96)";
-
-            } else {
-
-                header.style.background =
-                    "rgba(8, 8, 8, 0.82)";
-
-            }
-
         }
     );
+
 
 </script>
 
 
 </body>
+
 </html>
