@@ -3,42 +3,40 @@
    COMPLETE SCRIPT.JS
 ========================================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
-
+document.addEventListener("DOMContentLoaded", () => {
 
     /* =====================================================
        ELEMENTS
-    ====================================================== */
+    ===================================================== */
 
     const mobileMenuBtn =
-        document.getElementById("mobileMenuBtn");
+        document.querySelector(".mobile-menu-btn");
 
     const mobileNavigation =
-        document.getElementById("mobileNavigation");
+        document.querySelector(".mobile-navigation");
 
+    const mobileCoursesToggle =
+        document.querySelector(".mobile-courses-toggle");
 
-    const freeCourseToggle =
-        document.getElementById("freeCourseToggle");
+    const mobileCoursesMenu =
+        document.querySelector(".mobile-courses-menu");
 
-    const freeCourseMenu =
-        document.getElementById("freeCourseMenu");
+    const desktopDropdowns =
+        document.querySelectorAll(".nav-dropdown");
 
-
-    const paidCourseToggle =
-        document.getElementById("paidCourseToggle");
-
-    const paidCourseMenu =
-        document.getElementById("paidCourseMenu");
+    const desktopDropdownButtons =
+        document.querySelectorAll(".nav-dropdown-button");
 
 
     /* =====================================================
        MOBILE MENU
-    ====================================================== */
+    ===================================================== */
 
     function openMobileMenu() {
 
-        mobileMenuBtn.classList.add("active");
+        if (!mobileMenuBtn || !mobileNavigation) return;
 
+        mobileMenuBtn.classList.add("active");
         mobileNavigation.classList.add("active");
 
         mobileMenuBtn.setAttribute(
@@ -46,22 +44,17 @@ document.addEventListener("DOMContentLoaded", function () {
             "true"
         );
 
-        mobileMenuBtn.setAttribute(
-            "aria-label",
-            "Close menu"
-        );
-
         document.body.classList.add(
             "mobile-menu-open"
         );
-
     }
 
 
     function closeMobileMenu() {
 
-        mobileMenuBtn.classList.remove("active");
+        if (!mobileMenuBtn || !mobileNavigation) return;
 
+        mobileMenuBtn.classList.remove("active");
         mobileNavigation.classList.remove("active");
 
         mobileMenuBtn.setAttribute(
@@ -69,15 +62,27 @@ document.addEventListener("DOMContentLoaded", function () {
             "false"
         );
 
-        mobileMenuBtn.setAttribute(
-            "aria-label",
-            "Open menu"
-        );
-
         document.body.classList.remove(
             "mobile-menu-open"
         );
 
+        closeMobileCourses();
+    }
+
+
+    function toggleMobileMenu() {
+
+        if (!mobileNavigation) return;
+
+        if (
+            mobileNavigation.classList.contains(
+                "active"
+            )
+        ) {
+            closeMobileMenu();
+        } else {
+            openMobileMenu();
+        }
     }
 
 
@@ -85,25 +90,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         mobileMenuBtn.addEventListener(
             "click",
-            function (event) {
+            (event) => {
 
+                event.preventDefault();
                 event.stopPropagation();
 
-                const isOpen =
-                    mobileNavigation.classList.contains(
-                        "active"
-                    );
-
-                if (isOpen) {
-
-                    closeMobileMenu();
-
-                } else {
-
-                    openMobileMenu();
-
-                }
-
+                toggleMobileMenu();
             }
         );
 
@@ -111,84 +103,79 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       FREE COURSE DROPDOWN
-    ====================================================== */
+       MOBILE COURSES DROPDOWN
+    ===================================================== */
 
-    if (
-        freeCourseToggle &&
-        freeCourseMenu
-    ) {
+    function openMobileCourses() {
 
-        freeCourseToggle.addEventListener(
+        if (
+            !mobileCoursesToggle ||
+            !mobileCoursesMenu
+        ) return;
+
+        mobileCoursesToggle.classList.add(
+            "active"
+        );
+
+        mobileCoursesMenu.classList.add(
+            "active"
+        );
+
+        mobileCoursesToggle.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+    }
+
+
+    function closeMobileCourses() {
+
+        if (
+            !mobileCoursesToggle ||
+            !mobileCoursesMenu
+        ) return;
+
+        mobileCoursesToggle.classList.remove(
+            "active"
+        );
+
+        mobileCoursesMenu.classList.remove(
+            "active"
+        );
+
+        mobileCoursesToggle.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+    }
+
+
+    function toggleMobileCourses() {
+
+        if (!mobileCoursesMenu) return;
+
+        if (
+            mobileCoursesMenu.classList.contains(
+                "active"
+            )
+        ) {
+            closeMobileCourses();
+        } else {
+            openMobileCourses();
+        }
+    }
+
+
+    if (mobileCoursesToggle) {
+
+        mobileCoursesToggle.addEventListener(
             "click",
-            function (event) {
+            (event) => {
 
+                event.preventDefault();
                 event.stopPropagation();
 
-                const isOpen =
-                    freeCourseMenu.classList.contains(
-                        "active"
-                    );
-
-
-                /* Close Paid Course */
-
-                if (paidCourseMenu) {
-
-                    paidCourseMenu.classList.remove(
-                        "active"
-                    );
-
-                }
-
-                if (paidCourseToggle) {
-
-                    paidCourseToggle.classList.remove(
-                        "active"
-                    );
-
-                    paidCourseToggle.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                }
-
-
-                /* Toggle Free Course */
-
-                if (isOpen) {
-
-                    freeCourseMenu.classList.remove(
-                        "active"
-                    );
-
-                    freeCourseToggle.classList.remove(
-                        "active"
-                    );
-
-                    freeCourseToggle.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                } else {
-
-                    freeCourseMenu.classList.add(
-                        "active"
-                    );
-
-                    freeCourseToggle.classList.add(
-                        "active"
-                    );
-
-                    freeCourseToggle.setAttribute(
-                        "aria-expanded",
-                        "true"
-                    );
-
-                }
-
+                toggleMobileCourses();
             }
         );
 
@@ -196,110 +183,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       PAID COURSE DROPDOWN
-    ====================================================== */
-
-    if (
-        paidCourseToggle &&
-        paidCourseMenu
-    ) {
-
-        paidCourseToggle.addEventListener(
-            "click",
-            function (event) {
-
-                event.stopPropagation();
-
-                const isOpen =
-                    paidCourseMenu.classList.contains(
-                        "active"
-                    );
-
-
-                /* Close Free Course */
-
-                if (freeCourseMenu) {
-
-                    freeCourseMenu.classList.remove(
-                        "active"
-                    );
-
-                }
-
-                if (freeCourseToggle) {
-
-                    freeCourseToggle.classList.remove(
-                        "active"
-                    );
-
-                    freeCourseToggle.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                }
-
-
-                /* Toggle Paid Course */
-
-                if (isOpen) {
-
-                    paidCourseMenu.classList.remove(
-                        "active"
-                    );
-
-                    paidCourseToggle.classList.remove(
-                        "active"
-                    );
-
-                    paidCourseToggle.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                } else {
-
-                    paidCourseMenu.classList.add(
-                        "active"
-                    );
-
-                    paidCourseToggle.classList.add(
-                        "active"
-                    );
-
-                    paidCourseToggle.setAttribute(
-                        "aria-expanded",
-                        "true"
-                    );
-
-                }
-
-            }
-        );
-
-    }
-
-
-    /* =====================================================
-       CLOSE MENU WHEN CLICKING MOBILE COURSE LINK
-    ====================================================== */
+       MOBILE NAV LINKS
+    ===================================================== */
 
     const mobileLinks =
         document.querySelectorAll(
             ".mobile-navigation a"
         );
 
-
-    mobileLinks.forEach(function (link) {
+    mobileLinks.forEach((link) => {
 
         link.addEventListener(
             "click",
-            function () {
+            () => {
+
+                /*
+                 * Do not close the menu if this is
+                 * the Courses dropdown button.
+                 */
+                if (
+                    link.closest(
+                        ".mobile-courses-menu"
+                    )
+                ) {
+                    return;
+                }
 
                 closeMobileMenu();
-
-                closeAllMobileDropdowns();
-
             }
         );
 
@@ -307,75 +217,149 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       CLOSE ALL MOBILE DROPDOWNS
-    ====================================================== */
+       DESKTOP DROPDOWN
+    ===================================================== */
 
-    function closeAllMobileDropdowns() {
+    function closeAllDesktopDropdowns(
+        except = null
+    ) {
 
-        if (freeCourseMenu) {
+        desktopDropdowns.forEach(
+            (dropdown) => {
 
-            freeCourseMenu.classList.remove(
-                "active"
-            );
+                if (dropdown !== except) {
 
-        }
+                    dropdown.classList.remove(
+                        "open"
+                    );
 
-        if (freeCourseToggle) {
+                    const button =
+                        dropdown.querySelector(
+                            ".nav-dropdown-button"
+                        );
 
-            freeCourseToggle.classList.remove(
-                "active"
-            );
+                    if (button) {
 
-            freeCourseToggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
+                        button.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
 
-        }
+                    }
 
+                }
 
-        if (paidCourseMenu) {
-
-            paidCourseMenu.classList.remove(
-                "active"
-            );
-
-        }
-
-        if (paidCourseToggle) {
-
-            paidCourseToggle.classList.remove(
-                "active"
-            );
-
-            paidCourseToggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-        }
+            }
+        );
 
     }
 
 
+    desktopDropdownButtons.forEach(
+        (button) => {
+
+            button.addEventListener(
+                "click",
+                (event) => {
+
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                    const dropdown =
+                        button.closest(
+                            ".nav-dropdown"
+                        );
+
+                    if (!dropdown) return;
+
+                    const isOpen =
+                        dropdown.classList.contains(
+                            "open"
+                        );
+
+                    closeAllDesktopDropdowns(
+                        isOpen ? null : dropdown
+                    );
+
+                    if (isOpen) {
+
+                        dropdown.classList.remove(
+                            "open"
+                        );
+
+                        button.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    } else {
+
+                        dropdown.classList.add(
+                            "open"
+                        );
+
+                        button.setAttribute(
+                            "aria-expanded",
+                            "true"
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
     /* =====================================================
-       CLICK OUTSIDE MOBILE MENU
-    ====================================================== */
+       CLICK OUTSIDE
+    ===================================================== */
 
     document.addEventListener(
         "click",
-        function (event) {
+        (event) => {
+
+            /* Desktop dropdown */
+
+            if (
+                !event.target.closest(
+                    ".nav-dropdown"
+                )
+            ) {
+
+                closeAllDesktopDropdowns();
+
+            }
+
+
+            /* Mobile menu */
 
             if (
                 mobileNavigation &&
-                mobileMenuBtn &&
-                !mobileNavigation.contains(event.target) &&
-                !mobileMenuBtn.contains(event.target)
+                mobileNavigation.classList.contains(
+                    "active"
+                )
             ) {
 
-                closeMobileMenu();
+                const clickedInsideMenu =
+                    event.target.closest(
+                        ".mobile-navigation"
+                    );
 
-                closeAllMobileDropdowns();
+                const clickedMenuButton =
+                    event.target.closest(
+                        ".mobile-menu-btn"
+                    );
+
+                if (
+                    !clickedInsideMenu &&
+                    !clickedMenuButton
+                ) {
+
+                    closeMobileMenu();
+
+                }
 
             }
 
@@ -385,17 +369,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* =====================================================
        ESC KEY
-    ====================================================== */
+    ===================================================== */
 
     document.addEventListener(
         "keydown",
-        function (event) {
+        (event) => {
 
             if (event.key === "Escape") {
 
                 closeMobileMenu();
-
-                closeAllMobileDropdowns();
+                closeAllDesktopDropdowns();
 
             }
 
@@ -404,22 +387,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       RESIZE
-    ====================================================== */
+       WINDOW RESIZE
+    ===================================================== */
+
+    let resizeTimer;
 
     window.addEventListener(
         "resize",
-        function () {
+        () => {
 
-            if (
-                window.innerWidth > 900
-            ) {
+            clearTimeout(resizeTimer);
 
-                closeMobileMenu();
+            resizeTimer = setTimeout(
+                () => {
 
-                closeAllMobileDropdowns();
+                    /*
+                     * If screen becomes desktop,
+                     * close mobile menu.
+                     */
 
-            }
+                    if (
+                        window.innerWidth > 900
+                    ) {
+
+                        closeMobileMenu();
+
+                    }
+
+                },
+                150
+            );
 
         }
     );
@@ -427,78 +424,45 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* =====================================================
        SMOOTH SCROLL
-    ====================================================== */
+    ===================================================== */
 
-    const anchorLinks =
+    const internalLinks =
         document.querySelectorAll(
             'a[href^="#"]'
         );
 
-
-    anchorLinks.forEach(function (link) {
+    internalLinks.forEach((link) => {
 
         link.addEventListener(
             "click",
-            function (event) {
+            (event) => {
 
                 const targetId =
-                    this.getAttribute("href");
-
+                    link.getAttribute("href");
 
                 if (
                     !targetId ||
                     targetId === "#"
                 ) {
-
                     return;
-
                 }
-
 
                 const target =
                     document.querySelector(
                         targetId
                     );
 
+                if (!target) return;
 
-                if (target) {
+                event.preventDefault();
 
-                    event.preventDefault();
+                closeMobileMenu();
+                closeAllDesktopDropdowns();
 
-
-                    const header =
-                        document.querySelector(
-                            ".site-header"
-                        );
-
-
-                    const headerHeight =
-                        header
-                            ? header.offsetHeight
-                            : 0;
-
-
-                    const targetPosition =
-                        target.getBoundingClientRect().top
-                        +
-                        window.scrollY
-                        -
-                        headerHeight
-                        -
-                        10;
-
-
-                    window.scrollTo({
-
-                        top:
-                            targetPosition,
-
-                        behavior:
-                            "smooth"
-
-                    });
-
-                }
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
 
             }
         );
@@ -507,92 +471,140 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       ACTIVE NAVIGATION ON SCROLL
-    ====================================================== */
+       ACTIVE NAV LINK
+    ===================================================== */
 
-    const sections =
+    const currentPage =
+        window.location.pathname
+            .split("/")
+            .pop() || "index.html";
+
+    const allNavLinks =
         document.querySelectorAll(
-            "section[id]"
+            ".desktop-nav a, .mobile-navigation a"
         );
 
+    allNavLinks.forEach((link) => {
 
-    const desktopLinks =
-        document.querySelectorAll(
-            ".desktop-nav > li > a"
-        );
+        const href =
+            link.getAttribute("href");
 
+        if (!href) return;
 
-    function updateActiveSection() {
+        /*
+         * Only compare normal HTML pages.
+         */
+        if (
+            href.endsWith(".html") &&
+            href === currentPage
+        ) {
 
-        const scrollPosition =
-            window.scrollY +
-            120;
+            link.classList.add("active");
 
+        }
 
-        sections.forEach(function (section) {
-
-            const sectionTop =
-                section.offsetTop;
-
-            const sectionHeight =
-                section.offsetHeight;
-
-            const sectionId =
-                section.getAttribute("id");
+    });
 
 
-            if (
-                scrollPosition >= sectionTop &&
-                scrollPosition <
-                sectionTop + sectionHeight
-            ) {
+    /* =====================================================
+       PREVENT DROPDOWN LINKS FROM CLOSING
+       UNEXPECTEDLY
+    ===================================================== */
 
-                desktopLinks.forEach(
-                    function (link) {
+    document
+        .querySelectorAll(
+            ".nav-dropdown-menu"
+        )
+        .forEach((menu) => {
 
-                        link.classList.remove(
-                            "active"
-                        );
+            menu.addEventListener(
+                "click",
+                (event) => {
 
-                    }
-                );
+                    event.stopPropagation();
 
+                }
+            );
 
-                const activeLink =
-                    document.querySelector(
-                        '.desktop-nav a[href="#' +
-                        sectionId +
-                        '"]'
-                    );
+        });
 
 
-                if (activeLink) {
+    /* =====================================================
+       MOBILE COURSE MENU LINK HANDLING
+    ===================================================== */
 
-                    activeLink.classList.add(
-                        "active"
+    if (mobileCoursesMenu) {
+
+        const courseLinks =
+            mobileCoursesMenu.querySelectorAll(
+                "a"
+            );
+
+        courseLinks.forEach((link) => {
+
+            link.addEventListener(
+                "click",
+                () => {
+
+                    /*
+                     * Allow the link to navigate,
+                     * then close the menu.
+                     */
+                    setTimeout(
+                        () => {
+                            closeMobileMenu();
+                        },
+                        100
                     );
 
                 }
-
-            }
+            );
 
         });
 
     }
 
 
-    window.addEventListener(
-        "scroll",
-        updateActiveSection
+    /* =====================================================
+       INITIAL ARIA STATE
+    ===================================================== */
+
+    if (mobileMenuBtn) {
+
+        mobileMenuBtn.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+    }
+
+    if (mobileCoursesToggle) {
+
+        mobileCoursesToggle.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+    }
+
+    desktopDropdownButtons.forEach(
+        (button) => {
+
+            button.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        }
     );
 
 
     /* =====================================================
-       INITIALIZE
-    ====================================================== */
+       CONSOLE MESSAGE
+    ===================================================== */
 
-    closeMobileMenu();
-
-    closeAllMobileDropdowns();
+    console.log(
+        "SNK GuideUp Academy loaded successfully."
+    );
 
 });
