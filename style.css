@@ -101,21 +101,8 @@ img {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 18px;
   flex: 1;
-}
-
-.btn-offer {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: #3b1f1f;
-  color: #ffffff;
-  padding: 10px 18px;
-  border-radius: 999px;
-  font-size: 14px;
-  font-weight: 500;
-  white-space: nowrap;
 }
 
 .nav-link {
@@ -126,10 +113,50 @@ img {
   font-weight: 500;
   color: #1f2937;
   white-space: nowrap;
+  padding: 8px 2px;
+  transition: color 0.15s;
 }
 
-.emoji {
-  font-size: 15px;
+.nav-link:hover {
+  color: #d97706;
+}
+
+/* --- Free Course / Paid Course ড্রপডাউন --- */
+.nav-item-dropdown {
+  position: relative;
+}
+
+.nav-item-dropdown .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ffffff;
+  border: 1px solid #eef0f2;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  padding: 8px;
+  min-width: 160px;
+  z-index: 50;
+}
+
+.nav-item-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+.dropdown-item:hover {
+  background: #f3f4f6;
+  color: #d97706;
 }
 
 /* --- ডান পাশ --- */
@@ -138,23 +165,6 @@ img {
   align-items: center;
   gap: 12px;
   flex-shrink: 0;
-}
-
-.lang-select {
-  font-size: 14px;
-  font-weight: 500;
-  color: #1f2937;
-  white-space: nowrap;
-}
-
-.all-courses {
-  background: #f3f4f6;
-  padding: 10px 16px;
-  border-radius: 999px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #1f2937;
-  white-space: nowrap;
 }
 
 .btn-login {
@@ -356,10 +366,6 @@ img {
   }
   .hero-left h1 {
     font-size: 30px;
-  }
-  .header-right .lang-select,
-  .header-right .all-courses {
-    display: none;
   }
 }
 
