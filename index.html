@@ -30,7 +30,7 @@
           <circle cx="11" cy="11" r="7" stroke="#9CA3AF" stroke-width="2"/>
           <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round"/>
         </svg>
-        <input type="text" placeholder="কোর্স সার্চ করুন">
+        <input type="text" id="searchInput" data-bn="কোর্স সার্চ করুন" data-en="Search for course" placeholder="কোর্স সার্চ করুন">
       </div>
 
       <!-- মাঝের মেনু -->
@@ -64,6 +64,8 @@
 
       <!-- ডান পাশের অংশ -->
       <div class="header-right">
+        <button id="langToggle" class="icon-btn" type="button" title="Language">EN</button>
+        <button id="themeToggle" class="icon-btn" type="button" title="Dark/Light">🌙</button>
         <a href="login.html" class="btn-login">Login/Signin →</a>
       </div>
 
@@ -90,13 +92,13 @@
         <!-- বাম পাশ: টেক্সট -->
         <div class="hero-left">
           <h1>
-            বাংলাদেশ শিখবে <span class="highlight">লাইভে <span class="dot">◉</span></span>
+            <span data-bn="বাংলাদেশ শিখবে" data-en="Bangladesh Will Learn">বাংলাদেশ শিখবে</span> <span class="highlight"><span data-bn="লাইভে" data-en="Live">লাইভে</span> <span class="dot">◉</span></span>
           </h1>
-          <p class="hero-sub">স্কিল শেখার মাধ্যমে বদলে ফেলুন নিজের ভবিষ্যৎ</p>
+          <p class="hero-sub" data-bn="স্কিল শেখার মাধ্যমে বদলে ফেলুন নিজের ভবিষ্যৎ" data-en="Change your future through learning new skills">স্কিল শেখার মাধ্যমে বদলে ফেলুন নিজের ভবিষ্যৎ</p>
 
-          <a href="#" class="btn-cta">শেখা শুরু করুন <span class="arrow-icon">→</span></a>
+          <a href="#" class="btn-cta"><span data-bn="শেখা শুরু করুন" data-en="Start Learning">শেখা শুরু করুন</span> <span class="arrow-icon">→</span></a>
 
-          <p class="grad-line">১০০০০+ গ্র্যাজুয়েটরা কর্মরত আছেন বিভিন্ন দেশি ও বিদেশি প্রতিষ্ঠানে:</p>
+          <p class="grad-line" data-bn="১০০০০+ গ্র্যাজুয়েটরা কর্মরত আছেন বিভিন্ন দেশি ও বিদেশি প্রতিষ্ঠানে:" data-en="10,000+ graduates are working at various local & international companies:">১০০০০+ গ্র্যাজুয়েটরা কর্মরত আছেন বিভিন্ন দেশি ও বিদেশি প্রতিষ্ঠানে:</p>
 
           <div class="partner-logos-card">
             <div class="partner-logos">
@@ -124,7 +126,7 @@
           <div class="banner-card">
             <div class="banner-text">
               <span class="banner-tag">AI Driven</span>
-              <h2>স্কিল শিখে ⚡<br>ক্যারিয়ার হবে<br><strong>ফিউচার রেডি</strong></h2>
+              <h2 data-bn="স্কিল শিখে ⚡<br>ক্যারিয়ার হবে<br><strong>ফিউচার রেডি</strong>" data-en="Learn Skills ⚡<br>Build Career<br><strong>Future Ready</strong>">স্কিল শিখে ⚡<br>ক্যারিয়ার হবে<br><strong>ফিউচার রেডি</strong></h2>
             </div>
 
             <div class="banner-illustration">
@@ -171,42 +173,3 @@
                   <!-- বুকের প্যানেল -->
                   <rect x="55" y="75" width="20" height="20" rx="4" fill="#111827"/>
                   <circle cx="65" cy="85" r="5" fill="#22c55e"/>
-                  <!-- হাত -->
-                  <rect x="18" y="65" width="16" height="45" rx="8" fill="#d1d5db"/>
-                  <rect x="96" y="65" width="16" height="45" rx="8" fill="#d1d5db"/>
-                </g>
-
-                <defs>
-                  <linearGradient id="headGrad" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#f3f4f6"/>
-                    <stop offset="100%" stop-color="#cbd5e1"/>
-                  </linearGradient>
-                  <linearGradient id="bodyGrad" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#e5e7eb"/>
-                    <stop offset="100%" stop-color="#9ca3af"/>
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-          </div>
-        </div>
-
-      </section>
-
-      <!-- ইন্টারভিউ প্র্যাকটিস ব্যানার -->
-      <div class="interview-banner">
-        <div class="interview-left">
-          <span class="interview-icon">📋</span>
-          <div>
-            <h3>ইন্টারভিউ প্র্যাকটিসের জন্য</h3>
-            <p>এখনই সাইন আপ করুন এবং ইন্টারভিউ প্র্যাকটিস শুরু করুন।</p>
-          </div>
-        </div>
-        <a href="#" class="btn-interview">বিস্তারিত দেখুন <span class="arrow-icon">→</span></a>
-      </div>
-    </div>
-  </main>
-
-  <script src="script.js"></script>
-</body>
-</html>
