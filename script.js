@@ -104,4 +104,31 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  /* ============ কোর্স ক্যাটাগরি ট্যাব ============ */
+  const courseTabs = document.querySelectorAll('.course-tab');
+  courseTabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      courseTabs.forEach(function (t) {
+        t.classList.remove('active');
+        t.querySelector('.tab-dot').textContent = '○';
+      });
+      tab.classList.add('active');
+      tab.querySelector('.tab-dot').textContent = '●';
+    });
+  });
+
+  const tabsContainer = document.getElementById('courseTabs');
+  const tabPrev = document.getElementById('tabPrev');
+  const tabNext = document.getElementById('tabNext');
+  if (tabPrev && tabsContainer) {
+    tabPrev.addEventListener('click', function () {
+      tabsContainer.scrollBy({ left: -200, behavior: 'smooth' });
+    });
+  }
+  if (tabNext && tabsContainer) {
+    tabNext.addEventListener('click', function () {
+      tabsContainer.scrollBy({ left: 200, behavior: 'smooth' });
+    });
+  }
+
 });
