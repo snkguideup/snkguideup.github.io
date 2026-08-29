@@ -342,57 +342,18 @@ img {
 }
 
 .banner-card {
-  background: linear-gradient(135deg, #14213d 0%, #1b1b1b 60%, #5b3a00 100%);
   border-radius: 20px;
-  padding: 40px;
+  overflow: hidden;
   min-height: 320px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  position: relative;
-  overflow: hidden;
+  align-items: stretch;
 }
 
-.banner-text {
-  flex: 1;
-  min-width: 0;
-}
-
-.banner-illustration {
-  flex-shrink: 0;
-  width: 45%;
-  max-width: 220px;
-}
-
-.banner-illustration svg {
+.banner-image {
   width: 100%;
-  height: auto;
-  display: block;
-}
-
-.banner-tag {
-  display: inline-block;
-  background: #ff7a1a;
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: 700;
-  padding: 5px 14px;
-  border-radius: 6px;
-  width: fit-content;
-  margin-bottom: 18px;
-}
-
-.banner-text h2 {
-  color: #f3f4f6;
-  font-size: 24px;
-  line-height: 1.4;
-  font-weight: 600;
-}
-
-.banner-text h2 strong {
-  color: #ffb020;
-  font-size: 26px;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
 }
 
 /* --- ইন্টারভিউ প্র্যাকটিস ব্যানার --- */
@@ -715,9 +676,6 @@ img {
   }
   .hero-left h1 {
     font-size: 30px;
-  }
-  .banner-illustration {
-    max-width: 160px;
   }
 }
 
