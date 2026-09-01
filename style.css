@@ -799,7 +799,9 @@ img {
   height: 130px;
   position: relative;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   padding: 10px;
 }
 
@@ -815,8 +817,26 @@ img {
 
 .thumb-1 { background: linear-gradient(135deg, #1f2937 0%, #0ea5a5 100%); }
 .thumb-2 { background: linear-gradient(135deg, #b45309 0%, #f59e0b 100%); }
-.thumb-3 { background: linear-gradient(135deg, #14213d 0%, #3b82f6 100%); }
+.thumb-3 { background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 100%); }
 .thumb-4 { background: linear-gradient(135deg, #4c1d95 0%, #db2777 100%); }
+.thumb-5 { background: linear-gradient(135deg, #065f46 0%, #10b981 100%); }
+
+.thumb-text {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.35;
+  padding: 4px;
+}
+
+.course-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 11px;
+  color: #6b7280;
+  margin-bottom: 10px;
+}
 
 .course-badge-left,
 .course-badge-right {
