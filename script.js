@@ -108,12 +108,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const courseTabs = document.querySelectorAll('.course-tab');
   courseTabs.forEach(function (tab) {
     tab.addEventListener('click', function () {
-      courseTabs.forEach(function (t) {
-        t.classList.remove('active');
-        t.querySelector('.tab-dot').textContent = '○';
-      });
+      courseTabs.forEach(function (t) { t.classList.remove('active'); });
       tab.classList.add('active');
-      tab.querySelector('.tab-dot').textContent = '●';
     });
   });
 
