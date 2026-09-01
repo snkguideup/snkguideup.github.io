@@ -1080,6 +1080,91 @@ img {
 }
 
 /* ============================================
+   কি কি পাচ্ছেন লাইভ কোর্স
+   ============================================ */
+.features-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 32px 70px;
+}
+
+.features-title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 28px;
+}
+
+.features-card {
+  background: #ffffff;
+  border: 1px solid #eef0f2;
+  border-radius: 24px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  padding: 40px;
+  margin-bottom: 32px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px 32px;
+}
+
+.feature-item {
+  text-align: center;
+}
+
+.feature-icon {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.feature-item p {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+  line-height: 1.5;
+}
+
+/* --- স্ট্যাটস কাউন্টার --- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.stat-card {
+  border-radius: 18px;
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.stat-card h3 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+.stat-card p {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.stat-green { background: #dcfce7; }
+.stat-blue { background: #dbeafe; }
+.stat-peach { background: #fde3d8; }
+.stat-yellow { background: #fef3c7; }
+
+[data-theme="dark"] .features-title { color: #f9fafb; }
+[data-theme="dark"] .features-card { background: #0f172a; border-color: #1f2937; }
+[data-theme="dark"] .feature-item p { color: #e5e7eb; }
+[data-theme="dark"] .stat-card h3 { color: #111827; }
+
+/* ============================================
    RESPONSIVE — মোবাইল/ট্যাবলেট
    ============================================ */
 @media (max-width: 1100px) {
@@ -1093,6 +1178,12 @@ img {
     grid-template-columns: repeat(2, 1fr);
   }
   .recorded-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -1147,5 +1238,15 @@ img {
   .demo-banner {
     flex-direction: column;
     text-align: center;
+  }
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  .features-card {
+    padding: 24px;
+  }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
 }
