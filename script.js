@@ -131,4 +131,27 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  /* ============ Recorded Course ট্যাব ============ */
+  const recTabs = document.querySelectorAll('.recorded-tab');
+  recTabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      recTabs.forEach(function (t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+    });
+  });
+
+  const recTabsContainer = document.getElementById('recTabs');
+  const recTabPrev = document.getElementById('recTabPrev');
+  const recTabNext = document.getElementById('recTabNext');
+  if (recTabPrev && recTabsContainer) {
+    recTabPrev.addEventListener('click', function () {
+      recTabsContainer.scrollBy({ left: -200, behavior: 'smooth' });
+    });
+  }
+  if (recTabNext && recTabsContainer) {
+    recTabNext.addEventListener('click', function () {
+      recTabsContainer.scrollBy({ left: 200, behavior: 'smooth' });
+    });
+  }
+
 });
