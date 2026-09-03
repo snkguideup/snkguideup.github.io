@@ -1,1814 +1,687 @@
-/* ============================================
-   SNK IT Institute — Global Reset & Base
-   ============================================ */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Hind Siliguri', sans-serif;
-  color: #111827;
-  background: #ffffff;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-ul {
-  list-style: none;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-/* ============================================
-   HEADER / NAVBAR
-   ============================================ */
-.header {
-  border-bottom: 1px solid #eef0f2;
-  background: #ffffff;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
-}
-
-.header-inner {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 18px 32px;
-  display: flex;
-  align-items: center;
-  gap: 32px;
-}
-
-/* --- লোগো --- */
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-}
-
-.logo img {
-  height: 44px;
-  width: auto;
-  object-fit: contain;
-}
-
-.logo-text {
-  font-size: 21px;
-  font-weight: 700;
-  color: #111827;
-  white-space: nowrap;
-  letter-spacing: -0.3px;
-}
-
-.logo-text span {
-  font-weight: 500;
-  color: #6b7280;
-  font-size: 13px;
-  display: block;
-  margin-top: -3px;
-  letter-spacing: 0.2px;
-}
-
-/* --- সার্চ বার --- */
-.search-box {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: #f5f6f8;
-  border-radius: 999px;
-  padding: 11px 18px;
-  width: 250px;
-  flex-shrink: 0;
-  border: 1px solid transparent;
-  transition: border-color 0.15s;
-}
-
-.search-box:focus-within {
-  border-color: #ffc72c;
-  background: #ffffff;
-}
-
-.search-box input {
-  border: none;
-  background: transparent;
-  outline: none;
-  font-family: inherit;
-  font-size: 14px;
-  width: 100%;
-  color: #374151;
-}
-
-/* --- মাঝের নেভিগেশন মেনু --- */
-.nav-menu {
-  display: flex;
-  align-items: center;
-  gap: 26px;
-  flex: 1;
-}
-
-.nav-link {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 15px;
-  font-weight: 600;
-  color: #1f2937;
-  white-space: nowrap;
-  padding: 8px 2px;
-  transition: color 0.15s;
-}
-
-.nav-link:hover {
-  color: #d97706;
-}
-
-/* --- Free Course / Paid Course ড্রপডাউন --- */
-.nav-item-dropdown {
-  position: relative;
-}
-
-.nav-item-dropdown .dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: #ffffff;
-  border: 1px solid #eef0f2;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  padding: 8px;
-  min-width: 160px;
-  z-index: 50;
-}
-
-.nav-item-dropdown:hover .dropdown-menu {
-  display: block;
-}
-
-.dropdown-item {
-  display: block;
-  padding: 10px 14px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #1f2937;
-  border-radius: 8px;
-  white-space: nowrap;
-}
-
-.dropdown-item:hover {
-  background: #f3f4f6;
-  color: #d97706;
-}
-
-/* --- ডান পাশ --- */
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
-}
-
-.btn-login {
-  background: #ffc72c;
-  color: #111827;
-  padding: 12px 22px;
-  border-radius: 999px;
-  font-size: 15px;
-  font-weight: 700;
-  white-space: nowrap;
-  transition: background 0.2s, transform 0.15s;
-}
-
-.btn-login:hover {
-  background: #f5b800;
-  transform: translateY(-1px);
-}
-
-/* ============================================
-   HERO SECTION
-   ============================================ */
-.hero-wrapper {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 28px 32px 60px;
-}
-
-/* --- নতুন ব্যাজ --- */
-.new-badge-row {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 26px;
-}
-
-.new-badge {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: #eef2f6;
-  border-radius: 999px;
-  padding: 8px 8px 8px 8px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #1f2937;
-}
-
-.badge-tag {
-  background: #16a34a;
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 999px;
-}
-
-.badge-emoji {
-  font-size: 15px;
-}
-
-.new-badge .arrow {
-  color: #6b7280;
-  font-size: 16px;
-  margin-left: 2px;
-}
-
-/* --- হিরো কার্ড --- */
-.hero-card {
-  background: linear-gradient(135deg, #eef8f0 0%, #eaf3f6 100%);
-  border-radius: 28px;
-  padding: 48px;
-  display: flex;
-  align-items: center;
-  gap: 40px;
-}
-
-.hero-left {
-  flex: 1;
-  min-width: 0;
-}
-
-.hero-left h1 {
-  font-size: 42px;
-  font-weight: 700;
-  line-height: 1.25;
-  color: #111827;
-  margin-bottom: 16px;
-}
-
-.hero-left h1 .highlight {
-  color: #e11d48;
-}
-
-.hero-left h1 .dot {
-  font-size: 26px;
-  vertical-align: middle;
-}
-
-.hero-sub {
-  font-size: 16px;
-  color: #4b5563;
-  margin-bottom: 24px;
-}
-
-.btn-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #ffc72c;
-  color: #111827;
-  font-weight: 600;
-  font-size: 15px;
-  padding: 14px 26px;
-  border-radius: 999px;
-  margin-bottom: 32px;
-  transition: background 0.2s, transform 0.15s;
-}
-
-.btn-cta:hover {
-  background: #f5b800;
-  transform: translateX(2px);
-}
-
-.grad-line {
-  font-size: 13px;
-  color: #6b7280;
-  margin-bottom: 14px;
-}
-
-.partner-logos-card {
-  padding: 0;
-}
-
-.partner-logos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.p-logo-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 48px;
-  padding: 0 18px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #4b5563;
-  white-space: nowrap;
-  border: 1px solid #e5e7eb;
-  background: #ffffff;
-  border-radius: 10px;
-  transition: border-color 0.15s, box-shadow 0.15s;
-}
-
-.p-logo-box:hover {
-  border-color: #ffc72c;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-}
-
-/* --- ডান পাশ ব্যানার --- */
-.hero-right {
-  flex: 1;
-  min-width: 0;
-}
-
-.banner-card {
-  border-radius: 20px;
-  overflow: hidden;
-  min-height: 320px;
-  display: flex;
-  align-items: stretch;
-}
-
-.banner-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 20px;
-}
-
-/* --- ইন্টারভিউ প্র্যাকটিস ব্যানার --- */
-.interview-banner {
-  margin-top: 20px;
-  background: #14213d;
-  border-radius: 18px;
-  padding: 22px 32px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.interview-left {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.interview-icon {
-  font-size: 26px;
-  background: rgba(255, 255, 255, 0.08);
-  height: 48px;
-  width: 48px;
-  min-width: 48px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.interview-left h3 {
-  color: #ffffff;
-  font-size: 17px;
-  font-weight: 700;
-  margin-bottom: 2px;
-}
-
-.interview-left p {
-  color: #9ca3af;
-  font-size: 14px;
-}
-
-.btn-interview {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #ffc72c;
-  color: #111827;
-  font-weight: 700;
-  font-size: 14px;
-  padding: 12px 22px;
-  border-radius: 999px;
-  white-space: nowrap;
-  transition: background 0.2s, transform 0.15s;
-}
-
-.btn-interview:hover {
-  background: #f5b800;
-  transform: translateY(-1px);
-}
-
-/* ============================================
-   ভাষা / থিম টগল বাটন
-   ============================================ */
-.icon-btn {
-  height: 38px;
-  width: 38px;
-  border-radius: 999px;
-  background: #f3f4f6;
-  border: none;
-  font-size: 13px;
-  font-weight: 700;
-  color: #1f2937;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-}
-
-.icon-btn:hover {
-  transform: translateY(-2px) scale(1.06);
-  box-shadow: 0 6px 16px rgba(255, 199, 44, 0.35);
-  background: #ffe9a8;
-}
-
-/* ============================================
-   ডার্ক মোড
-   ============================================ */
-[data-theme="dark"] body { background: #0b1220; color: #e5e7eb; }
-[data-theme="dark"] .header { background: #0f172a; border-bottom-color: #1f2937; }
-[data-theme="dark"] .logo-text { color: #f3f4f6; }
-[data-theme="dark"] .logo-text span { color: #9ca3af; }
-[data-theme="dark"] .nav-link { color: #e5e7eb; }
-[data-theme="dark"] .search-box { background: #1f2937; }
-[data-theme="dark"] .search-box input { color: #e5e7eb; }
-[data-theme="dark"] .icon-btn { background: #1f2937; color: #e5e7eb; }
-[data-theme="dark"] .dropdown-menu { background: #1f2937; border-color: #374151; }
-[data-theme="dark"] .dropdown-item { color: #e5e7eb; }
-[data-theme="dark"] .dropdown-item:hover { background: #111827; }
-[data-theme="dark"] .new-badge { background: #1f2937; color: #e5e7eb; }
-[data-theme="dark"] .hero-card { background: linear-gradient(135deg, #10241f 0%, #0f1e26 100%); }
-[data-theme="dark"] .hero-left h1 { color: #f9fafb; }
-[data-theme="dark"] .hero-sub { color: #cbd5e1; }
-[data-theme="dark"] .grad-line { color: #9ca3af; }
-[data-theme="dark"] .p-logo-box { background: #1f2937; border-color: #374151; color: #d1d5db; }
-
-/* ============================================
-   বাটন/আইকন হোভার এনিমেশন (বাউন্স + গ্লো)
-   ============================================ */
-.btn-cta:hover,
-.btn-login:hover,
-.btn-interview:hover {
-  animation: btn-bounce 0.4s ease;
-  box-shadow: 0 8px 20px rgba(255, 199, 44, 0.45);
-}
-
-@keyframes btn-bounce {
-  0%   { transform: scale(1); }
-  40%  { transform: scale(1.08); }
-  100% { transform: scale(1); }
-}
-
-.p-logo-box:hover {
-  animation: btn-bounce 0.35s ease;
-}
-
-/* ============================================
-   উষা AI চ্যাটবট
-   ============================================ */
-.usha-widget {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 999;
-}
-
-.usha-fab {
-  height: 60px;
-  width: 60px;
-  border-radius: 50%;
-  background: #ffc72c;
-  border: none;
-  font-size: 26px;
-  cursor: pointer;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: usha-pulse 2.4s infinite;
-  transition: transform 0.2s;
-}
-
-.usha-fab:hover {
-  transform: scale(1.1) rotate(-6deg);
-  animation-play-state: paused;
-}
-
-@keyframes usha-pulse {
-  0%   { box-shadow: 0 8px 24px rgba(255, 199, 44, 0.4), 0 0 0 0 rgba(255, 199, 44, 0.5); }
-  70%  { box-shadow: 0 8px 24px rgba(255, 199, 44, 0.4), 0 0 0 14px rgba(255, 199, 44, 0); }
-  100% { box-shadow: 0 8px 24px rgba(255, 199, 44, 0.4), 0 0 0 0 rgba(255, 199, 44, 0); }
-}
-
-.usha-panel {
-  display: none;
-  flex-direction: column;
-  position: absolute;
-  bottom: 76px;
-  right: 0;
-  width: 320px;
-  max-width: 88vw;
-  height: 420px;
-  background: #ffffff;
-  border-radius: 18px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
-  overflow: hidden;
-}
-
-.usha-widget.open .usha-panel {
-  display: flex;
-}
-
-.usha-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 16px;
-  background: #14213d;
-  color: #ffffff;
-}
-
-.usha-avatar {
-  height: 36px;
-  width: 36px;
-  border-radius: 50%;
-  background: #ffc72c;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-}
-
-.usha-name {
-  font-weight: 700;
-  font-size: 14px;
-}
-
-.usha-status {
-  font-size: 11px;
-  color: #86efac;
-}
-
-.usha-close {
-  margin-left: auto;
-  background: transparent;
-  border: none;
-  color: #ffffff;
-  font-size: 16px;
-  cursor: pointer;
-  opacity: 0.8;
-}
-
-.usha-close:hover {
-  opacity: 1;
-}
-
-.usha-messages {
-  flex: 1;
-  padding: 14px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  background: #f9fafb;
-}
-
-.usha-msg {
-  max-width: 85%;
-  padding: 10px 14px;
-  border-radius: 14px;
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-.usha-msg.bot {
-  background: #eef2f6;
-  color: #1f2937;
-  border-bottom-left-radius: 4px;
-  align-self: flex-start;
-}
-
-.usha-msg.user {
-  background: #ffc72c;
-  color: #111827;
-  border-bottom-right-radius: 4px;
-  align-self: flex-end;
-}
-
-.usha-input-row {
-  display: flex;
-  border-top: 1px solid #e5e7eb;
-  padding: 10px;
-  gap: 8px;
-}
-
-.usha-input-row input {
-  flex: 1;
-  border: 1px solid #e5e7eb;
-  border-radius: 999px;
-  padding: 9px 14px;
-  font-size: 13px;
-  font-family: inherit;
-  outline: none;
-}
-
-.usha-input-row input:focus {
-  border-color: #ffc72c;
-}
-
-.usha-send {
-  height: 38px;
-  width: 38px;
-  border-radius: 50%;
-  border: none;
-  background: #ffc72c;
-  font-size: 14px;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-
-.usha-send:hover {
-  animation: btn-bounce 0.35s ease;
-}
-
-[data-theme="dark"] .usha-panel { background: #0f172a; }
-[data-theme="dark"] .usha-messages { background: #0b1220; }
-[data-theme="dark"] .usha-msg.bot { background: #1f2937; color: #e5e7eb; }
-[data-theme="dark"] .usha-input-row { border-top-color: #1f2937; }
-[data-theme="dark"] .usha-input-row input { background: #1f2937; color: #e5e7eb; border-color: #374151; }
-
-/* ============================================
-   UPCOMING COURSES
-   ============================================ */
-.courses-section {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 20px 32px 70px;
-}
-
-.courses-title {
-  text-align: center;
-  font-size: 26px;
-  font-weight: 700;
-  color: #111827;
-  margin-bottom: 28px;
-}
-
-.courses-icon {
-  margin-right: 6px;
-}
-
-/* --- ক্যাটাগরি ট্যাব --- */
-.course-tabs-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 32px;
-}
-
-.tab-arrow {
-  height: 40px;
-  width: 40px;
-  min-width: 40px;
-  border-radius: 50%;
-  border: 1px solid #e5e7eb;
-  background: #ffffff;
-  font-size: 18px;
-  color: #4b5563;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.15s, transform 0.15s;
-}
-
-.tab-arrow:hover {
-  background: #f3f4f6;
-  transform: scale(1.05);
-}
-
-.course-tabs {
-  display: flex;
-  gap: 12px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  flex: 1;
-}
-
-.course-tabs::-webkit-scrollbar {
-  display: none;
-}
-
-.course-tab {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 20px;
-  border-radius: 999px;
-  border: 1px solid #e5e7eb;
-  background: #ffffff;
-  cursor: pointer;
-  white-space: nowrap;
-  flex-shrink: 0;
-  transition: background 0.15s, border-color 0.15s;
-}
-
-.course-tab .tab-dot {
-  font-size: 10px;
-  color: #9ca3af;
-}
-
-.course-tab .tab-text {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-}
-
-.course-tab .tab-text strong {
-  font-size: 14px;
-  font-weight: 600;
-  color: #1f2937;
-}
-
-.course-tab .tab-text small {
-  font-size: 11px;
-  color: #9ca3af;
-}
-
-.course-tab.active {
-  background: #14213d;
-  border-color: #14213d;
-}
-
-.course-tab.active .tab-dot {
-  color: #ffc72c;
-}
-
-.course-tab.active .tab-text strong {
-  color: #ffffff;
-}
-
-.course-tab.active .tab-text small {
-  color: #9ca3af;
-}
-
-/* --- কোর্স কার্ড গ্রিড --- */
-.course-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  margin-bottom: 36px;
-}
-
-.course-card {
-  border: 1px solid #eef0f2;
-  border-radius: 16px;
-  overflow: hidden;
-  background: #ffffff;
-  transition: box-shadow 0.2s, transform 0.2s;
-}
-
-.course-card:hover {
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-  transform: translateY(-3px);
-}
-
-.course-thumb {
-  height: 130px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 10px;
-}
-
-.thumb-icon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -60%);
-  width: 40px;
-  height: 40px;
-  opacity: 0.35;
-}
-
-.thumb-1 { background: linear-gradient(135deg, #1f2937 0%, #0ea5a5 100%); }
-.thumb-2 { background: linear-gradient(135deg, #b45309 0%, #f59e0b 100%); }
-.thumb-3 { background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 100%); }
-.thumb-4 { background: linear-gradient(135deg, #4c1d95 0%, #db2777 100%); }
-.thumb-5 { background: linear-gradient(135deg, #065f46 0%, #10b981 100%); }
-
-.thumb-text {
-  color: #ffffff;
-  font-size: 13px;
-  font-weight: 800;
-  line-height: 1.35;
-  padding: 4px;
-}
-
-.course-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  font-size: 11px;
-  color: #6b7280;
-  margin-bottom: 10px;
-}
-
-.course-badge-left,
-.course-badge-right {
-  position: absolute;
-  bottom: 10px;
-  background: rgba(255, 255, 255, 0.92);
-  color: #1f2937;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 999px;
-}
-
-.course-badge-left { left: 10px; }
-.course-badge-right { right: 10px; }
-
-.course-body {
-  padding: 16px;
-}
-
-.course-body h4 {
-  font-size: 15px;
-  font-weight: 700;
-  color: #111827;
-  line-height: 1.4;
-  margin-bottom: 14px;
-  min-height: 42px;
-}
-
-.btn-details {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  font-weight: 700;
-  color: #111827;
-  background: #f3f4f6;
-  padding: 10px 14px;
-  border-radius: 999px;
-  width: 100%;
-  justify-content: center;
-  transition: background 0.2s;
-}
-
-.btn-details:hover {
-  background: #ffc72c;
-}
-
-/* --- See All বাটন --- */
-.see-all-row {
-  display: flex;
-  justify-content: center;
-}
-
-.btn-see-all {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #14213d;
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 14px;
-  padding: 13px 30px;
-  border-radius: 999px;
-  transition: background 0.2s, transform 0.15s;
-}
-
-.btn-see-all:hover {
-  background: #1f2f56;
-  transform: translateY(-1px);
-}
-
-[data-theme="dark"] .courses-title { color: #f9fafb; }
-[data-theme="dark"] .course-tab { background: #1f2937; border-color: #374151; }
-[data-theme="dark"] .course-tab .tab-text strong { color: #e5e7eb; }
-[data-theme="dark"] .tab-arrow { background: #1f2937; border-color: #374151; color: #e5e7eb; }
-[data-theme="dark"] .course-card { background: #0f172a; border-color: #1f2937; }
-[data-theme="dark"] .course-body h4 { color: #f3f4f6; }
-[data-theme="dark"] .btn-details { background: #1f2937; color: #e5e7eb; }
-
-/* ============================================
-   FREE RECORDED COURSE
-   ============================================ */
-.recorded-section-outer {
-  max-width: 1400px;
-  margin: 0 auto 60px;
-  padding: 0 32px;
-}
-
-.recorded-wrapper {
-  background: #14213d;
-  border-radius: 24px;
-  padding: 32px;
-}
-
-.recorded-title {
-  text-align: center;
-  font-size: 24px;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 24px;
-}
-
-.recorded-icon {
-  margin-right: 6px;
-}
-
-.tab-arrow-dark {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.15);
-  color: #ffffff;
-}
-
-.tab-arrow-dark:hover {
-  background: rgba(255, 255, 255, 0.16);
-}
-
-.recorded-tab {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.12);
-  color: #e5e7eb;
-  padding: 10px 18px;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.recorded-tab.active {
-  background: #ffc72c;
-  border-color: #ffc72c;
-  color: #111827;
-}
-
-/* --- রেকর্ডেড কোর্স গ্রিড --- */
-.recorded-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  margin: 28px 0 24px;
-}
-
-.recorded-card {
-  background: #ffffff;
-  border-radius: 16px;
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.recorded-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
-}
-
-.recorded-thumb {
-  height: 110px;
-  position: relative;
-}
-
-.recorded-badge {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: rgba(0, 0, 0, 0.6);
-  color: #ffffff;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 999px;
-}
-
-.recorded-body {
-  padding: 14px;
-}
-
-.recorded-meta {
-  display: flex;
-  gap: 12px;
-  font-size: 11px;
-  color: #6b7280;
-  margin-bottom: 8px;
-}
-
-.recorded-body h4 {
-  font-size: 14px;
-  font-weight: 700;
-  color: #111827;
-  margin-bottom: 8px;
-  line-height: 1.4;
-}
-
-.recorded-date {
-  font-size: 12px;
-  color: #4b5563;
-  margin-bottom: 12px;
-}
-
-/* --- See All (হালকা/আউটলাইন ভার্সন) --- */
-.btn-see-all-light {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #ffffff;
-}
-
-.btn-see-all-light:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-/* --- ডেমো ব্যানার --- */
-.demo-banner {
-  margin-top: 24px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 16px;
-  padding: 18px 24px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.demo-icon {
-  font-size: 24px;
-  background: rgba(255, 199, 44, 0.15);
-  height: 46px;
-  width: 46px;
-  min-width: 46px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.demo-banner h3 {
-  color: #ffffff;
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 2px;
-}
-
-.demo-banner p {
-  color: #9ca3af;
-  font-size: 13px;
-}
-
-/* ============================================
-   কি কি পাচ্ছেন লাইভ কোর্স
-   ============================================ */
-.features-section {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 32px 70px;
-}
-
-.features-title {
-  text-align: center;
-  font-size: 26px;
-  font-weight: 700;
-  color: #111827;
-  margin-bottom: 28px;
-}
-
-.features-card {
-  background: #ffffff;
-  border: 1px solid #eef0f2;
-  border-radius: 24px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
-  padding: 40px;
-  margin-bottom: 32px;
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 36px 32px;
-}
-
-.feature-item {
-  text-align: center;
-}
-
-.feature-icon {
-  font-size: 40px;
-  display: block;
-  margin-bottom: 14px;
-}
-
-.feature-item p {
-  font-size: 15px;
-  font-weight: 600;
-  color: #1f2937;
-  line-height: 1.5;
-}
-
-/* --- স্ট্যাটস কাউন্টার --- */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-
-.stat-card {
-  border-radius: 18px;
-  padding: 28px 24px;
-  text-align: center;
-}
-
-.stat-card h3 {
-  font-size: 32px;
-  font-weight: 800;
-  color: #111827;
-  margin-bottom: 6px;
-}
-
-.stat-card p {
-  font-size: 14px;
-  font-weight: 600;
-  color: #374151;
-}
-
-.stat-green { background: #dcfce7; }
-.stat-blue { background: #dbeafe; }
-.stat-peach { background: #fde3d8; }
-.stat-yellow { background: #fef3c7; }
-
-[data-theme="dark"] .features-title { color: #f9fafb; }
-[data-theme="dark"] .features-card { background: #0f172a; border-color: #1f2937; }
-[data-theme="dark"] .feature-item p { color: #e5e7eb; }
-[data-theme="dark"] .stat-card h3 { color: #111827; }
-
-/* ============================================
-   টেস্টিমোনিয়াল
-   ============================================ */
-.testimonial-section {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 32px 70px;
-}
-
-.testimonial-title {
-  text-align: center;
-  font-size: 26px;
-  font-weight: 700;
-  color: #111827;
-  margin-bottom: 8px;
-}
-
-.testimonial-sub {
-  text-align: center;
-  font-size: 14px;
-  color: #6b7280;
-  margin-bottom: 32px;
-}
-
-.testimonial-grid {
-  column-count: 3;
-  column-gap: 20px;
-}
-
-.testimonial-card {
-  background: #ffffff;
-  border: 1px solid #eef0f2;
-  border-radius: 16px;
-  padding: 22px;
-  margin-bottom: 20px;
-  break-inside: avoid;
-  position: relative;
-  transition: box-shadow 0.2s, transform 0.2s;
-}
-
-.testimonial-card:hover {
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-  transform: translateY(-2px);
-}
-
-.quote-icon {
-  position: absolute;
-  top: 16px;
-  right: 20px;
-  font-size: 26px;
-  color: #ffc72c;
-  font-style: normal;
-}
-
-.testimonial-card p {
-  font-size: 14px;
-  color: #374151;
-  line-height: 1.7;
-  margin-bottom: 18px;
-  padding-right: 20px;
-}
-
-.testimonial-person {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.avatar {
-  height: 40px;
-  width: 40px;
-  min-width: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.avatar-1 { background: #f97316; }
-.avatar-2 { background: #0ea5a5; }
-.avatar-3 { background: #8b5cf6; }
-.avatar-4 { background: #14213d; }
-.avatar-5 { background: #e11d48; }
-.avatar-6 { background: #16a34a; }
-
-.testimonial-person strong {
-  display: block;
-  font-size: 14px;
-  color: #111827;
-}
-
-.testimonial-person small {
-  font-size: 12px;
-  color: #9ca3af;
-}
-
-[data-theme="dark"] .testimonial-title { color: #f9fafb; }
-[data-theme="dark"] .testimonial-card { background: #0f172a; border-color: #1f2937; }
-[data-theme="dark"] .testimonial-card p { color: #d1d5db; }
-[data-theme="dark"] .testimonial-person strong { color: #f3f4f6; }
-
-/* ============================================
-   SNK FOR BUSINESS
-   ============================================ */
-.business-section {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 32px 70px;
-}
-
-.business-card {
-  background: linear-gradient(120deg, #f0fdf4 0%, #dcfce7 60%, #bbf7d0 100%);
-  border-radius: 28px;
-  padding: 48px;
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  overflow: hidden;
-}
-
-.business-left {
-  flex: 1;
-  min-width: 0;
-}
-
-.business-left h2 {
-  font-size: 32px;
-  font-weight: 800;
-  color: #111827;
-  margin-bottom: 14px;
-}
-
-.business-left p {
-  font-size: 15px;
-  color: #374151;
-  line-height: 1.7;
-  margin-bottom: 26px;
-  max-width: 480px;
-}
-
-.business-btns {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.btn-business-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #14213d;
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 14px;
-  padding: 13px 22px;
-  border-radius: 999px;
-  transition: background 0.2s, transform 0.15s;
-}
-
-.btn-business-primary:hover {
-  background: #1f2f56;
-  transform: translateY(-1px);
-}
-
-.btn-business-outline {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #ffffff;
-  color: #111827;
-  font-weight: 700;
-  font-size: 14px;
-  padding: 13px 22px;
-  border-radius: 999px;
-  border: 1px solid #d1d5db;
-  transition: background 0.2s;
-}
-
-.btn-business-outline:hover {
-  background: #f3f4f6;
-}
-
-.business-right {
-  flex: 1;
-  min-width: 0;
-  position: relative;
-  min-height: 260px;
-}
-
-.perf-card {
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-  padding: 16px;
-}
-
-.perf-card-1 {
-  width: 78%;
-}
-
-.perf-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 13px;
-  color: #6b7280;
-  margin-bottom: 14px;
-}
-
-.perf-card-header strong {
-  color: #111827;
-  font-size: 14px;
-}
-
-.perf-tabs .tab-on {
-  color: #16a34a;
-  font-weight: 700;
-  margin-right: 8px;
-}
-
-.bar-chart {
-  display: flex;
-  align-items: flex-end;
-  gap: 10px;
-  height: 90px;
-}
-
-.bar-chart .bar {
-  flex: 1;
-  background: linear-gradient(180deg, #86efac 0%, #16a34a 100%);
-  border-radius: 6px 6px 0 0;
-}
-
-.perf-card-2 {
-  width: 62%;
-  margin-top: -20px;
-  margin-left: 10%;
-  position: relative;
-  z-index: 2;
-}
-
-.perf-value {
-  color: #111827;
-  font-size: 15px;
-}
-
-.line-chart {
-  width: 100%;
-  height: 40px;
-  display: block;
-}
-
-.floating-badge {
-  position: absolute;
-  height: 44px;
-  width: 44px;
-  border-radius: 50%;
-  background: #ffffff;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-}
-
-.badge-1 {
-  top: 10%;
-  right: 8%;
-}
-
-.badge-2 {
-  bottom: 8%;
-  right: 4%;
-}
-
-[data-theme="dark"] .business-card { background: linear-gradient(120deg, #0f2418 0%, #10241a 60%, #0d2a1c 100%); }
-[data-theme="dark"] .business-left h2 { color: #f9fafb; }
-[data-theme="dark"] .business-left p { color: #d1d5db; }
-
-/* ============================================
-   APP ডাউনলোড
-   ============================================ */
-.app-section {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 32px 70px;
-}
-
-.app-card {
-  background: linear-gradient(120deg, #064e3b 0%, #059669 100%);
-  border-radius: 28px;
-  padding: 40px;
-  display: flex;
-  align-items: center;
-  gap: 48px;
-}
-
-.app-visual {
-  flex-shrink: 0;
-}
-
-.app-phone-mock {
-  width: 200px;
-  height: 260px;
-  background: #0b1220;
-  border-radius: 26px;
-  padding: 10px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  position: relative;
-}
-
-.phone-notch {
-  width: 60px;
-  height: 6px;
-  background: #1f2937;
-  border-radius: 999px;
-  margin: 0 auto 10px;
-}
-
-.phone-screen {
-  background: linear-gradient(160deg, #14213d 0%, #1b1b1b 100%);
-  border-radius: 18px;
-  height: calc(100% - 20px);
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
-.phone-badge {
-  background: #ffc72c;
-  color: #111827;
-  font-size: 10px;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 999px;
-  width: fit-content;
-  margin-bottom: 12px;
-}
-
-.phone-big-text {
-  color: #ffffff;
-  font-size: 22px;
-  font-weight: 800;
-  line-height: 1.3;
-}
-
-.app-text {
-  flex: 1;
-  min-width: 0;
-}
-
-.app-text h2 {
-  color: #ffffff;
-  font-size: 26px;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.app-text p {
-  color: #d1fae5;
-  font-size: 14px;
-  margin-bottom: 22px;
-}
-
-.app-btns {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.app-btn {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: #ffffff;
-  font-size: 13px;
-  font-weight: 700;
-  padding: 12px 18px;
-  border-radius: 10px;
-  transition: background 0.2s;
-}
-
-.app-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-/* ============================================
-   ফুটার
-   ============================================ */
-.footer {
-  background: #fffdf5;
-  border-top: 1px solid #f3ead0;
-  padding: 50px 32px 0;
-}
-
-.footer-wrapper {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 32px;
-  padding-bottom: 40px;
-}
-
-.footer-col h4 {
-  font-size: 14px;
-  font-weight: 700;
-  color: #111827;
-  margin-bottom: 16px;
-  margin-top: 22px;
-}
-
-.footer-col ul li {
-  margin-bottom: 12px;
-}
-
-.footer-col ul li a {
-  font-size: 14px;
-  color: #4b5563;
-  transition: color 0.15s;
-}
-
-.footer-col ul li a:hover {
-  color: #d97706;
-}
-
-.footer-contact li {
-  font-size: 14px;
-  color: #4b5563;
-}
-
-.footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-.footer-logo img {
-  height: 32px;
-  width: auto;
-}
-
-.footer-logo span {
-  font-size: 18px;
-  font-weight: 700;
-  color: #111827;
-}
-
-.footer-logo small {
-  display: block;
-  font-size: 11px;
-  font-weight: 500;
-  color: #6b7280;
-}
-
-.footer-brand > p {
-  font-size: 13px;
-  color: #6b7280;
-  margin-bottom: 6px;
-}
-
-.footer-app-icons {
-  display: flex;
-  gap: 10px;
-}
-
-.footer-app-icon {
-  height: 38px;
-  width: 38px;
-  background: #111827;
-  color: #ffffff;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-}
-
-.footer-social {
-  display: flex;
-  gap: 10px;
-}
-
-.footer-social a {
-  height: 36px;
-  width: 36px;
-  background: #f3f4f6;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 15px;
-  transition: background 0.15s, transform 0.15s;
-}
-
-.footer-social a:hover {
-  background: #ffe9a8;
-  transform: translateY(-2px);
-}
-
-.footer-bottom {
-  border-top: 1px solid #f3ead0;
-  padding: 18px 0;
-  text-align: center;
-}
-
-.footer-bottom p {
-  font-size: 13px;
-  color: #9ca3af;
-}
-
-[data-theme="dark"] .footer { background: #0b1220; border-top-color: #1f2937; }
-[data-theme="dark"] .footer-col h4 { color: #f3f4f6; }
-[data-theme="dark"] .footer-col ul li a { color: #9ca3af; }
-[data-theme="dark"] .footer-logo span { color: #f3f4f6; }
-[data-theme="dark"] .footer-brand > p { color: #9ca3af; }
-[data-theme="dark"] .footer-contact li { color: #9ca3af; }
-[data-theme="dark"] .footer-social a { background: #1f2937; }
-[data-theme="dark"] .footer-bottom { border-top-color: #1f2937; }
-
-/* ============================================
-   RESPONSIVE — মোবাইল/ট্যাবলেট
-   ============================================ */
-@media (max-width: 1100px) {
-  .nav-menu {
-    display: none;
-  }
-  .search-box {
-    display: none;
-  }
-  .course-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .recorded-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .features-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .testimonial-grid {
-    column-count: 2;
-  }
-  .business-card {
-    flex-direction: column;
-  }
-  .app-card {
-    flex-direction: column;
-    text-align: center;
-  }
-  .app-btns {
-    justify-content: center;
-  }
-  .footer-wrapper {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 860px) {
-  .hero-card {
-    flex-direction: column;
-  }
-  .hero-left h1 {
-    font-size: 30px;
-  }
-}
-
-@media (max-width: 560px) {
-  .header-inner {
-    padding: 12px 16px;
-  }
-  .logo-text {
-    font-size: 16px;
-  }
-  .hero-wrapper {
-    padding: 20px 16px 40px;
-  }
-  .hero-card {
-    padding: 24px;
-    border-radius: 18px;
-  }
-  .interview-banner {
-    padding: 18px 20px;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .btn-interview {
-    width: 100%;
-    justify-content: center;
-  }
-  .course-grid {
-    grid-template-columns: 1fr;
-  }
-  .courses-section {
-    padding: 10px 16px 50px;
-  }
-  .recorded-grid {
-    grid-template-columns: 1fr;
-  }
-  .recorded-section-outer {
-    padding: 0 16px;
-  }
-  .recorded-wrapper {
-    padding: 20px;
-  }
-  .demo-banner {
-    flex-direction: column;
-    text-align: center;
-  }
-  .features-grid {
-    grid-template-columns: 1fr;
-  }
-  .features-card {
-    padding: 24px;
-  }
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
-  .testimonial-grid {
-    column-count: 1;
-  }
-  .business-card {
-    padding: 28px;
-  }
-  .business-left h2 {
-    font-size: 24px;
-  }
-  .app-card {
-    padding: 28px;
-  }
-  .app-phone-mock {
-    width: 160px;
-    height: 210px;
-  }
-  .footer-wrapper {
-    grid-template-columns: 1fr;
-  }
-  .footer {
-    padding: 40px 16px 0;
-  }
-}
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SNK IT Institute - স্কিল শিখো, ক্যারিয়ার গড়ো</title>
+
+  <!-- বাংলা ফন্ট -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- আমাদের নিজের CSS ফাইল -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ HEADER / NAVBAR ============ -->
+  <header class="header">
+    <div class="header-inner">
+
+      <!-- লোগো -->
+      <a href="index.html" class="logo">
+        <img src="https://raw.githubusercontent.com/snkguideup/assets/main/Frame%2011.svg" alt="SNK IT Institute Logo">
+        <span class="logo-text">SNK <span>Ai Academy</span></span>
+      </a>
+
+      <!-- সার্চ বার -->
+      <div class="search-box">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <circle cx="11" cy="11" r="7" stroke="#9CA3AF" stroke-width="2"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <input type="text" id="searchInput" data-bn="কোর্স সার্চ করুন" data-en="Search for course" placeholder="কোর্স সার্চ করুন">
+      </div>
+
+      <!-- মাঝের মেনু -->
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="admission.html" class="nav-link">Admission</a>
+
+        <!-- Free Course ড্রপডাউন -->
+        <div class="nav-item-dropdown">
+          <a href="#" class="nav-link dropdown">Free Course ⌄</a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item">Academy</a>
+            <a href="#" class="dropdown-item">IT Skill</a>
+          </div>
+        </div>
+
+        <!-- Paid Course ড্রপডাউন -->
+        <div class="nav-item-dropdown">
+          <a href="#" class="nav-link dropdown">Paid Course ⌄</a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item">Academy</a>
+            <a href="#" class="dropdown-item">IT Skill</a>
+          </div>
+        </div>
+
+        <a href="resource.html" class="nav-link">Resource</a>
+        <a href="blogs.html" class="nav-link">Blogs</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="about.html" class="nav-link">About</a>
+      </nav>
+
+      <!-- ডান পাশের অংশ -->
+      <div class="header-right">
+        <button id="langToggle" class="icon-btn" type="button" title="Language">EN</button>
+        <button id="themeToggle" class="icon-btn" type="button" title="Dark/Light">🌙</button>
+        <a href="login.html" class="btn-login">Login/Signin →</a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ============ HERO SECTION ============ -->
+  <main>
+    <div class="hero-wrapper">
+
+      <!-- নতুন ব্যাজ -->
+      <div class="new-badge-row">
+        <a href="#" class="new-badge">
+          <span class="badge-tag">নতুন</span>
+          <span class="badge-emoji">🎓</span>
+          যাত্রা শুরু হলো SNK AI Academy&rsquo;র
+          <span class="arrow">›</span>
+        </a>
+      </div>
+
+      <!-- হিরো কার্ড -->
+      <section class="hero-card">
+
+        <!-- বাম পাশ: টেক্সট -->
+        <div class="hero-left">
+          <h1>
+            <span data-bn="বাংলাদেশ শিখবে" data-en="Bangladesh Will Learn">বাংলাদেশ শিখবে</span> <span class="highlight"><span data-bn="লাইভে" data-en="Live">লাইভে</span> <span class="dot">◉</span></span>
+          </h1>
+          <p class="hero-sub" data-bn="স্কিল শেখার মাধ্যমে বদলে ফেলুন নিজের ভবিষ্যৎ" data-en="Change your future through learning new skills">স্কিল শেখার মাধ্যমে বদলে ফেলুন নিজের ভবিষ্যৎ</p>
+
+          <a href="#" class="btn-cta"><span data-bn="শেখা শুরু করুন" data-en="Start Learning">শেখা শুরু করুন</span> <span class="arrow-icon">→</span></a>
+
+          <p class="grad-line" data-bn="১০০০০+ গ্র্যাজুয়েটরা কর্মরত আছেন বিভিন্ন দেশি ও বিদেশি প্রতিষ্ঠানে:" data-en="10,000+ graduates are working at various local & international companies:">১০০০০+ গ্র্যাজুয়েটরা কর্মরত আছেন বিভিন্ন দেশি ও বিদেশি প্রতিষ্ঠানে:</p>
+
+          <div class="partner-logos-card">
+            <div class="partner-logos">
+              <a href="#" target="_blank" rel="noopener" class="p-logo-box">🏢 BRAIN STATION</a>
+              <a href="#" target="_blank" rel="noopener" class="p-logo-box">🔧 TechnoSoft</a>
+              <a href="#" target="_blank" rel="noopener" class="p-logo-box">excel</a>
+              <a href="#" target="_blank" rel="noopener" class="p-logo-box">gtr</a>
+              <a href="#" target="_blank" rel="noopener" class="p-logo-box">ASTHA IT</a>
+              <a href="#" target="_blank" rel="noopener" class="p-logo-box">REVE Systems</a>
+              <a href="#" target="_blank" rel="noopener" class="p-logo-box">Sofol IT</a>
+              <a href="#" target="_blank" rel="noopener" class="p-logo-box">Core Devs</a>
+              <a href="#" target="_blank" rel="noopener" class="p-logo-box">SAYBURGH</a>
+              <a href="#" target="_blank" rel="noopener" class="p-logo-box">Anchor Block</a>
+              <!-- নতুন ব্র্যান্ড এখানে যোগ করুন, এভাবে কপি করে: -->
+              <a href="#" target="_blank" rel="noopener" class="p-logo-box">নতুন ব্র্যান্ড ১</a>
+              <a href="#" target="_blank" rel="noopener" class="p-logo-box">নতুন ব্র্যান্ড ২</a>
+              <a href="#" target="_blank" rel="noopener" class="p-logo-box">নতুন ব্র্যান্ড ৩</a>
+              <a href="#" target="_blank" rel="noopener" class="p-logo-box">নতুন ব্র্যান্ড ৪</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ডান পাশ: ব্যানার -->
+        <div class="hero-right">
+          <div class="banner-card">
+            <img src="https://raw.githubusercontent.com/snkguideup/assets/main/Hero%20image.svg" alt="SNK Ai Academy Hero" class="banner-image">
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ইন্টারভিউ প্র্যাকটিস ব্যানার -->
+      <div class="interview-banner">
+        <div class="interview-left">
+          <span class="interview-icon">📋</span>
+          <div>
+            <h3 data-bn="ইন্টারভিউ প্র্যাকটিসের জন্য" data-en="For Interview Practice">ইন্টারভিউ প্র্যাকটিসের জন্য</h3>
+            <p data-bn="এখনই সাইন আপ করুন এবং ইন্টারভিউ প্র্যাকটিস শুরু করুন।" data-en="Sign up now and start interview practice.">এখনই সাইন আপ করুন এবং ইন্টারভিউ প্র্যাকটিস শুরু করুন।</p>
+          </div>
+        </div>
+        <a href="#" class="btn-interview"><span data-bn="বিস্তারিত দেখুন" data-en="See Details">বিস্তারিত দেখুন</span> <span class="arrow-icon">→</span></a>
+      </div>
+    </div>
+
+    <!-- ফ্রি-রেকর্ডেড কোর্স প্রোমো ব্যানার -->
+    <div class="hero-wrapper" style="padding-top:0; padding-bottom:0;">
+      <div class="interview-banner promo-banner">
+        <div class="interview-left">
+          <span class="interview-icon">👥</span>
+          <div>
+            <h3>যাত্রা শুরু হলো ফ্রি-রেকর্ডেড কোর্সের!</h3>
+            <p>শিক্ষার্থীদের ফ্রি-রেকর্ডেড কোর্স এনরোল করে এগিয়ে যান ক্যারিয়ারে</p>
+          </div>
+        </div>
+        <a href="#" class="btn-interview">বিস্তারিত দেখি <span class="arrow-icon">→</span></a>
+      </div>
+    </div>
+
+    <!-- ============ UPCOMING COURSES ============ -->
+    <section class="courses-section">
+      <div class="courses-wrapper">
+
+        <h2 class="courses-title"><span class="courses-icon">🔴</span> আপকামিং লাইভ কোর্স</h2>
+
+        <!-- ক্যাটাগরি ট্যাব -->
+        <div class="course-tabs-row">
+          <button class="tab-arrow" id="tabPrev" type="button">‹</button>
+          <div class="course-tabs" id="courseTabs">
+            <button class="course-tab" type="button">
+              <span class="tab-dot">✨</span>
+              <span class="tab-text">
+                <strong>Artificial Intelligence</strong>
+                <small>৫ কোর্স</small>
+              </span>
+            </button>
+            <button class="course-tab" type="button">
+              <span class="tab-dot">💻</span>
+              <span class="tab-text">
+                <strong>Web &amp; App Development</strong>
+                <small>৮ কোর্স</small>
+              </span>
+            </button>
+            <button class="course-tab active" type="button">
+              <span class="tab-dot">🎨</span>
+              <span class="tab-text">
+                <strong>Product Management &amp; Design</strong>
+                <small>২ কোর্স</small>
+              </span>
+            </button>
+            <button class="course-tab" type="button">
+              <span class="tab-dot">📈</span>
+              <span class="tab-text">
+                <strong>Business &amp; Marketing</strong>
+                <small>৩ কোর্স</small>
+              </span>
+            </button>
+            <button class="course-tab" type="button">
+              <span class="tab-dot">📊</span>
+              <span class="tab-text">
+                <strong>Data Science</strong>
+                <small>৩ কোর্স</small>
+              </span>
+            </button>
+          </div>
+          <button class="tab-arrow" id="tabNext" type="button">›</button>
+        </div>
+
+        <!-- কোর্স কার্ড গ্রিড -->
+        <div class="course-grid">
+
+          <div class="course-card">
+            <div class="course-thumb thumb-3">
+              <div class="thumb-text">AI-Powered<br>UI/UX Design:<br>Master Claude,<br>Figma MCP &amp; Daily Automation</div>
+            </div>
+            <div class="course-body">
+              <div class="course-meta">
+                <span>ব্যাচ-৩</span>
+                <span>🪑 ৪৬ সিট বাকি</span>
+                <span>🕐 ৩৬ দিন বাকি</span>
+              </div>
+              <h4>AI-Powered UI/UX Design: Master Claude, Figma MCP &amp; Daily ...</h4>
+              <a href="#" class="btn-details">বিস্তারিত দেখি <span class="arrow-icon">→</span></a>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <div class="course-thumb thumb-5">
+              <div class="thumb-text">UI–UX Design<br>Career Track Program</div>
+            </div>
+            <div class="course-body">
+              <div class="course-meta">
+                <span>ব্যাচ-৬২</span>
+                <span>🪑 ৫ সিট বাকি</span>
+                <span>🕐 ৬ দিন বাকি</span>
+              </div>
+              <h4>AI Driven UI UX Design Career Track Program</h4>
+              <a href="#" class="btn-details">বিস্তারিত দেখি <span class="arrow-icon">→</span></a>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <div class="course-thumb thumb-1">
+              <div class="thumb-text">Full Stack Web<br>Development<br>with AI Tools</div>
+            </div>
+            <div class="course-body">
+              <div class="course-meta">
+                <span>ব্যাচ-১২</span>
+                <span>🪑 ২০ সিট বাকি</span>
+                <span>🕐 ১৫ দিন বাকি</span>
+              </div>
+              <h4>Full Stack Web Development with AI Tools</h4>
+              <a href="#" class="btn-details">বিস্তারিত দেখি <span class="arrow-icon">→</span></a>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <div class="course-thumb thumb-4">
+              <div class="thumb-text">Digital Marketing<br>&amp; Growth<br>Hacking 2025</div>
+            </div>
+            <div class="course-body">
+              <div class="course-meta">
+                <span>ব্যাচ-০৭</span>
+                <span>🪑 ৩০ সিট বাকি</span>
+                <span>🕐 ২০ দিন বাকি</span>
+              </div>
+              <h4>Digital Marketing &amp; Growth Hacking 2025</h4>
+              <a href="#" class="btn-details">বিস্তারিত দেখি <span class="arrow-icon">→</span></a>
+            </div>
+          </div>
+
+        <div class="see-all-row">
+          <a href="#" class="btn-see-all">সব দেখুন <span class="arrow-icon">→</span></a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ FREE RECORDED COURSE ============ -->
+    <section class="recorded-section-outer">
+      <div class="recorded-wrapper">
+
+        <h2 class="recorded-title"><span class="recorded-icon">🎙️</span> Free Recorded Course</h2>
+
+        <!-- ক্যাটাগরি ট্যাব -->
+        <div class="course-tabs-row">
+          <button class="tab-arrow tab-arrow-dark" id="recTabPrev" type="button">‹</button>
+          <div class="course-tabs recorded-tabs" id="recTabs">
+            <button class="course-tab recorded-tab active" type="button">All</button>
+            <button class="course-tab recorded-tab" type="button">Web and App Development</button>
+            <button class="course-tab recorded-tab" type="button">Web and App Development</button>
+            <button class="course-tab recorded-tab" type="button">Web and App Development</button>
+            <button class="course-tab recorded-tab" type="button">Development</button>
+          </div>
+          <button class="tab-arrow tab-arrow-dark" id="recTabNext" type="button">›</button>
+        </div>
+
+        <!-- কোর্স কার্ড গ্রিড -->
+        <div class="recorded-grid">
+
+          <div class="recorded-card">
+            <div class="recorded-thumb thumb-1">
+              <svg class="thumb-icon" viewBox="0 0 24 24" fill="none" style="opacity:0.4;"><circle cx="12" cy="12" r="9" stroke="white" stroke-width="1.5"/><path d="M10 9l5 3-5 3V9z" fill="white"/></svg>
+              <span class="recorded-badge">🔴 Recorded</span>
+            </div>
+            <div class="recorded-body">
+              <div class="recorded-meta">
+                <span>👤 2016 Learners</span>
+                <span>🎟 Free Courses</span>
+              </div>
+              <h4>Kids Spoken English Batch-01</h4>
+              <p class="recorded-date">📅 Friday, October 14th, 9:00 Pm</p>
+              <a href="#" class="btn-details">LETS SEE THE DETAILS <span class="arrow-icon">→</span></a>
+            </div>
+          </div>
+
+          <div class="recorded-card">
+            <div class="recorded-thumb thumb-2">
+              <svg class="thumb-icon" viewBox="0 0 24 24" fill="none" style="opacity:0.4;"><circle cx="12" cy="12" r="9" stroke="white" stroke-width="1.5"/><path d="M10 9l5 3-5 3V9z" fill="white"/></svg>
+              <span class="recorded-badge">🔴 Recorded</span>
+            </div>
+            <div class="recorded-body">
+              <div class="recorded-meta">
+                <span>👤 2016 Learners</span>
+                <span>🎟 Free Courses</span>
+              </div>
+              <h4>Kids Spoken English Batch-01</h4>
+              <p class="recorded-date">📅 Friday, October 14th, 9:00 Pm</p>
+              <a href="#" class="btn-details">LETS SEE THE DETAILS <span class="arrow-icon">→</span></a>
+            </div>
+          </div>
+
+          <div class="recorded-card">
+            <div class="recorded-thumb thumb-3">
+              <svg class="thumb-icon" viewBox="0 0 24 24" fill="none" style="opacity:0.4;"><circle cx="12" cy="12" r="9" stroke="white" stroke-width="1.5"/><path d="M10 9l5 3-5 3V9z" fill="white"/></svg>
+              <span class="recorded-badge">🔴 Recorded</span>
+            </div>
+            <div class="recorded-body">
+              <div class="recorded-meta">
+                <span>👤 2016 Learners</span>
+                <span>🎟 Free Courses</span>
+              </div>
+              <h4>Kids Spoken English Batch-01</h4>
+              <p class="recorded-date">📅 Friday, October 14th, 9:00 Pm</p>
+              <a href="#" class="btn-details">LETS SEE THE DETAILS <span class="arrow-icon">→</span></a>
+            </div>
+          </div>
+
+          <div class="recorded-card">
+            <div class="recorded-thumb thumb-4">
+              <svg class="thumb-icon" viewBox="0 0 24 24" fill="none" style="opacity:0.4;"><circle cx="12" cy="12" r="9" stroke="white" stroke-width="1.5"/><path d="M10 9l5 3-5 3V9z" fill="white"/></svg>
+              <span class="recorded-badge">🔴 Recorded</span>
+            </div>
+            <div class="recorded-body">
+              <div class="recorded-meta">
+                <span>👤 2016 Learners</span>
+                <span>🎟 Free Courses</span>
+              </div>
+              <h4>Kids Spoken English Batch-01</h4>
+              <p class="recorded-date">📅 Friday, October 14th, 9:00 Pm</p>
+              <a href="#" class="btn-details">LETS SEE THE DETAILS <span class="arrow-icon">→</span></a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="see-all-row">
+          <a href="#" class="btn-see-all btn-see-all-light">SEE ALL <span class="arrow-icon">→</span></a>
+        </div>
+
+        <!-- ডেমো দেখার ব্যানার -->
+        <div class="demo-banner">
+          <span class="demo-icon">🎓</span>
+          <div>
+            <h3>কোর্স কেনার আগে অবশ্যই ডেমো দেখে নিন!</h3>
+            <p>সিদ্ধান্ত নিন বুঝে শুনে, সময় ও টাকার সঠিক মূল্য দিন।</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ কি কি পাচ্ছেন লাইভ কোর্স ============ -->
+    <section class="features-section">
+      <div class="features-wrapper">
+        <h2 class="features-title">কি কি পাচ্ছেন লাইভ কোর্স</h2>
+
+        <div class="features-card">
+          <div class="features-grid">
+            <div class="feature-item">
+              <span class="feature-icon">💼</span>
+              <p>জবের জন্য ডেডিকেটেড জব প্লেসমেন্ট টিম</p>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">📋</span>
+              <p>সিভি বিল্ডার ও এক্সপার্ট সিভি রিভিউ</p>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">🎧</span>
+              <p>১৮ ঘন্টা লাইভ সাপোর্ট নির্দিষ্ট কোর্সে</p>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">🏅</span>
+              <p>প্রো ব্যাচে স্পেশাল সিভি ও জব সাপোর্ট</p>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">📝</span>
+              <p>লাইভ টেস্টে নিজেকে যাচাইয়ের সুযোগ</p>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">🧩</span>
+              <p>দিনে ৩ টি পর্যন্ত সাপোর্ট ক্লাস নির্দিষ্ট কোর্সে</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- স্ট্যাটস কাউন্টার -->
+        <div class="stats-grid">
+          <div class="stat-card stat-green">
+            <h3>৯,০০০+</h3>
+            <p>জব প্লেসমেন্ট</p>
+          </div>
+          <div class="stat-card stat-blue">
+            <h3>১,৫০,০০০+</h3>
+            <p>লার্নার</p>
+          </div>
+          <div class="stat-card stat-peach">
+            <h3>৮৩%</h3>
+            <p>কোর্স কমপ্লিশন রেট</p>
+          </div>
+          <div class="stat-card stat-yellow">
+            <h3>৩,৫০০+</h3>
+            <p>লাইভ ক্লাস</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ টেস্টিমোনিয়াল ============ -->
+    <section class="testimonial-section">
+      <div class="testimonial-wrapper">
+        <h2 class="testimonial-title">দেখে নিন কি বলছেন SNK গ্র্যাজুয়েটরা</h2>
+        <p class="testimonial-sub">১০,০০০+ বেশি গ্র্যাজুয়েট যারা পেয়েছেন জব, দেখে নিন কি বলছেন তাদের একাংশ</p>
+
+        <div class="testimonial-grid">
+
+          <div class="testimonial-card">
+            <span class="quote-icon">❞</span>
+            <p>SNK এর MERN কোর্সটি ছিল খুবই ফলপ্রসূ। প্রতিটি প্রজেক্ট তারা লাইভে সলভ করার সুযোগ দিয়েছে, সাথে ইন্টারভিউ প্রস্তুতিও অসাধারণ ছিল।</p>
+            <div class="testimonial-person">
+              <span class="avatar avatar-1">FR</span>
+              <div>
+                <strong>Faisal Rahman</strong>
+                <small>Full Stack Web Development, Batch 1</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <span class="quote-icon">❞</span>
+            <p>এই কোর্সটা আমার লাইফের করা সেরা কোর্সগুলোর একটি। মেন্টরদের সাপোর্ট আর রিসোর্স মিলিয়ে আমি অনেক কিছু শিখতে পেরেছি খুব সহজেই।</p>
+            <div class="testimonial-person">
+              <span class="avatar avatar-2">JH</span>
+              <div>
+                <strong>Jahid Hasan</strong>
+                <small>Full Stack Web Development, Batch 2</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <span class="quote-icon">❞</span>
+            <p>ননটেক ব্যাকগ্রাউন্ড থেকে এসে আমি ভয়ে ছিলাম, কিন্তু SNK এর ধাপে ধাপে শেখানোর পদ্ধতির কারণে ডেটা সায়েন্স শেখাটা অনেক সহজ মনে হয়েছে।</p>
+            <div class="testimonial-person">
+              <span class="avatar avatar-3">SR</span>
+              <div>
+                <strong>Shammi Rahman</strong>
+                <small>Data Science, Batch 6</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <span class="quote-icon">❞</span>
+            <p>UI/UX কোর্সটি অনেক ডিটেইলড। ডিজাইন থেকে শুরু করে হ্যান্ডওভার পর্যন্ত পুরো প্রসেসটাই শেখানো হয়েছে, যা চাকরির ক্ষেত্রে অনেক কাজে দিয়েছে।</p>
+            <div class="testimonial-person">
+              <span class="avatar avatar-4">AH</span>
+              <div>
+                <strong>Abu Hasan</strong>
+                <small>UI/UX Design, Batch 17</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <span class="quote-icon">❞</span>
+            <p>স্পোকেন ইংলিশ কোর্সটি করার পর আত্মবিশ্বাস অনেক বেড়ে গেছে। ইন্টারভিউতে এখন সাবলীলভাবে কথা বলতে পারি, ধন্যবাদ SNK টিমকে।</p>
+            <div class="testimonial-person">
+              <span class="avatar avatar-5">NI</span>
+              <div>
+                <strong>Nayem Islam</strong>
+                <small>Spoken English, Batch 21</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <span class="quote-icon">❞</span>
+            <p>AI ও Prompt Engineering কোর্সটা একদম সময়োপযোগী। বাস্তব প্রজেক্টে কীভাবে AI ব্যবহার করা যায় তার হাতে-কলমে প্রশিক্ষণ পেয়েছি।</p>
+            <div class="testimonial-person">
+              <span class="avatar avatar-6">MG</span>
+              <div>
+                <strong>Mahmuda Galib</strong>
+                <small>AI Academy, Batch 3</small>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SNK FOR BUSINESS ============ -->
+    <section class="business-section">
+      <div class="business-wrapper">
+        <div class="business-card">
+
+          <div class="business-left">
+            <h2>SNK for Business</h2>
+            <p>যোগ দিন আমাদের কর্পোরেট স্কিলস ট্রেইনিং প্রোগ্রামে, ট্রেইনিং নিন দেশ সেরা ইন্ডাস্ট্রি এক্সপার্টদের থেকে আর সাজিয়ে নিন আপনার টিমকে নতুনভাবে।</p>
+            <div class="business-btns">
+              <a href="#" class="btn-business-primary">ফ্রি কনসালটেশন বুক করুন <span class="arrow-icon">→</span></a>
+              <a href="#" class="btn-business-outline">বিস্তারিত দেখি <span class="arrow-icon">→</span></a>
+            </div>
+          </div>
+
+          <div class="business-right">
+            <div class="perf-card perf-card-1">
+              <div class="perf-card-header">
+                <strong>Performance</strong>
+                <span class="perf-tabs"><span class="tab-on">Weekly</span> Monthly</span>
+              </div>
+              <div class="bar-chart">
+                <div class="bar" style="height:30%"></div>
+                <div class="bar" style="height:50%"></div>
+                <div class="bar" style="height:40%"></div>
+                <div class="bar" style="height:75%"></div>
+                <div class="bar" style="height:95%"></div>
+              </div>
+            </div>
+            <div class="perf-card perf-card-2">
+              <div class="perf-card-header">
+                <span>Performance</span>
+                <strong class="perf-value">$2,545.06</strong>
+              </div>
+              <svg class="line-chart" viewBox="0 0 120 40" preserveAspectRatio="none">
+                <polyline points="0,30 20,25 40,32 60,15 80,20 100,8 120,12" fill="none" stroke="#22c55e" stroke-width="2.5"/>
+              </svg>
+            </div>
+            <span class="floating-badge badge-1">🇧🇩</span>
+            <span class="floating-badge badge-2">✅</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ APP ডাউনলোড ============ -->
+    <section class="app-section">
+      <div class="app-wrapper">
+        <div class="app-card">
+
+          <div class="app-visual">
+            <div class="app-phone-mock">
+              <div class="phone-notch"></div>
+              <div class="phone-screen">
+                <span class="phone-badge">SNK Ai Academy</span>
+                <p class="phone-big-text">অ্যাপ-এই<br>এখন<br>সবকিছু</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="app-text">
+            <h2>ডাউনলোড করুন SNK Ai Academy App</h2>
+            <p>লাইভ ক্লাসের বেস্ট এক্সপেরিয়েন্স পেতে, এখনই ডাউনলোড করুন SNK অ্যাপ (শীঘ্রই আসছে)</p>
+            <div class="app-btns">
+              <a href="#" class="app-btn">📱 ANDROID</a>
+              <a href="#" class="app-btn">🍏 iOS / macOS</a>
+              <a href="#" class="app-btn">🖥️ WINDOWS</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ ফুটার ============ -->
+  <footer class="footer">
+    <div class="footer-wrapper">
+
+      <div class="footer-col footer-brand">
+        <div class="footer-logo">
+          <img src="https://raw.githubusercontent.com/snkguideup/assets/main/Frame%2011.svg" alt="SNK Logo">
+          <span>SNK <small>Ai Academy</small></span>
+        </div>
+        <p>অনলাইন লাইভ স্কিল ডেভেলপমেন্ট প্ল্যাটফর্ম।</p>
+
+        <h4>ডাউনলোড করুন SNK অ্যাপ</h4>
+        <div class="footer-app-icons">
+          <span class="footer-app-icon">📱</span>
+          <span class="footer-app-icon">🍏</span>
+          <span class="footer-app-icon">🖥️</span>
+        </div>
+
+        <h4>কমিউনিটির সাথে কানেক্টেড থাকতে</h4>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook">📘</a>
+          <a href="#" aria-label="Instagram">📷</a>
+          <a href="#" aria-label="YouTube">▶️</a>
+          <a href="#" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>কুইক লিংক</h4>
+        <ul>
+          <li><a href="#">আপকামিং লাইভ ব্যাচ</a></li>
+          <li><a href="#">ফ্রি কোর্সসমূহ</a></li>
+          <li><a href="#">লাইভ ওয়ার্কশপ</a></li>
+          <li><a href="#">AI Academy</a></li>
+          <li><a href="#">ইন্সট্রাক্টর হিসেবে জয়েন করুন</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>যোগাযোগ</h4>
+        <ul class="footer-contact">
+          <li>✉️ support@snkacademy.com</li>
+          <li>📍 ঢাকা, বাংলাদেশ</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>কোম্পানি</h4>
+        <ul>
+          <li><a href="about.html">আমাদের সম্পর্কে</a></li>
+          <li><a href="#">রিফান্ড পলিসি</a></li>
+          <li><a href="#">প্রাইভেসি পলিসি</a></li>
+          <li><a href="#">টার্মস এন্ড কন্ডিশন</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 SNK Ai Academy. সর্বস্বত্ব সংরক্ষিত।</p>
+    </div>
+  </footer>
+
+  <!-- ============ উষা AI চ্যাটবট ============ -->
+  <div class="usha-widget">
+    <div class="usha-panel" id="ushaPanel">
+      <div class="usha-header">
+        <div class="usha-avatar">🤖</div>
+        <div>
+          <div class="usha-name">উষা</div>
+          <div class="usha-status">অনলাইন আছে</div>
+        </div>
+        <button id="ushaClose" class="usha-close" type="button">✕</button>
+      </div>
+      <div class="usha-messages" id="ushaMessages">
+        <div class="usha-msg bot">হ্যালো! 👋 আমি উষা, SNK Ai Academy এর AI সহকারী। আপনাকে কীভাবে সাহায্য করতে পারি?</div>
+      </div>
+      <form class="usha-input-row" id="ushaForm">
+        <input type="text" id="ushaInput" placeholder="আপনার প্রশ্ন লিখুন..." autocomplete="off">
+        <button type="submit" class="usha-send">➤</button>
+      </form>
+    </div>
+    <button class="usha-fab" id="ushaFab" type="button">
+      <span class="usha-fab-icon">💬</span>
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
