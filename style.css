@@ -1447,6 +1447,248 @@ img {
 [data-theme="dark"] .business-left p { color: #d1d5db; }
 
 /* ============================================
+   APP ডাউনলোড
+   ============================================ */
+.app-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 32px 70px;
+}
+
+.app-card {
+  background: linear-gradient(120deg, #064e3b 0%, #059669 100%);
+  border-radius: 28px;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.app-visual {
+  flex-shrink: 0;
+}
+
+.app-phone-mock {
+  width: 200px;
+  height: 260px;
+  background: #0b1220;
+  border-radius: 26px;
+  padding: 10px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.phone-notch {
+  width: 60px;
+  height: 6px;
+  background: #1f2937;
+  border-radius: 999px;
+  margin: 0 auto 10px;
+}
+
+.phone-screen {
+  background: linear-gradient(160deg, #14213d 0%, #1b1b1b 100%);
+  border-radius: 18px;
+  height: calc(100% - 20px);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.phone-badge {
+  background: #ffc72c;
+  color: #111827;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  width: fit-content;
+  margin-bottom: 12px;
+}
+
+.phone-big-text {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.app-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.app-text h2 {
+  color: #ffffff;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.app-text p {
+  color: #d1fae5;
+  font-size: 14px;
+  margin-bottom: 22px;
+}
+
+.app-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.app-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 12px 18px;
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+
+.app-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================
+   ফুটার
+   ============================================ */
+.footer {
+  background: #fffdf5;
+  border-top: 1px solid #f3ead0;
+  padding: 50px 32px 0;
+}
+
+.footer-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 32px;
+  padding-bottom: 40px;
+}
+
+.footer-col h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 16px;
+  margin-top: 22px;
+}
+
+.footer-col ul li {
+  margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+  font-size: 14px;
+  color: #4b5563;
+  transition: color 0.15s;
+}
+
+.footer-col ul li a:hover {
+  color: #d97706;
+}
+
+.footer-contact li {
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.footer-logo img {
+  height: 32px;
+  width: auto;
+}
+
+.footer-logo span {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.footer-logo small {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.footer-brand > p {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+
+.footer-app-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-app-icon {
+  height: 38px;
+  width: 38px;
+  background: #111827;
+  color: #ffffff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-social a {
+  height: 36px;
+  width: 36px;
+  background: #f3f4f6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  transition: background 0.15s, transform 0.15s;
+}
+
+.footer-social a:hover {
+  background: #ffe9a8;
+  transform: translateY(-2px);
+}
+
+.footer-bottom {
+  border-top: 1px solid #f3ead0;
+  padding: 18px 0;
+  text-align: center;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .footer { background: #0b1220; border-top-color: #1f2937; }
+[data-theme="dark"] .footer-col h4 { color: #f3f4f6; }
+[data-theme="dark"] .footer-col ul li a { color: #9ca3af; }
+[data-theme="dark"] .footer-logo span { color: #f3f4f6; }
+[data-theme="dark"] .footer-brand > p { color: #9ca3af; }
+[data-theme="dark"] .footer-contact li { color: #9ca3af; }
+[data-theme="dark"] .footer-social a { background: #1f2937; }
+[data-theme="dark"] .footer-bottom { border-top-color: #1f2937; }
+
+/* ============================================
    RESPONSIVE — মোবাইল/ট্যাবলেট
    ============================================ */
 @media (max-width: 1100px) {
@@ -1473,6 +1715,16 @@ img {
   }
   .business-card {
     flex-direction: column;
+  }
+  .app-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .app-btns {
+    justify-content: center;
+  }
+  .footer-wrapper {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -1545,5 +1797,18 @@ img {
   }
   .business-left h2 {
     font-size: 24px;
+  }
+  .app-card {
+    padding: 28px;
+  }
+  .app-phone-mock {
+    width: 160px;
+    height: 210px;
+  }
+  .footer-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .footer {
+    padding: 40px 16px 0;
   }
 }
