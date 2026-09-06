@@ -1999,6 +1999,173 @@ img {
 [data-theme="dark"] .enroll-includes-list li { color: #d1d5db; }
 
 /* ============================================
+   পেমেন্ট সেকশন
+   ============================================ */
+.payment-section {
+  margin-top: 50px;
+  padding-top: 40px;
+  border-top: 1px solid #eef0f2;
+}
+
+.payment-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 24px;
+}
+
+.payment-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.payment-summary,
+.payment-methods {
+  background: #ffffff;
+  border: 1px solid #eef0f2;
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.payment-course-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eef0f2;
+}
+
+.payment-course-thumb {
+  height: 56px;
+  width: 56px;
+  min-width: 56px;
+  background: #14213d;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+}
+
+.payment-course-info strong {
+  font-size: 14px;
+  color: #111827;
+  line-height: 1.4;
+}
+
+.payment-details-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #6b7280;
+  margin-bottom: 14px;
+}
+
+.payment-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #374151;
+  margin-bottom: 12px;
+}
+
+.payment-row.discount {
+  color: #16a34a;
+}
+
+.payment-row.total {
+  font-size: 16px;
+  font-weight: 800;
+  color: #111827;
+  padding-top: 14px;
+  border-top: 1px solid #eef0f2;
+  margin-top: 6px;
+}
+
+.payment-call {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 18px;
+}
+
+.payment-methods h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+.payment-method-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.payment-method-option:has(input:checked),
+.payment-method-option.active {
+  border-color: #e2136e;
+  background: #fdf2f8;
+}
+
+.method-logo {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.method-bkash {
+  color: #e2136e;
+}
+
+.payment-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #374151;
+  margin: 20px 0 16px;
+  padding-top: 16px;
+  border-top: 1px solid #eef0f2;
+}
+
+.payment-total-row strong {
+  font-size: 18px;
+  color: #111827;
+}
+
+.payment-submit-btn {
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.payment-secure {
+  text-align: center;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .payment-section { border-top-color: #1f2937; }
+[data-theme="dark"] .payment-title { color: #f9fafb; }
+[data-theme="dark"] .payment-summary,
+[data-theme="dark"] .payment-methods { background: #0f172a; border-color: #1f2937; }
+[data-theme="dark"] .payment-row { color: #d1d5db; }
+[data-theme="dark"] .payment-row.total { color: #f9fafb; border-top-color: #1f2937; }
+[data-theme="dark"] .payment-methods h3 { color: #f3f4f6; }
+[data-theme="dark"] .method-logo { color: #e5e7eb; }
+[data-theme="dark"] .payment-method-option { border-color: #374151; }
+[data-theme="dark"] .payment-total-row { color: #d1d5db; border-top-color: #1f2937; }
+[data-theme="dark"] .payment-total-row strong { color: #f9fafb; }
+
+/* ============================================
    RESPONSIVE — মোবাইল/ট্যাবলেট
    ============================================ */
 @media (max-width: 1100px) {
@@ -2041,6 +2208,9 @@ img {
   }
   .admission-right {
     position: static;
+  }
+  .payment-grid {
+    grid-template-columns: 1fr;
   }
 }
 
