@@ -1689,6 +1689,316 @@ img {
 [data-theme="dark"] .footer-bottom { border-top-color: #1f2937; }
 
 /* ============================================
+   ADMISSION / কোর্স ডিটেইলস পেজ
+   ============================================ */
+.admission-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.admission-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* --- বাম পাশ --- */
+.course-badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.course-pill {
+  background: #f3f4f6;
+  color: #1f2937;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+.course-rating {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.admission-title {
+  font-size: 30px;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.35;
+  margin-bottom: 16px;
+}
+
+.admission-desc {
+  font-size: 15px;
+  color: #374151;
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.price-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.price-old {
+  font-size: 15px;
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+
+.price-new {
+  font-size: 22px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.batch-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  background: #f9fafb;
+  border: 1px solid #eef0f2;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 32px;
+}
+
+.batch-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.batch-info-icon {
+  font-size: 18px;
+}
+
+.batch-info-item strong {
+  display: block;
+  font-size: 13px;
+  color: #111827;
+  margin-bottom: 2px;
+}
+
+.batch-info-item small {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.admission-subheading {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+.admission-call {
+  font-size: 14px;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+/* --- ডান পাশ --- */
+.admission-right {
+  position: sticky;
+  top: 90px;
+}
+
+.demo-video-card {
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.demo-video-thumb {
+  background: linear-gradient(135deg, #14213d 0%, #1b1b1b 100%);
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 20px;
+  text-align: center;
+}
+
+.play-btn {
+  height: 56px;
+  width: 56px;
+  border-radius: 50%;
+  background: #ffc72c;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.play-btn:hover {
+  transform: scale(1.08);
+}
+
+.demo-video-thumb p {
+  color: #e5e7eb;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.enroll-box {
+  background: #ffffff;
+  border: 1px solid #eef0f2;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  padding: 22px;
+  margin-bottom: 20px;
+}
+
+.enroll-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.enroll-tab {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.enroll-tab.active {
+  background: #14213d;
+  border-color: #14213d;
+  color: #ffffff;
+}
+
+.enroll-price-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.enroll-btn {
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.enroll-countdown {
+  text-align: center;
+  font-size: 12px;
+  color: #b91c1c;
+  background: #fee2e2;
+  padding: 8px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.enroll-includes-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+.enroll-includes-list {
+  margin-bottom: 20px;
+}
+
+.enroll-includes-list li {
+  font-size: 13px;
+  color: #374151;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.enroll-contact-btns {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-whatsapp,
+.btn-call {
+  flex: 1;
+  text-align: center;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.btn-whatsapp {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.btn-call {
+  background: #14213d;
+  color: #ffffff;
+}
+
+.counselor-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.counselor-avatar {
+  font-size: 28px;
+  height: 46px;
+  width: 46px;
+  min-width: 46px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.counselor-card strong {
+  display: block;
+  font-size: 13px;
+  color: #111827;
+  margin-bottom: 2px;
+}
+
+.counselor-card small {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+[data-theme="dark"] .admission-title { color: #f9fafb; }
+[data-theme="dark"] .admission-desc { color: #d1d5db; }
+[data-theme="dark"] .admission-subheading { color: #f3f4f6; }
+[data-theme="dark"] .admission-call { color: #e5e7eb; }
+[data-theme="dark"] .course-pill { background: #1f2937; color: #e5e7eb; }
+[data-theme="dark"] .batch-info-grid { background: #0f172a; border-color: #1f2937; }
+[data-theme="dark"] .batch-info-item strong { color: #f3f4f6; }
+[data-theme="dark"] .enroll-box { background: #0f172a; border-color: #1f2937; }
+[data-theme="dark"] .price-new { color: #f9fafb; }
+[data-theme="dark"] .enroll-includes-list li { color: #d1d5db; }
+
+/* ============================================
    RESPONSIVE — মোবাইল/ট্যাবলেট
    ============================================ */
 @media (max-width: 1100px) {
@@ -1725,6 +2035,12 @@ img {
   }
   .footer-wrapper {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .admission-grid {
+    grid-template-columns: 1fr;
+  }
+  .admission-right {
+    position: static;
   }
 }
 
@@ -1810,5 +2126,14 @@ img {
   }
   .footer {
     padding: 40px 16px 0;
+  }
+  .admission-wrapper {
+    padding: 16px;
+  }
+  .batch-info-grid {
+    grid-template-columns: 1fr;
+  }
+  .admission-title {
+    font-size: 24px;
   }
 }
