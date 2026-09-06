@@ -150,4 +150,15 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  /* ============ পেমেন্ট মেথড সিলেকশন (Admission পেজ) ============ */
+  const paymentOptions = document.querySelectorAll('.payment-method-option');
+  paymentOptions.forEach(function (opt) {
+    opt.addEventListener('click', function () {
+      paymentOptions.forEach(function (o) { o.classList.remove('active'); });
+      opt.classList.add('active');
+      const radio = opt.querySelector('input[type="radio"]');
+      if (radio) radio.checked = true;
+    });
+  });
+
 });
