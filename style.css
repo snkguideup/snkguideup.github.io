@@ -885,6 +885,42 @@ img {
   background: #ffc72c;
 }
 
+/* --- সিজন-১ (ফ্রি) / সিজন-২ (পেইড) বাটন --- */
+.course-season-btns {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-season {
+  flex: 1;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 10px 8px;
+  border-radius: 999px;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-season-free {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.btn-season-free:hover {
+  background: #bbf7d0;
+}
+
+.btn-season-paid {
+  background: #ffc72c;
+  color: #111827;
+}
+
+.btn-season-paid:hover {
+  background: #f5b800;
+}
+
+[data-theme="dark"] .btn-season-free { background: #064e3b; color: #86efac; }
+
 /* --- See All বাটন --- */
 .see-all-row {
   display: flex;
