@@ -1,0 +1,2442 @@
+/* ============================================
+   SNK IT Institute — Global Reset & Base
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Hind Siliguri', sans-serif;
+  color: #111827;
+  background: #ffffff;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ============================================
+   HEADER / NAVBAR
+   ============================================ */
+.header {
+  border-bottom: 1px solid #eef0f2;
+  background: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
+}
+
+.header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 18px 32px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+/* --- লোগো --- */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.logo img {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logo-text {
+  font-size: 21px;
+  font-weight: 700;
+  color: #111827;
+  white-space: nowrap;
+  letter-spacing: -0.3px;
+}
+
+.logo-text span {
+  font-weight: 500;
+  color: #6b7280;
+  font-size: 13px;
+  display: block;
+  margin-top: -3px;
+  letter-spacing: 0.2px;
+}
+
+/* --- সার্চ বার --- */
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f5f6f8;
+  border-radius: 999px;
+  padding: 11px 18px;
+  width: 250px;
+  flex-shrink: 0;
+  border: 1px solid transparent;
+  transition: border-color 0.15s;
+}
+
+.search-box:focus-within {
+  border-color: #ffc72c;
+  background: #ffffff;
+}
+
+.search-box input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: inherit;
+  font-size: 14px;
+  width: 100%;
+  color: #374151;
+}
+
+/* --- মাঝের নেভিগেশন মেনু --- */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  flex: 1;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+  white-space: nowrap;
+  padding: 8px 2px;
+  transition: color 0.15s;
+}
+
+.nav-link:hover {
+  color: #d97706;
+}
+
+/* --- Free Course / Paid Course ড্রপডাউন --- */
+.nav-item-dropdown {
+  position: relative;
+}
+
+.nav-item-dropdown .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ffffff;
+  border: 1px solid #eef0f2;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  padding: 8px;
+  min-width: 160px;
+  z-index: 50;
+}
+
+.nav-item-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+.dropdown-item:hover {
+  background: #f3f4f6;
+  color: #d97706;
+}
+
+/* --- ডান পাশ --- */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.btn-login {
+  background: #ffc72c;
+  color: #111827;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-login:hover {
+  background: #f5b800;
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 28px 32px 60px;
+}
+
+/* --- নতুন ব্যাজ --- */
+.new-badge-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 26px;
+}
+
+.new-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #eef2f6;
+  border-radius: 999px;
+  padding: 8px 8px 8px 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.badge-tag {
+  background: #16a34a;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.badge-emoji {
+  font-size: 15px;
+}
+
+.new-badge .arrow {
+  color: #6b7280;
+  font-size: 16px;
+  margin-left: 2px;
+}
+
+/* --- হিরো কার্ড --- */
+.hero-card {
+  background: linear-gradient(135deg, #eef8f0 0%, #eaf3f6 100%);
+  border-radius: 28px;
+  padding: 48px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.hero-left h1 {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+.hero-left h1 .highlight {
+  color: #e11d48;
+}
+
+.hero-left h1 .dot {
+  font-size: 26px;
+  vertical-align: middle;
+}
+
+.hero-sub {
+  font-size: 16px;
+  color: #4b5563;
+  margin-bottom: 24px;
+}
+
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffc72c;
+  color: #111827;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 14px 26px;
+  border-radius: 999px;
+  margin-bottom: 32px;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-cta:hover {
+  background: #f5b800;
+  transform: translateX(2px);
+}
+
+.grad-line {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 14px;
+}
+
+.partner-logos-card {
+  padding: 0;
+}
+
+.partner-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.p-logo-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4b5563;
+  white-space: nowrap;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  border-radius: 10px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.p-logo-box:hover {
+  border-color: #ffc72c;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* --- ডান পাশ ব্যানার --- */
+.hero-right {
+  flex: 1;
+  min-width: 0;
+}
+
+.banner-card {
+  border-radius: 20px;
+  overflow: hidden;
+  min-height: 320px;
+  display: flex;
+  align-items: stretch;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+/* --- ইন্টারভিউ প্র্যাকটিস ব্যানার --- */
+.interview-banner {
+  margin-top: 20px;
+  background: #14213d;
+  border-radius: 18px;
+  padding: 22px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.interview-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.interview-icon {
+  font-size: 26px;
+  background: rgba(255, 255, 255, 0.08);
+  height: 48px;
+  width: 48px;
+  min-width: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.interview-left h3 {
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.interview-left p {
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.btn-interview {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffc72c;
+  color: #111827;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-interview:hover {
+  background: #f5b800;
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   ভাষা / থিম টগল বাটন
+   ============================================ */
+.icon-btn {
+  height: 38px;
+  width: 38px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  border: none;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1f2937;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.icon-btn:hover {
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0 6px 16px rgba(255, 199, 44, 0.35);
+  background: #ffe9a8;
+}
+
+/* ============================================
+   ডার্ক মোড
+   ============================================ */
+[data-theme="dark"] body { background: #0b1220; color: #e5e7eb; }
+[data-theme="dark"] .header { background: #0f172a; border-bottom-color: #1f2937; }
+[data-theme="dark"] .logo-text { color: #f3f4f6; }
+[data-theme="dark"] .logo-text span { color: #9ca3af; }
+[data-theme="dark"] .nav-link { color: #e5e7eb; }
+[data-theme="dark"] .search-box { background: #1f2937; }
+[data-theme="dark"] .search-box input { color: #e5e7eb; }
+[data-theme="dark"] .icon-btn { background: #1f2937; color: #e5e7eb; }
+[data-theme="dark"] .dropdown-menu { background: #1f2937; border-color: #374151; }
+[data-theme="dark"] .dropdown-item { color: #e5e7eb; }
+[data-theme="dark"] .dropdown-item:hover { background: #111827; }
+[data-theme="dark"] .new-badge { background: #1f2937; color: #e5e7eb; }
+[data-theme="dark"] .hero-card { background: linear-gradient(135deg, #10241f 0%, #0f1e26 100%); }
+[data-theme="dark"] .hero-left h1 { color: #f9fafb; }
+[data-theme="dark"] .hero-sub { color: #cbd5e1; }
+[data-theme="dark"] .grad-line { color: #9ca3af; }
+[data-theme="dark"] .p-logo-box { background: #1f2937; border-color: #374151; color: #d1d5db; }
+
+/* ============================================
+   বাটন/আইকন হোভার এনিমেশন (বাউন্স + গ্লো)
+   ============================================ */
+.btn-cta:hover,
+.btn-login:hover,
+.btn-interview:hover {
+  animation: btn-bounce 0.4s ease;
+  box-shadow: 0 8px 20px rgba(255, 199, 44, 0.45);
+}
+
+@keyframes btn-bounce {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.p-logo-box:hover {
+  animation: btn-bounce 0.35s ease;
+}
+
+/* ============================================
+   উষা AI চ্যাটবট
+   ============================================ */
+.usha-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+}
+
+.usha-fab {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  background: #ffc72c;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: usha-pulse 2.4s infinite;
+  transition: transform 0.2s;
+}
+
+.usha-fab:hover {
+  transform: scale(1.1) rotate(-6deg);
+  animation-play-state: paused;
+}
+
+@keyframes usha-pulse {
+  0%   { box-shadow: 0 8px 24px rgba(255, 199, 44, 0.4), 0 0 0 0 rgba(255, 199, 44, 0.5); }
+  70%  { box-shadow: 0 8px 24px rgba(255, 199, 44, 0.4), 0 0 0 14px rgba(255, 199, 44, 0); }
+  100% { box-shadow: 0 8px 24px rgba(255, 199, 44, 0.4), 0 0 0 0 rgba(255, 199, 44, 0); }
+}
+
+.usha-panel {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  bottom: 76px;
+  right: 0;
+  width: 320px;
+  max-width: 88vw;
+  height: 420px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+}
+
+.usha-widget.open .usha-panel {
+  display: flex;
+}
+
+.usha-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  background: #14213d;
+  color: #ffffff;
+}
+
+.usha-avatar {
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  background: #ffc72c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.usha-name {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.usha-status {
+  font-size: 11px;
+  color: #86efac;
+}
+
+.usha-close {
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.usha-close:hover {
+  opacity: 1;
+}
+
+.usha-messages {
+  flex: 1;
+  padding: 14px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #f9fafb;
+}
+
+.usha-msg {
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.usha-msg.bot {
+  background: #eef2f6;
+  color: #1f2937;
+  border-bottom-left-radius: 4px;
+  align-self: flex-start;
+}
+
+.usha-msg.user {
+  background: #ffc72c;
+  color: #111827;
+  border-bottom-right-radius: 4px;
+  align-self: flex-end;
+}
+
+.usha-input-row {
+  display: flex;
+  border-top: 1px solid #e5e7eb;
+  padding: 10px;
+  gap: 8px;
+}
+
+.usha-input-row input {
+  flex: 1;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  padding: 9px 14px;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+}
+
+.usha-input-row input:focus {
+  border-color: #ffc72c;
+}
+
+.usha-send {
+  height: 38px;
+  width: 38px;
+  border-radius: 50%;
+  border: none;
+  background: #ffc72c;
+  font-size: 14px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.usha-send:hover {
+  animation: btn-bounce 0.35s ease;
+}
+
+[data-theme="dark"] .usha-panel { background: #0f172a; }
+[data-theme="dark"] .usha-messages { background: #0b1220; }
+[data-theme="dark"] .usha-msg.bot { background: #1f2937; color: #e5e7eb; }
+[data-theme="dark"] .usha-input-row { border-top-color: #1f2937; }
+[data-theme="dark"] .usha-input-row input { background: #1f2937; color: #e5e7eb; border-color: #374151; }
+
+/* ============================================
+   UPCOMING COURSES
+   ============================================ */
+.courses-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 32px 70px;
+}
+
+.courses-title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 28px;
+}
+
+.courses-icon {
+  margin-right: 6px;
+}
+
+/* --- ক্যাটাগরি ট্যাব --- */
+.course-tabs-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.tab-arrow {
+  height: 40px;
+  width: 40px;
+  min-width: 40px;
+  border-radius: 50%;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  font-size: 18px;
+  color: #4b5563;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, transform 0.15s;
+}
+
+.tab-arrow:hover {
+  background: #f3f4f6;
+  transform: scale(1.05);
+}
+
+.course-tabs {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex: 1;
+}
+
+.course-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.course-tab {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.course-tab .tab-dot {
+  font-size: 10px;
+  color: #9ca3af;
+}
+
+.course-tab .tab-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.course-tab .tab-text strong {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.course-tab .tab-text small {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.course-tab.active {
+  background: #14213d;
+  border-color: #14213d;
+}
+
+.course-tab.active .tab-dot {
+  color: #ffc72c;
+}
+
+.course-tab.active .tab-text strong {
+  color: #ffffff;
+}
+
+.course-tab.active .tab-text small {
+  color: #9ca3af;
+}
+
+/* --- কোর্স কার্ড গ্রিড --- */
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 36px;
+}
+
+.course-card {
+  border: 1px solid #eef0f2;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #ffffff;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.course-card:hover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+}
+
+.course-thumb {
+  height: 130px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+}
+
+.thumb-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  width: 40px;
+  height: 40px;
+  opacity: 0.35;
+}
+
+.thumb-1 { background: linear-gradient(135deg, #1f2937 0%, #0ea5a5 100%); }
+.thumb-2 { background: linear-gradient(135deg, #b45309 0%, #f59e0b 100%); }
+.thumb-3 { background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 100%); }
+.thumb-4 { background: linear-gradient(135deg, #4c1d95 0%, #db2777 100%); }
+.thumb-5 { background: linear-gradient(135deg, #065f46 0%, #10b981 100%); }
+
+.thumb-text {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.35;
+  padding: 4px;
+}
+
+.course-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 11px;
+  color: #6b7280;
+  margin-bottom: 10px;
+}
+
+.course-badge-left,
+.course-badge-right {
+  position: absolute;
+  bottom: 10px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #1f2937;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.course-badge-left { left: 10px; }
+.course-badge-right { right: 10px; }
+
+.course-body {
+  padding: 16px;
+}
+
+.course-body h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.4;
+  margin-bottom: 14px;
+  min-height: 42px;
+}
+
+.btn-details {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #111827;
+  background: #f3f4f6;
+  padding: 10px 14px;
+  border-radius: 999px;
+  width: 100%;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.btn-details:hover {
+  background: #ffc72c;
+}
+
+/* --- See All বাটন --- */
+.see-all-row {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-see-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #14213d;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 13px 30px;
+  border-radius: 999px;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-see-all:hover {
+  background: #1f2f56;
+  transform: translateY(-1px);
+}
+
+[data-theme="dark"] .courses-title { color: #f9fafb; }
+[data-theme="dark"] .course-tab { background: #1f2937; border-color: #374151; }
+[data-theme="dark"] .course-tab .tab-text strong { color: #e5e7eb; }
+[data-theme="dark"] .tab-arrow { background: #1f2937; border-color: #374151; color: #e5e7eb; }
+[data-theme="dark"] .course-card { background: #0f172a; border-color: #1f2937; }
+[data-theme="dark"] .course-body h4 { color: #f3f4f6; }
+[data-theme="dark"] .btn-details { background: #1f2937; color: #e5e7eb; }
+
+/* ============================================
+   FREE RECORDED COURSE
+   ============================================ */
+.recorded-section-outer {
+  max-width: 1400px;
+  margin: 0 auto 60px;
+  padding: 0 32px;
+}
+
+.recorded-wrapper {
+  background: #14213d;
+  border-radius: 24px;
+  padding: 32px;
+}
+
+.recorded-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+.recorded-icon {
+  margin-right: 6px;
+}
+
+.tab-arrow-dark {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+.tab-arrow-dark:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.recorded-tab {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #e5e7eb;
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.recorded-tab.active {
+  background: #ffc72c;
+  border-color: #ffc72c;
+  color: #111827;
+}
+
+/* --- রেকর্ডেড কোর্স গ্রিড --- */
+.recorded-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 28px 0 24px;
+}
+
+.recorded-card {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.recorded-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+.recorded-thumb {
+  height: 110px;
+  position: relative;
+}
+
+.recorded-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.recorded-body {
+  padding: 14px;
+}
+
+.recorded-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 11px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.recorded-body h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.recorded-date {
+  font-size: 12px;
+  color: #4b5563;
+  margin-bottom: 12px;
+}
+
+/* --- See All (হালকা/আউটলাইন ভার্সন) --- */
+.btn-see-all-light {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+.btn-see-all-light:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* --- ডেমো ব্যানার --- */
+.demo-banner {
+  margin-top: 24px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.demo-icon {
+  font-size: 24px;
+  background: rgba(255, 199, 44, 0.15);
+  height: 46px;
+  width: 46px;
+  min-width: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.demo-banner h3 {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.demo-banner p {
+  color: #9ca3af;
+  font-size: 13px;
+}
+
+/* ============================================
+   কি কি পাচ্ছেন লাইভ কোর্স
+   ============================================ */
+.features-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 32px 70px;
+}
+
+.features-title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 28px;
+}
+
+.features-card {
+  background: #ffffff;
+  border: 1px solid #eef0f2;
+  border-radius: 24px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  padding: 40px;
+  margin-bottom: 32px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px 32px;
+}
+
+.feature-item {
+  text-align: center;
+}
+
+.feature-icon {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.feature-item p {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+  line-height: 1.5;
+}
+
+/* --- স্ট্যাটস কাউন্টার --- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.stat-card {
+  border-radius: 18px;
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.stat-card h3 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+.stat-card p {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.stat-green { background: #dcfce7; }
+.stat-blue { background: #dbeafe; }
+.stat-peach { background: #fde3d8; }
+.stat-yellow { background: #fef3c7; }
+
+[data-theme="dark"] .features-title { color: #f9fafb; }
+[data-theme="dark"] .features-card { background: #0f172a; border-color: #1f2937; }
+[data-theme="dark"] .feature-item p { color: #e5e7eb; }
+[data-theme="dark"] .stat-card h3 { color: #111827; }
+
+/* ============================================
+   টেস্টিমোনিয়াল
+   ============================================ */
+.testimonial-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 32px 70px;
+}
+
+.testimonial-title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.testimonial-sub {
+  text-align: center;
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 32px;
+}
+
+.testimonial-grid {
+  column-count: 3;
+  column-gap: 20px;
+}
+
+.testimonial-card {
+  background: #ffffff;
+  border: 1px solid #eef0f2;
+  border-radius: 16px;
+  padding: 22px;
+  margin-bottom: 20px;
+  break-inside: avoid;
+  position: relative;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.testimonial-card:hover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.quote-icon {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 26px;
+  color: #ffc72c;
+  font-style: normal;
+}
+
+.testimonial-card p {
+  font-size: 14px;
+  color: #374151;
+  line-height: 1.7;
+  margin-bottom: 18px;
+  padding-right: 20px;
+}
+
+.testimonial-person {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  height: 40px;
+  width: 40px;
+  min-width: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.avatar-1 { background: #f97316; }
+.avatar-2 { background: #0ea5a5; }
+.avatar-3 { background: #8b5cf6; }
+.avatar-4 { background: #14213d; }
+.avatar-5 { background: #e11d48; }
+.avatar-6 { background: #16a34a; }
+
+.testimonial-person strong {
+  display: block;
+  font-size: 14px;
+  color: #111827;
+}
+
+.testimonial-person small {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .testimonial-title { color: #f9fafb; }
+[data-theme="dark"] .testimonial-card { background: #0f172a; border-color: #1f2937; }
+[data-theme="dark"] .testimonial-card p { color: #d1d5db; }
+[data-theme="dark"] .testimonial-person strong { color: #f3f4f6; }
+
+/* ============================================
+   SNK FOR BUSINESS
+   ============================================ */
+.business-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 32px 70px;
+}
+
+.business-card {
+  background: linear-gradient(120deg, #f0fdf4 0%, #dcfce7 60%, #bbf7d0 100%);
+  border-radius: 28px;
+  padding: 48px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  overflow: hidden;
+}
+
+.business-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.business-left h2 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 14px;
+}
+
+.business-left p {
+  font-size: 15px;
+  color: #374151;
+  line-height: 1.7;
+  margin-bottom: 26px;
+  max-width: 480px;
+}
+
+.business-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn-business-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #14213d;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 13px 22px;
+  border-radius: 999px;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-business-primary:hover {
+  background: #1f2f56;
+  transform: translateY(-1px);
+}
+
+.btn-business-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  color: #111827;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 13px 22px;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  transition: background 0.2s;
+}
+
+.btn-business-outline:hover {
+  background: #f3f4f6;
+}
+
+.business-right {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  min-height: 260px;
+}
+
+.perf-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+}
+
+.perf-card-1 {
+  width: 78%;
+}
+
+.perf-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 14px;
+}
+
+.perf-card-header strong {
+  color: #111827;
+  font-size: 14px;
+}
+
+.perf-tabs .tab-on {
+  color: #16a34a;
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+.bar-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  height: 90px;
+}
+
+.bar-chart .bar {
+  flex: 1;
+  background: linear-gradient(180deg, #86efac 0%, #16a34a 100%);
+  border-radius: 6px 6px 0 0;
+}
+
+.perf-card-2 {
+  width: 62%;
+  margin-top: -20px;
+  margin-left: 10%;
+  position: relative;
+  z-index: 2;
+}
+
+.perf-value {
+  color: #111827;
+  font-size: 15px;
+}
+
+.line-chart {
+  width: 100%;
+  height: 40px;
+  display: block;
+}
+
+.floating-badge {
+  position: absolute;
+  height: 44px;
+  width: 44px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.badge-1 {
+  top: 10%;
+  right: 8%;
+}
+
+.badge-2 {
+  bottom: 8%;
+  right: 4%;
+}
+
+[data-theme="dark"] .business-card { background: linear-gradient(120deg, #0f2418 0%, #10241a 60%, #0d2a1c 100%); }
+[data-theme="dark"] .business-left h2 { color: #f9fafb; }
+[data-theme="dark"] .business-left p { color: #d1d5db; }
+
+/* ============================================
+   APP ডাউনলোড
+   ============================================ */
+.app-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 32px 70px;
+}
+
+.app-card {
+  background: linear-gradient(120deg, #064e3b 0%, #059669 100%);
+  border-radius: 28px;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.app-visual {
+  flex-shrink: 0;
+}
+
+.app-phone-mock {
+  width: 200px;
+  height: 260px;
+  background: #0b1220;
+  border-radius: 26px;
+  padding: 10px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.phone-notch {
+  width: 60px;
+  height: 6px;
+  background: #1f2937;
+  border-radius: 999px;
+  margin: 0 auto 10px;
+}
+
+.phone-screen {
+  background: linear-gradient(160deg, #14213d 0%, #1b1b1b 100%);
+  border-radius: 18px;
+  height: calc(100% - 20px);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.phone-badge {
+  background: #ffc72c;
+  color: #111827;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  width: fit-content;
+  margin-bottom: 12px;
+}
+
+.phone-big-text {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.app-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.app-text h2 {
+  color: #ffffff;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.app-text p {
+  color: #d1fae5;
+  font-size: 14px;
+  margin-bottom: 22px;
+}
+
+.app-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.app-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 12px 18px;
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+
+.app-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================
+   ফুটার
+   ============================================ */
+.footer {
+  background: #fffdf5;
+  border-top: 1px solid #f3ead0;
+  padding: 50px 32px 0;
+}
+
+.footer-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 32px;
+  padding-bottom: 40px;
+}
+
+.footer-col h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 16px;
+  margin-top: 22px;
+}
+
+.footer-col ul li {
+  margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+  font-size: 14px;
+  color: #4b5563;
+  transition: color 0.15s;
+}
+
+.footer-col ul li a:hover {
+  color: #d97706;
+}
+
+.footer-contact li {
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.footer-logo img {
+  height: 32px;
+  width: auto;
+}
+
+.footer-logo span {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.footer-logo small {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.footer-brand > p {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+
+.footer-app-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-app-icon {
+  height: 38px;
+  width: 38px;
+  background: #111827;
+  color: #ffffff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-social a {
+  height: 36px;
+  width: 36px;
+  background: #f3f4f6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  transition: background 0.15s, transform 0.15s;
+}
+
+.footer-social a:hover {
+  background: #ffe9a8;
+  transform: translateY(-2px);
+}
+
+.footer-bottom {
+  border-top: 1px solid #f3ead0;
+  padding: 18px 0;
+  text-align: center;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .footer { background: #0b1220; border-top-color: #1f2937; }
+[data-theme="dark"] .footer-col h4 { color: #f3f4f6; }
+[data-theme="dark"] .footer-col ul li a { color: #9ca3af; }
+[data-theme="dark"] .footer-logo span { color: #f3f4f6; }
+[data-theme="dark"] .footer-brand > p { color: #9ca3af; }
+[data-theme="dark"] .footer-contact li { color: #9ca3af; }
+[data-theme="dark"] .footer-social a { background: #1f2937; }
+[data-theme="dark"] .footer-bottom { border-top-color: #1f2937; }
+
+/* ============================================
+   ADMISSION / কোর্স ডিটেইলস পেজ
+   ============================================ */
+.admission-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.admission-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* --- বাম পাশ --- */
+.course-badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.course-pill {
+  background: #f3f4f6;
+  color: #1f2937;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+.course-rating {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.admission-title {
+  font-size: 30px;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.35;
+  margin-bottom: 16px;
+}
+
+.admission-desc {
+  font-size: 15px;
+  color: #374151;
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.price-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.price-old {
+  font-size: 15px;
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+
+.price-new {
+  font-size: 22px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.batch-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  background: #f9fafb;
+  border: 1px solid #eef0f2;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 32px;
+}
+
+.batch-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.batch-info-icon {
+  font-size: 18px;
+}
+
+.batch-info-item strong {
+  display: block;
+  font-size: 13px;
+  color: #111827;
+  margin-bottom: 2px;
+}
+
+.batch-info-item small {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.admission-subheading {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+.admission-call {
+  font-size: 14px;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+/* --- ডান পাশ --- */
+.admission-right {
+  position: sticky;
+  top: 90px;
+}
+
+.demo-video-card {
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.demo-video-thumb {
+  background: linear-gradient(135deg, #14213d 0%, #1b1b1b 100%);
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 20px;
+  text-align: center;
+}
+
+.play-btn {
+  height: 56px;
+  width: 56px;
+  border-radius: 50%;
+  background: #ffc72c;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.play-btn:hover {
+  transform: scale(1.08);
+}
+
+.demo-video-thumb p {
+  color: #e5e7eb;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.enroll-box {
+  background: #ffffff;
+  border: 1px solid #eef0f2;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  padding: 22px;
+  margin-bottom: 20px;
+}
+
+.enroll-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.enroll-tab {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.enroll-tab.active {
+  background: #14213d;
+  border-color: #14213d;
+  color: #ffffff;
+}
+
+.enroll-price-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.enroll-btn {
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.enroll-countdown {
+  text-align: center;
+  font-size: 12px;
+  color: #b91c1c;
+  background: #fee2e2;
+  padding: 8px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.enroll-includes-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+.enroll-includes-list {
+  margin-bottom: 20px;
+}
+
+.enroll-includes-list li {
+  font-size: 13px;
+  color: #374151;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.enroll-contact-btns {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-whatsapp,
+.btn-call {
+  flex: 1;
+  text-align: center;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.btn-whatsapp {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.btn-call {
+  background: #14213d;
+  color: #ffffff;
+}
+
+.counselor-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.counselor-avatar {
+  font-size: 28px;
+  height: 46px;
+  width: 46px;
+  min-width: 46px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.counselor-card strong {
+  display: block;
+  font-size: 13px;
+  color: #111827;
+  margin-bottom: 2px;
+}
+
+.counselor-card small {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+[data-theme="dark"] .admission-title { color: #f9fafb; }
+[data-theme="dark"] .admission-desc { color: #d1d5db; }
+[data-theme="dark"] .admission-subheading { color: #f3f4f6; }
+[data-theme="dark"] .admission-call { color: #e5e7eb; }
+[data-theme="dark"] .course-pill { background: #1f2937; color: #e5e7eb; }
+[data-theme="dark"] .batch-info-grid { background: #0f172a; border-color: #1f2937; }
+[data-theme="dark"] .batch-info-item strong { color: #f3f4f6; }
+[data-theme="dark"] .enroll-box { background: #0f172a; border-color: #1f2937; }
+[data-theme="dark"] .price-new { color: #f9fafb; }
+[data-theme="dark"] .enroll-includes-list li { color: #d1d5db; }
+
+/* ============================================
+   পেমেন্ট সেকশন
+   ============================================ */
+.payment-section {
+  margin-top: 50px;
+  padding-top: 40px;
+  border-top: 1px solid #eef0f2;
+}
+
+.payment-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 24px;
+}
+
+.payment-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.payment-summary,
+.payment-methods {
+  background: #ffffff;
+  border: 1px solid #eef0f2;
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.payment-course-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eef0f2;
+}
+
+.payment-course-thumb {
+  height: 56px;
+  width: 56px;
+  min-width: 56px;
+  background: #14213d;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+}
+
+.payment-course-info strong {
+  font-size: 14px;
+  color: #111827;
+  line-height: 1.4;
+}
+
+.payment-details-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #6b7280;
+  margin-bottom: 14px;
+}
+
+.payment-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #374151;
+  margin-bottom: 12px;
+}
+
+.payment-row.discount {
+  color: #16a34a;
+}
+
+.payment-row.total {
+  font-size: 16px;
+  font-weight: 800;
+  color: #111827;
+  padding-top: 14px;
+  border-top: 1px solid #eef0f2;
+  margin-top: 6px;
+}
+
+.payment-call {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 18px;
+}
+
+.payment-methods h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+.payment-method-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.payment-method-option:has(input:checked),
+.payment-method-option.active {
+  border-color: #e2136e;
+  background: #fdf2f8;
+}
+
+.method-logo {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.method-bkash {
+  color: #e2136e;
+}
+
+.payment-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #374151;
+  margin: 20px 0 16px;
+  padding-top: 16px;
+  border-top: 1px solid #eef0f2;
+}
+
+.payment-total-row strong {
+  font-size: 18px;
+  color: #111827;
+}
+
+.payment-submit-btn {
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.payment-secure {
+  text-align: center;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .payment-section { border-top-color: #1f2937; }
+[data-theme="dark"] .payment-title { color: #f9fafb; }
+[data-theme="dark"] .payment-summary,
+[data-theme="dark"] .payment-methods { background: #0f172a; border-color: #1f2937; }
+[data-theme="dark"] .payment-row { color: #d1d5db; }
+[data-theme="dark"] .payment-row.total { color: #f9fafb; border-top-color: #1f2937; }
+[data-theme="dark"] .payment-methods h3 { color: #f3f4f6; }
+[data-theme="dark"] .method-logo { color: #e5e7eb; }
+[data-theme="dark"] .payment-method-option { border-color: #374151; }
+[data-theme="dark"] .payment-total-row { color: #d1d5db; border-top-color: #1f2937; }
+[data-theme="dark"] .payment-total-row strong { color: #f9fafb; }
+
+/* ============================================
+   FREE COURSE (Academy) পেজ
+   ============================================ */
+.freecourse-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.freecourse-card {
+  background: #ffffff;
+  border: 1px solid #eef0f2;
+  border-radius: 24px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  padding: 40px;
+}
+
+.freecourse-title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  color: #14213d;
+  margin-bottom: 6px;
+}
+
+.freecourse-icon {
+  margin-right: 6px;
+}
+
+.freecourse-sub {
+  text-align: center;
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 28px;
+}
+
+.freecourse-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 28px 0 32px;
+}
+
+.freecourse-item {
+  border: 1px solid #eef0f2;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.freecourse-item:hover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+}
+
+.fc-thumb {
+  height: 130px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 12px;
+}
+
+.fc-thumb-1 { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); }
+.fc-thumb-2 { background: linear-gradient(135deg, #065f46 0%, #16a34a 100%); }
+.fc-thumb-3 { background: linear-gradient(135deg, #7f1d1d 0%, #dc2626 100%); }
+.fc-thumb-4 { background: linear-gradient(135deg, #312e81 0%, #6366f1 100%); }
+.fc-thumb-5 { background: linear-gradient(135deg, #1f2937 0%, #4b5563 100%); }
+
+.fc-thumb-text {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.fc-play {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 26px;
+  width: 26px;
+  background: rgba(239, 68, 68, 0.9);
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+}
+
+.fc-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #6b7280;
+  padding: 12px 12px 0;
+}
+
+.freecourse-item h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.4;
+  padding: 8px 12px 14px;
+  min-height: 40px;
+}
+
+.freecourse-item .btn-details {
+  margin: 0 12px 12px;
+  width: calc(100% - 24px);
+}
+
+[data-theme="dark"] .freecourse-card { background: #0f172a; border-color: #1f2937; }
+[data-theme="dark"] .freecourse-title { color: #f9fafb; }
+[data-theme="dark"] .freecourse-item { border-color: #1f2937; }
+[data-theme="dark"] .freecourse-item h4 { color: #f3f4f6; }
+[data-theme="dark"] .fc-meta { color: #9ca3af; }
+
+/* ============================================
+   RESPONSIVE — মোবাইল/ট্যাবলেট
+   ============================================ */
+@media (max-width: 1100px) {
+  .nav-menu {
+    display: none;
+  }
+  .search-box {
+    display: none;
+  }
+  .course-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .recorded-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .freecourse-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .testimonial-grid {
+    column-count: 2;
+  }
+  .business-card {
+    flex-direction: column;
+  }
+  .app-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .app-btns {
+    justify-content: center;
+  }
+  .footer-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .admission-grid {
+    grid-template-columns: 1fr;
+  }
+  .admission-right {
+    position: static;
+  }
+  .payment-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 860px) {
+  .hero-card {
+    flex-direction: column;
+  }
+  .hero-left h1 {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 560px) {
+  .header-inner {
+    padding: 12px 16px;
+  }
+  .logo-text {
+    font-size: 16px;
+  }
+  .hero-wrapper {
+    padding: 20px 16px 40px;
+  }
+  .hero-card {
+    padding: 24px;
+    border-radius: 18px;
+  }
+  .interview-banner {
+    padding: 18px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .btn-interview {
+    width: 100%;
+    justify-content: center;
+  }
+  .course-grid {
+    grid-template-columns: 1fr;
+  }
+  .courses-section {
+    padding: 10px 16px 50px;
+  }
+  .recorded-grid {
+    grid-template-columns: 1fr;
+  }
+  .freecourse-grid {
+    grid-template-columns: 1fr;
+  }
+  .freecourse-wrapper {
+    padding: 16px;
+  }
+  .freecourse-card {
+    padding: 20px;
+  }
+  .recorded-section-outer {
+    padding: 0 16px;
+  }
+  .recorded-wrapper {
+    padding: 20px;
+  }
+  .demo-banner {
+    flex-direction: column;
+    text-align: center;
+  }
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  .features-card {
+    padding: 24px;
+  }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .testimonial-grid {
+    column-count: 1;
+  }
+  .business-card {
+    padding: 28px;
+  }
+  .business-left h2 {
+    font-size: 24px;
+  }
+  .app-card {
+    padding: 28px;
+  }
+  .app-phone-mock {
+    width: 160px;
+    height: 210px;
+  }
+  .footer-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .footer {
+    padding: 40px 16px 0;
+  }
+  .admission-wrapper {
+    padding: 16px;
+  }
+  .batch-info-grid {
+    grid-template-columns: 1fr;
+  }
+  .admission-title {
+    font-size: 24px;
+  }
+}
