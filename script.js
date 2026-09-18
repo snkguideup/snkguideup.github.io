@@ -161,4 +161,50 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  /* ============ Free Course পেজের ট্যাব ============ */
+  const fcTabs = document.querySelectorAll('#fcTabs .course-tab');
+  fcTabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      fcTabs.forEach(function (t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+    });
+  });
+
+  const fcTabsContainer = document.getElementById('fcTabs');
+  const fcTabPrev = document.getElementById('fcTabPrev');
+  const fcTabNext = document.getElementById('fcTabNext');
+  if (fcTabPrev && fcTabsContainer) {
+    fcTabPrev.addEventListener('click', function () {
+      fcTabsContainer.scrollBy({ left: 200, behavior: 'smooth' });
+    });
+  }
+  if (fcTabNext && fcTabsContainer) {
+    fcTabNext.addEventListener('click', function () {
+      fcTabsContainer.scrollBy({ left: 200, behavior: 'smooth' });
+    });
+  }
+
+  /* ============ Paid Course পেজের ট্যাব ============ */
+  const pcTabs = document.querySelectorAll('#pcTabs .course-tab');
+  pcTabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      pcTabs.forEach(function (t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+    });
+  });
+
+  const pcTabsContainer = document.getElementById('pcTabs');
+  const pcTabPrev = document.getElementById('pcTabPrev');
+  const pcTabNext = document.getElementById('pcTabNext');
+  if (pcTabPrev && pcTabsContainer) {
+    pcTabPrev.addEventListener('click', function () {
+      pcTabsContainer.scrollBy({ left: -200, behavior: 'smooth' });
+    });
+  }
+  if (pcTabNext && pcTabsContainer) {
+    pcTabNext.addEventListener('click', function () {
+      pcTabsContainer.scrollBy({ left: 200, behavior: 'smooth' });
+    });
+  }
+
 });
