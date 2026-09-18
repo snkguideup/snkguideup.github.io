@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Course (IT Skill) - SNK Ai Academy</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <!-- ============ HEADER / NAVBAR ============ -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="../" class="logo">
+        <img src="https://raw.githubusercontent.com/snkguideup/assets/main/Frame%2011.svg" alt="SNK IT Institute Logo">
+        <span class="logo-text">SNK <span>Ai Academy</span></span>
+      </a>
+
+      <div class="search-box">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <circle cx="11" cy="11" r="7" stroke="#9CA3AF" stroke-width="2"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <input type="text" id="searchInput" data-bn="কোর্স সার্চ করুন" data-en="Search for course" placeholder="কোর্স সার্চ করুন">
+      </div>
+
+      <nav class="nav-menu">
+        <a href="../" class="nav-link">Home</a>
+        <a href="../admission/" class="nav-link">Admission</a>
+        <div class="nav-item-dropdown">
+          <a href="../free-course-academy/" class="nav-link dropdown">Free Course ⌄</a>
+          <div class="dropdown-menu">
+            <a href="../free-course-academy/" class="dropdown-item">Academy</a>
+            <a href="../free-course-itskill/" class="dropdown-item">IT Skill</a>
+          </div>
+        </div>
+        <div class="nav-item-dropdown">
+          <a href="../paid-course-academy/" class="nav-link dropdown">Paid Course ⌄</a>
+          <div class="dropdown-menu">
+            <a href="../paid-course-academy/" class="dropdown-item">Academy</a>
+            <a href="#" class="dropdown-item">IT Skill</a>
+          </div>
+        </div>
+        <a href="../resource/" class="nav-link">Resource</a>
+        <a href="../blogs/" class="nav-link">Blogs</a>
+        <a href="../contact/" class="nav-link">Contact</a>
+        <a href="../about/" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-right">
+        <button id="langToggle" class="icon-btn" type="button" title="Language">EN</button>
+        <button id="themeToggle" class="icon-btn" type="button" title="Dark/Light">🌙</button>
+        <a href="../login.html" class="btn-login">Login/Signin →</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ ফ্রি ক্র্যাশ কোর্স (Academy) ============ -->
+  <main>
+    <div class="freecourse-wrapper">
+
+      <div class="freecourse-card">
+
+        <h1 class="freecourse-title"><span class="freecourse-icon">▶️</span> রেকর্ডেড ফ্রি ক্র্যাশ কোর্স</h1>
+        <p class="freecourse-sub">পূর্ববর্তী ফ্রি লাইভ কোর্সের রেকর্ডেড ভিডিও</p>
+
+        <!-- ক্যাটাগরি ট্যাব -->
+        <div class="course-tabs-row">
+          <button class="tab-arrow" id="fcTabPrev" type="button">‹</button>
+          <div class="course-tabs" id="fcTabs">
+            <button class="course-tab active" type="button">All</button>
+            <button class="course-tab" type="button">Artificial Intelligence</button>
+            <button class="course-tab" type="button">Web &amp; App Development</button>
+            <button class="course-tab" type="button">Product Management &amp; Design</button>
+            <button class="course-tab" type="button">Business &amp; Marketing</button>
+            <button class="course-tab" type="button">Data Science</button>
+          </div>
+          <button class="tab-arrow" id="fcTabNext" type="button">›</button>
+        </div>
+
+        <!-- কোর্স কার্ড গ্রিড -->
+        <div class="freecourse-grid">
+
+          <div class="freecourse-item">
+            <div class="fc-thumb fc-thumb-1">
+              <span class="fc-play">▶</span>
+              <div class="fc-thumb-text">HTML CSS দিয়ে ওয়েবসাইট বানানো শিখুন</div>
+            </div>
+            <div class="fc-meta">
+              <span>👤 ১২,৫৬৮ লার্নার</span>
+              <span>⚡ ফ্রি ক্র্যাশ কোর্স</span>
+            </div>
+            <h4>HTML CSS দিয়ে ওয়েবসাইট বানানো শিখুন</h4>
+            <a href="#" class="btn-details">▶ দেখুন</a>
+          </div>
+
+          <div class="freecourse-item">
+            <div class="fc-thumb fc-thumb-2">
+              <span class="fc-play">▶</span>
+              <div class="fc-thumb-text">Excel শিখুন, ক্যারিয়ারে জিতুন</div>
+            </div>
+            <div class="fc-meta">
+              <span>👤 ৮,৫৮৮ লার্নার</span>
+              <span>⚡ ফ্রি ক্র্যাশ কোর্স</span>
+            </div>
+            <h4>MS Office দিয়ে অফিস স্কিল শিখুন</h4>
+            <a href="#" class="btn-details">▶ দেখুন</a>
+          </div>
+
+          <div class="freecourse-item">
+            <div class="fc-thumb fc-thumb-3">
+              <span class="fc-play">▶</span>
+              <div class="fc-thumb-text">GIT ও GITHUB বেসিক টু অ্যাডভান্সড</div>
+            </div>
+            <div class="fc-meta">
+              <span>👤 ২,৮০২ লার্নার</span>
+              <span>⚡ ফ্রি ক্র্যাশ কোর্স</span>
+            </div>
+            <h4>Git ও GitHub: Version Control বেসিক টু অ্যাডভান্সড</h4>
+            <a href="#" class="btn-details">▶ দেখুন</a>
+          </div>
+
+          <div class="freecourse-item">
+            <div class="fc-thumb fc-thumb-4">
+              <span class="fc-play">▶</span>
+              <div class="fc-thumb-text">Linux Command Line: বেসিক টু অ্যাডভান্সড</div>
+            </div>
+            <div class="fc-meta">
+              <span>👤 ২,২৮০ লার্নার</span>
+              <span>⚡ ফ্রি ক্র্যাশ কোর্স</span>
+            </div>
+            <h4>Linux Command Line: বেসিক টু অ্যাডভান্সড</h4>
+            <a href="#" class="btn-details">▶ দেখুন</a>
+          </div>
+
+          <div class="freecourse-item">
+            <div class="fc-thumb fc-thumb-5">
+              <span class="fc-play">▶</span>
+              <div class="fc-thumb-text">Networking Fundamentals</div>
+            </div>
+            <div class="fc-meta">
+              <span>👤 ৮০২ লার্নার</span>
+              <span>⚡ ফ্রি ক্র্যাশ কোর্স</span>
+            </div>
+            <h4>Computer Networking Fundamentals: A to Z</h4>
+            <a href="#" class="btn-details">▶ দেখুন</a>
+          </div>
+
+          <div class="freecourse-item">
+            <div class="fc-thumb fc-thumb-1">
+              <span class="fc-play">▶</span>
+              <div class="fc-thumb-text">Python প্রোগ্রামিং শিখুন শূন্য থেকে</div>
+            </div>
+            <div class="fc-meta">
+              <span>👤 ১,৪৭৮ লার্নার</span>
+              <span>⚡ ফ্রি ক্র্যাশ কোর্স</span>
+            </div>
+            <h4>Python প্রোগ্রামিং শিখুন শূন্য থেকে with Claude Code</h4>
+            <a href="#" class="btn-details">▶ দেখুন</a>
+          </div>
+
+          <div class="freecourse-item">
+            <div class="fc-thumb fc-thumb-2">
+              <span class="fc-play">▶</span>
+              <div class="fc-thumb-text">JavaScript প্রোগ্রামিং শিখুন শূন্য থেকে</div>
+            </div>
+            <div class="fc-meta">
+              <span>👤 ১,০০২ লার্নার</span>
+              <span>⚡ ফ্রি ক্র্যাশ কোর্স</span>
+            </div>
+            <h4>JavaScript প্রোগ্রামিং শিখুন শূন্য থেকে with Claude Code</h4>
+            <a href="#" class="btn-details">▶ দেখুন</a>
+          </div>
+
+          <div class="freecourse-item">
+            <div class="fc-thumb fc-thumb-3">
+              <span class="fc-play">▶</span>
+              <div class="fc-thumb-text">Canva দিয়ে গ্রাফিক্স ডিজাইন</div>
+            </div>
+            <div class="fc-meta">
+              <span>👤 ৯২৫ লার্নার</span>
+              <span>⚡ ফ্রি ক্র্যাশ কোর্স</span>
+            </div>
+            <h4>Canva দিয়ে প্রফেশনাল গ্রাফিক্স ডিজাইন</h4>
+            <a href="#" class="btn-details">▶ দেখুন</a>
+          </div>
+
+        </div>
+
+        <div class="see-all-row">
+          <a href="#" class="btn-see-all">সব দেখুন <span class="arrow-icon">→</span></a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ============ ফুটার ============ -->
+  <footer class="footer">
+    <div class="footer-wrapper">
+      <div class="footer-col footer-brand">
+        <div class="footer-logo">
+          <img src="https://raw.githubusercontent.com/snkguideup/assets/main/Frame%2011.svg" alt="SNK Logo">
+          <span>SNK <small>Ai Academy</small></span>
+        </div>
+        <p>অনলাইন লাইভ স্কিল ডেভেলপমেন্ট প্ল্যাটফর্ম।</p>
+        <h4>ডাউনলোড করুন SNK অ্যাপ</h4>
+        <div class="footer-app-icons">
+          <span class="footer-app-icon">📱</span>
+          <span class="footer-app-icon">🍏</span>
+          <span class="footer-app-icon">🖥️</span>
+        </div>
+        <h4>কমিউনিটির সাথে কানেক্টেড থাকতে</h4>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook">📘</a>
+          <a href="#" aria-label="Instagram">📷</a>
+          <a href="#" aria-label="YouTube">▶️</a>
+          <a href="#" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>কুইক লিংক</h4>
+        <ul>
+          <li><a href="#">আপকামিং লাইভ ব্যাচ</a></li>
+          <li><a href="#">ফ্রি কোর্সসমূহ</a></li>
+          <li><a href="#">লাইভ ওয়ার্কশপ</a></li>
+          <li><a href="#">AI Academy</a></li>
+          <li><a href="#">ইন্সট্রাক্টর হিসেবে জয়েন করুন</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>যোগাযোগ</h4>
+        <ul class="footer-contact">
+          <li>✉️ support@snkacademy.com</li>
+          <li>📍 ঢাকা, বাংলাদেশ</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>কোম্পানি</h4>
+        <ul>
+          <li><a href="../about/">আমাদের সম্পর্কে</a></li>
+          <li><a href="#">রিফান্ড পলিসি</a></li>
+          <li><a href="#">প্রাইভেসি পলিসি</a></li>
+          <li><a href="#">টার্মস এন্ড কন্ডিশন</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 SNK Ai Academy. সর্বস্বত্ব সংরক্ষিত।</p>
+    </div>
+  </footer>
+
+  <!-- ============ উষা AI চ্যাটবট ============ -->
+  <div class="usha-widget">
+    <div class="usha-panel" id="ushaPanel">
+      <div class="usha-header">
+        <div class="usha-avatar">🤖</div>
+        <div>
+          <div class="usha-name">উষা</div>
+          <div class="usha-status">অনলাইন আছে</div>
+        </div>
+        <button id="ushaClose" class="usha-close" type="button">✕</button>
+      </div>
+      <div class="usha-messages" id="ushaMessages">
+        <div class="usha-msg bot">হ্যালো! 👋 আমি উষা, SNK Ai Academy এর AI সহকারী। আপনাকে কীভাবে সাহায্য করতে পারি?</div>
+      </div>
+      <form class="usha-input-row" id="ushaForm">
+        <input type="text" id="ushaInput" placeholder="আপনার প্রশ্ন লিখুন..." autocomplete="off">
+        <button type="submit" class="usha-send">➤</button>
+      </form>
+    </div>
+    <button class="usha-fab" id="ushaFab" type="button">
+      <span class="usha-fab-icon">💬</span>
+    </button>
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+</html>
