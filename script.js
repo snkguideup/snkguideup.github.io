@@ -230,4 +230,27 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  /* ============ Blogs পেজের ট্যাব ============ */
+  const blogTabs = document.querySelectorAll('#blogTabs .course-tab');
+  blogTabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      blogTabs.forEach(function (t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+    });
+  });
+
+  const blogTabsContainer = document.getElementById('blogTabs');
+  const blogTabPrev = document.getElementById('blogTabPrev');
+  const blogTabNext = document.getElementById('blogTabNext');
+  if (blogTabPrev && blogTabsContainer) {
+    blogTabPrev.addEventListener('click', function () {
+      blogTabsContainer.scrollBy({ left: -200, behavior: 'smooth' });
+    });
+  }
+  if (blogTabNext && blogTabsContainer) {
+    blogTabNext.addEventListener('click', function () {
+      blogTabsContainer.scrollBy({ left: 200, behavior: 'smooth' });
+    });
+  }
+
 });
