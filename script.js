@@ -207,4 +207,27 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  /* ============ Resource পেজের ট্যাব ============ */
+  const resTabs = document.querySelectorAll('#resTabs .course-tab');
+  resTabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      resTabs.forEach(function (t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+    });
+  });
+
+  const resTabsContainer = document.getElementById('resTabs');
+  const resTabPrev = document.getElementById('resTabPrev');
+  const resTabNext = document.getElementById('resTabNext');
+  if (resTabPrev && resTabsContainer) {
+    resTabPrev.addEventListener('click', function () {
+      resTabsContainer.scrollBy({ left: -200, behavior: 'smooth' });
+    });
+  }
+  if (resTabNext && resTabsContainer) {
+    resTabNext.addEventListener('click', function () {
+      resTabsContainer.scrollBy({ left: 200, behavior: 'smooth' });
+    });
+  }
+
 });
