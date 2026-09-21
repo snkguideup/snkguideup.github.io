@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - SNK Ai Academy</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <!-- ============ HEADER / NAVBAR ============ -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="../" class="logo">
+        <img src="https://raw.githubusercontent.com/snkguideup/assets/main/Frame%2011.svg" alt="SNK IT Institute Logo">
+        <span class="logo-text">SNK <span>Ai Academy</span></span>
+      </a>
+
+      <div class="search-box">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <circle cx="11" cy="11" r="7" stroke="#9CA3AF" stroke-width="2"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <input type="text" id="searchInput" data-bn="কোর্স সার্চ করুন" data-en="Search for course" placeholder="কোর্স সার্চ করুন">
+      </div>
+
+      <nav class="nav-menu">
+        <a href="../" class="nav-link">Home</a>
+        <a href="../admission/" class="nav-link">Admission</a>
+        <div class="nav-item-dropdown">
+          <a href="../free-course-academy/" class="nav-link dropdown">Free Course ⌄</a>
+          <div class="dropdown-menu">
+            <a href="../free-course-academy/" class="dropdown-item">Academy</a>
+            <a href="../free-course-itskill/" class="dropdown-item">IT Skill</a>
+          </div>
+        </div>
+        <div class="nav-item-dropdown">
+          <a href="../paid-course-academy/" class="nav-link dropdown">Paid Course ⌄</a>
+          <div class="dropdown-menu">
+            <a href="../paid-course-academy/" class="dropdown-item">Academy</a>
+            <a href="../paid-course-itskill/" class="dropdown-item">IT Skill</a>
+          </div>
+        </div>
+        <a href="../resource/" class="nav-link">Resource</a>
+        <a href="../blogs/" class="nav-link">Blogs</a>
+        <a href="../contact/" class="nav-link">Contact</a>
+        <a href="../about/" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-right">
+        <button id="langToggle" class="icon-btn" type="button" title="Language">EN</button>
+        <button id="themeToggle" class="icon-btn" type="button" title="Dark/Light">🌙</button>
+        <a href="../login.html" class="btn-login">Login/Signin →</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ যোগাযোগ ============ -->
+  <main>
+    <div class="contact-wrapper">
+
+      <div class="contact-header">
+        <h1 class="contact-title"><span class="contact-icon">📞</span> যোগাযোগ করুন</h1>
+        <p class="contact-sub">কোনো প্রশ্ন আছে? আমাদের টিম আপনাকে সাহায্য করতে প্রস্তুত</p>
+      </div>
+
+      <div class="contact-grid">
+
+        <!-- বাম পাশ: যোগাযোগ ফর্ম -->
+        <div class="contact-form-card">
+          <h2>মেসেজ পাঠান</h2>
+          <form class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>নাম *</label>
+                <input type="text" placeholder="আপনার নাম লিখুন" required>
+              </div>
+              <div class="form-group">
+                <label>ফোন নম্বর *</label>
+                <input type="tel" placeholder="০১XXXXXXXXX" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>ইমেইল *</label>
+              <input type="email" placeholder="you@example.com" required>
+            </div>
+            <div class="form-group">
+              <label>বিষয়</label>
+              <input type="text" placeholder="কোন বিষয়ে যোগাযোগ করছেন?">
+            </div>
+            <div class="form-group">
+              <label>মেসেজ *</label>
+              <textarea rows="5" placeholder="আপনার প্রশ্ন বা মন্তব্য লিখুন..." required></textarea>
+            </div>
+            <button type="submit" class="btn-cta contact-submit-btn">মেসেজ পাঠান <span class="arrow-icon">→</span></button>
+            <p class="contact-form-note">* এই ফর্মটা আপাতত শুধু ডিজাইন — ব্যাকএন্ড যুক্ত হলে সত্যিকারের মেসেজ পাঠানো যাবে</p>
+          </form>
+        </div>
+
+        <!-- ডান পাশ: যোগাযোগ তথ্য -->
+        <div class="contact-info-col">
+
+          <div class="contact-info-card">
+            <span class="contact-info-icon">📍</span>
+            <div>
+              <strong>ঠিকানা</strong>
+              <p>ঢাকা, বাংলাদেশ</p>
+            </div>
+          </div>
+
+          <div class="contact-info-card">
+            <span class="contact-info-icon">✉️</span>
+            <div>
+              <strong>ইমেইল</strong>
+              <p>support@snkacademy.com</p>
+            </div>
+          </div>
+
+          <div class="contact-info-card">
+            <span class="contact-info-icon">📞</span>
+            <div>
+              <strong>ফোন</strong>
+              <p>+8801XXXXXXXXX</p>
+            </div>
+          </div>
+
+          <div class="contact-info-card">
+            <span class="contact-info-icon">🕐</span>
+            <div>
+              <strong>সাপোর্ট সময়</strong>
+              <p>সকাল ১০টা - রাত ১০টা (প্রতিদিন)</p>
+            </div>
+          </div>
+
+          <div class="contact-social-card">
+            <strong>সোশ্যাল মিডিয়ায় ফলো করুন</strong>
+            <div class="footer-social" style="margin-top:12px;">
+              <a href="#" aria-label="Facebook">📘</a>
+              <a href="#" aria-label="Instagram">📷</a>
+              <a href="#" aria-label="YouTube">▶️</a>
+              <a href="#" aria-label="LinkedIn">💼</a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ============ ফুটার ============ -->
+  <footer class="footer">
+    <div class="footer-wrapper">
+      <div class="footer-col footer-brand">
+        <div class="footer-logo">
+          <img src="https://raw.githubusercontent.com/snkguideup/assets/main/Frame%2011.svg" alt="SNK Logo">
+          <span>SNK <small>Ai Academy</small></span>
+        </div>
+        <p>অনলাইন লাইভ স্কিল ডেভেলপমেন্ট প্ল্যাটফর্ম।</p>
+        <h4>ডাউনলোড করুন SNK অ্যাপ</h4>
+        <div class="footer-app-icons">
+          <span class="footer-app-icon">📱</span>
+          <span class="footer-app-icon">🍏</span>
+          <span class="footer-app-icon">🖥️</span>
+        </div>
+        <h4>কমিউনিটির সাথে কানেক্টেড থাকতে</h4>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook">📘</a>
+          <a href="#" aria-label="Instagram">📷</a>
+          <a href="#" aria-label="YouTube">▶️</a>
+          <a href="#" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>কুইক লিংক</h4>
+        <ul>
+          <li><a href="#">আপকামিং লাইভ ব্যাচ</a></li>
+          <li><a href="#">ফ্রি কোর্সসমূহ</a></li>
+          <li><a href="#">লাইভ ওয়ার্কশপ</a></li>
+          <li><a href="#">AI Academy</a></li>
+          <li><a href="#">ইন্সট্রাক্টর হিসেবে জয়েন করুন</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>যোগাযোগ</h4>
+        <ul class="footer-contact">
+          <li>✉️ support@snkacademy.com</li>
+          <li>📍 ঢাকা, বাংলাদেশ</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>কোম্পানি</h4>
+        <ul>
+          <li><a href="../about/">আমাদের সম্পর্কে</a></li>
+          <li><a href="#">রিফান্ড পলিসি</a></li>
+          <li><a href="#">প্রাইভেসি পলিসি</a></li>
+          <li><a href="#">টার্মস এন্ড কন্ডিশন</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 SNK Ai Academy. সর্বস্বত্ব সংরক্ষিত।</p>
+    </div>
+  </footer>
+
+  <!-- ============ উষা AI চ্যাটবট ============ -->
+  <div class="usha-widget">
+    <div class="usha-panel" id="ushaPanel">
+      <div class="usha-header">
+        <div class="usha-avatar">🤖</div>
+        <div>
+          <div class="usha-name">উষা</div>
+          <div class="usha-status">অনলাইন আছে</div>
+        </div>
+        <button id="ushaClose" class="usha-close" type="button">✕</button>
+      </div>
+      <div class="usha-messages" id="ushaMessages">
+        <div class="usha-msg bot">হ্যালো! 👋 আমি উষা, SNK Ai Academy এর AI সহকারী। আপনাকে কীভাবে সাহায্য করতে পারি?</div>
+      </div>
+      <form class="usha-input-row" id="ushaForm">
+        <input type="text" id="ushaInput" placeholder="আপনার প্রশ্ন লিখুন..." autocomplete="off">
+        <button type="submit" class="usha-send">➤</button>
+      </form>
+    </div>
+    <button class="usha-fab" id="ushaFab" type="button">
+      <span class="usha-fab-icon">💬</span>
+    </button>
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+</html>
