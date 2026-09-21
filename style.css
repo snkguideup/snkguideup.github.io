@@ -2730,3 +2730,29 @@ img {
     font-size: 24px;
   }
 }
+
+/* ADMIN PANEL */
+.admin-layout{display:flex;min-height:100vh;background:#f9fafb;}
+.admin-sidebar{width:240px;background:#14213d;color:#fff;display:flex;flex-direction:column;padding:20px;flex-shrink:0;}
+.admin-logo{display:flex;align-items:center;gap:10px;margin-bottom:28px;}
+.admin-logo img{height:32px;}
+.admin-logo span{font-weight:700;}
+.admin-nav{display:flex;flex-direction:column;gap:4px;}
+.admin-nav-item{color:#cbd5e1;padding:10px 12px;border-radius:8px;font-size:14px;font-weight:500;}
+.admin-nav-item:hover,.admin-nav-item.active{background:#1f2f56;color:#fff;}
+.admin-main{flex:1;padding:32px;}
+.admin-topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;}
+.admin-topbar h1{font-size:22px;font-weight:700;}
+.admin-table-card{background:#fff;border:1px solid #eef0f2;border-radius:16px;padding:24px;margin-top:24px;}
+.admin-table-card h2{font-size:16px;font-weight:700;margin-bottom:16px;}
+.admin-table{width:100%;border-collapse:collapse;font-size:14px;}
+.admin-table th{text-align:left;padding:10px;color:#6b7280;border-bottom:1px solid #eef0f2;}
+.admin-table td{padding:10px;border-bottom:1px solid #eef0f2;}
+.badge-paid{background:#fef3c7;color:#92400e;padding:3px 10px;border-radius:999px;font-size:12px;}
+.badge-free{background:#dcfce7;color:#16a34a;padding:3px 10px;border-radius:999px;font-size:12px;}
+.admin-note{font-size:12px;color:#9ca3af;margin-top:12px;}
+[data-theme="dark"] .admin-layout{background:#0b1220;}
+[data-theme="dark"] .admin-table-card{background:#0f172a;border-color:#1f2937;}
+[data-theme="dark"] .admin-topbar h1,[data-theme="dark"] .admin-table-card h2{color:#f3f4f6;}
+[data-theme="dark"] .admin-table td{color:#d1d5db;border-color:#1f2937;}
+@media(max-width:860px){.admin-sidebar{width:70px;}.admin-logo span,.admin-nav-item span{display:none;}}
