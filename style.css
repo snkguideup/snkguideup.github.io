@@ -2287,6 +2287,168 @@ img {
 [data-theme="dark"] .fc-meta { color: #9ca3af; }
 
 /* ============================================
+   CONTACT পেজ
+   ============================================ */
+.contact-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.contact-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.contact-icon {
+  margin-right: 6px;
+}
+
+.contact-sub {
+  font-size: 15px;
+  color: #6b7280;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.contact-form-card {
+  background: #ffffff;
+  border: 1px solid #eef0f2;
+  border-radius: 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  padding: 32px;
+}
+
+.contact-form-card h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 14px;
+  color: #111827;
+  outline: none;
+  transition: border-color 0.15s;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #ffc72c;
+}
+
+.contact-submit-btn {
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.contact-form-note {
+  font-size: 12px;
+  color: #9ca3af;
+  text-align: center;
+}
+
+.contact-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-info-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #ffffff;
+  border: 1px solid #eef0f2;
+  border-radius: 16px;
+  padding: 18px;
+}
+
+.contact-info-icon {
+  font-size: 22px;
+  height: 46px;
+  width: 46px;
+  min-width: 46px;
+  background: #fff7e0;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-info-card strong {
+  display: block;
+  font-size: 14px;
+  color: #111827;
+  margin-bottom: 2px;
+}
+
+.contact-info-card p {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.contact-social-card {
+  background: #14213d;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+}
+
+.contact-social-card strong {
+  color: #ffffff;
+  font-size: 14px;
+}
+
+[data-theme="dark"] .contact-title { color: #f9fafb; }
+[data-theme="dark"] .contact-form-card { background: #0f172a; border-color: #1f2937; }
+[data-theme="dark"] .contact-form-card h2 { color: #f3f4f6; }
+[data-theme="dark"] .form-group label { color: #d1d5db; }
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group textarea { background: #1f2937; border-color: #374151; color: #e5e7eb; }
+[data-theme="dark"] .contact-info-card { background: #0f172a; border-color: #1f2937; }
+[data-theme="dark"] .contact-info-card strong { color: #f3f4f6; }
+
+/* ============================================
    RESPONSIVE — মোবাইল/ট্যাবলেট
    ============================================ */
 @media (max-width: 1100px) {
@@ -2334,6 +2496,12 @@ img {
     position: static;
   }
   .payment-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .form-row {
     grid-template-columns: 1fr;
   }
 }
