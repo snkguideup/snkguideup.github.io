@@ -253,4 +253,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  /* ============ যোগাযোগ ফর্ম (Contact পেজ) ============ */
+  const contactForm = document.querySelector('.contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('ধন্যবাদ! এই ফর্মটা এখনো ব্যাকএন্ডের সাথে যুক্ত করা হয়নি, তাই মেসেজটা সত্যিকারে পাঠানো হয়নি। ভবিষ্যতে এটা যুক্ত করা হবে।');
+    });
+  }
+
 });
