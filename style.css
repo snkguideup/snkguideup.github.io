@@ -2756,3 +2756,14 @@ img {
 [data-theme="dark"] .admin-topbar h1,[data-theme="dark"] .admin-table-card h2{color:#f3f4f6;}
 [data-theme="dark"] .admin-table td{color:#d1d5db;border-color:#1f2937;}
 @media(max-width:860px){.admin-sidebar{width:70px;}.admin-logo span,.admin-nav-item span{display:none;}}
+.role-select{display:flex;gap:10px;margin:16px 0;}
+.role-btn{flex:1;padding:10px;border:1px solid #e5e7eb;border-radius:10px;background:#fff;font-size:13px;font-weight:600;cursor:pointer;}
+.role-btn.active{background:#14213d;color:#fff;border-color:#14213d;}
+.login-page{min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f9fafb;padding:20px;}
+.login-card{background:#fff;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.08);padding:36px;width:400px;max-width:100%;}
+.login-tabs{display:flex;gap:8px;margin-bottom:16px;}
+.login-tab{flex:1;padding:10px;border:1px solid #e5e7eb;border-radius:10px;background:#fff;font-weight:600;cursor:pointer;}
+.login-tab.active{background:#ffc72c;border-color:#ffc72c;}
+.forgot-link{display:block;text-align:right;font-size:12px;color:#6b7280;margin:-8px 0 14px;}
+[data-theme="dark"] .login-page{background:#0b1220;}
+[data-theme="dark"] .login-card{background:#0f172a;}
