@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - SNK Ai Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="login-page">
+  <div class="login-card">
+    <a href="index.html" class="logo" style="justify-content:center;margin-bottom:20px;">
+      <img src="https://raw.githubusercontent.com/snkguideup/snkguideup.github.io/main/logo.svg" alt="Logo">
+      <span class="logo-text">SNK <span>Ai Academy</span></span>
+    </a>
+
+    <div class="login-tabs">
+      <button type="button" class="login-tab active" data-tab="login">Login</button>
+      <button type="button" class="login-tab" data-tab="signup">Signup</button>
+    </div>
+
+    <div class="role-select">
+      <button type="button" class="role-btn active" data-role="user">User</button>
+      <button type="button" class="role-btn" data-role="mentor">Mentor</button>
+      <button type="button" class="role-btn" data-role="admin">Admin</button>
+    </div>
+
+    <form id="loginForm" class="login-form">
+      <div class="form-group"><label>ইমেইল</label><input type="email" required placeholder="you@example.com"></div>
+      <div class="form-group"><label>পাসওয়ার্ড</label><input type="password" required placeholder="••••••••"></div>
+      <a href="#" class="forgot-link">পাসওয়ার্ড ভুলে গেছেন?</a>
+      <button type="submit" class="btn-cta" style="width:100%;justify-content:center;">লগইন করুন →</button>
+    </form>
+
+    <form id="signupForm" class="login-form" style="display:none;">
+      <div class="form-group"><label>নাম</label><input type="text" required placeholder="আপনার নাম"></div>
+      <div class="form-group"><label>ইমেইল</label><input type="email" required placeholder="you@example.com"></div>
+      <div class="form-group"><label>পাসওয়ার্ড</label><input type="password" required placeholder="••••••••"></div>
+      <button type="submit" class="btn-cta" style="width:100%;justify-content:center;">সাইনআপ করুন →</button>
+    </form>
+
+    <div class="login-social">
+      <button type="button" class="app-btn" style="width:100%;color:#111827;border-color:#e5e7eb;">🔵 Google দিয়ে লগইন</button>
+      <button type="button" class="app-btn" style="width:100%;color:#111827;border-color:#e5e7eb;margin-top:10px;">📘 Facebook দিয়ে লগইন</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+let role = 'user';
+document.querySelectorAll('.role-btn').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.role-btn').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active'); role=b.dataset.role;
+}));
+document.querySelectorAll('.login-tab').forEach(t=>t.addEventListener('click',()=>{
+  document.querySelectorAll('.login-tab').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+  document.getElementById('loginForm').style.display = t.dataset.tab==='login' ? 'block':'none';
+  document.getElementById('signupForm').style.display = t.dataset.tab==='signup' ? 'block':'none';
+}));
+document.getElementById('loginForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  window.location.href = role + '/';
+});
+document.getElementById('signupForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  alert('ধন্যবাদ! ব্যাকএন্ড এখনো যুক্ত হয়নি, তাই সাইনআপ এখনো কাজ করবে না।');
+});
+</script>
+</body>
+</html>

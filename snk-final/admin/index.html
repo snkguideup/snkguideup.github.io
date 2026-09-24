@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel - SNK Ai Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="admin-sidebar">
+    <div class="admin-logo">
+      <img src="https://raw.githubusercontent.com/snkguideup/snkguideup.github.io/main/logo.svg" alt="Logo">
+      <span>SNK Admin</span>
+    </div>
+    <nav class="admin-nav">
+      <a href="#" class="admin-nav-item active">📊 ড্যাশবোর্ড</a>
+      <a href="#" class="admin-nav-item">📚 কোর্স ম্যানেজমেন্ট</a>
+      <a href="#" class="admin-nav-item">🎓 স্টুডেন্ট</a>
+      <a href="#" class="admin-nav-item">👨‍🏫 মেন্টর</a>
+      <a href="#" class="admin-nav-item">📝 ব্লগ/পোস্ট</a>
+      <a href="#" class="admin-nav-item">📁 রিসোর্স</a>
+      <a href="#" class="admin-nav-item">💳 পেমেন্ট</a>
+      <a href="#" class="admin-nav-item">🤝 পার্টনার লোগো</a>
+      <a href="#" class="admin-nav-item">⚙️ সেটিংস</a>
+    </nav>
+    <a href="../" class="admin-nav-item" style="margin-top:auto;">← সাইটে ফিরে যান</a>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <h1>হ্যালো, Admin 👋</h1>
+      <a href="#" class="btn-login">Logout →</a>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card stat-green"><h3>১,২৪০</h3><p>মোট স্টুডেন্ট</p></div>
+      <div class="stat-card stat-blue"><h3>৩৮</h3><p>মোট কোর্স</p></div>
+      <div class="stat-card stat-peach"><h3>১২</h3><p>মোট মেন্টর</p></div>
+      <div class="stat-card stat-yellow"><h3>৳৪,৮৫,০০০</h3><p>এই মাসের আয়</p></div>
+    </div>
+
+    <div class="admin-table-card">
+      <h2>সাম্প্রতিক ভর্তি</h2>
+      <table class="admin-table">
+        <tr><th>নাম</th><th>কোর্স</th><th>তারিখ</th><th>স্ট্যাটাস</th></tr>
+        <tr><td>Rahim Uddin</td><td>MERN Stack</td><td>২২ সেপ্টেম্বর</td><td><span class="badge-paid">পেইড</span></td></tr>
+        <tr><td>Karim Hossain</td><td>Python & Django</td><td>২১ সেপ্টেম্বর</td><td><span class="badge-free">ফ্রি</span></td></tr>
+        <tr><td>Fatema Akter</td><td>UI/UX Design</td><td>২০ সেপ্টেম্বর</td><td><span class="badge-paid">পেইড</span></td></tr>
+      </table>
+      <p class="admin-note">* এটা এখনো UI ডিজাইন — ব্যাকএন্ড যুক্ত হলে আসল ডেটা দেখাবে।</p>
+    </div>
+
+    <div class="admin-table-card">
+      <h2>🤝 পার্টনার লোগো ম্যানেজমেন্ট</h2>
+      <table class="admin-table">
+        <tr><th>লোগো</th><th>নাম</th><th>ওয়েবসাইট</th><th>একশন</th></tr>
+        <tr><td>🏢</td><td>BRAIN STATION</td><td>#</td><td><a href="#" class="btn-details" style="width:auto;padding:6px 14px;">এডিট</a></td></tr>
+        <tr><td>🔧</td><td>TechnoSoft</td><td>#</td><td><a href="#" class="btn-details" style="width:auto;padding:6px 14px;">এডিট</a></td></tr>
+      </table>
+      <a href="#" class="btn-cta" style="margin-top:14px;">+ নতুন পার্টনার লোগো যোগ করুন</a>
+      <p class="admin-note">* এখান থেকে পার্টনার লোগো যোগ/এডিট/ডিলিট করা যাবে — ব্যাকএন্ড যুক্ত হলে হোমপেজে সাথে সাথে আপডেট হবে।</p>
+    </div>
+  </main>
+</div>
+<script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SNK IT Institute - স্কিল শিখো, ক্যারিয়ার গড়ো</title>
+
+  <!-- বাংলা ফন্ট -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- আমাদের নিজের CSS ফাইল -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ HEADER / NAVBAR ============ -->
+  <header class="header">
+    <div class="header-inner">
+
+      <!-- লোগো -->
+      <a href="index.html" class="logo">
+        <img src="https://raw.githubusercontent.com/snkguideup/snkguideup.github.io/main/logo.svg" alt="SNK IT Institute Logo">
+        <span class="logo-text">SNK <span>Ai Academy</span></span>
+      </a>
+
+      <!-- সার্চ বার -->
+      <div class="search-box">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <circle cx="11" cy="11" r="7" stroke="#9CA3AF" stroke-width="2"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <input type="text" id="searchInput" data-bn="কোর্স সার্চ করুন" data-en="Search for course" placeholder="কোর্স সার্চ করুন">
+      </div>
+
+      <!-- মাঝের মেনু -->
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="admission/" class="nav-link">Admission</a>
+
+        <!-- Free Course ড্রপডাউন -->
+        <div class="nav-item-dropdown">
+          <a href="free-course-academy/" class="nav-link dropdown">Free Course ⌄</a>
+          <div class="dropdown-menu">
+            <a href="free-course-academy/" class="dropdown-item">Academy</a>
+            <a href="free-course-itskill/" class="dropdown-item">IT Skill</a>
+          </div>
+        </div>
+
+        <!-- Paid Course ড্রপডাউন -->
+        <div class="nav-item-dropdown">
+          <a href="paid-course-academy/" class="nav-link dropdown">Paid Course ⌄</a>
+          <div class="dropdown-menu">
+            <a href="paid-course-academy/" class="dropdown-item">Academy</a>
+            <a href="paid-course-itskill/" class="dropdown-item">IT Skill</a>
+          </div>
+        </div>
+
+        <a href="resource/" class="nav-link">Resource</a>
+        <a href="blogs/" class="nav-link">Blogs</a>
+        <a href="contact/" class="nav-link">Contact</a>
+        <a href="about/" class="nav-link">About</a>
+      </nav>
+
+      <!-- ডান পাশের অংশ -->
+      <div class="header-right">
+        <button id="langToggle" class="icon-btn" type="button" title="Language">EN</button>
+        <button id="themeToggle" class="icon-btn" type="button" title="Dark/Light">🌙</button>
+        <a href="login.html" class="btn-login">Login/Signin →</a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ============ HERO SECTION ============ -->
+  <main>
+    <div class="hero-wrapper">
+
+      <!-- নতুন ব্যাজ -->
+      <div class="new-badge-row">
+        <a href="#" class="new-badge">
+          <span class="badge-tag">নতুন</span>
+          <span class="badge-emoji">🎓</span>
+          যাত্রা শুরু হলো SNK AI Academy&rsquo;র
+          <span class="arrow">›</span>
+        </a>
+      </div>
+
+      <!-- হিরো কার্ড -->
+      <section class="hero-card">
+
+        <!-- বাম পাশ: টেক্সট -->
+        <div class="hero-left">
+          <h1>
+            <span data-bn="বাংলাদেশ শিখবে" data-en="Bangladesh Will Learn">বাংলাদেশ শিখবে</span> <span class="highlight"><span data-bn="লাইভে" data-en="Live">লাইভে</span> <span class="dot">◉</span></span>
+          </h1>
+          <p class="hero-sub" data-bn="স্কিল শেখার মাধ্যমে বদলে ফেলুন নিজের ভবিষ্যৎ" data-en="Change your future through learning new skills">স্কিল শেখার মাধ্যমে বদলে ফেলুন নিজের ভবিষ্যৎ</p>
+
+          <a href="#" class="btn-cta"><span data-bn="শেখা শুরু করুন" data-en="Start Learning">শেখা শুরু করুন</span> <span class="arrow-icon">→</span></a>
+
+          <p class="grad-line" data-bn="১০০০০+ গ্র্যাজুয়েটরা কর্মরত আছেন বিভিন্ন দেশি ও বিদেশি প্রতিষ্ঠানে:" data-en="10,000+ graduates are working at various local & international companies:">১০০০০+ গ্র্যাজুয়েটরা কর্মরত আছেন বিভিন্ন দেশি ও বিদেশি প্রতিষ্ঠানে:</p>
+
+          <div class="partner-logos-card">
+            <div class="partner-logos">
+              <a href="#" target="_blank" rel="noopener" class="p-logo-box">🏢 BRAIN STATION</a>
+              <a href="#" target="_blank" rel="noopener" class="p-logo-box">🔧 TechnoSoft</a>
+              <a href="#" target="_blank" rel="noopener" class="p-logo-box">excel</a>
+              <a href="#" target="_blank" rel="noopener" class="p-logo-box">gtr</a>
+              <a href="#" target="_blank" rel="noopener" class="p-logo-box">ASTHA IT</a>
+              <a href="#" target="_blank" rel="noopener" class="p-logo-box">REVE Systems</a>
+              <a href="#" target="_blank" rel="noopener" class="p-logo-box">Sofol IT</a>
+              <a href="#" target="_blank" rel="noopener" class="p-logo-box">Core Devs</a>
+              <a href="#" target="_blank" rel="noopener" class="p-logo-box">SAYBURGH</a>
+              <a href="#" target="_blank" rel="noopener" class="p-logo-box">Anchor Block</a>
+              <!-- নতুন ব্র্যান্ড এখানে যোগ করুন, এভাবে কপি করে: -->
+              <a href="#" target="_blank" rel="noopener" class="p-logo-box">নতুন ব্র্যান্ড ১</a>
+              <a href="#" target="_blank" rel="noopener" class="p-logo-box">নতুন ব্র্যান্ড ২</a>
+              <a href="#" target="_blank" rel="noopener" class="p-logo-box">নতুন ব্র্যান্ড ৩</a>
+              <a href="#" target="_blank" rel="noopener" class="p-logo-box">নতুন ব্র্যান্ড ৪</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ডান পাশ: ব্যানার -->
+        <div class="hero-right">
+          <div class="banner-card">
+            <img src="https://raw.githubusercontent.com/snkguideup/assets/main/Hero%20image.svg" alt="SNK Ai Academy Hero" class="banner-image">
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ইন্টারভিউ প্র্যাকটিস ব্যানার -->
+      <div class="interview-banner">
+        <div class="interview-left">
+          <span class="interview-icon">📋</span>
+          <div>
+            <h3 data-bn="ইন্টারভিউ প্র্যাকটিসের জন্য" data-en="For Interview Practice">ইন্টারভিউ প্র্যাকটিসের জন্য</h3>
+            <p data-bn="এখনই সাইন আপ করুন এবং ইন্টারভিউ প্র্যাকটিস শুরু করুন।" data-en="Sign up now and start interview practice.">এখনই সাইন আপ করুন এবং ইন্টারভিউ প্র্যাকটিস শুরু করুন।</p>
+          </div>
+        </div>
+        <a href="#" class="btn-interview"><span data-bn="বিস্তারিত দেখুন" data-en="See Details">বিস্তারিত দেখুন</span> <span class="arrow-icon">→</span></a>
+      </div>
+    </div>
+
+    <!-- ফ্রি-রেকর্ডেড কোর্স প্রোমো ব্যানার -->
+    <div class="hero-wrapper" style="padding-top:0; padding-bottom:0;">
+      <div class="interview-banner promo-banner">
+        <div class="interview-left">
+          <span class="interview-icon">👥</span>
+          <div>
+            <h3>যাত্রা শুরু হলো ফ্রি-রেকর্ডেড কোর্সের!</h3>
+            <p>শিক্ষার্থীদের ফ্রি-রেকর্ডেড কোর্স এনরোল করে এগিয়ে যান ক্যারিয়ারে</p>
+          </div>
+        </div>
+        <a href="#" class="btn-interview">বিস্তারিত দেখি <span class="arrow-icon">→</span></a>
+      </div>
+    </div>
+
+    <!-- ============ UPCOMING COURSES ============ -->
+    <section class="courses-section">
+      <div class="courses-wrapper">
+
+        <h2 class="courses-title"><span class="courses-icon">🔴</span> আপকামিং লাইভ কোর্স</h2>
+
+        <!-- ক্যাটাগরি ট্যাব -->
+        <div class="course-tabs-row">
+          <button class="tab-arrow" id="tabPrev" type="button">‹</button>
+          <div class="course-tabs" id="courseTabs">
+            <button class="course-tab" type="button">
+              <span class="tab-dot">✨</span>
+              <span class="tab-text">
+                <strong>Artificial Intelligence</strong>
+                <small>৫ কোর্স</small>
+              </span>
+            </button>
+            <button class="course-tab" type="button">
+              <span class="tab-dot">💻</span>
+              <span class="tab-text">
+                <strong>Web &amp; App Development</strong>
+                <small>৮ কোর্স</small>
+              </span>
+            </button>
+            <button class="course-tab active" type="button">
+              <span class="tab-dot">🎨</span>
+              <span class="tab-text">
+                <strong>Product Management &amp; Design</strong>
+                <small>২ কোর্স</small>
+              </span>
+            </button>
+            <button class="course-tab" type="button">
+              <span class="tab-dot">📈</span>
+              <span class="tab-text">
+                <strong>Business &amp; Marketing</strong>
+                <small>৩ কোর্স</small>
+              </span>
+            </button>
+            <button class="course-tab" type="button">
+              <span class="tab-dot">📊</span>
+              <span class="tab-text">
+                <strong>Data Science</strong>
+                <small>৩ কোর্স</small>
+              </span>
+            </button>
+          </div>
+          <button class="tab-arrow" id="tabNext" type="button">›</button>
+        </div>
+
+        <!-- কোর্স কার্ড গ্রিড -->
+        <div class="course-grid">
+
+          <div class="course-card">
+            <div class="course-thumb thumb-3">
+              <div class="thumb-text">AI-Powered<br>UI/UX Design:<br>Master Claude,<br>Figma MCP &amp; Daily Automation</div>
+            </div>
+            <div class="course-body">
+              <div class="course-meta">
+                <span>ব্যাচ-৩</span>
+                <span>🪑 ৪৬ সিট বাকি</span>
+                <span>🕐 ৩৬ দিন বাকি</span>
+              </div>
+              <h4>AI-Powered UI/UX Design: Master Claude, Figma MCP &amp; Daily ...</h4>
+              <div class="course-season-btns">
+                <a href="#" class="btn-season btn-season-free">সিজন-১ ফ্রি</a>
+                <a href="#" class="btn-season btn-season-paid">সিজন-২ পেইড</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <div class="course-thumb thumb-5">
+              <div class="thumb-text">UI–UX Design<br>Career Track Program</div>
+            </div>
+            <div class="course-body">
+              <div class="course-meta">
+                <span>ব্যাচ-৬২</span>
+                <span>🪑 ৫ সিট বাকি</span>
+                <span>🕐 ৬ দিন বাকি</span>
+              </div>
+              <h4>AI Driven UI UX Design Career Track Program</h4>
+              <div class="course-season-btns">
+                <a href="#" class="btn-season btn-season-free">সিজন-১ ফ্রি</a>
+                <a href="#" class="btn-season btn-season-paid">সিজন-২ পেইড</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <div class="course-thumb thumb-1">
+              <div class="thumb-text">Full Stack Web<br>Development<br>with AI Tools</div>
+            </div>
+            <div class="course-body">
+              <div class="course-meta">
+                <span>ব্যাচ-১২</span>
+                <span>🪑 ২০ সিট বাকি</span>
+                <span>🕐 ১৫ দিন বাকি</span>
+              </div>
+              <h4>Full Stack Web Development with AI Tools</h4>
+              <div class="course-season-btns">
+                <a href="#" class="btn-season btn-season-free">সিজন-১ ফ্রি</a>
+                <a href="#" class="btn-season btn-season-paid">সিজন-২ পেইড</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <div class="course-thumb thumb-4">
+              <div class="thumb-text">Digital Marketing<br>&amp; Growth<br>Hacking 2025</div>
+            </div>
+            <div class="course-body">
+              <div class="course-meta">
+                <span>ব্যাচ-০৭</span>
+                <span>🪑 ৩০ সিট বাকি</span>
+                <span>🕐 ২০ দিন বাকি</span>
+              </div>
+              <h4>Digital Marketing &amp; Growth Hacking 2025</h4>
+              <div class="course-season-btns">
+                <a href="#" class="btn-season btn-season-free">সিজন-১ ফ্রি</a>
+                <a href="#" class="btn-season btn-season-paid">সিজন-২ পেইড</a>
+              </div>
+            </div>
+          </div>
+
+        <div class="see-all-row">
+          <a href="#" class="btn-see-all">সব দেখুন <span class="arrow-icon">→</span></a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ FREE RECORDED COURSE ============ -->
+    <section class="recorded-section-outer">
+      <div class="recorded-wrapper">
+
+        <h2 class="recorded-title"><span class="recorded-icon">🎙️</span> Free Recorded Course</h2>
+
+        <!-- ক্যাটাগরি ট্যাব -->
+        <div class="course-tabs-row">
+          <button class="tab-arrow tab-arrow-dark" id="recTabPrev" type="button">‹</button>
+          <div class="course-tabs recorded-tabs" id="recTabs">
+            <button class="course-tab recorded-tab active" type="button">All</button>
+            <button class="course-tab recorded-tab" type="button">Web and App Development</button>
+            <button class="course-tab recorded-tab" type="button">Web and App Development</button>
+            <button class="course-tab recorded-tab" type="button">Web and App Development</button>
+            <button class="course-tab recorded-tab" type="button">Development</button>
+          </div>
+          <button class="tab-arrow tab-arrow-dark" id="recTabNext" type="button">›</button>
+        </div>
+
+        <!-- কোর্স কার্ড গ্রিড -->
+        <div class="recorded-grid">
+
+          <div class="recorded-card">
+            <div class="recorded-thumb thumb-1">
+              <svg class="thumb-icon" viewBox="0 0 24 24" fill="none" style="opacity:0.4;"><circle cx="12" cy="12" r="9" stroke="white" stroke-width="1.5"/><path d="M10 9l5 3-5 3V9z" fill="white"/></svg>
+              <span class="recorded-badge">🔴 Recorded</span>
+            </div>
+            <div class="recorded-body">
+              <div class="recorded-meta">
+                <span>👤 2016 Learners</span>
+                <span>🎟 Free Courses</span>
+              </div>
+              <h4>Kids Spoken English Batch-01</h4>
+              <p class="recorded-date">📅 Friday, October 14th, 9:00 Pm</p>
+              <a href="#" class="btn-details">LETS SEE THE DETAILS <span class="arrow-icon">→</span></a>
+            </div>
+          </div>
+
+          <div class="recorded-card">
+            <div class="recorded-thumb thumb-2">
+              <svg class="thumb-icon" viewBox="0 0 24 24" fill="none" style="opacity:0.4;"><circle cx="12" cy="12" r="9" stroke="white" stroke-width="1.5"/><path d="M10 9l5 3-5 3V9z" fill="white"/></svg>
+              <span class="recorded-badge">🔴 Recorded</span>
+            </div>
+            <div class="recorded-body">
+              <div class="recorded-meta">
+                <span>👤 2016 Learners</span>
+                <span>🎟 Free Courses</span>
+              </div>
+              <h4>Kids Spoken English Batch-01</h4>
+              <p class="recorded-date">📅 Friday, October 14th, 9:00 Pm</p>
+              <a href="#" class="btn-details">LETS SEE THE DETAILS <span class="arrow-icon">→</span></a>
+            </div>
+          </div>
+
+          <div class="recorded-card">
+            <div class="recorded-thumb thumb-3">
+              <svg class="thumb-icon" viewBox="0 0 24 24" fill="none" style="opacity:0.4;"><circle cx="12" cy="12" r="9" stroke="white" stroke-width="1.5"/><path d="M10 9l5 3-5 3V9z" fill="white"/></svg>
+              <span class="recorded-badge">🔴 Recorded</span>
+            </div>
+            <div class="recorded-body">
+              <div class="recorded-meta">
+                <span>👤 2016 Learners</span>
+                <span>🎟 Free Courses</span>
+              </div>
+              <h4>Kids Spoken English Batch-01</h4>
+              <p class="recorded-date">📅 Friday, October 14th, 9:00 Pm</p>
+              <a href="#" class="btn-details">LETS SEE THE DETAILS <span class="arrow-icon">→</span></a>
+            </div>
+          </div>
+
+          <div class="recorded-card">
+            <div class="recorded-thumb thumb-4">
+              <svg class="thumb-icon" viewBox="0 0 24 24" fill="none" style="opacity:0.4;"><circle cx="12" cy="12" r="9" stroke="white" stroke-width="1.5"/><path d="M10 9l5 3-5 3V9z" fill="white"/></svg>
+              <span class="recorded-badge">🔴 Recorded</span>
+            </div>
+            <div class="recorded-body">
+              <div class="recorded-meta">
+                <span>👤 2016 Learners</span>
+                <span>🎟 Free Courses</span>
+              </div>
+              <h4>Kids Spoken English Batch-01</h4>
+              <p class="recorded-date">📅 Friday, October 14th, 9:00 Pm</p>
+              <a href="#" class="btn-details">LETS SEE THE DETAILS <span class="arrow-icon">→</span></a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="see-all-row">
+          <a href="#" class="btn-see-all btn-see-all-light">SEE ALL <span class="arrow-icon">→</span></a>
+        </div>
+
+        <!-- ডেমো দেখার ব্যানার -->
+        <div class="demo-banner">
+          <span class="demo-icon">🎓</span>
+          <div>
+            <h3>কোর্স কেনার আগে অবশ্যই ডেমো দেখে নিন!</h3>
+            <p>সিদ্ধান্ত নিন বুঝে শুনে, সময় ও টাকার সঠিক মূল্য দিন।</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ কি কি পাচ্ছেন লাইভ কোর্স ============ -->
+    <section class="features-section">
+      <div class="features-wrapper">
+        <h2 class="features-title">কি কি পাচ্ছেন লাইভ কোর্স</h2>
+
+        <div class="features-card">
+          <div class="features-grid">
+            <div class="feature-item">
+              <span class="feature-icon">💼</span>
+              <p>জবের জন্য ডেডিকেটেড জব প্লেসমেন্ট টিম</p>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">📋</span>
+              <p>সিভি বিল্ডার ও এক্সপার্ট সিভি রিভিউ</p>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">🎧</span>
+              <p>১৮ ঘন্টা লাইভ সাপোর্ট নির্দিষ্ট কোর্সে</p>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">🏅</span>
+              <p>প্রো ব্যাচে স্পেশাল সিভি ও জব সাপোর্ট</p>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">📝</span>
+              <p>লাইভ টেস্টে নিজেকে যাচাইয়ের সুযোগ</p>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">🧩</span>
+              <p>দিনে ৩ টি পর্যন্ত সাপোর্ট ক্লাস নির্দিষ্ট কোর্সে</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- স্ট্যাটস কাউন্টার -->
+        <div class="stats-grid">
+          <div class="stat-card stat-green">
+            <h3>৯,০০০+</h3>
+            <p>জব প্লেসমেন্ট</p>
+          </div>
+          <div class="stat-card stat-blue">
+            <h3>১,৫০,০০০+</h3>
+            <p>লার্নার</p>
+          </div>
+          <div class="stat-card stat-peach">
+            <h3>৮৩%</h3>
+            <p>কোর্স কমপ্লিশন রেট</p>
+          </div>
+          <div class="stat-card stat-yellow">
+            <h3>৩,৫০০+</h3>
+            <p>লাইভ ক্লাস</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ টেস্টিমোনিয়াল ============ -->
+    <section class="testimonial-section">
+      <div class="testimonial-wrapper">
+        <h2 class="testimonial-title">দেখে নিন কি বলছেন SNK গ্র্যাজুয়েটরা</h2>
+        <p class="testimonial-sub">১০,০০০+ বেশি গ্র্যাজুয়েট যারা পেয়েছেন জব, দেখে নিন কি বলছেন তাদের একাংশ</p>
+
+        <div class="testimonial-grid">
+
+          <div class="testimonial-card">
+            <span class="quote-icon">❞</span>
+            <p>SNK এর MERN কোর্সটি ছিল খুবই ফলপ্রসূ। প্রতিটি প্রজেক্ট তারা লাইভে সলভ করার সুযোগ দিয়েছে, সাথে ইন্টারভিউ প্রস্তুতিও অসাধারণ ছিল।</p>
+            <div class="testimonial-person">
+              <span class="avatar avatar-1">FR</span>
+              <div>
+                <strong>Faisal Rahman</strong>
+                <small>Full Stack Web Development, Batch 1</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <span class="quote-icon">❞</span>
+            <p>এই কোর্সটা আমার লাইফের করা সেরা কোর্সগুলোর একটি। মেন্টরদের সাপোর্ট আর রিসোর্স মিলিয়ে আমি অনেক কিছু শিখতে পেরেছি খুব সহজেই।</p>
+            <div class="testimonial-person">
+              <span class="avatar avatar-2">JH</span>
+              <div>
+                <strong>Jahid Hasan</strong>
+                <small>Full Stack Web Development, Batch 2</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <span class="quote-icon">❞</span>
+            <p>ননটেক ব্যাকগ্রাউন্ড থেকে এসে আমি ভয়ে ছিলাম, কিন্তু SNK এর ধাপে ধাপে শেখানোর পদ্ধতির কারণে ডেটা সায়েন্স শেখাটা অনেক সহজ মনে হয়েছে।</p>
+            <div class="testimonial-person">
+              <span class="avatar avatar-3">SR</span>
+              <div>
+                <strong>Shammi Rahman</strong>
+                <small>Data Science, Batch 6</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <span class="quote-icon">❞</span>
+            <p>UI/UX কোর্সটি অনেক ডিটেইলড। ডিজাইন থেকে শুরু করে হ্যান্ডওভার পর্যন্ত পুরো প্রসেসটাই শেখানো হয়েছে, যা চাকরির ক্ষেত্রে অনেক কাজে দিয়েছে।</p>
+            <div class="testimonial-person">
+              <span class="avatar avatar-4">AH</span>
+              <div>
+                <strong>Abu Hasan</strong>
+                <small>UI/UX Design, Batch 17</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <span class="quote-icon">❞</span>
+            <p>স্পোকেন ইংলিশ কোর্সটি করার পর আত্মবিশ্বাস অনেক বেড়ে গেছে। ইন্টারভিউতে এখন সাবলীলভাবে কথা বলতে পারি, ধন্যবাদ SNK টিমকে।</p>
+            <div class="testimonial-person">
+              <span class="avatar avatar-5">NI</span>
+              <div>
+                <strong>Nayem Islam</strong>
+                <small>Spoken English, Batch 21</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <span class="quote-icon">❞</span>
+            <p>AI ও Prompt Engineering কোর্সটা একদম সময়োপযোগী। বাস্তব প্রজেক্টে কীভাবে AI ব্যবহার করা যায় তার হাতে-কলমে প্রশিক্ষণ পেয়েছি।</p>
+            <div class="testimonial-person">
+              <span class="avatar avatar-6">MG</span>
+              <div>
+                <strong>Mahmuda Galib</strong>
+                <small>AI Academy, Batch 3</small>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SNK FOR BUSINESS ============ -->
+    <section class="business-section">
+      <div class="business-wrapper">
+        <div class="business-card">
+
+          <div class="business-left">
+            <h2>SNK for Business</h2>
+            <p>যোগ দিন আমাদের কর্পোরেট স্কিলস ট্রেইনিং প্রোগ্রামে, ট্রেইনিং নিন দেশ সেরা ইন্ডাস্ট্রি এক্সপার্টদের থেকে আর সাজিয়ে নিন আপনার টিমকে নতুনভাবে।</p>
+            <div class="business-btns">
+              <a href="#" class="btn-business-primary">ফ্রি কনসালটেশন বুক করুন <span class="arrow-icon">→</span></a>
+              <a href="#" class="btn-business-outline">বিস্তারিত দেখি <span class="arrow-icon">→</span></a>
+            </div>
+          </div>
+
+          <div class="business-right">
+            <div class="perf-card perf-card-1">
+              <div class="perf-card-header">
+                <strong>Performance</strong>
+                <span class="perf-tabs"><span class="tab-on">Weekly</span> Monthly</span>
+              </div>
+              <div class="bar-chart">
+                <div class="bar" style="height:30%"></div>
+                <div class="bar" style="height:50%"></div>
+                <div class="bar" style="height:40%"></div>
+                <div class="bar" style="height:75%"></div>
+                <div class="bar" style="height:95%"></div>
+              </div>
+            </div>
+            <div class="perf-card perf-card-2">
+              <div class="perf-card-header">
+                <span>Performance</span>
+                <strong class="perf-value">$2,545.06</strong>
+              </div>
+              <svg class="line-chart" viewBox="0 0 120 40" preserveAspectRatio="none">
+                <polyline points="0,30 20,25 40,32 60,15 80,20 100,8 120,12" fill="none" stroke="#22c55e" stroke-width="2.5"/>
+              </svg>
+            </div>
+            <span class="floating-badge badge-1">🇧🇩</span>
+            <span class="floating-badge badge-2">✅</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ APP ডাউনলোড ============ -->
+    <section class="app-section">
+      <div class="app-wrapper">
+        <div class="app-card">
+
+          <div class="app-visual">
+            <div class="app-phone-mock">
+              <div class="phone-notch"></div>
+              <div class="phone-screen">
+                <span class="phone-badge">SNK Ai Academy</span>
+                <p class="phone-big-text">অ্যাপ-এই<br>এখন<br>সবকিছু</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="app-text">
+            <h2>ডাউনলোড করুন SNK Ai Academy App</h2>
+            <p>লাইভ ক্লাসের বেস্ট এক্সপেরিয়েন্স পেতে, এখনই ডাউনলোড করুন SNK অ্যাপ (শীঘ্রই আসছে)</p>
+            <div class="app-btns">
+              <a href="#" class="app-btn">📱 ANDROID</a>
+              <a href="#" class="app-btn">🍏 iOS / macOS</a>
+              <a href="#" class="app-btn">🖥️ WINDOWS</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ ফুটার ============ -->
+  <footer class="footer">
+    <div class="footer-wrapper">
+
+      <div class="footer-col footer-brand">
+        <div class="footer-logo">
+          <img src="https://raw.githubusercontent.com/snkguideup/snkguideup.github.io/main/logo.svg" alt="SNK Logo">
+          <span>SNK <small>Ai Academy</small></span>
+        </div>
+        <p>অনলাইন লাইভ স্কিল ডেভেলপমেন্ট প্ল্যাটফর্ম।</p>
+
+        <h4>ডাউনলোড করুন SNK অ্যাপ</h4>
+        <div class="footer-app-icons">
+          <span class="footer-app-icon">📱</span>
+          <span class="footer-app-icon">🍏</span>
+          <span class="footer-app-icon">🖥️</span>
+        </div>
+
+        <h4>কমিউনিটির সাথে কানেক্টেড থাকতে</h4>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook">📘</a>
+          <a href="#" aria-label="Instagram">📷</a>
+          <a href="#" aria-label="YouTube">▶️</a>
+          <a href="#" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>কুইক লিংক</h4>
+        <ul>
+          <li><a href="#">আপকামিং লাইভ ব্যাচ</a></li>
+          <li><a href="#">ফ্রি কোর্সসমূহ</a></li>
+          <li><a href="#">লাইভ ওয়ার্কশপ</a></li>
+          <li><a href="#">AI Academy</a></li>
+          <li><a href="#">ইন্সট্রাক্টর হিসেবে জয়েন করুন</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>যোগাযোগ</h4>
+        <ul class="footer-contact">
+          <li>✉️ support@snkacademy.com</li>
+          <li>📍 ঢাকা, বাংলাদেশ</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>কোম্পানি</h4>
+        <ul>
+          <li><a href="about/">আমাদের সম্পর্কে</a></li>
+          <li><a href="#">রিফান্ড পলিসি</a></li>
+          <li><a href="#">প্রাইভেসি পলিসি</a></li>
+          <li><a href="#">টার্মস এন্ড কন্ডিশন</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 SNK Ai Academy. সর্বস্বত্ব সংরক্ষিত।</p>
+    </div>
+  </footer>
+
+  <!-- ============ উষা AI চ্যাটবট ============ -->
+  <div class="usha-widget">
+    <div class="usha-panel" id="ushaPanel">
+      <div class="usha-header">
+        <div class="usha-avatar">🤖</div>
+        <div>
+          <div class="usha-name">উষা</div>
+          <div class="usha-status">অনলাইন আছে</div>
+        </div>
+        <button id="ushaClose" class="usha-close" type="button">✕</button>
+      </div>
+      <div class="usha-messages" id="ushaMessages">
+        <div class="usha-msg bot">হ্যালো! 👋 আমি উষা, SNK Ai Academy এর AI সহকারী। আপনাকে কীভাবে সাহায্য করতে পারি?</div>
+      </div>
+      <form class="usha-input-row" id="ushaForm">
+        <input type="text" id="ushaInput" placeholder="আপনার প্রশ্ন লিখুন..." autocomplete="off">
+        <button type="submit" class="usha-send">➤</button>
+      </form>
+    </div>
+    <button class="usha-fab" id="ushaFab" type="button">
+      <span class="usha-fab-icon">💬</span>
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
