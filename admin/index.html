@@ -55,16 +55,75 @@
 
     <div class="admin-table-card">
       <h2>🤝 পার্টনার লোগো ম্যানেজমেন্ট</h2>
-      <table class="admin-table">
-        <tr><th>লোগো</th><th>নাম</th><th>ওয়েবসাইট</th><th>একশন</th></tr>
-        <tr><td>🏢</td><td>BRAIN STATION</td><td>#</td><td><a href="#" class="btn-details" style="width:auto;padding:6px 14px;">এডিট</a></td></tr>
-        <tr><td>🔧</td><td>TechnoSoft</td><td>#</td><td><a href="#" class="btn-details" style="width:auto;padding:6px 14px;">এডিট</a></td></tr>
+
+      <div class="form-row">
+        <div class="form-group"><label>নাম</label><input type="text" id="pName" placeholder="যেমনঃ BRAIN STATION"></div>
+        <div class="form-group"><label>ওয়েবসাইট লিংক</label><input type="text" id="pLink" placeholder="https://..."></div>
+      </div>
+      <button type="button" id="pAddBtn" class="btn-cta" style="margin-bottom:20px;">+ যোগ করুন</button>
+
+      <table class="admin-table" id="pTable">
+        <tr><th>নাম</th><th>লিংক</th><th>একশন</th></tr>
       </table>
-      <a href="#" class="btn-cta" style="margin-top:14px;">+ নতুন পার্টনার লোগো যোগ করুন</a>
-      <p class="admin-note">* এখান থেকে পার্টনার লোগো যোগ/এডিট/ডিলিট করা যাবে — ব্যাকএন্ড যুক্ত হলে হোমপেজে সাথে সাথে আপডেট হবে।</p>
+
+      <button type="button" id="pGenBtn" class="btn-see-all" style="margin-top:16px;">⚙️ কোড জেনারেট করুন</button>
+      <textarea id="pCode" readonly style="width:100%;height:120px;margin-top:12px;display:none;font-family:monospace;font-size:12px;padding:10px;border-radius:10px;border:1px solid #e5e7eb;"></textarea>
+      <button type="button" id="pCopyBtn" class="btn-details" style="display:none;margin-top:8px;width:auto;padding:8px 16px;">📋 কোড কপি করুন</button>
+
+      <p class="admin-note">* এখানে যোগ/এডিট করলে শুধু আপনার এই ব্রাউজারেই সেভ থাকবে। সবার জন্য দেখাতে হলে "কোড জেনারেট করুন" চেপে কোডটা কপি করে <code>index.html</code> এ পেস্ট করে GitHub এ Commit করতে হবে।</p>
     </div>
   </main>
 </div>
 <script src="../script.js"></script>
+<script>
+const defaultPartners = [
+  {name:'🏢 BRAIN STATION', link:'#'}, {name:'🔧 TechnoSoft', link:'#'},
+  {name:'excel', link:'#'}, {name:'gtr', link:'#'}, {name:'ASTHA IT', link:'#'},
+  {name:'REVE Systems', link:'#'}, {name:'Sofol IT', link:'#'}, {name:'Core Devs', link:'#'},
+  {name:'SAYBURGH', link:'#'}, {name:'Anchor Block', link:'#'}
+];
+let partners = JSON.parse(localStorage.getItem('snkPartners') || 'null') || defaultPartners;
+
+function saveP(){ localStorage.setItem('snkPartners', JSON.stringify(partners)); renderP(); }
+
+function renderP(){
+  const t = document.getElementById('pTable');
+  t.innerHTML = '<tr><th>নাম</th><th>লিংক</th><th>একশন</th></tr>';
+  partners.forEach((p,i)=>{
+    t.innerHTML += `<tr><td>${p.name}</td><td>${p.link}</td><td>
+      <a href="#" onclick="delP(${i});return false;" class="btn-details" style="width:auto;padding:6px 14px;">🗑️ ডিলিট</a></td></tr>`;
+  });
+}
+function delP(i){ partners.splice(i,1); saveP(); }
+
+document.getElementById('pAddBtn').addEventListener('click', function(){
+  const name = document.getElementById('pName').value.trim();
+  const link = document.getElementById('pLink').value.trim() || '#';
+  if(!name){ alert('নাম লিখুন'); return; }
+  partners.push({name, link});
+  document.getElementById('pName').value='';
+  document.getElementById('pLink').value='';
+  saveP();
+});
+
+document.getElementById('pGenBtn').addEventListener('click', function(){
+  let code = partners.map(p =>
+    `              <a href="${p.link}" target="_blank" rel="noopener" class="p-logo-box">${p.name}</a>`
+  ).join('\\n');
+  const box = document.getElementById('pCode');
+  box.value = code;
+  box.style.display = 'block';
+  document.getElementById('pCopyBtn').style.display = 'inline-block';
+});
+
+document.getElementById('pCopyBtn').addEventListener('click', function(){
+  document.getElementById('pCode').select();
+  navigator.clipboard.writeText(document.getElementById('pCode').value);
+  this.textContent = '✅ কপি হয়েছে!';
+  setTimeout(()=>{ this.textContent = '📋 কোড কপি করুন'; }, 2000);
+});
+
+renderP();
+</script>
 </body>
 </html>
