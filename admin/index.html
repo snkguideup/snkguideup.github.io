@@ -24,6 +24,8 @@
       <a href="#" class="admin-nav-item">📁 রিসোর্স</a>
       <a href="#" class="admin-nav-item">💳 পেমেন্ট</a>
       <a href="#" class="admin-nav-item">🤝 পার্টনার লোগো</a>
+      <a href="#" class="admin-nav-item">📚 কোর্স এডিট</a>
+      <a href="#" class="admin-nav-item">💬 টেস্টিমোনিয়াল</a>
       <a href="#" class="admin-nav-item">⚙️ সেটিংস</a>
     </nav>
     <a href="../" class="admin-nav-item" style="margin-top:auto;">← সাইটে ফিরে যান</a>
@@ -55,22 +57,49 @@
 
     <div class="admin-table-card">
       <h2>🤝 পার্টনার লোগো ম্যানেজমেন্ট</h2>
-
       <div class="form-row">
         <div class="form-group"><label>নাম</label><input type="text" id="pName" placeholder="যেমনঃ BRAIN STATION"></div>
         <div class="form-group"><label>ওয়েবসাইট লিংক</label><input type="text" id="pLink" placeholder="https://..."></div>
       </div>
       <button type="button" id="pAddBtn" class="btn-cta" style="margin-bottom:20px;">+ যোগ করুন</button>
-
-      <table class="admin-table" id="pTable">
-        <tr><th>নাম</th><th>লিংক</th><th>একশন</th></tr>
-      </table>
-
+      <table class="admin-table" id="pTable"><tr><th>নাম</th><th>লিংক</th><th>একশন</th></tr></table>
       <button type="button" id="pGenBtn" class="btn-see-all" style="margin-top:16px;">⚙️ কোড জেনারেট করুন</button>
       <textarea id="pCode" readonly style="width:100%;height:120px;margin-top:12px;display:none;font-family:monospace;font-size:12px;padding:10px;border-radius:10px;border:1px solid #e5e7eb;"></textarea>
       <button type="button" id="pCopyBtn" class="btn-details" style="display:none;margin-top:8px;width:auto;padding:8px 16px;">📋 কোড কপি করুন</button>
-
       <p class="admin-note">* এখানে যোগ/এডিট করলে শুধু আপনার এই ব্রাউজারেই সেভ থাকবে। সবার জন্য দেখাতে হলে "কোড জেনারেট করুন" চেপে কোডটা কপি করে <code>index.html</code> এ পেস্ট করে GitHub এ Commit করতে হবে।</p>
+    </div>
+
+    <div class="admin-table-card">
+      <h2>📚 কোর্স এডিট (Upcoming Live Course)</h2>
+      <div class="form-row">
+        <div class="form-group"><label>কোর্সের নাম</label><input type="text" id="cName" placeholder="যেমনঃ Full Stack Web Development"></div>
+        <div class="form-group"><label>ব্যাচ নম্বর</label><input type="text" id="cBatch" placeholder="যেমনঃ ব্যাচ-১২"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>সিট বাকি</label><input type="text" id="cSeats" placeholder="যেমনঃ ২০"></div>
+        <div class="form-group"><label>দিন বাকি</label><input type="text" id="cDays" placeholder="যেমনঃ ১৫"></div>
+      </div>
+      <button type="button" id="cAddBtn" class="btn-cta" style="margin-bottom:20px;">+ যোগ করুন</button>
+      <table class="admin-table" id="cTable"><tr><th>নাম</th><th>ব্যাচ</th><th>একশন</th></tr></table>
+      <button type="button" id="cGenBtn" class="btn-see-all" style="margin-top:16px;">⚙️ কোড জেনারেট করুন</button>
+      <textarea id="cCode" readonly style="width:100%;height:140px;margin-top:12px;display:none;font-family:monospace;font-size:12px;padding:10px;border-radius:10px;border:1px solid #e5e7eb;"></textarea>
+      <button type="button" id="cCopyBtn" class="btn-details" style="display:none;margin-top:8px;width:auto;padding:8px 16px;">📋 কোড কপি করুন</button>
+      <p class="admin-note">* জেনারেট হওয়া কোড <code>index.html</code> এর <code>&lt;div class="course-grid"&gt;</code> এর ভিতরে পেস্ট করবেন।</p>
+    </div>
+
+    <div class="admin-table-card">
+      <h2>💬 টেস্টিমোনিয়াল এডিট</h2>
+      <div class="form-group"><label>স্টুডেন্টের মতামত</label><textarea id="tQuote" rows="2" placeholder="যা বলেছেন..."></textarea></div>
+      <div class="form-row">
+        <div class="form-group"><label>নাম</label><input type="text" id="tName" placeholder="যেমনঃ Faisal Rahman"></div>
+        <div class="form-group"><label>কোর্স/ব্যাচ</label><input type="text" id="tCourse" placeholder="যেমনঃ Web Development, Batch 1"></div>
+      </div>
+      <button type="button" id="tAddBtn" class="btn-cta" style="margin-bottom:20px;">+ যোগ করুন</button>
+      <table class="admin-table" id="tTable"><tr><th>নাম</th><th>মতামত</th><th>একশন</th></tr></table>
+      <button type="button" id="tGenBtn" class="btn-see-all" style="margin-top:16px;">⚙️ কোড জেনারেট করুন</button>
+      <textarea id="tCode" readonly style="width:100%;height:140px;margin-top:12px;display:none;font-family:monospace;font-size:12px;padding:10px;border-radius:10px;border:1px solid #e5e7eb;"></textarea>
+      <button type="button" id="tCopyBtn" class="btn-details" style="display:none;margin-top:8px;width:auto;padding:8px 16px;">📋 কোড কপি করুন</button>
+      <p class="admin-note">* জেনারেট হওয়া কোড <code>index.html</code> এর <code>&lt;div class="testimonial-grid"&gt;</code> এর ভিতরে পেস্ট করবেন।</p>
     </div>
   </main>
 </div>
@@ -83,9 +112,7 @@ const defaultPartners = [
   {name:'SAYBURGH', link:'#'}, {name:'Anchor Block', link:'#'}
 ];
 let partners = JSON.parse(localStorage.getItem('snkPartners') || 'null') || defaultPartners;
-
 function saveP(){ localStorage.setItem('snkPartners', JSON.stringify(partners)); renderP(); }
-
 function renderP(){
   const t = document.getElementById('pTable');
   t.innerHTML = '<tr><th>নাম</th><th>লিংক</th><th>একশন</th></tr>';
@@ -95,7 +122,6 @@ function renderP(){
   });
 }
 function delP(i){ partners.splice(i,1); saveP(); }
-
 document.getElementById('pAddBtn').addEventListener('click', function(){
   const name = document.getElementById('pName').value.trim();
   const link = document.getElementById('pLink').value.trim() || '#';
@@ -105,25 +131,105 @@ document.getElementById('pAddBtn').addEventListener('click', function(){
   document.getElementById('pLink').value='';
   saveP();
 });
-
 document.getElementById('pGenBtn').addEventListener('click', function(){
   let code = partners.map(p =>
     `              <a href="${p.link}" target="_blank" rel="noopener" class="p-logo-box">${p.name}</a>`
-  ).join('\\n');
+  ).join('\n');
   const box = document.getElementById('pCode');
   box.value = code;
   box.style.display = 'block';
   document.getElementById('pCopyBtn').style.display = 'inline-block';
 });
-
 document.getElementById('pCopyBtn').addEventListener('click', function(){
   document.getElementById('pCode').select();
   navigator.clipboard.writeText(document.getElementById('pCode').value);
   this.textContent = '✅ কপি হয়েছে!';
   setTimeout(()=>{ this.textContent = '📋 কোড কপি করুন'; }, 2000);
 });
-
 renderP();
+
+let courses = JSON.parse(localStorage.getItem('snkCourses') || '[]');
+function saveC(){ localStorage.setItem('snkCourses', JSON.stringify(courses)); renderC(); }
+function renderC(){
+  const t = document.getElementById('cTable');
+  t.innerHTML = '<tr><th>নাম</th><th>ব্যাচ</th><th>একশন</th></tr>';
+  courses.forEach((c,i)=>{
+    t.innerHTML += `<tr><td>${c.name}</td><td>${c.batch}</td><td><a href="#" onclick="delC(${i});return false;" class="btn-details" style="width:auto;padding:6px 14px;">🗑️ ডিলিট</a></td></tr>`;
+  });
+}
+function delC(i){ courses.splice(i,1); saveC(); }
+document.getElementById('cAddBtn').addEventListener('click', function(){
+  const name=document.getElementById('cName').value.trim();
+  if(!name){ alert('কোর্সের নাম লিখুন'); return; }
+  courses.push({
+    name, batch:document.getElementById('cBatch').value.trim(),
+    seats:document.getElementById('cSeats').value.trim(),
+    days:document.getElementById('cDays').value.trim()
+  });
+  document.getElementById('cName').value=''; document.getElementById('cBatch').value='';
+  document.getElementById('cSeats').value=''; document.getElementById('cDays').value='';
+  saveC();
+});
+document.getElementById('cGenBtn').addEventListener('click', function(){
+  let code = courses.map(c => `          <div class="course-card">
+            <div class="course-thumb thumb-1"><div class="thumb-text">${c.name}</div></div>
+            <div class="course-body">
+              <div class="course-meta"><span>${c.batch}</span><span>🪑 ${c.seats} সিট বাকি</span><span>🕐 ${c.days} দিন বাকি</span></div>
+              <h4>${c.name}</h4>
+              <div class="course-season-btns">
+                <a href="#" class="btn-season btn-season-free">সিজন-১ ফ্রি</a>
+                <a href="admission/" class="btn-season btn-season-paid">সিজন-২ পেইড</a>
+              </div>
+            </div>
+          </div>`).join('\n');
+  document.getElementById('cCode').value = code;
+  document.getElementById('cCode').style.display='block';
+  document.getElementById('cCopyBtn').style.display='inline-block';
+});
+document.getElementById('cCopyBtn').addEventListener('click', function(){
+  document.getElementById('cCode').select();
+  navigator.clipboard.writeText(document.getElementById('cCode').value);
+  this.textContent='✅ কপি হয়েছে!'; setTimeout(()=>{this.textContent='📋 কোড কপি করুন';},2000);
+});
+renderC();
+
+let testis = JSON.parse(localStorage.getItem('snkTesti') || '[]');
+function saveT(){ localStorage.setItem('snkTesti', JSON.stringify(testis)); renderT(); }
+function renderT(){
+  const t = document.getElementById('tTable');
+  t.innerHTML = '<tr><th>নাম</th><th>মতামত</th><th>একশন</th></tr>';
+  testis.forEach((x,i)=>{
+    t.innerHTML += `<tr><td>${x.name}</td><td>${x.quote.slice(0,30)}...</td><td><a href="#" onclick="delT(${i});return false;" class="btn-details" style="width:auto;padding:6px 14px;">🗑️ ডিলিট</a></td></tr>`;
+  });
+}
+function delT(i){ testis.splice(i,1); saveT(); }
+document.getElementById('tAddBtn').addEventListener('click', function(){
+  const name=document.getElementById('tName').value.trim();
+  const quote=document.getElementById('tQuote').value.trim();
+  if(!name||!quote){ alert('নাম ও মতামত দুটোই লিখুন'); return; }
+  testis.push({quote, name, course:document.getElementById('tCourse').value.trim()});
+  document.getElementById('tQuote').value=''; document.getElementById('tName').value=''; document.getElementById('tCourse').value='';
+  saveT();
+});
+document.getElementById('tGenBtn').addEventListener('click', function(){
+  let code = testis.map(x => `          <div class="testimonial-card">
+            <span class="quote-icon">❞</span>
+            <p>${x.quote}</p>
+            <div class="testimonial-person">
+              <span class="avatar avatar-1">${x.name.slice(0,2).toUpperCase()}</span>
+              <div><strong>${x.name}</strong><small>${x.course}</small></div>
+            </div>
+          </div>`).join('\n');
+  document.getElementById('tCode').value = code;
+  document.getElementById('tCode').style.display='block';
+  document.getElementById('tCopyBtn').style.display='inline-block';
+});
+document.getElementById('tCopyBtn').addEventListener('click', function(){
+  document.getElementById('tCode').select();
+  navigator.clipboard.writeText(document.getElementById('tCode').value);
+  this.textContent='✅ কপি হয়েছে!'; setTimeout(()=>{this.textContent='📋 কোড কপি করুন';},2000);
+});
+renderT();
 </script>
 </body>
 </html>
