@@ -12,7 +12,7 @@
 <div class="admin-layout">
   <aside class="admin-sidebar">
     <div class="admin-logo">
-      <img src="https://raw.githubusercontent.com/snkguideup/assets/main/Frame%2011.svg" alt="Logo">
+      <img src="https://raw.githubusercontent.com/snkguideup/snkguideup.github.io/main/logo.svg" alt="Logo">
       <span>SNK Mentor</span>
     </div>
     <nav class="admin-nav">
@@ -49,8 +49,58 @@
       </table>
       <p class="admin-note">* মেন্টর এখানে AI-জেনারেটেড পোস্ট রিভিউ ও এডিট করে পাবলিশ করবেন। আপাতত UI ডিজাইন — ব্যাকএন্ড/AI যুক্ত হলে কাজ করবে।</p>
     </div>
+
+    <div class="admin-table-card">
+      <h2>📝 নতুন ব্লগ পোস্ট যোগ করুন</h2>
+      <div class="form-row">
+        <div class="form-group"><label>শিরোনাম</label><input type="text" id="bTitle" placeholder="পোস্টের শিরোনাম"></div>
+        <div class="form-group"><label>ক্যাটাগরি</label><input type="text" id="bCat" placeholder="যেমনঃ ক্যারিয়ার টিপস"></div>
+      </div>
+      <button type="button" id="bAddBtn" class="btn-cta" style="margin-bottom:20px;">+ যোগ করুন</button>
+      <table class="admin-table" id="bTable"><tr><th>শিরোনাম</th><th>ক্যাটাগরি</th><th>একশন</th></tr></table>
+      <button type="button" id="bGenBtn" class="btn-see-all" style="margin-top:16px;">⚙️ কোড জেনারেট করুন</button>
+      <textarea id="bCode" readonly style="width:100%;height:140px;margin-top:12px;display:none;font-family:monospace;font-size:12px;padding:10px;border-radius:10px;border:1px solid #e5e7eb;"></textarea>
+      <button type="button" id="bCopyBtn" class="btn-details" style="display:none;margin-top:8px;width:auto;padding:8px 16px;">📋 কোড কপি করুন</button>
+      <p class="admin-note">* কোড কপি করে <code>blogs/index.html</code> এর <code>freecourse-grid</code> এর ভিতরে পেস্ট করবেন।</p>
+    </div>
   </main>
 </div>
 <script src="../script.js"></script>
+<script>
+let posts = JSON.parse(localStorage.getItem('snkBlogs') || '[]');
+function saveB(){ localStorage.setItem('snkBlogs', JSON.stringify(posts)); renderB(); }
+function renderB(){
+  const t = document.getElementById('bTable');
+  t.innerHTML = '<tr><th>শিরোনাম</th><th>ক্যাটাগরি</th><th>একশন</th></tr>';
+  posts.forEach((p,i)=>{
+    t.innerHTML += `<tr><td>${p.title}</td><td>${p.cat}</td><td><a href="#" onclick="delB(${i});return false;" class="btn-details" style="width:auto;padding:6px 14px;">🗑️ ডিলিট</a></td></tr>`;
+  });
+}
+function delB(i){ posts.splice(i,1); saveB(); }
+document.getElementById('bAddBtn').addEventListener('click', function(){
+  const title=document.getElementById('bTitle').value.trim();
+  if(!title){ alert('শিরোনাম লিখুন'); return; }
+  posts.push({title, cat:document.getElementById('bCat').value.trim()||'সাধারণ'});
+  document.getElementById('bTitle').value=''; document.getElementById('bCat').value='';
+  saveB();
+});
+document.getElementById('bGenBtn').addEventListener('click', function(){
+  let code = posts.map(p => `          <div class="freecourse-item">
+            <div class="fc-thumb fc-thumb-1"><div class="fc-thumb-text">${p.cat}</div></div>
+            <div class="fc-meta"><span>📅 আজ</span><span>${p.cat}</span></div>
+            <h4>${p.title}</h4>
+            <a href="#" class="btn-details">পড়ুন →</a>
+          </div>`).join('\n');
+  document.getElementById('bCode').value = code;
+  document.getElementById('bCode').style.display='block';
+  document.getElementById('bCopyBtn').style.display='inline-block';
+});
+document.getElementById('bCopyBtn').addEventListener('click', function(){
+  document.getElementById('bCode').select();
+  navigator.clipboard.writeText(document.getElementById('bCode').value);
+  this.textContent='✅ কপি হয়েছে!'; setTimeout(()=>{this.textContent='📋 কোড কপি করুন';},2000);
+});
+renderB();
+</script>
 </body>
 </html>
