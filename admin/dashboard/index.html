@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard - SNK Ai Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../style.css">
+<link rel="manifest" href="../../manifest.json">
+<meta name="theme-color" content="#ffc72c">
+</head>
+<body>
+<div class="admin-layout">
+
+  <aside class="admin-sidebar">
+    <div class="admin-logo">
+      <img src="https://raw.githubusercontent.com/snkguideup/snkguideup.github.io/main/logo.svg" alt="Logo">
+      <span>SNK Admin</span>
+    </div>
+    <nav class="admin-nav" id="adminNav">
+      <a href="#" class="admin-nav-item active" data-view="v-home">📊 <span>ড্যাশবোর্ড</span></a>
+      <a href="#" class="admin-nav-item" data-view="v-site">🌐 <span>ওয়েবসাইট এডিট</span></a>
+      <a href="#" class="admin-nav-item" data-view="v-banner">🖼️ <span>ব্যানার</span></a>
+      <a href="#" class="admin-nav-item" data-view="v-courses">📚 <span>কোর্স ম্যানেজ</span></a>
+      <a href="#" class="admin-nav-item" data-view="v-partners">🤝 <span>পার্টনার লোগো</span></a>
+      <a href="#" class="admin-nav-item" data-view="v-testi">💬 <span>টেস্টিমোনিয়াল</span></a>
+      <a href="#" class="admin-nav-item" data-view="v-students">🎓 <span>স্টুডেন্ট ড্যাশবোর্ড</span></a>
+      <a href="#" class="admin-nav-item" data-view="v-mentors">👨‍🏫 <span>মেন্টর ড্যাশবোর্ড</span></a>
+      <a href="#" class="admin-nav-item" data-view="v-admins">🛡️ <span>এডমিনস</span></a>
+      <a href="#" class="admin-nav-item" data-view="v-settings">⚙️ <span>সেটিংস</span></a>
+    </nav>
+    <a href="../../" class="admin-nav-item" style="margin-top:auto;">← <span>সাইটে ফিরে যান</span></a>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <h1 id="viewTitle">হ্যালো, Admin 👋</h1>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <label style="font-size:12px;color:#6b7280;">ডেমো রোল:
+          <select id="roleSwitch" style="margin-left:4px;padding:6px 8px;border-radius:8px;border:1px solid #e5e7eb;font-family:inherit;">
+            <option value="super">Super Admin</option>
+            <option value="admin">Admin</option>
+          </select>
+        </label>
+        <a href="../../login.html" class="btn-login">Logout →</a>
+      </div>
+    </div>
+
+    <!-- ========== ড্যাশবোর্ড ========== -->
+    <section class="admin-view active" id="v-home">
+      <div class="stats-grid">
+        <div class="stat-card stat-green"><h3>১,২৪০</h3><p>মোট স্টুডেন্ট</p></div>
+        <div class="stat-card stat-blue"><h3 id="statCourses">৩৮</h3><p>মোট কোর্স</p></div>
+        <div class="stat-card stat-peach"><h3 id="statAdmins">১</h3><p>মোট এডমিন</p></div>
+        <div class="stat-card stat-yellow"><h3>৳৪,৮৫,০০০</h3><p>এই মাসের আয়</p></div>
+      </div>
+      <div class="admin-table-card">
+        <h2>সাম্প্রতিক ভর্তি</h2>
+        <table class="admin-table">
+          <tr><th>নাম</th><th>কোর্স</th><th>তারিখ</th><th>স্ট্যাটাস</th></tr>
+          <tr><td>Rahim Uddin</td><td>MERN Stack</td><td>২২ সেপ্টেম্বর</td><td><span class="badge-paid">পেইড</span></td></tr>
+          <tr><td>Karim Hossain</td><td>Python &amp; Django</td><td>২১ সেপ্টেম্বর</td><td><span class="badge-free">ফ্রি</span></td></tr>
+          <tr><td>Fatema Akter</td><td>UI/UX Design</td><td>২০ সেপ্টেম্বর</td><td><span class="badge-paid">পেইড</span></td></tr>
+        </table>
+        <p class="admin-note">* স্ট্যাটস/ভর্তির তালিকা এখনো ডেমো ডেটা — Firebase যুক্ত হলে আসল ডেটা দেখাবে।</p>
+      </div>
+    </section>
+
+    <!-- ========== ওয়েবসাইট এডিট ========== -->
+    <section class="admin-view" id="v-site">
+      <div class="admin-table-card">
+        <h2>🌐 হোমপেজের হিরো টেক্সট এডিট</h2>
+        <div class="form-group"><label>নতুন ব্যাজের লেখা (উপরের সবুজ ব্যাজের পাশে)</label><input type="text" id="sBadge" value="যাত্রা শুরু হলো SNK AI Academy’র"></div>
+        <div class="form-row">
+          <div class="form-group"><label>হেডলাইন (বাংলা)</label><input type="text" id="sH1bn" value="বাংলাদেশ শিখবে"></div>
+          <div class="form-group"><label>হেডলাইন (English)</label><input type="text" id="sH1en" value="Bangladesh Will Learn"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>লাল হাইলাইট শব্দ (বাংলা)</label><input type="text" id="sHLbn" value="লাইভে"></div>
+          <div class="form-group"><label>লাল হাইলাইট শব্দ (English)</label><input type="text" id="sHLen" value="Live"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>সাবটাইটেল (বাংলা)</label><input type="text" id="sSubbn" value="স্কিল শেখার মাধ্যমে বদলে ফেলুন নিজের ভবিষ্যৎ"></div>
+          <div class="form-group"><label>সাবটাইটেল (English)</label><input type="text" id="sSuben" value="Change your future through learning new skills"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>বাটনের লেখা (বাংলা)</label><input type="text" id="sBtnbn" value="শেখা শুরু করুন"></div>
+          <div class="form-group"><label>বাটনের লেখা (English)</label><input type="text" id="sBtnen" value="Start Learning"></div>
+        </div>
+        <button type="button" class="btn-see-all" id="siteGen">⚙️ কোড জেনারেট করুন</button>
+        <textarea class="code-box" id="siteCode" readonly></textarea>
+        <button type="button" class="btn-details code-copy" id="siteCopy">📋 কোড কপি করুন</button>
+        <p class="admin-note">* কোডে ২টা অংশ আছে (কমেন্টে লেখা) — <code>index.html</code> এর সংশ্লিষ্ট জায়গায় পুরনো অংশ মুছে নতুনটা বসাবেন।</p>
+      </div>
+    </section>
+
+    <!-- ========== ব্যানার ========== -->
+    <section class="admin-view" id="v-banner">
+      <div class="admin-table-card">
+        <h2>🖼️ প্রোমো ব্যানার এডিট (হোমপেজের কালো ব্যানার)</h2>
+        <div class="form-group"><label>শিরোনাম</label><input type="text" id="bnTitle" value="যাত্রা শুরু হলো ফ্রি-রেকর্ডেড কোর্সের!"></div>
+        <div class="form-group"><label>ছোট লেখা</label><input type="text" id="bnSub" value="শিক্ষার্থীদের ফ্রি-রেকর্ডেড কোর্স এনরোল করে এগিয়ে যান ক্যারিয়ারে"></div>
+        <div class="form-row">
+          <div class="form-group"><label>বাটনের লেখা</label><input type="text" id="bnBtn" value="বিস্তারিত দেখি"></div>
+          <div class="form-group"><label>বাটনের লিংক</label><input type="text" id="bnLink" value="#"></div>
+        </div>
+        <div class="form-group"><label>আইকন (ইমোজি)</label><input type="text" id="bnIcon" value="👥"></div>
+        <button type="button" class="btn-see-all" id="bnGen">⚙️ কোড জেনারেট করুন</button>
+        <textarea class="code-box" id="bnCode" readonly></textarea>
+        <button type="button" class="btn-details code-copy" id="bnCopy">📋 কোড কপি করুন</button>
+        <p class="admin-note">* <code>index.html</code> এ <code>promo-banner</code> লেখা ব্লকটা মুছে এই কোড বসাবেন।</p>
+      </div>
+    </section>
+
+    <!-- ========== কোর্স ম্যানেজ ========== -->
+    <section class="admin-view" id="v-courses">
+      <div class="admin-table-card">
+        <h2>📚 কোর্স ম্যানেজ (Upcoming Live Course)</h2>
+        <div class="form-row">
+          <div class="form-group"><label>কোর্সের নাম</label><input type="text" id="cName" placeholder="যেমনঃ Full Stack Web Development"></div>
+          <div class="form-group"><label>ব্যাচ নম্বর</label><input type="text" id="cBatch" placeholder="যেমনঃ ব্যাচ-১২"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>সিট বাকি</label><input type="text" id="cSeats" placeholder="যেমনঃ ২০"></div>
+          <div class="form-group"><label>দিন বাকি</label><input type="text" id="cDays" placeholder="যেমনঃ ১৫"></div>
+        </div>
+        <button type="button" class="btn-cta" id="cAdd" style="margin-bottom:20px;">+ যোগ করুন</button>
+        <table class="admin-table" id="cTable"></table>
+        <button type="button" class="btn-see-all" id="cGen" style="margin-top:16px;">⚙️ কোড জেনারেট করুন</button>
+        <textarea class="code-box" id="cCode" readonly></textarea>
+        <button type="button" class="btn-details code-copy" id="cCopy">📋 কোড কপি করুন</button>
+        <p class="admin-note">* কোডটা <code>index.html</code> এর <code>&lt;div class="course-grid"&gt;</code> এর ভিতরে পেস্ট করবেন।</p>
+      </div>
+    </section>
+
+    <!-- ========== পার্টনার ========== -->
+    <section class="admin-view" id="v-partners">
+      <div class="admin-table-card">
+        <h2>🤝 পার্টনার লোগো ম্যানেজমেন্ট</h2>
+        <div class="form-row">
+          <div class="form-group"><label>নাম</label><input type="text" id="pName" placeholder="যেমনঃ BRAIN STATION"></div>
+          <div class="form-group"><label>ওয়েবসাইট লিংক</label><input type="text" id="pLink" placeholder="https://..."></div>
+        </div>
+        <button type="button" class="btn-cta" id="pAdd" style="margin-bottom:20px;">+ যোগ করুন</button>
+        <table class="admin-table" id="pTable"></table>
+        <button type="button" class="btn-see-all" id="pGen" style="margin-top:16px;">⚙️ কোড জেনারেট করুন</button>
+        <textarea class="code-box" id="pCode" readonly></textarea>
+        <button type="button" class="btn-details code-copy" id="pCopy">📋 কোড কপি করুন</button>
+        <p class="admin-note">* কোডটা <code>index.html</code> এর <code>&lt;div class="partner-logos"&gt;</code> এর ভিতরে পেস্ট করবেন।</p>
+      </div>
+    </section>
+
+    <!-- ========== টেস্টিমোনিয়াল ========== -->
+    <section class="admin-view" id="v-testi">
+      <div class="admin-table-card">
+        <h2>💬 টেস্টিমোনিয়াল ম্যানেজ</h2>
+        <div class="form-group"><label>স্টুডেন্টের মতামত</label><textarea id="tQuote" rows="2" placeholder="যা বলেছেন..."></textarea></div>
+        <div class="form-row">
+          <div class="form-group"><label>নাম</label><input type="text" id="tName" placeholder="যেমনঃ Faisal Rahman"></div>
+          <div class="form-group"><label>কোর্স/ব্যাচ</label><input type="text" id="tCourse" placeholder="যেমনঃ Web Development, Batch 1"></div>
+        </div>
+        <button type="button" class="btn-cta" id="tAdd" style="margin-bottom:20px;">+ যোগ করুন</button>
+        <table class="admin-table" id="tTable"></table>
+        <button type="button" class="btn-see-all" id="tGen" style="margin-top:16px;">⚙️ কোড জেনারেট করুন</button>
+        <textarea class="code-box" id="tCode" readonly></textarea>
+        <button type="button" class="btn-details code-copy" id="tCopy">📋 কোড কপি করুন</button>
+        <p class="admin-note">* কোডটা <code>index.html</code> এর <code>&lt;div class="testimonial-grid"&gt;</code> এর ভিতরে পেস্ট করবেন।</p>
+      </div>
+    </section>
+
+    <!-- ========== স্টুডেন্ট ড্যাশবোর্ড ========== -->
+    <section class="admin-view" id="v-students">
+      <div class="admin-table-card">
+        <h2>🎓 স্টুডেন্ট ড্যাশবোর্ড</h2>
+        <p style="font-size:14px;color:#4b5563;line-height:1.7;margin-bottom:16px;">স্টুডেন্টরা লগইন করে যে ড্যাশবোর্ড দেখবে (আমার কোর্স, ক্লাস জয়েনিং, সার্টিফিকেট, পেমেন্ট হিস্টোরি) সেটা এখান থেকে দেখে নিন।</p>
+        <a href="../../user/" class="btn-cta">স্টুডেন্ট ড্যাশবোর্ড দেখুন →</a>
+        <p class="admin-note">* স্টুডেন্টের তালিকা, কোর্স অ্যাসাইন করা, ব্লক/আনব্লক — এগুলো Firebase যুক্ত হলে এখানে আসবে।</p>
+      </div>
+    </section>
+
+    <!-- ========== মেন্টর ড্যাশবোর্ড ========== -->
+    <section class="admin-view" id="v-mentors">
+      <div class="admin-table-card">
+        <h2>👨‍🏫 মেন্টর ড্যাশবোর্ড</h2>
+        <p style="font-size:14px;color:#4b5563;line-height:1.7;margin-bottom:16px;">মেন্টররা যে ড্যাশবোর্ড দেখবে (আমার কোর্স, AI পোস্ট রিভিউ, ব্লগ এডিটর, লাইভ ক্লাস) সেটা এখান থেকে দেখে নিন।</p>
+        <a href="../../mentor/" class="btn-cta">মেন্টর ড্যাশবোর্ড দেখুন →</a>
+        <p class="admin-note">* নতুন মেন্টর যোগ করা, কোর্স অ্যাসাইন করা — Firebase যুক্ত হলে এখানে আসবে।</p>
+      </div>
+    </section>
+
+    <!-- ========== এডমিনস ========== -->
+    <section class="admin-view" id="v-admins">
+      <div class="admin-table-card">
+        <h2>🛡️ এডমিন ম্যানেজমেন্ট</h2>
+        <p id="adminLockMsg" class="admin-note" style="display:none;color:#b91c1c;margin-bottom:14px;">⛔ শুধু <b>Super Admin</b> নতুন এডমিন যোগ বা মুছতে পারবে। উপরের "ডেমো রোল" থেকে Super Admin সিলেক্ট করুন।</p>
+        <div id="adminForm">
+          <div class="form-row">
+            <div class="form-group"><label>নাম</label><input type="text" id="aName" placeholder="এডমিনের নাম"></div>
+            <div class="form-group"><label>ইমেইল</label><input type="email" id="aEmail" placeholder="admin@example.com"></div>
+          </div>
+          <button type="button" class="btn-cta" id="aAdd" style="margin-bottom:20px;">+ নতুন এডমিন যোগ করুন</button>
+        </div>
+        <table class="admin-table" id="aTable"></table>
+        <p class="admin-note">* এটা এখনো <b>ডেমো</b> — রোল-চেক শুধু এই ব্রাউজারেই কাজ করে, সিকিউর না। আসল Super Admin/Admin লগইন আর সবার জন্য এডমিন যোগ করতে Firebase Authentication যুক্ত করতে হবে।</p>
+      </div>
+    </section>
+
+    <!-- ========== সেটিংস ========== -->
+    <section class="admin-view" id="v-settings">
+      <div class="admin-table-card">
+        <h2>⚙️ সাইট সেটিংস (ফুটার/যোগাযোগ তথ্য)</h2>
+        <div class="form-row">
+          <div class="form-group"><label>সাপোর্ট ইমেইল</label><input type="text" id="stEmail" value="support@snkacademy.com"></div>
+          <div class="form-group"><label>ফোন নম্বর</label><input type="text" id="stPhone" value="+8801XXXXXXXXX"></div>
+        </div>
+        <div class="form-group"><label>ঠিকানা</label><input type="text" id="stAddr" value="ঢাকা, বাংলাদেশ"></div>
+        <div class="form-group"><label>সাপোর্ট সময়</label><input type="text" id="stHours" value="সকাল ১০টা - রাত ১০টা (প্রতিদিন)"></div>
+        <button type="button" class="btn-see-all" id="stGen">⚙️ ফুটার কোড জেনারেট করুন</button>
+        <textarea class="code-box" id="stCode" readonly></textarea>
+        <button type="button" class="btn-details code-copy" id="stCopy">📋 কোড কপি করুন</button>
+        <p class="admin-note">* <code>&lt;ul class="footer-contact"&gt;</code> এর ভিতরের লাইনগুলো মুছে এই কোড বসাবেন (সব পেজের ফুটারে)।</p>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="../../script.js"></script>
+<script>
+/* ---------- ছোট হেল্পার ---------- */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const load = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) || d; } catch(e){ return d; } };
+const save = (k, v) => localStorage.setItem(k, JSON.stringify(v));
+
+/* জেনারেট + কপি বাটন সেটআপ */
+function setupGen(genId, codeId, copyId, builder){
+  $(genId).addEventListener('click', () => {
+    $(codeId).value = builder();
+    $(codeId).style.display = 'block';
+    $(copyId).style.display = 'inline-block';
+  });
+  $(copyId).addEventListener('click', function(){
+    $(codeId).select();
+    if(navigator.clipboard) navigator.clipboard.writeText($(codeId).value);
+    const old = this.textContent;
+    this.textContent = '✅ কপি হয়েছে!';
+    setTimeout(() => this.textContent = old, 2000);
+  });
+}
+
+/* ---------- সাইডবার ভিউ বদল ---------- */
+const titles = {'v-home':'হ্যালো, Admin 👋','v-site':'ওয়েবসাইট এডিট','v-banner':'ব্যানার','v-courses':'কোর্স ম্যানেজ','v-partners':'পার্টনার লোগো','v-testi':'টেস্টিমোনিয়াল','v-students':'স্টুডেন্ট ড্যাশবোর্ড','v-mentors':'মেন্টর ড্যাশবোর্ড','v-admins':'এডমিনস','v-settings':'সেটিংস'};
+document.querySelectorAll('#adminNav .admin-nav-item').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelectorAll('#adminNav .admin-nav-item').forEach(x => x.classList.remove('active'));
+    a.classList.add('active');
+    document.querySelectorAll('.admin-view').forEach(v => v.classList.remove('active'));
+    $(a.dataset.view).classList.add('active');
+    $('viewTitle').textContent = titles[a.dataset.view];
+    window.scrollTo(0,0);
+  });
+});
+
+/* ---------- ডেমো রোল ---------- */
+let role = localStorage.getItem('snkRole') || 'super';
+$('roleSwitch').value = role;
+$('roleSwitch').addEventListener('change', e => { role = e.target.value; localStorage.setItem('snkRole', role); applyRole(); });
+function applyRole(){
+  const isSuper = role === 'super';
+  $('adminForm').style.display = isSuper ? 'block' : 'none';
+  $('adminLockMsg').style.display = isSuper ? 'none' : 'block';
+  renderAdmins();
+}
+
+/* ---------- এডমিনস ---------- */
+let admins = load('snkAdmins', [{name:'Super Admin', email:'owner@snkacademy.com', role:'super'}]);
+function renderAdmins(){
+  const isSuper = role === 'super';
+  $('aTable').innerHTML = '<tr><th>নাম</th><th>ইমেইল</th><th>রোল</th><th>একশন</th></tr>' +
+    admins.map((a,i) => `<tr><td>${esc(a.name)}</td><td>${esc(a.email)}</td>
+      <td><span class="${a.role==='super'?'badge-paid':'badge-free'}">${a.role==='super'?'Super Admin':'Admin'}</span></td>
+      <td>${(isSuper && a.role!=='super') ? `<a href="#" onclick="delAdmin(${i});return false;" class="btn-details" style="width:auto;padding:6px 14px;">🗑️ মুছুন</a>` : '—'}</td></tr>`).join('');
+  $('statAdmins').textContent = admins.length;
+}
+function delAdmin(i){ if(role!=='super') return; admins.splice(i,1); save('snkAdmins', admins); renderAdmins(); }
+$('aAdd').addEventListener('click', () => {
+  if(role !== 'super'){ alert('শুধু Super Admin এডমিন যোগ করতে পারবে'); return; }
+  const name = $('aName').value.trim(), email = $('aEmail').value.trim();
+  if(!name || !email){ alert('নাম ও ইমেইল দিন'); return; }
+  admins.push({name, email, role:'admin'});
+  save('snkAdmins', admins);
+  $('aName').value = ''; $('aEmail').value = '';
+  renderAdmins();
+});
+
+/* ---------- ওয়েবসাইট এডিট ---------- */
+setupGen('siteGen','siteCode','siteCopy', () => {
+  const v = id => esc($(id).value.trim());
+  return `<!-- ১. নতুন ব্যাজ (new-badge-row এর ভিতরে) -->
+<a href="#" class="new-badge">
+  <span class="badge-tag">নতুন</span>
+  <span class="badge-emoji">🎓</span>
+  ${v('sBadge')}
+  <span class="arrow">›</span>
+</a>
+
+<!-- ২. হিরো টেক্সট (hero-left এর শুরুর অংশ) -->
+<h1>
+  <span data-bn="${v('sH1bn')}" data-en="${v('sH1en')}">${v('sH1bn')}</span> <span class="highlight"><span data-bn="${v('sHLbn')}" data-en="${v('sHLen')}">${v('sHLbn')}</span> <span class="dot">◉</span></span>
+</h1>
+<p class="hero-sub" data-bn="${v('sSubbn')}" data-en="${v('sSuben')}">${v('sSubbn')}</p>
+
+<a href="#" class="btn-cta"><span data-bn="${v('sBtnbn')}" data-en="${v('sBtnen')}">${v('sBtnbn')}</span> <span class="arrow-icon">→</span></a>`;
+});
+
+/* ---------- ব্যানার ---------- */
+setupGen('bnGen','bnCode','bnCopy', () => `<div class="hero-wrapper" style="padding-top:0; padding-bottom:0;">
+  <div class="interview-banner promo-banner">
+    <div class="interview-left">
+      <span class="interview-icon">${esc($('bnIcon').value.trim())}</span>
+      <div>
+        <h3>${esc($('bnTitle').value.trim())}</h3>
+        <p>${esc($('bnSub').value.trim())}</p>
+      </div>
+    </div>
+    <a href="${esc($('bnLink').value.trim()||'#')}" class="btn-interview">${esc($('bnBtn').value.trim())} <span class="arrow-icon">→</span></a>
+  </div>
+</div>`);
+
+/* ---------- কোর্স ---------- */
+let courses = load('snkCourses', []);
+function renderCourses(){
+  $('cTable').innerHTML = '<tr><th>নাম</th><th>ব্যাচ</th><th>একশন</th></tr>' +
+    courses.map((c,i) => `<tr><td>${esc(c.name)}</td><td>${esc(c.batch)}</td><td><a href="#" onclick="delCourse(${i});return false;" class="btn-details" style="width:auto;padding:6px 14px;">🗑️ ডিলিট</a></td></tr>`).join('');
+  $('statCourses').textContent = courses.length || 38;
+}
+function delCourse(i){ courses.splice(i,1); save('snkCourses', courses); renderCourses(); }
+$('cAdd').addEventListener('click', () => {
+  const name = $('cName').value.trim();
+  if(!name){ alert('কোর্সের নাম লিখুন'); return; }
+  courses.push({name, batch:$('cBatch').value.trim(), seats:$('cSeats').value.trim(), days:$('cDays').value.trim()});
+  ['cName','cBatch','cSeats','cDays'].forEach(id => $(id).value = '');
+  save('snkCourses', courses); renderCourses();
+});
+setupGen('cGen','cCode','cCopy', () => courses.map(c => `<div class="course-card">
+  <div class="course-thumb thumb-1"><div class="thumb-text">${esc(c.name)}</div></div>
+  <div class="course-body">
+    <div class="course-meta"><span>${esc(c.batch)}</span><span>🪑 ${esc(c.seats)} সিট বাকি</span><span>🕐 ${esc(c.days)} দিন বাকি</span></div>
+    <h4>${esc(c.name)}</h4>
+    <div class="course-season-btns">
+      <a href="#" class="btn-season btn-season-free">সিজন-১ ফ্রি</a>
+      <a href="admission/" class="btn-season btn-season-paid">সিজন-২ পেইড</a>
+    </div>
+  </div>
+</div>`).join('\n\n'));
+
+/* ---------- পার্টনার ---------- */
+const defaultPartners = ['🏢 BRAIN STATION','🔧 TechnoSoft','excel','gtr','ASTHA IT','REVE Systems','Sofol IT','Core Devs','SAYBURGH','Anchor Block'].map(n => ({name:n, link:'#'}));
+let partners = load('snkPartners', defaultPartners);
+function renderPartners(){
+  $('pTable').innerHTML = '<tr><th>নাম</th><th>লিংক</th><th>একশন</th></tr>' +
+    partners.map((p,i) => `<tr><td>${esc(p.name)}</td><td>${esc(p.link)}</td><td><a href="#" onclick="delPartner(${i});return false;" class="btn-details" style="width:auto;padding:6px 14px;">🗑️ ডিলিট</a></td></tr>`).join('');
+}
+function delPartner(i){ partners.splice(i,1); save('snkPartners', partners); renderPartners(); }
+$('pAdd').addEventListener('click', () => {
+  const name = $('pName').value.trim();
+  if(!name){ alert('নাম লিখুন'); return; }
+  partners.push({name, link:$('pLink').value.trim() || '#'});
+  $('pName').value = ''; $('pLink').value = '';
+  save('snkPartners', partners); renderPartners();
+});
+setupGen('pGen','pCode','pCopy', () => partners.map(p =>
+  `<a href="${esc(p.link)}" target="_blank" rel="noopener" class="p-logo-box">${esc(p.name)}</a>`).join('\n'));
+
+/* ---------- টেস্টিমোনিয়াল ---------- */
+let testis = load('snkTesti', []);
+function renderTesti(){
+  $('tTable').innerHTML = '<tr><th>নাম</th><th>মতামত</th><th>একশন</th></tr>' +
+    testis.map((x,i) => `<tr><td>${esc(x.name)}</td><td>${esc(x.quote.slice(0,30))}...</td><td><a href="#" onclick="delTesti(${i});return false;" class="btn-details" style="width:auto;padding:6px 14px;">🗑️ ডিলিট</a></td></tr>`).join('');
+}
+function delTesti(i){ testis.splice(i,1); save('snkTesti', testis); renderTesti(); }
+$('tAdd').addEventListener('click', () => {
+  const name = $('tName').value.trim(), quote = $('tQuote').value.trim();
+  if(!name || !quote){ alert('নাম ও মতামত দুটোই লিখুন'); return; }
+  testis.push({quote, name, course:$('tCourse').value.trim()});
+  ['tQuote','tName','tCourse'].forEach(id => $(id).value = '');
+  save('snkTesti', testis); renderTesti();
+});
+setupGen('tGen','tCode','tCopy', () => testis.map(x => `<div class="testimonial-card">
+  <span class="quote-icon">❞</span>
+  <p>${esc(x.quote)}</p>
+  <div class="testimonial-person">
+    <span class="avatar avatar-1">${esc(x.name.slice(0,2).toUpperCase())}</span>
+    <div><strong>${esc(x.name)}</strong><small>${esc(x.course)}</small></div>
+  </div>
+</div>`).join('\n\n'));
+
+/* ---------- সেটিংস ---------- */
+setupGen('stGen','stCode','stCopy', () => `<li>✉️ ${esc($('stEmail').value.trim())}</li>
+<li>📞 ${esc($('stPhone').value.trim())}</li>
+<li>📍 ${esc($('stAddr').value.trim())}</li>
+<li>🕐 ${esc($('stHours').value.trim())}</li>`);
+
+/* ---------- শুরু ---------- */
+renderCourses(); renderPartners(); renderTesti(); applyRole();
+</script>
+</body>
+</html>

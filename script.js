@@ -263,3 +263,10 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 });
+
+/* ============ PWA: সার্ভিস ওয়ার্কার রেজিস্টার ============ */
+if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('/service-worker.js').catch(function () {});
+  });
+}
