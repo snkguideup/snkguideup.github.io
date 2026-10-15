@@ -58,7 +58,6 @@
 
       <div id="msg" class="msg"></div>
 
-      <!-- লগইন ফর্ম -->
       <form id="loginForm">
         <label>ইমেইল</label>
         <input type="email" id="loginEmail" placeholder="you@example.com" required>
@@ -68,7 +67,6 @@
         <button class="link" id="forgotBtn" type="button">পাসওয়ার্ড ভুলে গেছেন?</button>
       </form>
 
-      <!-- সাইনআপ ফর্ম -->
       <form id="signupForm" class="hidden">
         <label>পুরো নাম</label>
         <input type="text" id="signupName" placeholder="আপনার নাম" required>
@@ -89,7 +87,6 @@
     } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
     import { doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
-    // ডার্ক মোড
     if (localStorage.getItem('snk-theme') === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
     }
@@ -117,7 +114,6 @@
       return map[code] || 'সমস্যা হয়েছে: ' + code;
     }
 
-    // রোল অনুযায়ী পেজে পাঠানো
     async function goByRole(user) {
       const ref = doc(db, 'users', user.uid);
       let snap = await getDoc(ref);
@@ -136,10 +132,8 @@
       else location.href = 'user/';
     }
 
-    // আগে থেকে লগইন থাকলে সরাসরি পাঠিয়ে দেওয়া
     onAuthStateChanged(auth, (user) => { if (user && !window.__busy) goByRole(user); });
 
-    // ট্যাব বদল
     $('tabLogin').onclick = () => {
       $('tabLogin').classList.add('active'); $('tabSignup').classList.remove('active');
       $('loginForm').classList.remove('hidden'); $('signupForm').classList.add('hidden');
@@ -151,7 +145,6 @@
       msg.className = 'msg';
     };
 
-    // লগইন
     $('loginForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       $('loginBtn').disabled = true;
@@ -167,7 +160,6 @@
       }
     });
 
-    // সাইনআপ
     $('signupForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       $('signupBtn').disabled = true;
@@ -191,7 +183,6 @@
       }
     });
 
-    // পাসওয়ার্ড রিসেট
     $('forgotBtn').addEventListener('click', async () => {
       const email = $('loginEmail').value.trim();
       if (!email) { show('আগে উপরের ঘরে আপনার ইমেইল লিখুন।', 'err'); return; }
