@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ইউজার রোল - SNK Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Hind Siliguri', sans-serif; background: #f5f6f8; color: #111827; }
+    .top { background: #14213d; color: #fff; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+    .top strong { font-size: 18px; margin-right: auto; }
+    .top a { color: #ffc72c; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 24px 16px 100px; }
+    .panel { background: #fff; border: 1px solid #eef0f2; border-radius: 16px; padding: 24px; overflow-x: auto; }
+    h2 { font-size: 20px; margin-bottom: 6px; }
+    .hint { font-size: 13px; color: #6b7280; margin-bottom: 16px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid #eef0f2; }
+    th { color: #6b7280; font-size: 12px; }
+    select { padding: 8px; border-radius: 8px; border: 1px solid #e5e7eb; font-family: inherit; }
+    .btn { padding: 8px 16px; border: none; border-radius: 999px; background: #ffc72c; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer; }
+    .btn:disabled { opacity: .5; }
+    .toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: #166534; color: #fff; padding: 12px 22px; border-radius: 999px; font-size: 14px; display: none; z-index: 99; }
+    .toast.err { background: #991b1b; }
+  </style>
+</head>
+<body>
+  <div class="top">
+    <strong>👥 ইউজার রোল ম্যানেজমেন্ট</strong>
+    <a href="../dashboard/">← ড্যাশবোর্ড</a>
+    <a href="../content/">🛠️ কনটেন্ট এডিটর</a>
+  </div>
+  <div class="wrap">
+    <div class="panel">
+      <h2>সব ইউজার</h2>
+      <p class="hint">শুধু Super Admin রোল বদলাতে পারবে। মেন্টর বানাতে চাইলে ওই ব্যক্তিকে আগে সাইটে সাইনআপ করতে বলুন, তারপর এখানে রোল "mentor" করুন। নিজের রোল এখান থেকে বদলানো যায় না।</p>
+      <div id="list">লোড হচ্ছে...</div>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+
+  <script type="module">
+    import { guard } from "../../auth-guard.js";
+    import { db } from "../../firebase-config.js";
+    import { collection, getDocs, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+    guard(["superadmin"]);
+
+    const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    const $ = (id) => document.getElementById(id);
+    const ROLES = [["user", "শিক্ষার্থী (user)"], ["mentor", "মেন্টর (mentor)"], ["admin", "অ্যাডমিন (admin)"], ["superadmin", "সুপার অ্যাডমিন (superadmin)"]];
+
+    function toast(text, isErr) {
+      const t = $("toast"); t.textContent = text; t.className = "toast" + (isErr ? " err" : ""); t.style.display = "block";
+      setTimeout(() => (t.style.display = "none"), 2800);
+    }
+
+    async function load() {
+      try {
+        const snap = await getDocs(collection(db, "users"));
+        const me = window.snkUser.uid;
+        $("list").innerHTML = "<table><tr><th>নাম</th><th>ইমেইল</th><th>রোল</th><th></th></tr>" +
+          snap.docs.map((d) => {
+            const u = d.data(); const mine = d.id === me;
+            return "<tr><td>" + esc(u.name || "-") + (mine ? " (আপনি)" : "") + "</td><td>" + esc(u.email) + "</td><td>" +
+              '<select id="r_' + d.id + '"' + (mine ? " disabled" : "") + ">" +
+              ROLES.map((r) => '<option value="' + r[0] + '"' + (u.role === r[0] ? " selected" : "") + ">" + r[1] + "</option>").join("") +
+              "</select></td><td>" + (mine ? "" : '<button class="btn" data-id="' + d.id + '">সেভ</button>') + "</td></tr>";
+          }).join("") + "</table>";
+      } catch (e) { $("list").textContent = "লোড করতে সমস্যা: " + e.message; }
+    }
+
+    $("list").onclick = async (e) => {
+      const id = e.target.getAttribute && e.target.getAttribute("data-id");
+      if (!id) return;
+      const role = $("r_" + id).value;
+      e.target.disabled = true;
+      try { await updateDoc(doc(db, "users", id), { role }); toast("✅ রোল বদলে গেছে"); }
+      catch (err) { toast("সেভ হয়নি: " + err.message, true); }
+      e.target.disabled = false;
+    };
+
+    const t = setInterval(() => { if (window.snkUser) { clearInterval(t); load(); } }, 100);
+  </script>
+</body>
+</html>

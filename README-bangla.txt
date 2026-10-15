@@ -1,9 +1,16 @@
-SNK Ai Academy - ধাপ ২ ও ৩ ফাইল
+SNK Ai Academy - ধাপ ৪ (ফাইনাল)
 
-এই জিপে যা আছে:
-1) firebase-config.js    -> রুটে আপলোড করুন
-2) auth-guard.js         -> রুটে আপলোড করুন
-3) firestore.rules.txt   -> GitHub এ আপলোড লাগবে না। Firebase Console > Firestore > Rules এ পেস্ট করে Publish করুন
-4) login.html            -> রুটে আপলোড করুন (পুরনোটা রিপ্লেস হবে)
+নতুন ফাইল (GitHub এ আপলোড করুন):
+1) site-content.js              -> রুটে (index.html এর পাশে)
+2) admin/content/index.html     -> নতুন ফোল্ডার admin/content/ এর ভেতরে
+3) admin/users/index.html       -> নতুন ফোল্ডার admin/users/ এর ভেতরে
 
-এরপর admin/dashboard/index.html, mentor/index.html, user/index.html এই ৩ ফাইলের </body> এর আগে গার্ড স্ক্রিপ্ট বসাতে হবে (চ্যাটে কোড দেওয়া আছে)।
+পুরনো ফাইলে ১ লাইন যোগ:
+index.html এ </body> এর ঠিক আগে:
+<script type="module" src="site-content.js"></script>
+
+(ফুটারের যোগাযোগ তথ্য সব পেজে বদলাতে চাইলে প্রতিটি পেজের </body> এর আগে ../site-content.js (ফোল্ডার পেজে) বা site-content.js (রুট পেজে) যোগ করুন।)
+
+এডিটর লিংক:
+https://snkguideup.github.io/admin/content/
+https://snkguideup.github.io/admin/users/

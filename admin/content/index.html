@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>কনটেন্ট এডিটর - SNK Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Hind Siliguri', sans-serif; background: #f5f6f8; color: #111827; }
+    .top { background: #14213d; color: #fff; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+    .top strong { font-size: 18px; margin-right: auto; }
+    .top a { color: #ffc72c; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 24px 16px 100px; }
+    .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .tab { padding: 10px 16px; border-radius: 999px; border: 1px solid #e5e7eb; background: #fff; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; color: #374151; }
+    .tab.active { background: #14213d; color: #fff; border-color: #14213d; }
+    .panel { background: #fff; border: 1px solid #eef0f2; border-radius: 16px; padding: 24px; box-shadow: 0 6px 18px rgba(0,0,0,.04); }
+    .panel h2 { font-size: 20px; margin-bottom: 16px; }
+    .panel h3 { font-size: 15px; margin: 24px 0 10px; }
+    label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 5px; }
+    input, textarea { width: 100%; padding: 11px 13px; border: 1px solid #e5e7eb; border-radius: 10px; font-family: inherit; font-size: 14px; margin-bottom: 12px; outline: none; }
+    textarea { min-height: 90px; resize: vertical; }
+    input:focus, textarea:focus { border-color: #ffc72c; }
+    .btn { padding: 12px 24px; border: none; border-radius: 999px; background: #ffc72c; color: #111827; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer; }
+    .btn:hover { background: #f5b800; }
+    .btn:disabled { opacity: .6; }
+    .item { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid #eef0f2; border-radius: 10px; margin-bottom: 8px; }
+    .item span { flex: 1; font-size: 14px; }
+    .item small { color: #6b7280; display: block; }
+    .del { background: #fee2e2; color: #991b1b; border: none; border-radius: 8px; padding: 7px 12px; font-family: inherit; font-weight: 700; font-size: 12px; cursor: pointer; }
+    .hint { font-size: 12px; color: #6b7280; margin-bottom: 14px; }
+    .toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: #166534; color: #fff; padding: 12px 22px; border-radius: 999px; font-size: 14px; display: none; z-index: 99; }
+    .toast.err { background: #991b1b; }
+  </style>
+</head>
+<body>
+  <div class="top">
+    <strong>🛠️ SNK কনটেন্ট এডিটর</strong>
+    <a href="../dashboard/">← ড্যাশবোর্ড</a>
+    <a href="../users/">👥 ইউজার রোল</a>
+    <a href="../../" target="_blank">🌐 সাইট দেখুন</a>
+  </div>
+
+  <div class="wrap">
+    <div class="tabs" id="tabs"></div>
+    <div class="panel" id="panel">লোড হচ্ছে...</div>
+  </div>
+  <div class="toast" id="toast"></div>
+
+  <script type="module">
+    import { guard } from "../../auth-guard.js";
+    import { db } from "../../firebase-config.js";
+    import { doc, getDoc, setDoc, collection, getDocs, addDoc, deleteDoc, query, orderBy, serverTimestamp }
+      from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+    guard(["admin", "superadmin"]);
+
+    const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    const $ = (id) => document.getElementById(id);
+
+    function toast(text, isErr) {
+      const t = $("toast");
+      t.textContent = text;
+      t.className = "toast" + (isErr ? " err" : "");
+      t.style.display = "block";
+      setTimeout(() => (t.style.display = "none"), 2800);
+    }
+
+    // [key, লেবেল, ডিফল্ট মান]
+    const SINGLE = {
+      hero: { title: "🌐 হোমপেজের হিরো টেক্সট", fields: [
+        ["badge", "নতুন ব্যাজের লেখা", "যাত্রা শুরু হলো SNK AI Academy’র"],
+        ["headlineBn", "হেডলাইন (বাংলা)", "বাংলাদেশ শিখবে"],
+        ["headlineEn", "হেডলাইন (English)", "Bangladesh Will Learn"],
+        ["highlightBn", "লাল হাইলাইট শব্দ (বাংলা)", "লাইভে"],
+        ["highlightEn", "লাল হাইলাইট শব্দ (English)", "Live"],
+        ["subBn", "সাবটাইটেল (বাংলা)", "স্কিল শেখার মাধ্যমে বদলে ফেলুন নিজের ভবিষ্যৎ"],
+        ["subEn", "সাবটাইটেল (English)", "Change your future through learning new skills"],
+        ["ctaBn", "বাটনের লেখা (বাংলা)", "শেখা শুরু করুন"],
+        ["ctaEn", "বাটনের লেখা (English)", "Start Learning"]
+      ]},
+      promo: { title: "🖼️ প্রোমো ব্যানার (হোমপেজের কালো ব্যানার)", fields: [
+        ["promoIcon", "আইকন (ইমোজি)", "👥"],
+        ["promoTitle", "শিরোনাম", "যাত্রা শুরু হলো ফ্রি-রেকর্ডেড কোর্সের!"],
+        ["promoText", "ছোট লেখা", "শিক্ষার্থীদের ফ্রি-রেকর্ডেড কোর্স এনরোল করে এগিয়ে যান ক্যারিয়ারে"],
+        ["promoBtn", "বাটনের লেখা", "বিস্তারিত দেখি"],
+        ["promoLink", "বাটনের লিংক", "#"]
+      ]},
+      footer: { title: "⚙️ ফুটারের যোগাযোগ তথ্য", note: "সবগুলো ঘর পূরণ করে সেভ করুন (ফাঁকা রাখলে ওই লাইন ফুটারে আসবে না)।", fields: [
+        ["footerEmail", "সাপোর্ট ইমেইল", "support@snkacademy.com"],
+        ["footerPhone", "ফোন নম্বর", ""],
+        ["footerAddress", "ঠিকানা", "ঢাকা, বাংলাদেশ"],
+        ["footerHours", "সাপোর্ট সময়", ""]
+      ]}
+    };
+
+    const LISTS = {
+      courses: { title: "📚 কোর্স ম্যানেজ (Upcoming Live Course)", col: "courses",
+        note: "প্রথমবার কোর্স যোগ করলে হোমপেজের আগের কার্ডগুলোর জায়গায় আপনার যোগ করা কোর্সগুলো দেখাবে।",
+        fields: [["title", "কোর্সের নাম", "text"], ["batch", "ব্যাচ নম্বর (যেমন: ৩)", "text"], ["seats", "সিট বাকি (যেমন: ৪৬)", "text"], ["days", "দিন বাকি (যেমন: ৩৬)", "text"]],
+        show: (d) => esc(d.title) + "<small>ব্যাচ-" + esc(d.batch) + " · " + esc(d.seats) + " সিট · " + esc(d.days) + " দিন</small>" },
+      partners: { title: "🤝 পার্টনার লোগো", col: "partners",
+        note: "যেসব কোম্পানিতে গ্র্যাজুয়েটরা কাজ করছেন তাদের নাম।",
+        fields: [["name", "কোম্পানির নাম", "text"], ["link", "ওয়েবসাইট লিংক (https://...)", "text"]],
+        show: (d) => esc(d.name) + "<small>" + esc(d.link) + "</small>" },
+      testimonials: { title: "💬 টেস্টিমোনিয়াল", col: "testimonials",
+        fields: [["text", "স্টুডেন্টের মতামত", "area"], ["name", "নাম", "text"], ["course", "কোর্স/ব্যাচ", "text"]],
+        show: (d) => esc(d.name) + " — " + esc(d.course) + "<small>" + esc(String(d.text).slice(0, 70)) + "...</small>" }
+    };
+
+    const TAB_NAMES = { hero: "🌐 হিরো", promo: "🖼️ ব্যানার", courses: "📚 কোর্স", partners: "🤝 লোগো", testimonials: "💬 টেস্টিমোনিয়াল", footer: "⚙️ ফুটার" };
+
+    function input(id, label, type, value) {
+      const v = esc(value || "");
+      return "<label>" + esc(label) + "</label>" +
+        (type === "area" ? '<textarea id="' + id + '" required>' + v + "</textarea>" : '<input id="' + id + '" value="' + v + '">');
+    }
+
+    async function renderSingle(key) {
+      const cfg = SINGLE[key];
+      let data = {};
+      try { const s = await getDoc(doc(db, "site", "home")); if (s.exists()) data = s.data(); } catch (e) { toast("লোড করতে সমস্যা: " + e.message, true); }
+      $("panel").innerHTML = "<h2>" + cfg.title + "</h2>" + (cfg.note ? '<p class="hint">' + cfg.note + "</p>" : "") +
+        cfg.fields.map((f) => input("f_" + f[0], f[1], "text", data[f[0]] != null ? data[f[0]] : f[2])).join("") +
+        '<button class="btn" id="saveBtn">💾 সেভ করুন (লাইভ হবে)</button>';
+      $("saveBtn").onclick = async () => {
+        const out = {};
+        cfg.fields.forEach((f) => (out[f[0]] = $("f_" + f[0]).value.trim()));
+        $("saveBtn").disabled = true;
+        try { await setDoc(doc(db, "site", "home"), out, { merge: true }); toast("✅ সেভ হয়েছে! হোমপেজ রিফ্রেশ করে দেখুন।"); }
+        catch (e) { toast("সেভ হয়নি: " + e.message, true); }
+        $("saveBtn").disabled = false;
+      };
+    }
+
+    async function renderList(key) {
+      const cfg = LISTS[key];
+      $("panel").innerHTML = "<h2>" + cfg.title + "</h2>" + (cfg.note ? '<p class="hint">' + cfg.note + "</p>" : "") +
+        cfg.fields.map((f) => input("n_" + f[0], f[1], f[2], "")).join("") +
+        '<button class="btn" id="addBtn">+ যোগ করুন</button><h3>বর্তমান তালিকা</h3><div id="list">লোড হচ্ছে...</div>';
+
+      async function load() {
+        try {
+          const snap = await getDocs(query(collection(db, cfg.col), orderBy("createdAt", "asc")));
+          $("list").innerHTML = snap.empty ? '<p class="hint">এখনো কিছু যোগ করা হয়নি (সাইটে আগের ডিফল্ট কনটেন্ট দেখাচ্ছে)।</p>' :
+            snap.docs.map((d) => '<div class="item"><span>' + cfg.show(d.data()) + '</span><button class="del" data-id="' + d.id + '">মুছুন</button></div>').join("");
+        } catch (e) { $("list").textContent = "লোড করতে সমস্যা: " + e.message; }
+      }
+
+      $("addBtn").onclick = async () => {
+        const out = {};
+        for (const f of cfg.fields) {
+          out[f[0]] = $("n_" + f[0]).value.trim();
+          if (!out[f[0]]) { toast("সবগুলো ঘর পূরণ করুন", true); return; }
+        }
+        out.createdAt = serverTimestamp();
+        $("addBtn").disabled = true;
+        try {
+          await addDoc(collection(db, cfg.col), out);
+          cfg.fields.forEach((f) => ($("n_" + f[0]).value = ""));
+          toast("✅ যোগ হয়েছে, সাইটে লাইভ!");
+          await load();
+        } catch (e) { toast("যোগ হয়নি: " + e.message, true); }
+        $("addBtn").disabled = false;
+      };
+
+      $("list").onclick = async (e) => {
+        const id = e.target.getAttribute && e.target.getAttribute("data-id");
+        if (!id || !confirm("সত্যিই মুছবেন?")) return;
+        try { await deleteDoc(doc(db, cfg.col, id)); toast("🗑️ মুছে ফেলা হয়েছে"); await load(); }
+        catch (err) { toast("মোছা যায়নি: " + err.message, true); }
+      };
+      load();
+    }
+
+    function open(key) {
+      document.querySelectorAll(".tab").forEach((b) => b.classList.toggle("active", b.dataset.key === key));
+      if (SINGLE[key]) renderSingle(key); else renderList(key);
+    }
+
+    $("tabs").innerHTML = Object.keys(TAB_NAMES).map((k) => '<button class="tab" data-key="' + k + '">' + TAB_NAMES[k] + "</button>").join("");
+    $("tabs").onclick = (e) => { if (e.target.dataset && e.target.dataset.key) open(e.target.dataset.key); };
+    open("hero");
+  </script>
+</body>
+</html>
