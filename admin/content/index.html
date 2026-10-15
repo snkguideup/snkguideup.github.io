@@ -87,6 +87,10 @@
         ["promoBtn", "বাটনের লেখা", "বিস্তারিত দেখি"],
         ["promoLink", "বাটনের লিংক", "#"]
       ]},
+      payment: { title: "💳 পেমেন্ট লিংক (অ্যাডমিশন পেজ)", note: "আপনার নিজের পেমেন্ট সিস্টেমের লিংক এখানে বসান। ফাঁকা থাকলে ছাত্ররা নিচের মেসেজটা দেখবে।", fields: [
+        ["paymentLink", "পেমেন্ট লিংক (https://...)", ""],
+        ["paymentNote", "লিংক না থাকলে যে মেসেজ দেখাবে", "পেমেন্ট সিস্টেম শীঘ্রই চালু হচ্ছে। এখনই ভর্তি হতে আমাদের সাথে যোগাযোগ করুন।"]
+      ]},
       footer: { title: "⚙️ ফুটারের যোগাযোগ তথ্য", note: "সবগুলো ঘর পূরণ করে সেভ করুন (ফাঁকা রাখলে ওই লাইন ফুটারে আসবে না)।", fields: [
         ["footerEmail", "সাপোর্ট ইমেইল", "support@snkacademy.com"],
         ["footerPhone", "ফোন নম্বর", ""],
@@ -109,7 +113,7 @@
         show: (d) => esc(d.name) + " — " + esc(d.course) + "<small>" + esc(String(d.text).slice(0, 70)) + "...</small>" }
     };
 
-    const TAB_NAMES = { hero: "🌐 হিরো", promo: "🖼️ ব্যানার", courses: "📚 কোর্স", partners: "🤝 লোগো", testimonials: "💬 টেস্টিমোনিয়াল", footer: "⚙️ ফুটার" };
+    const TAB_NAMES = { hero: "🌐 হিরো", promo: "🖼️ ব্যানার", courses: "📚 কোর্স", partners: "🤝 লোগো", testimonials: "💬 টেস্টিমোনিয়াল", payment: "💳 পেমেন্ট", footer: "⚙️ ফুটার" };
 
     function input(id, label, type, value) {
       const v = esc(value || "");

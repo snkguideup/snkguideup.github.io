@@ -1,16 +1,9 @@
-SNK Ai Academy - ধাপ ৪ (ফাইনাল)
+ধাপ ৫ - পেমেন্ট লিংক প্লেসহোল্ডার
 
-নতুন ফাইল (GitHub এ আপলোড করুন):
-1) site-content.js              -> রুটে (index.html এর পাশে)
-2) admin/content/index.html     -> নতুন ফোল্ডার admin/content/ এর ভেতরে
-3) admin/users/index.html       -> নতুন ফোল্ডার admin/users/ এর ভেতরে
+1) payment-link.js            -> রুটে আপলোড
+2) admin/content/index.html   -> আগেরটা রিপ্লেস (নতুন "💳 পেমেন্ট" ট্যাব যোগ হয়েছে)
+3) admission পেজে </body> এর আগে:
+   রুটে admission.html হলে:       <script type="module" src="payment-link.js"></script>
+   admission/index.html হলে:     <script type="module" src="../payment-link.js"></script>
 
-পুরনো ফাইলে ১ লাইন যোগ:
-index.html এ </body> এর ঠিক আগে:
-<script type="module" src="site-content.js"></script>
-
-(ফুটারের যোগাযোগ তথ্য সব পেজে বদলাতে চাইলে প্রতিটি পেজের </body> এর আগে ../site-content.js (ফোল্ডার পেজে) বা site-content.js (রুট পেজে) যোগ করুন।)
-
-এডিটর লিংক:
-https://snkguideup.github.io/admin/content/
-https://snkguideup.github.io/admin/users/
+নিজের পেমেন্ট সিস্টেম রেডি হলে: admin/content > 💳 পেমেন্ট > লিংক বসিয়ে সেভ করুন।
