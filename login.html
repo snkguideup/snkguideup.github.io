@@ -1,76 +1,207 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login - SNK Ai Academy</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#ffc72c">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>লগইন / সাইনআপ - SNK Ai Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Hind Siliguri', sans-serif; background: #f5f6f8; color: #111827; min-height: 100vh; }
+    .top { background: #fff; border-bottom: 1px solid #eef0f2; padding: 14px 24px; }
+    .top a { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: #111827; font-weight: 700; font-size: 20px; }
+    .top img { height: 40px; width: auto; }
+    .wrap { display: flex; justify-content: center; padding: 40px 16px; }
+    .card { background: #fff; border: 1px solid #eef0f2; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,.06); padding: 32px; width: 100%; max-width: 420px; }
+    .card h1 { font-size: 24px; margin-bottom: 6px; text-align: center; }
+    .card .sub { text-align: center; color: #6b7280; font-size: 14px; margin-bottom: 22px; }
+    .tabs { display: flex; gap: 8px; margin-bottom: 22px; }
+    .tab { flex: 1; padding: 11px; border-radius: 10px; border: 1px solid #e5e7eb; background: #fff; font-family: inherit; font-size: 14px; font-weight: 700; color: #6b7280; cursor: pointer; }
+    .tab.active { background: #14213d; border-color: #14213d; color: #fff; }
+    label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+    input { width: 100%; padding: 12px 14px; border: 1px solid #e5e7eb; border-radius: 10px; font-family: inherit; font-size: 14px; margin-bottom: 14px; outline: none; background: #fff; color: #111827; }
+    input:focus { border-color: #ffc72c; }
+    .btn { width: 100%; padding: 13px; border: none; border-radius: 999px; background: #ffc72c; color: #111827; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer; transition: background .2s, transform .15s; }
+    .btn:hover { background: #f5b800; transform: translateY(-1px); }
+    .btn:disabled { opacity: .6; cursor: not-allowed; }
+    .link { display: block; text-align: center; margin-top: 14px; font-size: 13px; color: #d97706; cursor: pointer; background: none; border: none; font-family: inherit; width: 100%; }
+    .msg { display: none; padding: 10px 12px; border-radius: 10px; font-size: 13px; margin-bottom: 14px; }
+    .msg.err { display: block; background: #fee2e2; color: #991b1b; }
+    .msg.ok { display: block; background: #dcfce7; color: #166534; }
+    .hidden { display: none; }
+    [data-theme="dark"] body { background: #0b1220; color: #e5e7eb; }
+    [data-theme="dark"] .top, [data-theme="dark"] .card { background: #0f172a; border-color: #1f2937; }
+    [data-theme="dark"] .top a { color: #f3f4f6; }
+    [data-theme="dark"] .tab, [data-theme="dark"] input { background: #1f2937; border-color: #374151; color: #e5e7eb; }
+    [data-theme="dark"] .tab.active { background: #ffc72c; color: #111827; border-color: #ffc72c; }
+  </style>
 </head>
 <body>
-<div class="login-page">
-  <div class="login-card">
-    <a href="index.html" class="logo" style="justify-content:center;margin-bottom:20px;">
-      <img src="https://raw.githubusercontent.com/snkguideup/snkguideup.github.io/main/logo.svg" alt="Logo">
-      <span class="logo-text">SNK <span>Ai Academy</span></span>
+
+  <div class="top">
+    <a href="index.html">
+      <img src="https://raw.githubusercontent.com/snkguideup/snkguideup.github.io/main/logo.svg" alt="SNK">
+      SNK Ai Academy
     </a>
+  </div>
 
-    <div class="login-tabs">
-      <button type="button" class="login-tab active" data-tab="login">Login</button>
-      <button type="button" class="login-tab" data-tab="signup">Signup</button>
-    </div>
+  <div class="wrap">
+    <div class="card">
+      <h1>স্বাগতম 👋</h1>
+      <p class="sub">লগইন করুন অথবা নতুন অ্যাকাউন্ট খুলুন</p>
 
-    <div class="role-select">
-      <button type="button" class="role-btn active" data-role="user">User</button>
-      <button type="button" class="role-btn" data-role="mentor">Mentor</button>
-      <button type="button" class="role-btn" data-role="admin">Admin</button>
-    </div>
+      <div class="tabs">
+        <button class="tab active" id="tabLogin" type="button">লগইন</button>
+        <button class="tab" id="tabSignup" type="button">সাইনআপ</button>
+      </div>
 
-    <form id="loginForm" class="login-form">
-      <div class="form-group"><label>ইমেইল</label><input type="email" required placeholder="you@example.com"></div>
-      <div class="form-group"><label>পাসওয়ার্ড</label><input type="password" required placeholder="••••••••"></div>
-      <a href="#" class="forgot-link">পাসওয়ার্ড ভুলে গেছেন?</a>
-      <button type="submit" class="btn-cta" style="width:100%;justify-content:center;">লগইন করুন →</button>
-    </form>
+      <div id="msg" class="msg"></div>
 
-    <form id="signupForm" class="login-form" style="display:none;">
-      <div class="form-group"><label>নাম</label><input type="text" required placeholder="আপনার নাম"></div>
-      <div class="form-group"><label>ইমেইল</label><input type="email" required placeholder="you@example.com"></div>
-      <div class="form-group"><label>পাসওয়ার্ড</label><input type="password" required placeholder="••••••••"></div>
-      <button type="submit" class="btn-cta" style="width:100%;justify-content:center;">সাইনআপ করুন →</button>
-    </form>
+      <!-- লগইন ফর্ম -->
+      <form id="loginForm">
+        <label>ইমেইল</label>
+        <input type="email" id="loginEmail" placeholder="you@example.com" required>
+        <label>পাসওয়ার্ড</label>
+        <input type="password" id="loginPass" placeholder="••••••" required>
+        <button class="btn" id="loginBtn" type="submit">লগইন করুন</button>
+        <button class="link" id="forgotBtn" type="button">পাসওয়ার্ড ভুলে গেছেন?</button>
+      </form>
 
-    <div class="login-social">
-      <button type="button" class="app-btn" style="width:100%;color:#111827;border-color:#e5e7eb;">🔵 Google দিয়ে লগইন</button>
-      <button type="button" class="app-btn" style="width:100%;color:#111827;border-color:#e5e7eb;margin-top:10px;">📘 Facebook দিয়ে লগইন</button>
+      <!-- সাইনআপ ফর্ম -->
+      <form id="signupForm" class="hidden">
+        <label>পুরো নাম</label>
+        <input type="text" id="signupName" placeholder="আপনার নাম" required>
+        <label>ইমেইল</label>
+        <input type="email" id="signupEmail" placeholder="you@example.com" required>
+        <label>পাসওয়ার্ড (কমপক্ষে ৬ অক্ষর)</label>
+        <input type="password" id="signupPass" placeholder="••••••" minlength="6" required>
+        <button class="btn" id="signupBtn" type="submit">অ্যাকাউন্ট খুলুন</button>
+      </form>
     </div>
   </div>
-</div>
 
-<script src="script.js"></script>
-<script>
-let role = 'user';
-document.querySelectorAll('.role-btn').forEach(b=>b.addEventListener('click',()=>{
-  document.querySelectorAll('.role-btn').forEach(x=>x.classList.remove('active'));
-  b.classList.add('active'); role=b.dataset.role;
-}));
-document.querySelectorAll('.login-tab').forEach(t=>t.addEventListener('click',()=>{
-  document.querySelectorAll('.login-tab').forEach(x=>x.classList.remove('active'));
-  t.classList.add('active');
-  document.getElementById('loginForm').style.display = t.dataset.tab==='login' ? 'block':'none';
-  document.getElementById('signupForm').style.display = t.dataset.tab==='signup' ? 'block':'none';
-}));
-document.getElementById('loginForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  window.location.href = (role === 'admin') ? 'admin/dashboard/' : role + '/';
-});
-document.getElementById('signupForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  alert('ধন্যবাদ! ব্যাকএন্ড এখনো যুক্ত হয়নি, তাই সাইনআপ এখনো কাজ করবে না।');
-});
-</script>
+  <script type="module">
+    import { auth, db } from "./firebase-config.js";
+    import {
+      signInWithEmailAndPassword, createUserWithEmailAndPassword,
+      sendPasswordResetEmail, updateProfile, onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+    import { doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+    // ডার্ক মোড
+    if (localStorage.getItem('snk-theme') === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+
+    const $ = (id) => document.getElementById(id);
+    const msg = $('msg');
+
+    function show(text, type) {
+      msg.textContent = text;
+      msg.className = 'msg ' + type;
+    }
+
+    function bnError(code) {
+      const map = {
+        'auth/invalid-email': 'ইমেইল ঠিকমতো লিখুন।',
+        'auth/user-not-found': 'এই ইমেইলে কোনো অ্যাকাউন্ট নেই।',
+        'auth/wrong-password': 'পাসওয়ার্ড ভুল হয়েছে।',
+        'auth/invalid-credential': 'ইমেইল বা পাসওয়ার্ড ভুল হয়েছে।',
+        'auth/email-already-in-use': 'এই ইমেইলে আগেই অ্যাকাউন্ট খোলা আছে।',
+        'auth/weak-password': 'পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের দিন।',
+        'auth/too-many-requests': 'অনেকবার চেষ্টা হয়েছে, কিছুক্ষণ পর আবার চেষ্টা করুন।',
+        'auth/network-request-failed': 'ইন্টারনেট সংযোগ চেক করুন।',
+        'auth/unauthorized-domain': 'এই ডোমেইন Firebase এ অনুমোদিত নয় (Authorized domains এ যোগ করুন)।'
+      };
+      return map[code] || 'সমস্যা হয়েছে: ' + code;
+    }
+
+    // রোল অনুযায়ী পেজে পাঠানো
+    async function goByRole(user) {
+      const ref = doc(db, 'users', user.uid);
+      let snap = await getDoc(ref);
+      if (!snap.exists()) {
+        await setDoc(ref, {
+          name: user.displayName || '',
+          email: user.email,
+          role: 'user',
+          createdAt: serverTimestamp()
+        });
+        snap = await getDoc(ref);
+      }
+      const role = snap.data().role;
+      if (role === 'admin' || role === 'superadmin') location.href = 'admin/dashboard/';
+      else if (role === 'mentor') location.href = 'mentor/';
+      else location.href = 'user/';
+    }
+
+    // আগে থেকে লগইন থাকলে সরাসরি পাঠিয়ে দেওয়া
+    onAuthStateChanged(auth, (user) => { if (user && !window.__busy) goByRole(user); });
+
+    // ট্যাব বদল
+    $('tabLogin').onclick = () => {
+      $('tabLogin').classList.add('active'); $('tabSignup').classList.remove('active');
+      $('loginForm').classList.remove('hidden'); $('signupForm').classList.add('hidden');
+      msg.className = 'msg';
+    };
+    $('tabSignup').onclick = () => {
+      $('tabSignup').classList.add('active'); $('tabLogin').classList.remove('active');
+      $('signupForm').classList.remove('hidden'); $('loginForm').classList.add('hidden');
+      msg.className = 'msg';
+    };
+
+    // লগইন
+    $('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      $('loginBtn').disabled = true;
+      window.__busy = true;
+      try {
+        const cred = await signInWithEmailAndPassword(auth, $('loginEmail').value.trim(), $('loginPass').value);
+        show('লগইন সফল! পেজে নেওয়া হচ্ছে...', 'ok');
+        await goByRole(cred.user);
+      } catch (err) {
+        window.__busy = false;
+        show(bnError(err.code), 'err');
+        $('loginBtn').disabled = false;
+      }
+    });
+
+    // সাইনআপ
+    $('signupForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      $('signupBtn').disabled = true;
+      window.__busy = true;
+      try {
+        const name = $('signupName').value.trim();
+        const cred = await createUserWithEmailAndPassword(auth, $('signupEmail').value.trim(), $('signupPass').value);
+        await updateProfile(cred.user, { displayName: name });
+        await setDoc(doc(db, 'users', cred.user.uid), {
+          name: name,
+          email: cred.user.email,
+          role: 'user',
+          createdAt: serverTimestamp()
+        });
+        show('অ্যাকাউন্ট তৈরি হয়েছে! পেজে নেওয়া হচ্ছে...', 'ok');
+        await goByRole(cred.user);
+      } catch (err) {
+        window.__busy = false;
+        show(bnError(err.code), 'err');
+        $('signupBtn').disabled = false;
+      }
+    });
+
+    // পাসওয়ার্ড রিসেট
+    $('forgotBtn').addEventListener('click', async () => {
+      const email = $('loginEmail').value.trim();
+      if (!email) { show('আগে উপরের ঘরে আপনার ইমেইল লিখুন।', 'err'); return; }
+      try {
+        await sendPasswordResetEmail(auth, email);
+        show('পাসওয়ার্ড রিসেটের লিংক ইমেইলে পাঠানো হয়েছে (স্প্যাম ফোল্ডারও দেখুন)।', 'ok');
+      } catch (err) {
+        show(bnError(err.code), 'err');
+      }
+    });
+  </script>
 </body>
 </html>
