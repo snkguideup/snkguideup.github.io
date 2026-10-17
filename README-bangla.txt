@@ -1,9 +1,13 @@
-ধাপ ৫ - পেমেন্ট লিংক প্লেসহোল্ডার
+ধাপ ৬ - মোবাইল অ্যাপ (PWA, ফ্রি)
 
-1) payment-link.js            -> রুটে আপলোড
-2) admin/content/index.html   -> আগেরটা রিপ্লেস (নতুন "💳 পেমেন্ট" ট্যাব যোগ হয়েছে)
-3) admission পেজে </body> এর আগে:
-   রুটে admission.html হলে:       <script type="module" src="payment-link.js"></script>
-   admission/index.html হলে:     <script type="module" src="../payment-link.js"></script>
+রুটে আপলোড করুন (index.html এর পাশে):
+  manifest.json, sw.js, pwa.js, এবং icons ফোল্ডার (icon-192.png, icon-512.png)
 
-নিজের পেমেন্ট সিস্টেম রেডি হলে: admin/content > 💳 পেমেন্ট > লিংক বসিয়ে সেভ করুন।
+index.html এ যোগ করুন:
+  <head> এর ভেতরে (</head> এর আগে):
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#14213d">
+  </body> এর আগে:
+    <script src="pwa.js"></script>
+
+ফোনে Chrome এ সাইট খুলুন, "📲 অ্যাপ ইন্সটল করুন" বাটন আসবে (অথবা মেনু > Add to Home screen)।
