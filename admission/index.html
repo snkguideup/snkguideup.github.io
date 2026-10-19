@@ -4,44 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admission - SNK Ai Academy</title>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
-<link rel="manifest" href="../manifest.json">
-<meta name="theme-color" content="#ffc72c">
+  <style>
+    .ad-picker{background:#fff;border:1px solid #eef0f2;border-radius:16px;padding:18px 22px;margin-bottom:28px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+    .ad-picker label{font-size:14px;font-weight:700}
+    .ad-picker select{flex:1;min-width:220px;padding:12px 14px;border:1px solid #e5e7eb;border-radius:10px;font-family:inherit;font-size:14px;font-weight:600}
+    .cd-state{max-width:700px;margin:60px auto;text-align:center;font-size:16px;color:#6b7280;padding:0 20px}
+    .cd-thumb{border-radius:16px;min-height:180px;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;color:#fff;font-size:20px;font-weight:800;line-height:1.4;background:linear-gradient(135deg,#4c1d95,#7c3aed);margin-bottom:20px}
+    .cd-hero-img{width:100%;border-radius:16px;margin-bottom:20px;object-fit:cover;max-height:220px}
+    .ad-note{background:#fef3c7;color:#92400e;border-radius:10px;padding:10px 14px;font-size:13px;font-weight:600;margin-top:12px;line-height:1.6}
+    [data-theme="dark"] .ad-picker{background:#0f172a;border-color:#1f2937}
+    [data-theme="dark"] .ad-picker select{background:#1f2937;color:#e5e7eb;border-color:#374151}
+    [data-theme="dark"] .cd-state{color:#9ca3af}
+  </style>
 </head>
 <body>
 
-  <!-- ============ HEADER / NAVBAR ============ -->
   <header class="header">
     <div class="header-inner">
-      <a href="../" class="logo">
-        <img src="https://raw.githubusercontent.com/snkguideup/snkguideup.github.io/main/logo.svg" alt="SNK IT Institute Logo">
+      <a href="../index.html" class="logo">
+        <img src="https://raw.githubusercontent.com/snkguideup/snkguideup.github.io/main/logo.svg" alt="SNK Logo">
         <span class="logo-text">SNK <span>Ai Academy</span></span>
       </a>
-
-      <div class="search-box">
-        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none">
-          <circle cx="11" cy="11" r="7" stroke="#9CA3AF" stroke-width="2"/>
-          <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <input type="text" id="searchInput" data-bn="কোর্স সার্চ করুন" data-en="Search for course" placeholder="কোর্স সার্চ করুন">
-      </div>
-
       <nav class="nav-menu">
-        <a href="../" class="nav-link">Home</a>
+        <a href="../index.html" class="nav-link">Home</a>
         <a href="../admission/" class="nav-link">Admission</a>
         <div class="nav-item-dropdown">
-          <a href="../free-course-academy/" class="nav-link dropdown">Free Course ⌄</a>
+          <a href="#" class="nav-link dropdown">Free Course ⌄</a>
           <div class="dropdown-menu">
             <a href="../free-course-academy/" class="dropdown-item">Academy</a>
             <a href="../free-course-itskill/" class="dropdown-item">IT Skill</a>
           </div>
         </div>
         <div class="nav-item-dropdown">
-          <a href="../paid-course-academy/" class="nav-link dropdown">Paid Course ⌄</a>
+          <a href="#" class="nav-link dropdown">Paid Course ⌄</a>
           <div class="dropdown-menu">
             <a href="../paid-course-academy/" class="dropdown-item">Academy</a>
             <a href="../paid-course-itskill/" class="dropdown-item">IT Skill</a>
@@ -52,7 +50,6 @@
         <a href="../contact/" class="nav-link">Contact</a>
         <a href="../about/" class="nav-link">About</a>
       </nav>
-
       <div class="header-right">
         <button id="langToggle" class="icon-btn" type="button" title="Language">EN</button>
         <button id="themeToggle" class="icon-btn" type="button" title="Dark/Light">🌙</button>
@@ -61,201 +58,52 @@
     </div>
   </header>
 
-  <!-- ============ কোর্স ডিটেইলস (Admission) ============ -->
   <main>
     <div class="admission-wrapper">
 
-      <div class="admission-grid">
-
-        <!-- বাম পাশ: কোর্স ইনফো -->
-        <div class="admission-left">
-
-          <div class="course-badges-row">
-            <span class="course-pill">ব্যাচ-০৮</span>
-            <span class="course-pill">🔴 লাইভ কোর্স</span>
-            <span class="course-rating">⭐ ৪.৯ (১২০+ রিভিউ)</span>
-          </div>
-
-          <h1 class="admission-title">AI দিয়ে ক্যারিয়ার গড়ুন: প্র্যাকটিক্যাল স্কিল কোর্স</h1>
-
-          <p class="admission-desc">
-            যদি আপনি টেক ব্যাকগ্রাউন্ড থেকে না এসেও AI দিয়ে নিজের কাজ সহজ করতে চান, তাহলে এই কোর্সটি আপনার জন্য।
-            মার্কেটার, স্টুডেন্ট কিংবা ফ্রিল্যান্সার — যে কেউ দৈনন্দিন কাজে AI টুলস ব্যবহার করে প্রোডাক্টিভিটি বাড়াতে পারবেন এই কোর্স থেকে।
-            কোর্স শেষে একটি বাস্তব প্রজেক্ট নিজে হাতে-কলমে তৈরি করে দেখাতে শিখবেন।
-          </p>
-
-          <div class="price-row">
-            <span class="price-old">৳ ৭,৮০০</span>
-            <span class="price-new">৳ ৪,৯৯২</span>
-            <a href="#payment" class="btn-cta">ব্যাচে ভর্তি হোন <span class="arrow-icon">→</span></a>
-          </div>
-
-          <div class="batch-info-grid">
-            <div class="batch-info-item">
-              <span class="batch-info-icon">🔗</span>
-              <div>
-                <strong>ব্যাচ লিংক</strong>
-                <small>বুধবার, ৩০ সেপ্টেম্বর</small>
-              </div>
-            </div>
-            <div class="batch-info-item">
-              <span class="batch-info-icon">📹</span>
-              <div>
-                <strong>লাইভ ক্লাস</strong>
-                <small>রাত ৯:০০ - ১০:৩০ (শনি, মঙ্গল)</small>
-              </div>
-            </div>
-            <div class="batch-info-item">
-              <span class="batch-info-icon">📅</span>
-              <div>
-                <strong>ক্লাস রুটিন</strong>
-                <small>রবি, সোম, বৃহস্পতি</small>
-              </div>
-            </div>
-            <div class="batch-info-item">
-              <span class="batch-info-icon">👤</span>
-              <div>
-                <strong>সিট বাকি</strong>
-                <small>২৩ টি</small>
-              </div>
-            </div>
-          </div>
-
-          <h2 class="admission-subheading">কোর্স সম্পর্কে</h2>
-          <p class="admission-desc">
-            <strong>AI এখন আর "ভবিষ্যতের প্রযুক্তি" না — এটা এখনই আপনার পড়াশোনা, কাজ, আর ক্যারিয়ার বদলে দেওয়ার বাস্তব হাতিয়ার।</strong><br><br>
-            প্রশ্ন: কোডিং না জেনেও কি আমি এই বিষয়ে যোগ্যতা অর্জন করতে পারব?<br>
-            উত্তর: হ্যাঁ, পারবেন — এবং সেটাই আমরা শেখাব।
-          </p>
-
-          <p class="admission-call">📞 কল করুন এই নাম্বারে: <strong>+8801XXXXXXXXX</strong></p>
-
-        </div>
-
-        <!-- ডান পাশ: ভিডিও + প্রাইস বক্স -->
-        <div class="admission-right">
-
-          <div class="demo-video-card">
-            <div class="demo-video-thumb">
-              <button class="play-btn" type="button">▶</button>
-              <p>ক্লিক করে দেখে নিন কোর্সের ডেমো ক্লাস</p>
-            </div>
-          </div>
-
-          <div class="enroll-box">
-            <div class="enroll-tabs">
-              <button class="enroll-tab active" type="button">Personal</button>
-              <button class="enroll-tab" type="button">একসাথে (Group)</button>
-            </div>
-
-            <div class="enroll-price-row">
-              <span class="price-old">৳ ৭,৮০০</span>
-              <span class="price-new">৳ ৪,৯৯২</span>
-            </div>
-
-            <a href="#payment" class="btn-cta enroll-btn">ব্যাচে ভর্তি হোন <span class="arrow-icon">→</span></a>
-
-            <p class="enroll-countdown">⏰ ব্যাচ ভর্তি শেষ হতে বাকি — <strong>২৪ঘ : ২২মি : ৪০সে</strong></p>
-
-            <h3 class="enroll-includes-title">এই কোর্সে আপনি পাচ্ছেন:</h3>
-            <ul class="enroll-includes-list">
-              <li>✅ ১৭ সপ্তাহের লাইভ ক্লাস</li>
-              <li>✅ ২৮ টি লাইভ ক্লাস রেকর্ডিং</li>
-              <li>✅ প্র্যাকটিক্যাল প্রজেক্ট ওয়ার্কশপ</li>
-              <li>✅ লাইফটাইম সাপোর্ট গ্রুপ এক্সেস</li>
-              <li>✅ কোর্স শেষে সার্টিফিকেট</li>
-            </ul>
-
-            <div class="enroll-contact-btns">
-              <a href="#" class="btn-whatsapp">💬 WHATSAPP</a>
-              <a href="#" class="btn-call">📞 CALL</a>
-            </div>
-          </div>
-
-          <div class="counselor-card">
-            <div class="counselor-avatar">🧑‍💼</div>
-            <div>
-              <strong>ক্যারিয়ার কাউন্সিলরের সাথে কথা বলুন</strong>
-              <small>সকাল ১০টা থেকে রাত ১০টা পর্যন্ত</small>
-            </div>
-          </div>
-
-        </div>
-
+      <!-- কোর্স বাছাই -->
+      <div class="ad-picker">
+        <label for="coursePick">📚 কোর্স বেছে নিন:</label>
+        <select id="coursePick"><option value="">লোড হচ্ছে...</option></select>
       </div>
 
-      <!-- ============ পেমেন্ট সেকশন ============ -->
-      <section id="payment" class="payment-section">
-        <h2 class="payment-title">কমপ্লিট পেমেন্ট</h2>
+      <div id="app"><p class="cd-state">⏳ কোর্সের তথ্য লোড হচ্ছে...</p></div>
 
+      <!-- পেমেন্ট সেকশন -->
+      <section id="payment" class="payment-section" style="display:none">
+        <h2 class="payment-title">কমপ্লিট পেমেন্ট</h2>
         <div class="payment-grid">
 
-          <!-- অর্ডার সামারি -->
           <div class="payment-summary">
             <div class="payment-course-info">
-              <div class="payment-course-thumb">🤖</div>
-              <div>
-                <strong>AI দিয়ে ক্যারিয়ার গড়ুন: প্র্যাকটিক্যাল স্কিল কোর্স</strong>
-              </div>
+              <div class="payment-course-thumb">🎓</div>
+              <div><strong id="payTitle"></strong></div>
             </div>
-
-            <h4 class="payment-details-title">পেমেন্ট ডিটেইলস</h4>
-            <div class="payment-row">
-              <span>কোর্সের মূল্য</span>
-              <span>৳ ৭,৮০০</span>
-            </div>
-            <div class="payment-row discount">
-              <span>প্রোমো ছাড় (NINE)</span>
-              <span>- ৳ ২,৮০৮</span>
-            </div>
-            <div class="payment-row total">
-              <span>টোটাল পেমেন্ট:</span>
-              <span>৳ ৪,৯৯২</span>
-            </div>
-
-            <p class="payment-call">📞 প্রয়োজনে কল করুন <strong>+8801XXXXXXXXX</strong> (সকাল ১০টা থেকে রাত ১০টা)</p>
+            <h4 class="payment-details-title">পেমেন্ট ডিটেইলস (সিজন-২ পেইড)</h4>
+            <div class="payment-row"><span>কোর্সের মূল্য</span><span id="payOld"></span></div>
+            <div class="payment-row discount" id="payDiscRow"><span>ছাড়</span><span id="payDisc"></span></div>
+            <div class="payment-row total"><span>টোটাল পেমেন্ট:</span><span id="payTotal"></span></div>
+            <p class="payment-call">📞 প্রয়োজনে কল করুন <strong id="payPhone"></strong> (সকাল ১০টা থেকে রাত ১০টা)</p>
           </div>
 
-          <!-- পেমেন্ট মেথড -->
           <div class="payment-methods">
             <h3>পেমেন্টের মাধ্যম</h3>
+            <label class="payment-method-option active"><input type="radio" name="payMethod" checked><span class="method-logo method-bkash">bKash Payment</span></label>
+            <label class="payment-method-option"><input type="radio" name="payMethod"><span class="method-logo">নগদ / রকেট / কার্ড</span></label>
+            <label class="payment-method-option"><input type="radio" name="payMethod"><span class="method-logo">🇮🇳 Pay from India (Card)</span></label>
+            <label class="payment-method-option"><input type="radio" name="payMethod"><span class="method-logo">🌐 Pay Internationally (Card)</span></label>
 
-            <label class="payment-method-option active">
-              <input type="radio" name="payMethod" checked>
-              <span class="method-logo method-bkash">bKash Payment</span>
-            </label>
-
-            <label class="payment-method-option">
-              <input type="radio" name="payMethod">
-              <span class="method-logo">নগদ / রকেট / কার্ড</span>
-            </label>
-
-            <label class="payment-method-option">
-              <input type="radio" name="payMethod">
-              <span class="method-logo">🇮🇳 Pay from India (Card)</span>
-            </label>
-
-            <label class="payment-method-option">
-              <input type="radio" name="payMethod">
-              <span class="method-logo">🌐 Pay Internationally (Card)</span>
-            </label>
-
-            <div class="payment-total-row">
-              <span>টোটাল পেমেন্ট:</span>
-              <strong>৳ ৪,৯৯২</strong>
-            </div>
-
-            <button type="button" class="btn-cta payment-submit-btn">পেমেন্ট সম্পন্ন করি <span class="arrow-icon">→</span></button>
+            <div class="payment-total-row"><span>টোটাল পেমেন্ট:</span><strong id="payTotal2"></strong></div>
+            <button type="button" id="payBtn" class="btn-cta payment-submit-btn">পেমেন্ট সম্পন্ন করি <span class="arrow-icon">→</span></button>
             <p class="payment-secure">🔒 সিকিউরড পেমেন্ট</p>
+            <div class="ad-note">পেমেন্টের পর আপনার একাউন্টের ইমেইলসহ পেমেন্টের প্রমাণ আমাদের জানান। যাচাইয়ের পর সিজন-২ আনলক করে দেওয়া হবে।</div>
           </div>
-
         </div>
       </section>
 
     </div>
   </main>
 
-  <!-- ============ ফুটার ============ -->
   <footer class="footer">
     <div class="footer-wrapper">
       <div class="footer-col footer-brand">
@@ -264,76 +112,173 @@
           <span>SNK <small>Ai Academy</small></span>
         </div>
         <p>অনলাইন লাইভ স্কিল ডেভেলপমেন্ট প্ল্যাটফর্ম।</p>
-        <h4>ডাউনলোড করুন SNK অ্যাপ</h4>
-        <div class="footer-app-icons">
-          <span class="footer-app-icon">📱</span>
-          <span class="footer-app-icon">🍏</span>
-          <span class="footer-app-icon">🖥️</span>
-        </div>
-        <h4>কমিউনিটির সাথে কানেক্টেড থাকতে</h4>
-        <div class="footer-social">
-          <a href="#" aria-label="Facebook">📘</a>
-          <a href="#" aria-label="Instagram">📷</a>
-          <a href="#" aria-label="YouTube">▶️</a>
-          <a href="#" aria-label="LinkedIn">💼</a>
-        </div>
       </div>
       <div class="footer-col">
         <h4>কুইক লিংক</h4>
         <ul>
-          <li><a href="#">আপকামিং লাইভ ব্যাচ</a></li>
-          <li><a href="#">ফ্রি কোর্সসমূহ</a></li>
-          <li><a href="#">লাইভ ওয়ার্কশপ</a></li>
-          <li><a href="#">AI Academy</a></li>
-          <li><a href="#">ইন্সট্রাক্টর হিসেবে জয়েন করুন</a></li>
+          <li><a href="../free-course-academy/">ফ্রি কোর্সসমূহ</a></li>
+          <li><a href="../paid-course-academy/">পেইড কোর্সসমূহ</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>যোগাযোগ</h4>
-        <ul class="footer-contact">
-          <li>✉️ support@snkacademy.com</li>
-          <li>📍 ঢাকা, বাংলাদেশ</li>
-        </ul>
+        <ul class="footer-contact"><li>✉️ support@snkacademy.com</li><li>📍 ঢাকা, বাংলাদেশ</li></ul>
       </div>
       <div class="footer-col">
         <h4>কোম্পানি</h4>
-        <ul>
-          <li><a href="../about/">আমাদের সম্পর্কে</a></li>
-          <li><a href="#">রিফান্ড পলিসি</a></li>
-          <li><a href="#">প্রাইভেসি পলিসি</a></li>
-          <li><a href="#">টার্মস এন্ড কন্ডিশন</a></li>
-        </ul>
+        <ul><li><a href="../about/">আমাদের সম্পর্কে</a></li><li><a href="../contact/">যোগাযোগ</a></li></ul>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2025 SNK Ai Academy. সর্বস্বত্ব সংরক্ষিত।</p>
-    </div>
+    <div class="footer-bottom"><p>© 2025 SNK Ai Academy. সর্বস্বত্ব সংরক্ষিত।</p></div>
   </footer>
 
-  <!-- ============ উষা AI চ্যাটবট ============ -->
-  <div class="usha-widget">
-    <div class="usha-panel" id="ushaPanel">
-      <div class="usha-header">
-        <div class="usha-avatar">🤖</div>
-        <div>
-          <div class="usha-name">উষা</div>
-          <div class="usha-status">অনলাইন আছে</div>
-        </div>
-        <button id="ushaClose" class="usha-close" type="button">✕</button>
-      </div>
-      <div class="usha-messages" id="ushaMessages">
-        <div class="usha-msg bot">হ্যালো! 👋 আমি উষা, SNK Ai Academy এর AI সহকারী। আপনাকে কীভাবে সাহায্য করতে পারি?</div>
-      </div>
-      <form class="usha-input-row" id="ushaForm">
-        <input type="text" id="ushaInput" placeholder="আপনার প্রশ্ন লিখুন..." autocomplete="off">
-        <button type="submit" class="usha-send">➤</button>
-      </form>
-    </div>
-    <button class="usha-fab" id="ushaFab" type="button">
-      <span class="usha-fab-icon">💬</span>
-    </button>
-  </div>
-
   <script src="../script.js"></script>
+
+  <script type="module">
+    import { db } from "../firebase-config.js";
+    import { doc, getDoc, collection, getDocs }
+      from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    /* ফিল্ড নাম ম্যাপ — আপনার অ্যাডমিন এডিটরের নাম অন্যরকম হলে এখানে যোগ করুন */
+    const F = {
+      title:    ["title", "name", "courseName"],
+      category: ["category", "cat"],
+      batch:    ["batch", "batchName"],
+      seats:    ["seats", "seatsLeft"],
+      oldPrice: ["oldPrice", "priceOld", "regularPrice"],
+      price:    ["price", "priceNew", "salePrice"],
+      desc:     ["description", "desc", "about"],
+      image:    ["image", "img", "thumbnail", "banner"],
+      schedule: ["schedule", "classTime"],
+      routine:  ["routine", "classDays"],
+      start:    ["startDate", "batchStart"],
+      features: ["features", "includes"],
+      video:    ["demoVideo", "video", "videoUrl"],
+      phone:    ["phone", "callNumber"],
+      payLink:  ["paymentLink", "payLink"]
+    };
+    const get = (o, k) => { for (const n of F[k]) if (o[n] !== undefined && o[n] !== "") return o[n]; return ""; };
+    const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+    const num = v => { const n = Number(String(v).replace(/[^\d.]/g, "")); return isNaN(n) || v === "" ? null : n; };
+    const money = v => { const n = num(v); return n === null ? (v === "" ? "—" : esc(v)) : "৳ " + n.toLocaleString("bn-BD"); };
+    const $ = i => document.getElementById(i);
+
+    const courses = {};            // id -> data
+    let sitePay = "";              // সাইটের সাধারণ পেমেন্ট লিংক
+    let current = null;
+
+    async function init() {
+      try {
+        const [snap, site] = await Promise.all([getDocs(collection(db, "courses")), getDoc(doc(db, "site", "home")).catch(() => null)]);
+        sitePay = site && site.exists() ? (site.data().paymentLink || "") : "";
+        snap.forEach(d => courses[d.id] = d.data());
+      } catch (e) {
+        console.error(e);
+        $("app").innerHTML = '<p class="cd-state">⚠️ তথ্য লোড করা যায়নি। ইন্টারনেট বা Firestore rules চেক করুন।</p>';
+        return;
+      }
+      const ids = Object.keys(courses);
+      if (!ids.length) { $("coursePick").innerHTML = '<option value="">কোনো কোর্স নেই</option>'; $("app").innerHTML = '<p class="cd-state">এখনও কোনো কোর্স যোগ করা হয়নি।</p>'; return; }
+
+      $("coursePick").innerHTML = '<option value="">— একটি কোর্স বেছে নিন —</option>' +
+        ids.map(i => `<option value="${i}">${esc(get(courses[i], "title") || i)}</option>`).join("");
+      $("coursePick").addEventListener("change", e => select(e.target.value, true));
+
+      const want = new URLSearchParams(location.search).get("id");
+      if (want && courses[want]) { $("coursePick").value = want; select(want, false); }
+      else $("app").innerHTML = '<p class="cd-state">👆 ওপর থেকে একটি কোর্স বেছে নিন।</p>';
+    }
+
+    function select(id, push) {
+      $("payment").style.display = "none";
+      if (!id) { $("app").innerHTML = '<p class="cd-state">👆 ওপর থেকে একটি কোর্স বেছে নিন।</p>'; return; }
+      if (push) history.replaceState(null, "", "?id=" + id);
+      current = id; render(id, courses[id]);
+    }
+
+    function render(id, c) {
+      const title = get(c, "title") || "কোর্স";
+      document.title = title + " - Admission";
+      const feats = get(c, "features");
+      const featList = Array.isArray(feats) ? feats : String(feats).split("\n").map(s => s.trim()).filter(Boolean);
+      const img = get(c, "image"), video = get(c, "video");
+      const phone = get(c, "phone") || "+8801XXXXXXXXX";
+      const info = [
+        ["🔗", "ব্যাচ শুরু", get(c, "start")], ["📹", "লাইভ ক্লাস", get(c, "schedule")],
+        ["📅", "ক্লাস রুটিন", get(c, "routine")], ["👤", "সিট বাকি", get(c, "seats") ? get(c, "seats") + " টি" : ""]
+      ].filter(x => x[2]).map(x => `<div class="batch-info-item"><span class="batch-info-icon">${x[0]}</span><div><strong>${x[1]}</strong><small>${esc(x[2])}</small></div></div>`).join("");
+
+      $("app").innerHTML = `
+      <div class="admission-grid">
+        <div class="admission-left">
+          <div class="course-badges-row">
+            ${get(c,"batch") ? `<span class="course-pill">${esc(get(c,"batch"))}</span>` : ""}
+            ${get(c,"category") ? `<span class="course-pill">${esc(get(c,"category"))}</span>` : ""}
+            <span class="course-pill">🔴 লাইভ কোর্স</span>
+          </div>
+          <h1 class="admission-title">${esc(title)}</h1>
+          ${img ? `<img class="cd-hero-img" src="${esc(img)}" alt="${esc(title)}">` : `<div class="cd-thumb">${esc(title)}</div>`}
+          ${get(c,"desc") ? `<p class="admission-desc">${esc(get(c,"desc")).replace(/\n/g,"<br>")}</p>` : ""}
+          <div class="price-row">
+            ${get(c,"oldPrice") ? `<span class="price-old">${money(get(c,"oldPrice"))}</span>` : ""}
+            <span class="price-new">${money(get(c,"price"))}</span>
+            <a href="#payment" class="btn-cta" id="goPay" style="margin-bottom:0">ব্যাচে ভর্তি হোন <span class="arrow-icon">→</span></a>
+          </div>
+          ${info ? `<div class="batch-info-grid">${info}</div>` : ""}
+          <p class="admission-call">📞 কল করুন এই নাম্বারে: <strong>${esc(phone)}</strong></p>
+        </div>
+
+        <div class="admission-right">
+          <div class="demo-video-card"><div class="demo-video-thumb">
+            ${video ? `<a class="play-btn" href="${esc(video)}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center">▶</a>` : `<button class="play-btn" type="button">▶</button>`}
+            <p>ক্লিক করে দেখে নিন কোর্সের ডেমো ক্লাস</p>
+          </div></div>
+          <div class="enroll-box">
+            <div class="enroll-price-row">
+              ${get(c,"oldPrice") ? `<span class="price-old">${money(get(c,"oldPrice"))}</span>` : ""}
+              <span class="price-new">${money(get(c,"price"))}</span>
+            </div>
+            <a href="#payment" class="btn-cta enroll-btn" id="goPay2">ব্যাচে ভর্তি হোন <span class="arrow-icon">→</span></a>
+            ${featList.length ? `<h3 class="enroll-includes-title">এই কোর্সে আপনি পাচ্ছেন:</h3><ul class="enroll-includes-list">${featList.map(f => `<li>✅ ${esc(f)}</li>`).join("")}</ul>` : ""}
+            <div class="enroll-contact-btns">
+              <a href="../learn/?id=${id}" class="btn-whatsapp">▶ সিজন-১ ফ্রি দেখুন</a>
+              <a href="tel:${esc(phone)}" class="btn-call">📞 CALL</a>
+            </div>
+          </div>
+        </div>
+      </div>`;
+
+      /* পেমেন্ট সেকশন */
+      const oldP = num(get(c, "oldPrice")), newP = num(get(c, "price"));
+      $("payTitle").textContent = title;
+      $("payOld").innerHTML = money(oldP !== null ? oldP : newP === null ? "" : newP);
+      const disc = oldP !== null && newP !== null && oldP > newP ? oldP - newP : 0;
+      $("payDiscRow").style.display = disc ? "flex" : "none";
+      $("payDisc").textContent = "- " + money(disc).replace(/&.*/, "");
+      $("payDisc").innerHTML = "- " + money(disc);
+      $("payTotal").innerHTML = money(get(c, "price"));
+      $("payTotal2").innerHTML = money(get(c, "price"));
+      $("payPhone").textContent = phone;
+      $("payment").style.display = "block";
+
+      const open = () => $("payment").scrollIntoView({ behavior: "smooth" });
+      ["goPay", "goPay2"].forEach(i => { const el = $(i); if (el) el.addEventListener("click", e => { e.preventDefault(); open(); }); });
+    }
+
+    // পেমেন্ট মেথড সিলেকশন
+    document.querySelectorAll(".payment-method-option").forEach(o => o.addEventListener("click", () => {
+      document.querySelectorAll(".payment-method-option").forEach(x => x.classList.remove("active"));
+      o.classList.add("active"); const r = o.querySelector("input"); if (r) r.checked = true;
+    }));
+
+    // পেমেন্ট বাটন: কোর্সের লিংক → সাইটের লিংক → না থাকলে মেসেজ
+    $("payBtn").addEventListener("click", () => {
+      const link = (current && get(courses[current], "payLink")) || sitePay;
+      if (link) window.open(link, "_blank", "noopener");
+      else alert("পেমেন্ট সিস্টেম শীঘ্রই চালু হচ্ছে। এখন ভর্তির জন্য আমাদের কল করুন বা WhatsApp এ যোগাযোগ করুন।");
+    });
+
+    init();
+  </script>
 </body>
 </html>

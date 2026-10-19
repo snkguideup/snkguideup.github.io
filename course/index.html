@@ -168,7 +168,7 @@
       const img = get(c, "image");
       const video = get(c, "video");
       const phone = get(c, "phone") || "+8801XXXXXXXXX";
-      const buyLink = get(c, "payLink") || payLink || "../admission/";
+      const buyLink = "../admission/?id=" + id;   // ভর্তি/পেমেন্ট এখন অ্যাডমিশন পেজে
 
       const info = [
         ["🔗", "ব্যাচ শুরু", get(c, "start")],
