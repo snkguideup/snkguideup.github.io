@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>স্টুডেন্ট ড্যাশবোর্ড - SNK Ai Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="manifest" href="../manifest.json">
+  <style>
+    :root{--bg:#f6f7fb;--card:#fff;--text:#111827;--muted:#6b7280;--line:#eef0f2;--navy:#14213d;--yellow:#ffc72c}
+    [data-theme="dark"]{--bg:#0b1220;--card:#0f172a;--text:#e5e7eb;--muted:#9ca3af;--line:#1f2937}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Hind Siliguri',sans-serif;background:var(--bg);color:var(--text)}
+    a{text-decoration:none;color:inherit}
+    .top{background:var(--navy);color:#fff;padding:14px 24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+    .top img{height:34px}
+    .top b{font-size:18px}
+    .top .sp{flex:1}
+    .top a,.top button{background:rgba(255,255,255,.1);color:#fff;border:0;border-radius:999px;padding:8px 16px;font:600 13px 'Hind Siliguri';cursor:pointer}
+    .top button.out{background:var(--yellow);color:#111827}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px 16px 60px}
+    .hello{background:linear-gradient(120deg,#14213d,#1f3a6b);color:#fff;border-radius:20px;padding:26px;margin-bottom:20px}
+    .hello h1{font-size:24px;margin-bottom:4px}
+    .hello p{color:#cbd5e1;font-size:14px}
+    .role{display:inline-block;background:var(--yellow);color:#111827;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;margin-top:10px}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+    .stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;text-align:center}
+    .stat h3{font-size:28px;font-weight:800}
+    .stat p{font-size:13px;color:var(--muted)}
+    h2{font-size:19px;margin:8px 0 14px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:30px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+    .card h4{font-size:16px;margin-bottom:8px;line-height:1.4}
+    .badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+    .b{font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px}
+    .b.free{background:#dcfce7;color:#15803d}
+    .b.paid{background:#fef3c7;color:#b45309}
+    .b.lock{background:#f3f4f6;color:#6b7280}
+    .btn{display:block;text-align:center;background:var(--yellow);color:#111827;font-weight:700;font-size:14px;padding:10px;border-radius:999px;margin-top:8px}
+    .btn.alt{background:var(--navy);color:#fff}
+    .tablebox{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow-x:auto}
+    table{width:100%;border-collapse:collapse;font-size:14px;min-width:560px}
+    th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line)}
+    th{color:var(--muted);font-size:12px;text-transform:uppercase}
+    tr:last-child td{border-bottom:0}
+    .st{font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px}
+    .st.pending{background:#fef3c7;color:#b45309}
+    .st.approved{background:#dcfce7;color:#15803d}
+    .st.rejected{background:#fee2e2;color:#b91c1c}
+    .empty{padding:26px;text-align:center;color:var(--muted);font-size:14px}
+    @media(max-width:800px){.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+  <div class="top">
+    <img src="https://raw.githubusercontent.com/snkguideup/snkguideup.github.io/main/logo.svg" alt="SNK">
+    <b>SNK Ai Academy</b>
+    <span class="sp"></span>
+    <a href="../index.html">🏠 হোম</a>
+    <a href="../index.html#courses">📚 কোর্স দেখুন</a>
+    <button id="themeBtn" type="button">🌙</button>
+    <button id="logoutBtn" class="out" type="button">লগআউট</button>
+  </div>
+
+  <div class="wrap" id="app" style="display:none">
+
+    <div class="hello">
+      <h1 id="hName">স্বাগতম!</h1>
+      <p id="hEmail"></p>
+      <span class="role" id="hRole"></span>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><h3 id="sCourses">0</h3><p>আমার কোর্স</p></div>
+      <div class="stat"><h3 id="sS2">0</h3><p>সিজন-২ আনলকড</p></div>
+      <div class="stat"><h3 id="sPending">0</h3><p>পেন্ডিং পেমেন্ট</p></div>
+      <div class="stat"><h3 id="sPaid">৳ 0</h3><p>মোট পেমেন্ট (অ্যাপ্রুভড)</p></div>
+    </div>
+
+    <h2>📚 আমার কোর্স</h2>
+    <div class="grid" id="courseGrid"></div>
+
+    <h2>💳 পেমেন্ট হিস্ট্রি</h2>
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>কোর্স</th><th>পরিমাণ</th><th>TrxID</th><th>তারিখ</th><th>স্ট্যাটাস</th></tr></thead>
+        <tbody id="orderBody"></tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="empty" id="loading">লোড হচ্ছে...</div>
+
+  <script type="module">
+    // ⚠️ ভার্সন নাম্বার (10.12.2) আপনার firebase-config.js এর সাথে একই হতে হবে
+    import { auth, db } from "../firebase-config.js";
+    import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { doc, getDoc, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    // ডার্ক মোড (সাইটের সাথে একই সেটিং)
+    const themeBtn = document.getElementById('themeBtn');
+    function applyTheme(t){ document.documentElement.setAttribute('data-theme', t === 'dark' ? 'dark' : ''); themeBtn.textContent = t === 'dark' ? '☀️' : '🌙'; }
+    applyTheme(localStorage.getItem('snk-theme') || 'light');
+    themeBtn.onclick = () => { const n = localStorage.getItem('snk-theme') === 'dark' ? 'light' : 'dark'; localStorage.setItem('snk-theme', n); applyTheme(n); };
+
+    document.getElementById('logoutBtn').onclick = async () => { await signOut(auth); location.href = '../login.html'; };
+
+    const bn = n => String(n).replace(/\d/g, d => '০১২৩৪৫৬৭৮৯'[d]);
+    const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+    // একটা কোয়েরি ফেল করলেও বাকিটা চলবে
+    async function safeQuery(col, field, uid){
+      try { return (await getDocs(query(collection(db, col), where(field, '==', uid)))).docs.map(d => ({ id: d.id, ...d.data() })); }
+      catch (e) { console.warn(col, field, e.code); return []; }
+    }
+    function merge(a, b){ const m = new Map(); [...a, ...b].forEach(x => m.set(x.id, x)); return [...m.values()]; }
+    function dateOf(x){ const t = x.createdAt || x.date || x.grantedAt; return t && t.toDate ? t.toDate() : (t ? new Date(t) : null); }
+
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) { location.href = '../login.html'; return; }
+
+      // প্রোফাইল
+      let prof = {};
+      try { const s = await getDoc(doc(db, 'users', user.uid)); if (s.exists()) prof = s.data(); } catch (e) {}
+      document.getElementById('hName').textContent = 'স্বাগতম, ' + (prof.name || user.displayName || 'শিক্ষার্থী') + '!';
+      document.getElementById('hEmail').textContent = user.email || '';
+      const roles = { user: 'স্টুডেন্ট', mentor: 'মেন্টর', admin: 'অ্যাডমিন', superadmin: 'সুপার অ্যাডমিন' };
+      document.getElementById('hRole').textContent = roles[prof.role] || 'স্টুডেন্ট';
+
+      // এনরোলমেন্ট + অর্ডার
+      const [e1, e2, o1, o2] = await Promise.all([
+        safeQuery('enrollments', 'uid', user.uid), safeQuery('enrollments', 'userId', user.uid),
+        safeQuery('orders', 'uid', user.uid), safeQuery('orders', 'userId', user.uid)
+      ]);
+      const enrolls = merge(e1, e2);
+      const orders = merge(o1, o2).sort((a, b) => (dateOf(b) || 0) - (dateOf(a) || 0));
+
+      // কোর্স অনুযায়ী গ্রুপ (একই কোর্সে সিজন-২ থাকলে একসাথে)
+      const byCourse = {};
+      enrolls.forEach(e => {
+        const cid = e.courseId || String(e.id).split('_').slice(1).join('_');
+        if (!cid) return;
+        byCourse[cid] = byCourse[cid] || { cid, season2: false };
+        if (e.season2 === true || e.season === 2 || e.access === 'season2' || e.access === 'full' || e.paid === true) byCourse[cid].season2 = true;
+      });
+
+      const list = Object.values(byCourse);
+      await Promise.all(list.map(async c => {
+        try { const s = await getDoc(doc(db, 'courses', c.cid)); c.title = s.exists() ? (s.data().title || s.data().name) : null; } catch (e) {}
+      }));
+
+      const grid = document.getElementById('courseGrid');
+      grid.innerHTML = list.length ? list.map(c => `
+        <div class="card">
+          <h4>${esc(c.title || 'কোর্স')}</h4>
+          <div class="badges">
+            <span class="b free">সিজন-১ ফ্রি</span>
+            <span class="b ${c.season2 ? 'paid' : 'lock'}">${c.season2 ? 'সিজন-২ আনলকড ✓' : 'সিজন-২ 🔒 লকড'}</span>
+          </div>
+          <a class="btn" href="../learn/?id=${encodeURIComponent(c.cid)}">▶ ক্লাস দেখুন</a>
+          ${c.season2 ? '' : `<a class="btn alt" href="../admission/?id=${encodeURIComponent(c.cid)}">সিজন-২ আনলক করুন</a>`}
+        </div>`).join('')
+        : '<div class="card empty" style="grid-column:1/-1">এখনো কোনো কোর্সে এনরোল করেননি। <a href="../index.html" style="color:#d97706;font-weight:700">কোর্স দেখুন →</a></div>';
+
+      // অর্ডার টেবিল
+      const stLabel = { pending: 'পেন্ডিং', approved: 'অ্যাপ্রুভড', rejected: 'রিজেক্টেড' };
+      document.getElementById('orderBody').innerHTML = orders.length ? orders.map(o => {
+        const d = dateOf(o);
+        const st = o.status || 'pending';
+        return `<tr>
+          <td>${esc(o.courseTitle || o.title || o.courseId || '-')}</td>
+          <td>৳ ${bn(o.amount ?? o.price ?? '-')}</td>
+          <td>${esc(o.trxId || o.trxID || o.transactionId || '-')}</td>
+          <td>${d ? bn(d.toLocaleDateString('en-GB')) : '-'}</td>
+          <td><span class="st ${esc(st)}">${stLabel[st] || esc(st)}</span></td>
+        </tr>`;
+      }).join('') : '<tr><td colspan="5" class="empty">এখনো কোনো পেমেন্ট নেই।</td></tr>';
+
+      // স্ট্যাটস
+      document.getElementById('sCourses').textContent = bn(list.length);
+      document.getElementById('sS2').textContent = bn(list.filter(c => c.season2).length);
+      document.getElementById('sPending').textContent = bn(orders.filter(o => (o.status || 'pending') === 'pending').length);
+      const paid = orders.filter(o => o.status === 'approved').reduce((s, o) => s + (Number(o.amount ?? o.price) || 0), 0);
+      document.getElementById('sPaid').textContent = '৳ ' + bn(paid.toLocaleString('en-US'));
+
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('app').style.display = 'block';
+    });
+  </script>
+</body>
+</html>
