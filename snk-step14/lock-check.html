@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>লক চেক - SNK</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:"Hind Siliguri",sans-serif;background:#f6f7fb;color:#111827;padding:24px}
+.box{max-width:680px;margin:0 auto;background:#fff;border:1px solid #eef0f2;border-radius:16px;padding:24px}
+h1{font-size:22px;margin-bottom:6px}p.s{color:#6b7280;font-size:14px;margin-bottom:18px}
+table{width:100%;border-collapse:collapse;font-size:14px;margin-bottom:14px}td,th{padding:10px;border-bottom:1px solid #eef0f2;text-align:left}
+.ok{color:#15803d;font-weight:700}.no{color:#b91c1c;font-weight:700}
+.me{background:#fff7e0;border-left:4px solid #ffc72c;padding:10px 14px;margin-bottom:16px;font-size:14px}
+a.b{display:inline-block;background:#ffc72c;border-radius:999px;padding:9px 18px;font-weight:700;font-size:13px;text-decoration:none;color:#111827;margin-right:8px}
+</style></head><body><div class="box">
+<h1>🔒 লক চেক</h1><p class="s">আপনার বর্তমান অ্যাকাউন্ট কোন কোন এলাকায় ঢুকতে পারবে এবং Firestore Rules কাজ করছে কি না দেখুন।</p>
+<div class="me" id="me">লোড হচ্ছে...</div>
+<table><thead><tr><th>এলাকা</th><th>অনুমতি</th></tr></thead><tbody id="rows"></tbody></table>
+<h3 style="font-size:15px;margin:10px 0">Firestore Rules টেস্ট</h3>
+<table><tbody id="rules"></tbody></table>
+<a class="b" href="login.html">লগইন</a><a class="b" href="index.html">হোম</a>
+</div>
+<script type="module">
+import { auth, db } from "./firebase-config.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { doc, getDoc, getDocs, collection, limit, query } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+const AREAS=[["/admin/ (অ্যাডমিন প্যানেল)",["admin","superadmin"]],["/mentor/ (মেন্টর প্যানেল)",["mentor","admin","superadmin"]],["/user/ (স্টুডেন্ট প্যানেল)",["user","mentor","admin","superadmin"]]];
+const g=i=>document.getElementById(i);
+onAuthStateChanged(auth,async u=>{
+  if(!u){g("me").textContent="আপনি লগইন করেননি। (লগআউট অবস্থায় এটাই ঠিক — admin/mentor/user পেজ খুললে লগইনে পাঠানোর কথা।)";
+    g("rows").innerHTML=AREAS.map(a=>'<tr><td>'+a[0]+'</td><td class="no">⛔ লগইন লাগবে</td></tr>').join("");return}
+  let role="user";try{const s=await getDoc(doc(db,"users",u.uid));if(s.exists()&&s.data().role)role=s.data().role}catch(e){}
+  g("me").textContent="ইমেইল: "+u.email+" · রোল: "+role;
+  g("rows").innerHTML=AREAS.map(a=>'<tr><td>'+a[0]+'</td><td class="'+(a[1].includes(role)?"ok":"no")+'">'+(a[1].includes(role)?"✅ ঢুকতে পারবে":"⛔ পারবে না")+'</td></tr>').join("");
+  // Rules টেস্ট: অ্যাডমিন ছাড়া অন্যদের এগুলো পড়তে না পারাই ঠিক
+  const tests=[["users (সবার প্রোফাইল তালিকা)","users",["admin","superadmin"]],["orders (সব পেমেন্ট অর্ডার)","orders",["admin","superadmin"]]];
+  const out=[];
+  for(const [label,col,allowed] of tests){
+    let readable=true;try{await getDocs(query(collection(db,col),limit(1)))}catch(e){readable=false}
+    const should=allowed.includes(role);
+    out.push('<tr><td>'+label+'</td><td class="'+(readable===should?"ok":"no")+'">'+(readable===should?"✅ ঠিক আছে":"❌ Rules ভুল — "+(readable?"পড়া যাচ্ছে (যাওয়া উচিত নয়)":"পড়া যাচ্ছে না (যাওয়া উচিত)"))+'</td></tr>');
+  }
+  g("rules").innerHTML=out.join("");
+});
+</script></body></html>
