@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>অর্ডার - SNK Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Hind Siliguri',sans-serif;background:#f5f6f8;color:#111827;padding:24px}
+    .wrap{max-width:1000px;margin:0 auto}
+    h1{font-size:24px;margin-bottom:4px}
+    .sub{color:#6b7280;font-size:14px;margin-bottom:18px}
+    a.back{color:#d97706;font-weight:700;font-size:13px;margin-right:14px}
+    .bar{display:flex;gap:10px;align-items:center;margin:14px 0}
+    select{padding:10px 12px;border:1px solid #e5e7eb;border-radius:10px;font-family:inherit;font-size:14px}
+    .card{background:#fff;border:1px solid #eef0f2;border-radius:14px;padding:16px 18px;margin-bottom:12px}
+    .top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+    .top strong{font-size:15px}
+    .meta{font-size:13px;color:#4b5563;line-height:1.9;margin-top:6px}
+    .badge{border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700}
+    .pending{background:#fef3c7;color:#92400e}.approved{background:#dcfce7;color:#166534}.rejected{background:#fee2e2;color:#b91c1c}
+    button{border:0;border-radius:999px;padding:9px 16px;font-family:inherit;font-weight:700;font-size:13px;cursor:pointer;margin-right:8px;margin-top:10px}
+    .ok{background:#16a34a;color:#fff}.no{background:#fee2e2;color:#b91c1c}
+    .empty{text-align:center;color:#6b7280;padding:40px 0}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../../">← সাইট</a><a class="back" href="../access/">ক্লাস ও অ্যাক্সেস</a>
+  <h1>💳 পেমেন্ট আবেদন</h1>
+  <p class="sub">স্টুডেন্টরা যে পেমেন্টের তথ্য জমা দিয়েছে, এখানে যাচাই করে এক ক্লিকে সিজন-২ আনলক করুন।</p>
+  <div id="gate" class="card">⏳ চেক করা হচ্ছে...</div>
+  <div id="panel" style="display:none">
+    <div class="bar"><label for="f">দেখাও:</label>
+      <select id="f"><option value="pending">অপেক্ষমাণ</option><option value="approved">অনুমোদিত</option><option value="rejected">বাতিল</option><option value="all">সব</option></select></div>
+    <div id="list"></div>
+  </div>
+</div>
+
+<script type="module">
+  import { auth, db } from "../../firebase-config.js";
+  import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import { doc, getDoc, setDoc, updateDoc, collection, getDocs, serverTimestamp }
+    from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const $ = i => document.getElementById(i);
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const label = { pending: "অপেক্ষমাণ", approved: "অনুমোদিত", rejected: "বাতিল" };
+  let me = null, orders = [];
+
+  onAuthStateChanged(auth, async user => {
+    if (!user) { location.href = "../../login.html"; return; }
+    const u = await getDoc(doc(db, "users", user.uid));
+    const role = u.exists() ? u.data().role : "";
+    if (!["admin", "superadmin"].includes(role)) { $("gate").textContent = "⛔ শুধু অ্যাডমিন এই পেজ দেখতে পারবেন।"; return; }
+    me = user; $("gate").style.display = "none"; $("panel").style.display = "block";
+    load();
+  });
+  $("f").addEventListener("change", draw);
+
+  async function load() {
+    try {
+      const snap = await getDocs(collection(db, "orders"));
+      orders = []; snap.forEach(d => orders.push({ id: d.id, ...d.data() }));
+      orders.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
+      draw();
+    } catch (e) { $("list").innerHTML = '<p class="empty">⚠️ লোড হয়নি: ' + esc(e.message) + '</p>'; }
+  }
+
+  function draw() {
+    const f = $("f").value;
+    const rows = orders.filter(o => f === "all" || o.status === f);
+    if (!rows.length) { $("list").innerHTML = '<p class="empty">কোনো আবেদন নেই।</p>'; return; }
+    $("list").innerHTML = "";
+    rows.forEach(o => {
+      const t = o.createdAt?.seconds ? new Date(o.createdAt.seconds * 1000).toLocaleString("bn-BD") : "";
+      const el = document.createElement("div"); el.className = "card";
+      el.innerHTML = `<div class="top"><strong>${esc(o.courseTitle)}</strong><span class="badge ${o.status}">${label[o.status] || o.status}</span></div>
+        <div class="meta">👤 ${esc(o.email)}<br>💰 ${esc(o.amount)} &nbsp;•&nbsp; ${esc(o.method)}<br>📱 ${esc(o.senderNumber)} &nbsp;•&nbsp; TrxID: <b>${esc(o.trxId)}</b><br>🕐 ${esc(t)}</div>`;
+      if (o.status === "pending") {
+        const ok = document.createElement("button"); ok.className = "ok"; ok.textContent = "✅ অনুমোদন ও আনলক";
+        ok.onclick = () => approve(o);
+        const no = document.createElement("button"); no.className = "no"; no.textContent = "বাতিল";
+        no.onclick = () => reject(o);
+        el.appendChild(ok); el.appendChild(no);
+      }
+      $("list").appendChild(el);
+    });
+  }
+
+  async function approve(o) {
+    if (!confirm(o.email + " কে সিজন-২ আনলক করবেন? TrxID: " + o.trxId + " মিলিয়ে নিয়েছেন?")) return;
+    try {
+      await setDoc(doc(db, "enrollments", o.uid + "_" + o.courseId), { uid: o.uid, courseId: o.courseId, email: o.email, grantedBy: me.uid, grantedAt: serverTimestamp(), orderId: o.id });
+      await updateDoc(doc(db, "orders", o.id), { status: "approved", reviewedBy: me.uid, reviewedAt: serverTimestamp() });
+      o.status = "approved"; draw();
+    } catch (e) { alert("❌ হয়নি: " + e.message); }
+  }
+  async function reject(o) {
+    if (!confirm("এই আবেদন বাতিল করবেন?")) return;
+    try {
+      await updateDoc(doc(db, "orders", o.id), { status: "rejected", reviewedBy: me.uid, reviewedAt: serverTimestamp() });
+      o.status = "rejected"; draw();
+    } catch (e) { alert("❌ হয়নি: " + e.message); }
+  }
+</script>
+</body>
+</html>

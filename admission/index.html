@@ -94,9 +94,18 @@
             <label class="payment-method-option"><input type="radio" name="payMethod"><span class="method-logo">🌐 Pay Internationally (Card)</span></label>
 
             <div class="payment-total-row"><span>টোটাল পেমেন্ট:</span><strong id="payTotal2"></strong></div>
-            <button type="button" id="payBtn" class="btn-cta payment-submit-btn">পেমেন্ট সম্পন্ন করি <span class="arrow-icon">→</span></button>
+            <button type="button" id="payBtn" class="btn-cta payment-submit-btn">১) পেমেন্ট করুন <span class="arrow-icon">→</span></button>
             <p class="payment-secure">🔒 সিকিউরড পেমেন্ট</p>
-            <div class="ad-note">পেমেন্টের পর আপনার একাউন্টের ইমেইলসহ পেমেন্টের প্রমাণ আমাদের জানান। যাচাইয়ের পর সিজন-২ আনলক করে দেওয়া হবে।</div>
+
+            <div id="orderBox" style="margin-top:18px;padding-top:18px;border-top:1px solid #eef0f2">
+              <h3 style="font-size:14px;font-weight:700;margin-bottom:10px">২) পেমেন্ট করার পর তথ্য জানান</h3>
+              <label style="display:block;font-size:13px;font-weight:600;margin-bottom:4px">যে নাম্বার থেকে টাকা পাঠিয়েছেন</label>
+              <input id="oNumber" type="tel" placeholder="01XXXXXXXXX" style="width:100%;padding:11px 12px;border:1px solid #e5e7eb;border-radius:10px;font-family:inherit;font-size:14px;margin-bottom:10px">
+              <label style="display:block;font-size:13px;font-weight:600;margin-bottom:4px">ট্রানজেকশন ID (TrxID)</label>
+              <input id="oTrx" type="text" placeholder="যেমন: 8N7A6D5E4C" style="width:100%;padding:11px 12px;border:1px solid #e5e7eb;border-radius:10px;font-family:inherit;font-size:14px;margin-bottom:12px">
+              <button type="button" id="orderBtn" class="btn-cta payment-submit-btn" style="background:#14213d;color:#fff">পেমেন্ট জানাই <span class="arrow-icon">→</span></button>
+              <div class="ad-note" id="orderMsg">পেমেন্ট জানানোর জন্য লগইন লাগবে। যাচাইয়ের পর আপনার একাউন্টে সিজন-২ আনলক হবে।</div>
+            </div>
           </div>
         </div>
       </section>
@@ -135,8 +144,9 @@
   <script src="../script.js"></script>
 
   <script type="module">
-    import { db } from "../firebase-config.js";
-    import { doc, getDoc, collection, getDocs }
+    import { auth, db } from "../firebase-config.js";
+    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { doc, getDoc, collection, getDocs, addDoc, serverTimestamp }
       from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
     /* ফিল্ড নাম ম্যাপ — আপনার অ্যাডমিন এডিটরের নাম অন্যরকম হলে এখানে যোগ করুন */
@@ -271,11 +281,42 @@
       o.classList.add("active"); const r = o.querySelector("input"); if (r) r.checked = true;
     }));
 
-    // পেমেন্ট বাটন: কোর্সের লিংক → সাইটের লিংক → না থাকলে মেসেজ
+    // ধাপ ১: পেমেন্ট লিংক খোলা (কোর্সের লিংক → সাইটের লিংক)
     $("payBtn").addEventListener("click", () => {
       const link = (current && get(courses[current], "payLink")) || sitePay;
       if (link) window.open(link, "_blank", "noopener");
-      else alert("পেমেন্ট সিস্টেম শীঘ্রই চালু হচ্ছে। এখন ভর্তির জন্য আমাদের কল করুন বা WhatsApp এ যোগাযোগ করুন।");
+      else alert("পেমেন্ট লিংক এখনও যোগ করা হয়নি। কল করে পেমেন্ট করুন, তারপর নিচে ট্রানজেকশন ID জানান।");
+    });
+
+    // ধাপ ২: অর্ডার রেকর্ড জমা
+    let user = null;
+    onAuthStateChanged(auth, u => { user = u; });
+    const msg = (t, ok) => { const m = $("orderMsg"); m.textContent = t; m.style.background = ok ? "#dcfce7" : "#fef3c7"; m.style.color = ok ? "#166534" : "#92400e"; };
+
+    $("orderBtn").addEventListener("click", async () => {
+      if (!current) { msg("আগে একটি কোর্স বেছে নিন।"); return; }
+      if (!user) { alert("পেমেন্ট জানাতে আগে লগইন করুন।"); location.href = "../login.html"; return; }
+      const num = $("oNumber").value.trim(), trx = $("oTrx").value.trim();
+      if (num.length < 6 || trx.length < 4) { msg("নাম্বার ও ট্রানজেকশন ID ঠিকভাবে দিন।"); return; }
+      const picked = document.querySelector(".payment-method-option.active .method-logo");
+      const c = courses[current];
+      $("orderBtn").disabled = true;
+      try {
+        await addDoc(collection(db, "orders"), {
+          uid: user.uid, email: user.email || "",
+          courseId: current, courseTitle: get(c, "title") || current,
+          amount: String(get(c, "price")),
+          method: picked ? picked.textContent.trim() : "",
+          senderNumber: num, trxId: trx,
+          status: "pending", createdAt: serverTimestamp()
+        });
+        msg("✅ আপনার পেমেন্টের তথ্য জমা হয়েছে। যাচাই শেষে সিজন-২ আনলক করা হবে।", true);
+        $("oNumber").value = ""; $("oTrx").value = "";
+      } catch (e) {
+        console.error(e);
+        msg("❌ জমা হয়নি। আবার চেষ্টা করুন। (Firestore Rules চেক করুন)");
+      }
+      $("orderBtn").disabled = false;
     });
 
     init();
