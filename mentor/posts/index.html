@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ব্লগ এডিটর - SNK Mentor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="manifest" href="../../manifest.json">
+<style>
+    :root{--bg:#f6f7fb;--card:#fff;--text:#111827;--muted:#6b7280;--line:#eef0f2;--navy:#14213d;--yellow:#ffc72c}
+    [data-theme="dark"]{--bg:#0b1220;--card:#0f172a;--text:#e5e7eb;--muted:#9ca3af;--line:#1f2937}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:"Hind Siliguri",sans-serif;background:var(--bg);color:var(--text)}
+    a{text-decoration:none;color:inherit}
+    .top{background:var(--navy);color:#fff;padding:14px 24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+    .top img{height:34px}.top b{font-size:18px}.top .sp{flex:1}
+    .top a,.top button{background:rgba(255,255,255,.1);color:#fff;border:0;border-radius:999px;padding:8px 16px;font:600 13px "Hind Siliguri";cursor:pointer}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px 16px 60px}
+    .empty{padding:30px;text-align:center;color:var(--muted)}
+    .two{display:grid;grid-template-columns:1.2fr 1fr;gap:20px;align-items:start}
+    .box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+    h2{font-size:19px;margin-bottom:14px}
+    label{display:block;font-size:13px;font-weight:600;margin:10px 0 4px}
+    input,textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--text);font:15px "Hind Siliguri"}
+    textarea{min-height:240px;resize:vertical;line-height:1.7}
+    .row{display:flex;gap:10px}.row>*{flex:1}
+    .btn{background:var(--yellow);color:#111827;border:0;border-radius:999px;padding:11px 22px;font:700 14px "Hind Siliguri";cursor:pointer;margin-top:14px}
+    .btn.g{background:var(--line);color:var(--text);margin-left:8px}
+    .item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+    .item:last-child{border:0}.item .t{flex:1;line-height:1.4}
+    .tag{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px}.tag.pub{background:#dcfce7;color:#15803d}.tag.dr{background:#fef3c7;color:#b45309}
+    .sm{border:0;background:var(--line);color:var(--text);border-radius:8px;padding:5px 10px;font:600 12px "Hind Siliguri";cursor:pointer}
+    .hint{font-size:12px;color:var(--muted);margin-top:4px}
+    @media(max-width:860px){.two{grid-template-columns:1fr}}
+</style></head><body>
+<div class="top"><img src="https://raw.githubusercontent.com/snkguideup/snkguideup.github.io/main/logo.svg" alt="SNK"><b>SNK Ai Academy</b><span class="sp"></span><a href="../../index.html">🏠 হোম</a><a href="../../blogs/">📝 ব্লগ</a><button id="themeBtn" type="button">🌙</button></div>
+<div class="wrap" id="app" style="display:none"><div class="two">
+ <div class="box"><h2 id="fTitle">✍️ নতুন পোস্ট</h2>
+  <label>শিরোনাম</label><input id="title">
+  <div class="row"><div><label>ক্যাটাগরি</label><input id="category" placeholder="যেমন: ক্যারিয়ার"></div><div><label>ইমোজি কভার</label><input id="emoji" placeholder="📝" maxlength="4"></div></div>
+  <label>ছোট বর্ণনা (কার্ডে দেখাবে)</label><input id="excerpt">
+  <label>পোস্টের লেখা</label><textarea id="body"></textarea><div class="hint">প্যারাগ্রাফ আলাদা করতে মাঝে একটি ফাঁকা লাইন দিন।</div>
+  <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="pub" style="width:auto"> প্রকাশ করুন (টিক না দিলে ড্রাফট)</label>
+  <button class="btn" id="save" type="button">সেভ করুন</button><button class="btn g" id="reset" type="button">নতুন</button>
+  <div class="hint" id="status"></div></div>
+ <div class="box"><h2>📚 আমার পোস্টসমূহ</h2><div id="list"></div></div>
+</div></div>
+<div class="empty" id="msg">লোড হচ্ছে...</div>
+<script type="module">
+// ⚠️ Firebase ভার্সন (10.12.2) আপনার firebase-config.js এর সাথে মিলিয়ে নিন
+import { auth, db } from "../../firebase-config.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { doc, getDoc, setDoc, addDoc, deleteDoc, collection, query, where, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+const themeBtn=document.getElementById("themeBtn");function applyTheme(t){document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"");themeBtn.textContent=t==="dark"?"☀️":"🌙"}applyTheme(localStorage.getItem("snk-theme")||"light");themeBtn.onclick=()=>{const n=localStorage.getItem("snk-theme")==="dark"?"light":"dark";localStorage.setItem("snk-theme",n);applyTheme(n)};
+const bn=n=>String(n).replace(/\d/g,d=>"০১২৩৪৫৬৭৮৯"[d]);const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));const dOf=x=>{const t=x.createdAt;return t&&t.toDate?t.toDate():(t?new Date(t):null)};const fmt=d=>d?bn(d.toLocaleDateString("en-GB")):"";const mins=t=>Math.max(1,Math.round(String(t||"").split(/\s+/).length/150));
+let me=null,name="",editId=null,posts=[];
+const g=i=>document.getElementById(i);
+function clear(){editId=null;["title","category","emoji","excerpt","body"].forEach(i=>g(i).value="");g("pub").checked=false;g("fTitle").textContent="✍️ নতুন পোস্ট"}
+async function load(){
+  const s=await getDocs(query(collection(db,"posts"),where("authorUid","==",me.uid)));
+  posts=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(dOf(b)||0)-(dOf(a)||0));
+  g("list").innerHTML=posts.length?posts.map(p=>'<div class="item"><span class="t">'+esc(p.title)+'</span><span class="tag '+(p.published?"pub":"dr")+'">'+(p.published?"প্রকাশিত":"ড্রাফট")+'</span><button class="sm" data-e="'+p.id+'">এডিট</button><button class="sm" data-d="'+p.id+'">মুছুন</button></div>').join(""):'<div class="empty">এখনো কোনো পোস্ট নেই।</div>';
+  document.querySelectorAll("[data-e]").forEach(b=>b.onclick=()=>{const p=posts.find(x=>x.id===b.dataset.e);editId=p.id;g("title").value=p.title||"";g("category").value=p.category||"";g("emoji").value=p.emoji||"";g("excerpt").value=p.excerpt||"";g("body").value=p.body||"";g("pub").checked=!!p.published;g("fTitle").textContent="✏️ পোস্ট এডিট";window.scrollTo(0,0)});
+  document.querySelectorAll("[data-d]").forEach(b=>b.onclick=async()=>{if(confirm("পোস্টটি মুছে ফেলবেন?")){await deleteDoc(doc(db,"posts",b.dataset.d));if(editId===b.dataset.d)clear();load()}});
+}
+g("reset").onclick=()=>{clear();g("status").textContent=""};
+g("save").onclick=async()=>{
+  const title=g("title").value.trim(),body=g("body").value.trim();
+  if(!title||!body){g("status").textContent="শিরোনাম ও লেখা দিন।";return}
+  const data={title,category:g("category").value.trim(),emoji:g("emoji").value.trim(),excerpt:g("excerpt").value.trim(),body,published:g("pub").checked,author:name,authorUid:me.uid};
+  try{
+    if(editId) await setDoc(doc(db,"posts",editId),data,{merge:true});
+    else await addDoc(collection(db,"posts"),{...data,createdAt:serverTimestamp()});
+    clear();g("status").textContent="✅ সেভ হয়েছে";load();
+  }catch(e){g("status").textContent="সেভ হয়নি: "+(e.code||e.message)}
+};
+onAuthStateChanged(auth,async u=>{
+  if(!u){location.href="../../login.html";return}
+  const s=await getDoc(doc(db,"users",u.uid));const d=s.exists()?s.data():{};
+  if(!["mentor","admin","superadmin"].includes(d.role)){g("msg").textContent="এই পেজ শুধু মেন্টর/অ্যাডমিনের জন্য।";return}
+  me=u;name=d.name||u.displayName||u.email;
+  g("msg").style.display="none";g("app").style.display="block";load();
+});
+</script></body></html>
