@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ক্লাস দেখুন - SNK Ai Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .ln{max-width:1300px;margin:0 auto;padding:24px 32px}
+    .ln-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+    .ln-top h1{font-size:24px;font-weight:800}
+    .ln-grid{display:grid;grid-template-columns:1.8fr 1fr;gap:24px;align-items:start}
+    .ln-player{background:#14213d;border-radius:16px;overflow:hidden;min-height:320px;display:flex;align-items:center;justify-content:center;color:#e5e7eb;text-align:center}
+    .ln-player iframe{width:100%;aspect-ratio:16/9;border:0;display:block}
+    .ln-player .ph{padding:40px}
+    .ln-title{font-size:18px;font-weight:700;margin:14px 0 6px}
+    .ln-note{font-size:14px;color:#6b7280;line-height:1.7}
+    .ln-side{background:#fff;border:1px solid #eef0f2;border-radius:16px;padding:18px}
+    .ln-side h3{font-size:15px;font-weight:800;margin:6px 0 10px}
+    .ln-item{display:flex;gap:10px;align-items:center;width:100%;text-align:left;background:#f9fafb;border:1px solid #eef0f2;border-radius:10px;padding:10px 12px;margin-bottom:8px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;color:#1f2937}
+    .ln-item.active{background:#ffc72c;border-color:#ffc72c;color:#111827}
+    .ln-lock{background:#fef3c7;border:1px dashed #f59e0b;border-radius:12px;padding:16px;font-size:13px;color:#92400e;line-height:1.7}
+    .ln-lock a{display:inline-block;margin-top:10px;background:#14213d;color:#fff;padding:10px 16px;border-radius:999px;font-weight:700}
+    .ln-msg{max-width:600px;margin:80px auto;text-align:center;color:#6b7280;padding:0 20px}
+    [data-theme="dark"] .ln-side{background:#0f172a;border-color:#1f2937}
+    [data-theme="dark"] .ln-item{background:#1f2937;border-color:#374151;color:#e5e7eb}
+    [data-theme="dark"] .ln-item.active{background:#ffc72c;color:#111827}
+    @media(max-width:900px){.ln-grid{grid-template-columns:1fr}.ln{padding:16px}}
+  </style>
+</head>
+<body>
+  <header class="header"><div class="header-inner">
+    <a href="../index.html" class="logo">
+      <img src="https://raw.githubusercontent.com/snkguideup/snkguideup.github.io/main/logo.svg" alt="SNK">
+      <span class="logo-text">SNK <span>Ai Academy</span></span></a>
+    <div style="flex:1"></div>
+    <div class="header-right">
+      <button id="themeToggle" class="icon-btn" type="button">🌙</button>
+      <a href="../user/" class="btn-login">আমার ড্যাশবোর্ড</a>
+    </div>
+  </div></header>
+
+  <main class="ln" id="app"><p class="ln-msg">⏳ লোড হচ্ছে...</p></main>
+
+  <script src="../script.js"></script>
+  <script type="module">
+    import { auth, db } from "../firebase-config.js";
+    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { doc, getDoc, collection, getDocs, query, where }
+      from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    const app = document.getElementById("app");
+    const id = new URLSearchParams(location.search).get("id");
+    const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+    const msg = t => app.innerHTML = `<p class="ln-msg">${t}</p>`;
+
+    function embed(url) {
+      if (!url) return "";
+      let m = url.match(/(?:youtu\.be\/|v=|embed\/)([\w-]{11})/);
+      if (m) return `<iframe src="https://www.youtube.com/embed/${m[1]}" allowfullscreen></iframe>`;
+      m = url.match(/drive\.google\.com\/file\/d\/([\w-]+)/);
+      if (m) return `<iframe src="https://drive.google.com/file/d/${m[1]}/preview" allowfullscreen></iframe>`;
+      return `<div class="ph"><p>এই ভিডিও এখানে সরাসরি চালানো যাচ্ছে না।</p><br><a class="btn-cta" href="${esc(url)}" target="_blank" rel="noopener">নতুন ট্যাবে দেখুন →</a></div>`;
+    }
+
+    async function loadSeason(n) {
+      const snap = await getDocs(query(collection(db, "courses", id, "lessons"), where("season", "==", n)));
+      const arr = []; snap.forEach(d => arr.push({ id: d.id, ...d.data() }));
+      return arr.sort((a, b) => (a.order || 0) - (b.order || 0));
+    }
+
+    onAuthStateChanged(auth, async user => {
+      if (!user) { location.href = "../login.html"; return; }
+      if (!id) { msg("কোনো কোর্স বাছা হয়নি। <a href='../course/' style='color:#d97706;font-weight:700'>কোর্স দেখুন</a>"); return; }
+      try {
+        const c = await getDoc(doc(db, "courses", id));
+        const title = c.exists() ? (c.data().title || c.data().name || "কোর্স") : "কোর্স";
+        const s1 = await loadSeason(1);
+        let s2 = [], locked = false;
+        try { s2 = await loadSeason(2); } catch (e) { locked = true; }   // পারমিশন না থাকলে লক
+
+        let payLink = (c.exists() && c.data().paymentLink) || "";
+        if (locked && !payLink) { try { const s = await getDoc(doc(db, "site", "home")); payLink = s.exists() ? (s.data().paymentLink || "") : ""; } catch (e) {} }
+
+        app.innerHTML = `
+          <div class="ln-top"><h1>${esc(title)}</h1><a class="btn-details" style="width:auto" href="../course/?id=${id}">← কোর্স ডিটেইলস</a></div>
+          <div class="ln-grid">
+            <div><div class="ln-player" id="player"><div class="ph">▶ ডান পাশ থেকে একটি ক্লাস বেছে নিন</div></div>
+              <div class="ln-title" id="lt"></div><div class="ln-note" id="ln"></div></div>
+            <aside class="ln-side">
+              <h3>সিজন-১ (ফ্রি)</h3><div id="l1"></div>
+              <h3 style="margin-top:18px">সিজন-২ (পেইড)</h3><div id="l2"></div>
+            </aside>
+          </div>`;
+
+        const play = (l, btn) => {
+          document.querySelectorAll(".ln-item").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          document.getElementById("player").innerHTML = embed(l.videoUrl) || '<div class="ph">ভিডিও লিংক নেই</div>';
+          document.getElementById("lt").textContent = l.title || "";
+          document.getElementById("ln").textContent = l.note || "";
+        };
+        const fill = (elId, list, empty) => {
+          const box = document.getElementById(elId);
+          if (!list.length) { box.innerHTML = `<p class="ln-note">${empty}</p>`; return; }
+          list.forEach((l, i) => {
+            const b = document.createElement("button");
+            b.type = "button"; b.className = "ln-item";
+            b.textContent = `${i + 1}. ${l.title || "ক্লাস"}`;
+            b.addEventListener("click", () => play(l, b));
+            box.appendChild(b);
+          });
+        };
+        fill("l1", s1, "এখনও কোনো ক্লাস যোগ হয়নি।");
+        if (locked) {
+          document.getElementById("l2").innerHTML = `<div class="ln-lock">🔒 সিজন-২ লক করা আছে।<br>পেমেন্ট সম্পন্ন হলে অ্যাডমিন আপনার একাউন্টে সিজন-২ আনলক করে দেবেন।
+            ${payLink ? `<br><a href="${esc(payLink)}" target="_blank" rel="noopener">পেমেন্ট করুন →</a>` : `<br><a href="../course/?id=${id}&season=2">বিস্তারিত দেখুন →</a>`}</div>`;
+        } else fill("l2", s2, "এখনও কোনো ক্লাস যোগ হয়নি।");
+      } catch (e) {
+        console.error(e);
+        msg("⚠️ ক্লাস লোড করা যায়নি। Firestore Rules চেক করুন।");
+      }
+    });
+  </script>
+</body>
+</html>

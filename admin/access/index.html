@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ক্লাস ও অ্যাক্সেস - SNK Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Hind Siliguri',sans-serif;background:#f5f6f8;color:#111827;padding:24px}
+    .wrap{max-width:900px;margin:0 auto}
+    h1{font-size:24px;margin-bottom:4px}
+    .sub{color:#6b7280;font-size:14px;margin-bottom:20px}
+    .card{background:#fff;border:1px solid #eef0f2;border-radius:16px;padding:22px;margin-bottom:20px}
+    .card h2{font-size:17px;margin-bottom:14px}
+    label{display:block;font-size:13px;font-weight:600;margin:10px 0 4px}
+    input,select,textarea{width:100%;padding:11px 12px;border:1px solid #e5e7eb;border-radius:10px;font-family:inherit;font-size:14px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    button{background:#ffc72c;border:0;padding:12px 20px;border-radius:999px;font-family:inherit;font-weight:700;font-size:14px;cursor:pointer;margin-top:14px;margin-right:8px}
+    button.dark{background:#14213d;color:#fff}
+    button.red{background:#fee2e2;color:#b91c1c}
+    .st{margin-top:12px;font-size:13px;font-weight:600}
+    .ok{color:#16a34a}.er{color:#b91c1c}
+    .les{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 12px;border:1px solid #eef0f2;border-radius:10px;margin-top:8px;font-size:13px}
+    .les button{margin:0;padding:6px 12px;font-size:12px}
+    .badge{background:#dcfce7;color:#166534;border-radius:999px;padding:2px 10px;font-size:11px;font-weight:700;margin-right:6px}
+    .badge.p{background:#fef3c7;color:#92400e}
+    a.back{color:#d97706;font-weight:700;font-size:13px}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../../">← সাইটে ফিরুন</a>
+  <h1>🎬 ক্লাস ও সিজন-২ অ্যাক্সেস</h1>
+  <p class="sub">কোর্সে ক্লাস যোগ করুন এবং পেমেন্ট করা স্টুডেন্টকে সিজন-২ আনলক করে দিন।</p>
+  <div id="gate" class="card">⏳ চেক করা হচ্ছে...</div>
+  <div id="panel" style="display:none">
+
+    <div class="card">
+      <label>কোর্স বাছুন</label>
+      <select id="course"></select>
+    </div>
+
+    <div class="card">
+      <h2>১) নতুন ক্লাস যোগ করুন</h2>
+      <div class="row">
+        <div><label>সিজন</label>
+          <select id="season"><option value="1">সিজন-১ (ফ্রি)</option><option value="2">সিজন-২ (পেইড)</option></select></div>
+        <div><label>ক্রম নম্বর (১, ২, ৩...)</label><input id="order" type="number" value="1"></div>
+      </div>
+      <label>ক্লাসের নাম</label><input id="ltitle" placeholder="যেমন: ক্লাস ১ - পরিচিতি">
+      <label>ভিডিও লিংক (YouTube বা Google Drive)</label><input id="lurl" placeholder="https://youtu.be/...">
+      <label>ছোট নোট (ঐচ্ছিক)</label><textarea id="lnote" rows="2"></textarea>
+      <button id="addLesson">➕ ক্লাস যোগ করুন</button>
+      <div class="st" id="s1"></div>
+      <div id="lessons"></div>
+    </div>
+
+    <div class="card">
+      <h2>২) স্টুডেন্টকে সিজন-২ আনলক করুন</h2>
+      <label>স্টুডেন্টের ইমেইল (অথবা UID)</label>
+      <input id="stu" placeholder="student@gmail.com">
+      <button class="dark" id="grant">🔓 আনলক করুন</button>
+      <button class="red" id="revoke">🔒 লক করুন (বাতিল)</button>
+      <div class="st" id="s2"></div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  import { auth, db } from "../../firebase-config.js";
+  import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import { doc, getDoc, setDoc, deleteDoc, addDoc, collection, getDocs, query, where, serverTimestamp }
+    from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const $ = i => document.getElementById(i);
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const say = (el, t, ok) => { $(el).className = "st " + (ok ? "ok" : "er"); $(el).textContent = t; };
+  let me = null;
+
+  onAuthStateChanged(auth, async user => {
+    if (!user) { location.href = "../../login.html"; return; }
+    const u = await getDoc(doc(db, "users", user.uid));
+    const role = u.exists() ? u.data().role : "";
+    if (!["admin", "superadmin"].includes(role)) { $("gate").textContent = "⛔ শুধু অ্যাডমিন এই পেজ দেখতে পারবেন।"; return; }
+    me = user; $("gate").style.display = "none"; $("panel").style.display = "block";
+    const snap = await getDocs(collection(db, "courses"));
+    snap.forEach(d => { const c = d.data(); const o = document.createElement("option"); o.value = d.id; o.textContent = c.title || c.name || d.id; $("course").appendChild(o); });
+    loadLessons();
+  });
+  $("course").addEventListener("change", () => loadLessons());
+
+  async function loadLessons() {
+    const cid = $("course").value; $("lessons").innerHTML = "";
+    if (!cid) return;
+    const snap = await getDocs(collection(db, "courses", cid, "lessons"));
+    const arr = []; snap.forEach(d => arr.push({ id: d.id, ...d.data() }));
+    arr.sort((a, b) => a.season - b.season || (a.order || 0) - (b.order || 0));
+    arr.forEach(l => {
+      const row = document.createElement("div"); row.className = "les";
+      row.innerHTML = `<span><span class="badge ${l.season === 2 ? "p" : ""}">সিজন-${l.season}</span>${l.order || ""}. ${esc(l.title)}</span>`;
+      const b = document.createElement("button"); b.className = "red"; b.textContent = "মুছুন";
+      b.onclick = async () => { if (confirm("মুছে ফেলবেন?")) { await deleteDoc(doc(db, "courses", cid, "lessons", l.id)); loadLessons(); } };
+      row.appendChild(b); $("lessons").appendChild(row);
+    });
+  }
+
+  $("addLesson").onclick = async () => {
+    const cid = $("course").value;
+    if (!cid || !$("ltitle").value.trim()) { say("s1", "কোর্স ও ক্লাসের নাম দিন।"); return; }
+    try {
+      await addDoc(collection(db, "courses", cid, "lessons"), {
+        season: Number($("season").value), order: Number($("order").value) || 1,
+        title: $("ltitle").value.trim(), videoUrl: $("lurl").value.trim(), note: $("lnote").value.trim(),
+        createdAt: serverTimestamp()
+      });
+      say("s1", "✅ ক্লাস যোগ হয়েছে।", true);
+      $("ltitle").value = ""; $("lurl").value = ""; $("lnote").value = ""; $("order").value = Number($("order").value) + 1;
+      loadLessons();
+    } catch (e) { say("s1", "❌ হয়নি: " + e.message); }
+  };
+
+  async function findUser(v) {
+    v = v.trim();
+    if (!v) throw new Error("ইমেইল বা UID দিন।");
+    if (!v.includes("@")) return { uid: v, email: "" };
+    const q = await getDocs(query(collection(db, "users"), where("email", "==", v.toLowerCase())));
+    if (q.empty) throw new Error("এই ইমেইলে স্টুডেন্ট পাওয়া যায়নি। সঠিক ইমেইল বা UID দিন।");
+    return { uid: q.docs[0].id, email: v };
+  }
+
+  $("grant").onclick = async () => {
+    try {
+      const cid = $("course").value; const s = await findUser($("stu").value);
+      await setDoc(doc(db, "enrollments", s.uid + "_" + cid), { uid: s.uid, courseId: cid, email: s.email, grantedBy: me.uid, grantedAt: serverTimestamp() });
+      say("s2", "✅ সিজন-২ আনলক হয়েছে।", true);
+    } catch (e) { say("s2", "❌ " + e.message); }
+  };
+  $("revoke").onclick = async () => {
+    try {
+      const cid = $("course").value; const s = await findUser($("stu").value);
+      await deleteDoc(doc(db, "enrollments", s.uid + "_" + cid));
+      say("s2", "🔒 সিজন-২ লক করা হয়েছে।", true);
+    } catch (e) { say("s2", "❌ " + e.message); }
+  };
+</script>
+</body>
+</html>

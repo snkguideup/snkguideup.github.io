@@ -1,0 +1,28 @@
+// Firestore Rules এ নিচের অংশ যোগ করুন (match /databases/{database}/documents { ... } এর ভেতরে)
+// আগের কিছু মুছবেন না।
+
+function myRole() {
+  return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+}
+function isAdmin() {
+  return request.auth != null && myRole() in ['admin', 'superadmin'];
+}
+function isStaff() {
+  return request.auth != null && myRole() in ['admin', 'superadmin', 'mentor'];
+}
+
+// সিজন-২ আনলকের রেকর্ড (ডকুমেন্ট আইডি = স্টুডেন্টUID_কোর্সID)
+match /enrollments/{eid} {
+  allow read: if request.auth != null && (eid.matches(request.auth.uid + '_.*') || isAdmin());
+  allow write: if isAdmin();
+}
+
+// কোর্সের ক্লাসসমূহ
+match /courses/{cid}/lessons/{lid} {
+  allow read: if request.auth != null && (
+    resource.data.season == 1 ||
+    isStaff() ||
+    exists(/databases/$(database)/documents/enrollments/$(request.auth.uid + '_' + cid))
+  );
+  allow write: if isAdmin();
+}

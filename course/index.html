@@ -229,14 +229,23 @@
         if (season === 1) {
           note.innerHTML = '<div class="cd-free-note">✅ সিজন-১ সম্পূর্ণ ফ্রি — কোর্সের প্রথম অর্ধেক</div>';
           priceEl.textContent = "ফ্রি";
-          buyBtn.innerHTML = 'ফ্রি-তে শুরু করুন <span class="arrow-icon">→</span>';
-          buyBtn.href = "../login.html";
+          buyBtn.innerHTML = 'ক্লাস শুরু করুন <span class="arrow-icon">→</span>';
+          buyBtn.href = "../learn/?id=" + id;
         } else {
           note.innerHTML = '<div class="cd-paid-note">🔒 সিজন-২ পেইড — কোর্সের দ্বিতীয় অর্ধেক (পেমেন্টের পর আনলক হবে)</div>';
           priceEl.textContent = money(get(c, "price"));
           buyBtn.innerHTML = 'সিজন-২ এ ভর্তি হোন <span class="arrow-icon">→</span>';
           buyBtn.href = buyLink;
+          // নিচের লিংকটি যাদের সিজন-২ আনলক হয়েছে তাদের জন্য
+          if (!document.getElementById("learnLink")) {
+            const a = document.createElement("a");
+            a.id = "learnLink"; a.href = "../learn/?id=" + id;
+            a.style.cssText = "display:block;text-align:center;margin-top:10px;font-size:13px;font-weight:700;color:#d97706";
+            a.textContent = "✅ আগেই পেমেন্ট করেছেন? ক্লাসে যান →";
+            buyBtn.insertAdjacentElement("afterend", a);
+          }
         }
+        const ll = document.getElementById("learnLink"); if (ll) ll.style.display = season === 2 ? "block" : "none";
       }
       document.querySelectorAll(".cd-season-tabs button").forEach(b =>
         b.addEventListener("click", () => { season = Number(b.dataset.s); paint(); }));
