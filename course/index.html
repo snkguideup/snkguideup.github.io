@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>কোর্স ডিটেইলস - SNK Ai Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .cd-state{max-width:700px;margin:80px auto;text-align:center;font-size:16px;color:#6b7280;padding:0 20px}
+    .cd-hero-img{width:100%;border-radius:16px;margin-bottom:20px;object-fit:cover;max-height:220px}
+    .cd-thumb{border-radius:16px;min-height:200px;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;color:#fff;font-size:20px;font-weight:800;line-height:1.4;background:linear-gradient(135deg,#4c1d95,#7c3aed);margin-bottom:20px}
+    .cd-season-tabs{display:flex;gap:10px;margin-bottom:20px}
+    .cd-season-tabs button{flex:1;padding:12px;border-radius:12px;border:1.5px solid #e5e7eb;background:#fff;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;color:#374151}
+    .cd-season-tabs button.active{background:#14213d;border-color:#14213d;color:#fff}
+    .cd-free-note{background:#dcfce7;color:#166534;border-radius:10px;padding:10px 14px;font-size:13px;font-weight:600;margin-bottom:14px}
+    .cd-paid-note{background:#fef3c7;color:#92400e;border-radius:10px;padding:10px 14px;font-size:13px;font-weight:600;margin-bottom:14px}
+    .cd-list-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:24px}
+    [data-theme="dark"] .cd-season-tabs button{background:#0f172a;border-color:#374151;color:#e5e7eb}
+    [data-theme="dark"] .cd-season-tabs button.active{background:#ffc72c;color:#111827;border-color:#ffc72c}
+    [data-theme="dark"] .cd-state{color:#9ca3af}
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <img src="https://raw.githubusercontent.com/snkguideup/snkguideup.github.io/main/logo.svg" alt="SNK Logo">
+        <span class="logo-text">SNK <span>Ai Academy</span></span>
+      </a>
+      <nav class="nav-menu">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="../admission/" class="nav-link">Admission</a>
+        <div class="nav-item-dropdown">
+          <a href="#" class="nav-link dropdown">Free Course ⌄</a>
+          <div class="dropdown-menu">
+            <a href="../free-course-academy/" class="dropdown-item">Academy</a>
+            <a href="../free-course-itskill/" class="dropdown-item">IT Skill</a>
+          </div>
+        </div>
+        <div class="nav-item-dropdown">
+          <a href="#" class="nav-link dropdown">Paid Course ⌄</a>
+          <div class="dropdown-menu">
+            <a href="../paid-course-academy/" class="dropdown-item">Academy</a>
+            <a href="../paid-course-itskill/" class="dropdown-item">IT Skill</a>
+          </div>
+        </div>
+        <a href="../resource/" class="nav-link">Resource</a>
+        <a href="../blogs/" class="nav-link">Blogs</a>
+        <a href="../contact/" class="nav-link">Contact</a>
+        <a href="../about/" class="nav-link">About</a>
+      </nav>
+      <div class="header-right">
+        <button id="langToggle" class="icon-btn" type="button" title="Language">EN</button>
+        <button id="themeToggle" class="icon-btn" type="button" title="Dark/Light">🌙</button>
+        <a href="../login.html" class="btn-login">Login/Signin →</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="admission-wrapper" id="app">
+      <p class="cd-state">⏳ কোর্সের তথ্য লোড হচ্ছে...</p>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-wrapper">
+      <div class="footer-col footer-brand">
+        <div class="footer-logo">
+          <img src="https://raw.githubusercontent.com/snkguideup/snkguideup.github.io/main/logo.svg" alt="SNK Logo">
+          <span>SNK <small>Ai Academy</small></span>
+        </div>
+        <p>অনলাইন লাইভ স্কিল ডেভেলপমেন্ট প্ল্যাটফর্ম।</p>
+      </div>
+      <div class="footer-col">
+        <h4>কুইক লিংক</h4>
+        <ul>
+          <li><a href="../free-course-academy/">ফ্রি কোর্সসমূহ</a></li>
+          <li><a href="../paid-course-academy/">পেইড কোর্সসমূহ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>যোগাযোগ</h4>
+        <ul class="footer-contact">
+          <li>✉️ support@snkacademy.com</li>
+          <li>📍 ঢাকা, বাংলাদেশ</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>কোম্পানি</h4>
+        <ul>
+          <li><a href="../about/">আমাদের সম্পর্কে</a></li>
+          <li><a href="../contact/">যোগাযোগ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 SNK Ai Academy. সর্বস্বত্ব সংরক্ষিত।</p></div>
+  </footer>
+
+  <script src="../script.js"></script>
+
+  <!-- ===== কোর্স ডেটা Firestore থেকে ===== -->
+  <script type="module">
+    import { db } from "../firebase-config.js";
+    import { doc, getDoc, collection, getDocs }
+      from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    /* ------------------------------------------------------------
+       ফিল্ড নাম ম্যাপ: আপনার অ্যাডমিন এডিটরে কোর্সের ফিল্ডের নাম
+       অন্যরকম হলে শুধু এই তালিকায় নাম যোগ করুন।
+       ------------------------------------------------------------ */
+    const F = {
+      title:    ["title", "name", "courseName"],
+      category: ["category", "cat"],
+      batch:    ["batch", "batchName"],
+      seats:    ["seats", "seatsLeft"],
+      days:     ["daysLeft", "days"],
+      oldPrice: ["oldPrice", "priceOld", "regularPrice"],
+      price:    ["price", "priceNew", "salePrice"],
+      desc:     ["description", "desc", "about"],
+      image:    ["image", "img", "thumbnail", "banner"],
+      schedule: ["schedule", "classTime"],
+      routine:  ["routine", "classDays"],
+      start:    ["startDate", "batchStart"],
+      features: ["features", "includes"],
+      video:    ["demoVideo", "video", "videoUrl"],
+      phone:    ["phone", "callNumber"],
+      payLink:  ["paymentLink", "payLink"]
+    };
+    const get = (o, k) => { for (const n of F[k]) if (o[n] !== undefined && o[n] !== "") return o[n]; return ""; };
+    const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+    const money = v => v === "" ? "" : (isNaN(v) ? esc(v) : "৳ " + Number(v).toLocaleString("bn-BD"));
+    const app = document.getElementById("app");
+    const params = new URLSearchParams(location.search);
+    const id = params.get("id");
+    let season = params.get("season") === "2" ? 2 : 1;
+
+    async function sitePayLink() {
+      try { const s = await getDoc(doc(db, "site", "home")); return s.exists() ? (s.data().paymentLink || "") : ""; }
+      catch (e) { return ""; }
+    }
+
+    /* ---------- সব কোর্সের তালিকা (id না থাকলে) ---------- */
+    async function showList() {
+      const snap = await getDocs(collection(db, "courses"));
+      if (snap.empty) { app.innerHTML = '<p class="cd-state">এখনও কোনো কোর্স যোগ করা হয়নি।</p>'; return; }
+      let h = '<h1 class="admission-title">সব কোর্স</h1><div class="cd-list-grid">';
+      snap.forEach(d => {
+        const c = d.data();
+        h += `<div class="course-card"><div class="course-thumb thumb-3"><div class="thumb-text">${esc(get(c,"title"))}</div></div>
+          <div class="course-body"><h4>${esc(get(c,"title"))}</h4>
+          <a class="btn-details" href="?id=${d.id}">বিস্তারিত দেখি →</a></div></div>`;
+      });
+      app.innerHTML = h + "</div>";
+    }
+
+    /* ---------- একটি কোর্সের ডিটেইলস ---------- */
+    function render(c, payLink) {
+      const title = get(c, "title") || "কোর্স";
+      document.title = title + " - SNK Ai Academy";
+      const feats = get(c, "features");
+      const featList = Array.isArray(feats) ? feats : String(feats).split("\n").map(s => s.trim()).filter(Boolean);
+      const img = get(c, "image");
+      const video = get(c, "video");
+      const phone = get(c, "phone") || "+8801XXXXXXXXX";
+      const buyLink = get(c, "payLink") || payLink || "../admission/";
+
+      const info = [
+        ["🔗", "ব্যাচ শুরু", get(c, "start")],
+        ["📹", "লাইভ ক্লাস", get(c, "schedule")],
+        ["📅", "ক্লাস রুটিন", get(c, "routine")],
+        ["👤", "সিট বাকি", get(c, "seats") ? get(c, "seats") + " টি" : ""]
+      ].filter(x => x[2]).map(x =>
+        `<div class="batch-info-item"><span class="batch-info-icon">${x[0]}</span><div><strong>${x[1]}</strong><small>${esc(x[2])}</small></div></div>`).join("");
+
+      app.innerHTML = `
+      <div class="admission-grid">
+        <div class="admission-left">
+          <div class="course-badges-row">
+            ${get(c,"batch") ? `<span class="course-pill">${esc(get(c,"batch"))}</span>` : ""}
+            ${get(c,"category") ? `<span class="course-pill">${esc(get(c,"category"))}</span>` : ""}
+            <span class="course-pill">🔴 লাইভ কোর্স</span>
+          </div>
+          <h1 class="admission-title">${esc(title)}</h1>
+
+          ${img ? `<img class="cd-hero-img" src="${esc(img)}" alt="${esc(title)}">`
+                : `<div class="cd-thumb">${esc(title)}</div>`}
+
+          <div class="cd-season-tabs">
+            <button type="button" data-s="1" class="${season===1?"active":""}">সিজন-১ (ফ্রি)</button>
+            <button type="button" data-s="2" class="${season===2?"active":""}">সিজন-২ (পেইড)</button>
+          </div>
+          <div id="seasonNote"></div>
+
+          ${get(c,"desc") ? `<p class="admission-desc">${esc(get(c,"desc")).replace(/\n/g,"<br>")}</p>` : ""}
+          ${info ? `<div class="batch-info-grid">${info}</div>` : ""}
+          <p class="admission-call">📞 কল করুন এই নাম্বারে: <strong>${esc(phone)}</strong></p>
+        </div>
+
+        <div class="admission-right">
+          <div class="demo-video-card"><div class="demo-video-thumb">
+            ${video ? `<a class="play-btn" href="${esc(video)}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center">▶</a>`
+                    : `<button class="play-btn" type="button">▶</button>`}
+            <p>ক্লিক করে দেখে নিন কোর্সের ডেমো ক্লাস</p>
+          </div></div>
+
+          <div class="enroll-box">
+            <div class="enroll-price-row">
+              ${get(c,"oldPrice") ? `<span class="price-old">${money(get(c,"oldPrice"))}</span>` : ""}
+              <span class="price-new" id="priceNew"></span>
+            </div>
+            <a href="#" id="buyBtn" class="btn-cta enroll-btn"></a>
+            ${featList.length ? `<h3 class="enroll-includes-title">এই কোর্সে আপনি পাচ্ছেন:</h3>
+              <ul class="enroll-includes-list">${featList.map(f => `<li>✅ ${esc(f)}</li>`).join("")}</ul>` : ""}
+          </div>
+        </div>
+      </div>`;
+
+      const note = document.getElementById("seasonNote");
+      const priceEl = document.getElementById("priceNew");
+      const buyBtn = document.getElementById("buyBtn");
+      function paint() {
+        document.querySelectorAll(".cd-season-tabs button").forEach(b => b.classList.toggle("active", Number(b.dataset.s) === season));
+        if (season === 1) {
+          note.innerHTML = '<div class="cd-free-note">✅ সিজন-১ সম্পূর্ণ ফ্রি — কোর্সের প্রথম অর্ধেক</div>';
+          priceEl.textContent = "ফ্রি";
+          buyBtn.innerHTML = 'ফ্রি-তে শুরু করুন <span class="arrow-icon">→</span>';
+          buyBtn.href = "../login.html";
+        } else {
+          note.innerHTML = '<div class="cd-paid-note">🔒 সিজন-২ পেইড — কোর্সের দ্বিতীয় অর্ধেক (পেমেন্টের পর আনলক হবে)</div>';
+          priceEl.textContent = money(get(c, "price"));
+          buyBtn.innerHTML = 'সিজন-২ এ ভর্তি হোন <span class="arrow-icon">→</span>';
+          buyBtn.href = buyLink;
+        }
+      }
+      document.querySelectorAll(".cd-season-tabs button").forEach(b =>
+        b.addEventListener("click", () => { season = Number(b.dataset.s); paint(); }));
+      paint();
+    }
+
+    try {
+      if (!id) { await showList(); }
+      else {
+        const snap = await getDoc(doc(db, "courses", id));
+        if (!snap.exists()) app.innerHTML = '<p class="cd-state">😕 এই কোর্সটি খুঁজে পাওয়া যায়নি। <a href="./" style="color:#d97706;font-weight:700">সব কোর্স দেখুন</a></p>';
+        else render(snap.data(), await sitePayLink());
+      }
+    } catch (e) {
+      console.error(e);
+      app.innerHTML = '<p class="cd-state">⚠️ তথ্য লোড করা যায়নি। ইন্টারনেট বা Firestore rules চেক করুন।</p>';
+    }
+  </script>
+</body>
+</html>
