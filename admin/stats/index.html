@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>পরিসংখ্যান - SNK Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../style.css">
+  <style>
+    .st-wrap{max-width:1200px;margin:0 auto;padding:28px 24px 60px}
+    .st-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:24px}
+    .st-top h1{font-size:26px;font-weight:800}
+    .st-links a{display:inline-block;margin-left:8px;padding:9px 16px;border-radius:999px;background:#f3f4f6;font-size:13px;font-weight:700}
+    .st-links a:hover{background:#ffc72c}
+    .st-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
+    .st-card{border-radius:16px;padding:22px;text-align:center}
+    .st-card h3{font-size:30px;font-weight:800;color:#111827}
+    .st-card p{font-size:13px;font-weight:600;color:#374151;margin-top:4px}
+    .c1{background:#dcfce7}.c2{background:#dbeafe}.c3{background:#fde3d8}.c4{background:#fef3c7}
+    .c5{background:#ede9fe}.c6{background:#fee2e2}.c7{background:#e0f2fe}.c8{background:#fce7f3}
+    .st-box{border:1px solid #eef0f2;border-radius:16px;padding:20px;margin-bottom:20px;overflow-x:auto}
+    .st-box h2{font-size:17px;margin-bottom:12px}
+    table.st{width:100%;border-collapse:collapse;font-size:13px}
+    table.st th,table.st td{text-align:left;padding:9px 8px;border-bottom:1px solid #eef0f2;white-space:nowrap}
+    .tag{padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700}
+    .tag.pending{background:#fef3c7;color:#b45309}.tag.approved{background:#dcfce7;color:#16a34a}.tag.rejected{background:#fee2e2;color:#b91c1c}
+    .st-err{background:#fee2e2;color:#b91c1c;padding:10px 14px;border-radius:10px;font-size:13px;margin-bottom:12px;display:none}
+    [data-theme="dark"] .st-box{border-color:#1f2937}
+    [data-theme="dark"] .st-links a{background:#1f2937;color:#e5e7eb}
+    [data-theme="dark"] table.st th,[data-theme="dark"] table.st td{border-color:#1f2937}
+    @media(max-width:900px){.st-grid{grid-template-columns:repeat(2,1fr)}}
+  </style>
+  <script>try{if(localStorage.getItem('snk-theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
+  <script type="module" src="../../role-guard.js"></script>
+</head>
+<body>
+<div class="st-wrap">
+  <div class="st-top">
+    <h1>📊 অ্যাডমিন পরিসংখ্যান</h1>
+    <div class="st-links">
+      <a href="../orders/">💳 অর্ডার</a>
+      <a href="../content/">✏️ কনটেন্ট</a>
+      <a href="../users/">👥 ইউজার</a>
+      <a href="../../">🏠 সাইট</a>
+    </div>
+  </div>
+
+  <div id="err" class="st-err"></div>
+
+  <div class="st-grid">
+    <div class="st-card c1"><h3 id="nUsers">…</h3><p>মোট ইউজার</p></div>
+    <div class="st-card c2"><h3 id="nCourses">…</h3><p>মোট কোর্স</p></div>
+    <div class="st-card c3"><h3 id="nEnroll">…</h3><p>এনরোলমেন্ট</p></div>
+    <div class="st-card c4"><h3 id="nRevenue">…</h3><p>অনুমোদিত আয় (৳)</p></div>
+    <div class="st-card c5"><h3 id="nPending">…</h3><p>পেন্ডিং অর্ডার</p></div>
+    <div class="st-card c6"><h3 id="nApproved">…</h3><p>অনুমোদিত অর্ডার</p></div>
+    <div class="st-card c7"><h3 id="nRejected">…</h3><p>বাতিল অর্ডার</p></div>
+    <div class="st-card c8"><h3 id="nStaff">…</h3><p>মেন্টর / অ্যাডমিন</p></div>
+  </div>
+
+  <div class="st-box"><h2>🕑 সর্বশেষ ৫টি অর্ডার</h2>
+    <table class="st"><thead><tr><th>তারিখ</th><th>কোর্স</th><th>ইউজার</th><th>পরিমাণ</th><th>স্ট্যাটাস</th></tr></thead>
+    <tbody id="recentOrders"><tr><td colspan="5">লোড হচ্ছে…</td></tr></tbody></table>
+  </div>
+
+  <div class="st-box"><h2>🆕 সর্বশেষ ৫জন ইউজার</h2>
+    <table class="st"><thead><tr><th>নাম</th><th>ইমেইল</th><th>রোল</th></tr></thead>
+    <tbody id="recentUsers"><tr><td colspan="3">লোড হচ্ছে…</td></tr></tbody></table>
+  </div>
+</div>
+
+<script type="module">
+  import { db } from "../../firebase-config.js";
+  import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  const $ = id => document.getElementById(id);
+  const errBox = $("err");
+  const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const bn = n => Number(n).toLocaleString("bn-BD");
+  const showErr = m => { errBox.style.display = "block"; errBox.innerHTML += esc(m) + "<br>"; };
+
+  async function load(name) {
+    try { return (await getDocs(collection(db, name))).docs.map(d => ({ id: d.id, ...d.data() })); }
+    catch (e) { showErr(name + " পড়া যায়নি: " + e.message + " (Firestore rules চেক করুন)"); return null; }
+  }
+  const ts = v => v && v.toDate ? v.toDate() : (v ? new Date(v) : null);
+  const fmt = d => d && !isNaN(d) ? d.toLocaleDateString("bn-BD") : "-";
+
+  const [users, courses, enrolls, orders] = await Promise.all([load("users"), load("courses"), load("enrollments"), load("orders")]);
+
+  if (users) {
+    $("nUsers").textContent = bn(users.length);
+    $("nStaff").textContent = bn(users.filter(u => ["mentor","admin","superadmin"].includes(u.role)).length);
+    const ru = [...users].sort((a, b) => (ts(b.createdAt) || 0) - (ts(a.createdAt) || 0)).slice(0, 5);
+    $("recentUsers").innerHTML = ru.map(u => `<tr><td>${esc(u.name || u.displayName || "-")}</td><td>${esc(u.email || "-")}</td><td>${esc(u.role || "user")}</td></tr>`).join("") || '<tr><td colspan="3">কোনো ইউজার নেই</td></tr>';
+  }
+  if (courses) $("nCourses").textContent = bn(courses.length);
+  if (enrolls) $("nEnroll").textContent = bn(enrolls.length);
+
+  if (orders) {
+    const st = s => orders.filter(o => (o.status || "pending") === s);
+    $("nPending").textContent = bn(st("pending").length);
+    $("nApproved").textContent = bn(st("approved").length);
+    $("nRejected").textContent = bn(st("rejected").length);
+    $("nRevenue").textContent = bn(st("approved").reduce((s, o) => s + (Number(o.amount ?? o.price ?? o.total) || 0), 0));
+    const ro = [...orders].sort((a, b) => (ts(b.createdAt) || 0) - (ts(a.createdAt) || 0)).slice(0, 5);
+    $("recentOrders").innerHTML = ro.map(o => {
+      const s = o.status || "pending";
+      return `<tr><td>${fmt(ts(o.createdAt))}</td><td>${esc(o.courseTitle || o.courseName || o.courseId || "-")}</td><td>${esc(o.userEmail || o.email || o.uid || "-")}</td><td>৳ ${bn(Number(o.amount ?? o.price ?? o.total) || 0)}</td><td><span class="tag ${esc(s)}">${esc(s)}</span></td></tr>`;
+    }).join("") || '<tr><td colspan="5">কোনো অর্ডার নেই</td></tr>';
+  }
+</script>
+</body>
+</html>
