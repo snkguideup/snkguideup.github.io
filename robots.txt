@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /mentor/
+Disallow: /user/
+Disallow: /firebase-test.html
+Disallow: /lock-check.html
+
+Sitemap: https://snkguideup.github.io/sitemap.xml
