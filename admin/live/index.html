@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../../style.css"><script>try{if(localStorage.getItem("snk-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script><script type="module" src="../../role-guard.js"></script><title>লাইভ ক্লাস ও সার্টিফিকেট - SNK Admin</title>
+<style>
+.w{max-width:900px;margin:0 auto;padding:28px 20px 60px}
+.top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+.top h1{font-size:25px;font-weight:800}.top a{padding:9px 16px;border-radius:999px;background:#ffc72c;font-weight:700;font-size:13px}
+.box{border:1px solid #eef0f2;border-radius:16px;padding:22px;margin-bottom:22px}
+.box h2{font-size:18px;margin-bottom:14px}
+label{display:block;font-size:13px;font-weight:700;margin:12px 0 5px}
+input,select{width:100%;padding:11px 14px;border:1px solid #d1d5db;border-radius:10px;font-family:inherit;font-size:14px;background:#fff;color:#111827}
+button.go{margin-top:16px;padding:12px 24px;border:none;border-radius:999px;background:#ffc72c;font-weight:800;font-family:inherit;font-size:14px;cursor:pointer}
+.msg{margin-top:12px;font-size:13px;font-weight:600}.ok{color:#16a34a}.bad{color:#b91c1c}
+[data-theme="dark"] .box{border-color:#1f2937}
+</style></head><body>
+<div class="w">
+  <div class="top"><h1>🎥 লাইভ ক্লাস ও 🎓 সার্টিফিকেট</h1><a href="../stats/">📊 পরিসংখ্যান</a></div>
+
+  <div class="box">
+    <h2>১. কোর্সের লাইভ ক্লাস লিংক সেট করুন</h2>
+    <label>কোর্স</label><select id="lvCourse"></select>
+    <label>লাইভ লিংক (Zoom / Google Meet / Facebook)</label><input id="lvLink" placeholder="https://meet.google.com/...">
+    <label>ক্লাসের সময় (লেখা)</label><input id="lvTime" placeholder="যেমন: শনি ও মঙ্গল, রাত ৯:০০">
+    <button class="go" id="lvSave">💾 সেভ করুন</button>
+    <div class="msg" id="lvMsg"></div>
+  </div>
+
+  <div class="box">
+    <h2>২. স্টুডেন্টকে সার্টিফিকেট দিন</h2>
+    <label>কোর্স</label><select id="ctCourse"></select>
+    <label>স্টুডেন্টের ইমেইল (যে ইমেইলে সাইটে সাইন আপ করেছে)</label><input id="ctEmail" type="email" placeholder="student@gmail.com">
+    <label>সার্টিফিকেটে যে নাম ছাপা হবে (খালি রাখলে অ্যাকাউন্টের নাম)</label><input id="ctName" placeholder="পুরো নাম">
+    <button class="go" id="ctSave">🎓 সার্টিফিকেট ইস্যু করুন</button>
+    <div class="msg" id="ctMsg"></div>
+  </div>
+</div>
+<script type="module">
+import { db } from "../../firebase-config.js";
+import { collection, getDocs, doc, updateDoc, setDoc, query, where, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+const $ = id => document.getElementById(id);
+const say = (el, t, ok) => { el.textContent = t; el.className = "msg " + (ok ? "ok" : "bad"); };
+let courses = [];
+try {
+  courses = (await getDocs(collection(db, "courses"))).docs.map(d => ({ id: d.id, ...d.data() }));
+} catch (e) { say($("lvMsg"), "কোর্স লোড হয়নি: " + e.message, false); }
+const opts = courses.map(c => '<option value="' + c.id + '">' + (c.title || c.name || c.id).replace(/</g, "&lt;") + '</option>').join("");
+$("lvCourse").innerHTML = opts; $("ctCourse").innerHTML = opts;
+const title = id => { const c = courses.find(x => x.id === id); return c ? (c.title || c.name || id) : id; };
+function fillLive() { const c = courses.find(x => x.id === $("lvCourse").value) || {}; $("lvLink").value = c.liveLink || ""; $("lvTime").value = c.liveTime || ""; }
+$("lvCourse").addEventListener("change", fillLive); fillLive();
+
+$("lvSave").addEventListener("click", async () => {
+  try {
+    await updateDoc(doc(db, "courses", $("lvCourse").value), { liveLink: $("lvLink").value.trim(), liveTime: $("lvTime").value.trim() });
+    const c = courses.find(x => x.id === $("lvCourse").value); c.liveLink = $("lvLink").value.trim(); c.liveTime = $("lvTime").value.trim();
+    say($("lvMsg"), "✅ সেভ হয়েছে", true);
+  } catch (e) { say($("lvMsg"), "ব্যর্থ: " + e.message, false); }
+});
+
+$("ctSave").addEventListener("click", async () => {
+  const email = $("ctEmail").value.trim().toLowerCase();
+  if (!email) return say($("ctMsg"), "ইমেইল দিন", false);
+  try {
+    const snap = await getDocs(query(collection(db, "users"), where("email", "==", email)));
+    if (snap.empty) return say($("ctMsg"), "এই ইমেইলে কোনো ইউজার পাওয়া যায়নি", false);
+    const u = snap.docs[0], uid = u.id, cid = $("ctCourse").value;
+    const name = $("ctName").value.trim() || u.data().name || u.data().displayName || email;
+    await setDoc(doc(db, "certificates", uid + "_" + cid), { uid, courseId: cid, courseTitle: title(cid), studentName: name, issuedAt: serverTimestamp() });
+    say($("ctMsg"), "✅ সার্টিফিকেট ইস্যু হয়েছে: " + name, true);
+  } catch (e) { say($("ctMsg"), "ব্যর্থ: " + e.message, false); }
+});
+</script></body></html>

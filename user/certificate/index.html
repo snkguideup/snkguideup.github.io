@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../../style.css"><script>try{if(localStorage.getItem("snk-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script><script type="module" src="../../role-guard.js"></script><title>সার্টিফিকেট - SNK Ai Academy</title>
+<style>
+body{background:#f3f4f6}
+.bar{text-align:center;padding:18px}.bar button,.bar a{padding:11px 22px;border:none;border-radius:999px;background:#ffc72c;font-weight:800;font-family:inherit;font-size:14px;cursor:pointer;margin:0 5px;color:#111827;display:inline-block}
+.cert{width:min(960px,94vw);margin:0 auto 40px;background:#fffdf5;border:10px solid #14213d;outline:4px solid #ffc72c;outline-offset:-18px;padding:56px 40px;text-align:center}
+.cert img{height:64px;margin:0 auto 10px}
+.cert .brand{font-size:20px;font-weight:800;color:#14213d}
+.cert h1{font-size:40px;font-weight:800;color:#14213d;margin:14px 0 4px}
+.cert .sub{color:#6b7280;font-size:15px}
+.cert .name{font-size:38px;font-weight:800;color:#b45309;margin:22px 0 10px;border-bottom:2px solid #ffc72c;display:inline-block;padding:0 30px 6px}
+.cert .course{font-size:22px;font-weight:700;color:#111827;margin:10px 0 24px}
+.cert .meta{display:flex;justify-content:space-between;font-size:13px;color:#374151;margin-top:36px;flex-wrap:wrap;gap:8px}
+#msg{text-align:center;padding:60px;color:#6b7280}
+@media print{body{background:#fff}.bar{display:none}.cert{margin:0;width:100%}@page{size:A4 landscape;margin:8mm}}
+@media(max-width:600px){.cert{padding:30px 14px}.cert h1{font-size:26px}.cert .name{font-size:26px}}
+</style></head><body>
+<div class="bar"><button onclick="window.print()">🖨️ প্রিন্ট / PDF সেভ</button><a href="../classes/">← ফিরে যান</a></div>
+<div id="msg">লোড হচ্ছে…</div>
+<div class="cert" id="cert" style="display:none">
+  <img src="https://raw.githubusercontent.com/snkguideup/snkguideup.github.io/main/logo.svg" alt="SNK">
+  <div class="brand">SNK Ai Academy</div>
+  <h1>সার্টিফিকেট অফ কমপ্লিশন</h1>
+  <div class="sub">এই মর্মে প্রত্যয়ন করা যাচ্ছে যে</div>
+  <div class="name" id="cName"></div>
+  <div class="sub">সফলভাবে নিম্নোক্ত কোর্সটি সম্পন্ন করেছেন</div>
+  <div class="course" id="cCourse"></div>
+  <div class="meta"><span>তারিখ: <b id="cDate"></b></span><span>সার্টিফিকেট আইডি: <b id="cId"></b></span></div>
+</div>
+<script type="module">
+import { auth, db } from "../../firebase-config.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+const cid = new URLSearchParams(location.search).get("id");
+const msg = document.getElementById("msg");
+onAuthStateChanged(auth, async user => {
+  if (!user) return;
+  if (!cid) { msg.textContent = "কোর্সের আইডি পাওয়া যায়নি।"; return; }
+  try {
+    const s = await getDoc(doc(db, "certificates", user.uid + "_" + cid));
+    if (!s.exists()) { msg.textContent = "এই কোর্সের সার্টিফিকেট এখনো ইস্যু হয়নি।"; return; }
+    const d = s.data();
+    document.getElementById("cName").textContent = d.studentName || "";
+    document.getElementById("cCourse").textContent = d.courseTitle || "";
+    const dt = d.issuedAt && d.issuedAt.toDate ? d.issuedAt.toDate() : new Date();
+    document.getElementById("cDate").textContent = dt.toLocaleDateString("bn-BD");
+    document.getElementById("cId").textContent = "SNK-" + s.id.slice(-8).toUpperCase();
+    msg.style.display = "none"; document.getElementById("cert").style.display = "block";
+  } catch (e) { msg.textContent = "লোড করা যায়নি: " + e.message; }
+});
+</script></body></html>
