@@ -7,7 +7,7 @@
   var p = location.pathname;
 
   var SETS = {
-    user: [['🎥 আমার ক্লাস ও সার্টিফিকেট', 'user/classes/'], ['📚 কোর্স দেখুন', 'paid-course-academy/'], ['🏠 হোম', '']],
+    user: [['🎥 আমার ক্লাস ও সার্টিফিকেট', 'user/classes/'], ['👤 আমার প্রোফাইল', 'user/profile/'], ['📚 কোর্স দেখুন', 'paid-course-academy/'], ['🏠 হোম', '']],
     admin: [['📊 পরিসংখ্যান', 'admin/stats/'], ['💳 অর্ডার', 'admin/orders/'], ['🎥 লাইভ ও সার্টিফিকেট', 'admin/live/'],
             ['⭐ রিভিউ', 'admin/reviews/'], ['📢 ঘোষণা', 'admin/announce/'], ['📥 এক্সপোর্ট', 'admin/export/'], ['🤖 উষা', 'admin/usha/'], ['🔓 অ্যাক্সেস', 'admin/access/'], ['👥 ইউজার', 'admin/users/'], ['✏️ কনটেন্ট', 'admin/content/']],
     mentor: [['📝 ব্লগ পোস্ট', 'mentor/posts/'], ['🏠 হোম', '']]
