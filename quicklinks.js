@@ -9,7 +9,7 @@
   var SETS = {
     user: [['🎥 আমার ক্লাস ও সার্টিফিকেট', 'user/classes/'], ['📚 কোর্স দেখুন', 'paid-course-academy/'], ['🏠 হোম', '']],
     admin: [['📊 পরিসংখ্যান', 'admin/stats/'], ['💳 অর্ডার', 'admin/orders/'], ['🎥 লাইভ ও সার্টিফিকেট', 'admin/live/'],
-            ['⭐ রিভিউ', 'admin/reviews/'], ['🔓 অ্যাক্সেস', 'admin/access/'], ['👥 ইউজার', 'admin/users/'], ['✏️ কনটেন্ট', 'admin/content/']],
+            ['⭐ রিভিউ', 'admin/reviews/'], ['📢 ঘোষণা', 'admin/announce/'], ['📥 এক্সপোর্ট', 'admin/export/'], ['🔓 অ্যাক্সেস', 'admin/access/'], ['👥 ইউজার', 'admin/users/'], ['✏️ কনটেন্ট', 'admin/content/']],
     mentor: [['📝 ব্লগ পোস্ট', 'mentor/posts/'], ['🏠 হোম', '']]
   };
   var key = /\/admin\//.test(p) ? 'admin' : /\/mentor\//.test(p) ? 'mentor' : /\/user\//.test(p) ? 'user' : null;
