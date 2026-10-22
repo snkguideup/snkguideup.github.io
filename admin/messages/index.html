@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../style.css">
+<script>try{if(localStorage.getItem("snk-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+<script type="module" src="../../role-guard.js"></script>
+<title>বার্তা - SNK Admin</title>
+<style>
+.w{max-width:900px;margin:0 auto;padding:28px 20px 60px}
+h1{font-size:25px;font-weight:800;margin-bottom:14px}
+.tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.tabs button{padding:8px 18px;border-radius:999px;border:1px solid #e5e7eb;background:#fff;font-family:inherit;font-weight:700;font-size:13px;cursor:pointer;color:#111827}
+.tabs button.on{background:#14213d;color:#fff;border-color:#14213d}
+.card{border:1px solid #eef0f2;border-radius:14px;padding:16px 18px;margin-bottom:12px}
+.card.new{border-left:5px solid #ffc72c}
+.card h3{font-size:15px;margin-bottom:2px}.card small{color:#6b7280;font-size:12px}
+.card p{font-size:14px;line-height:1.7;margin:10px 0;white-space:pre-wrap;word-break:break-word}
+.card a{color:#d97706;font-weight:600}
+.act button{margin-right:8px;padding:7px 14px;border:none;border-radius:999px;font-weight:700;font-family:inherit;cursor:pointer;font-size:12px}
+.rd{background:#dcfce7;color:#16a34a}.rm{background:#fee2e2;color:#b91c1c}
+.err{color:#b91c1c;font-size:13px;margin-bottom:10px}
+[data-theme="dark"] .card{border-color:#1f2937}[data-theme="dark"] .tabs button{background:#1f2937;color:#e5e7eb;border-color:#374151}
+[data-theme="dark"] .tabs button.on{background:#ffc72c;color:#111827}
+</style></head><body>
+<div class="w">
+  <h1>📬 যোগাযোগের বার্তা</h1>
+  <div class="tabs"><button class="on" data-f="new">🆕 নতুন</button><button data-f="read">✅ দেখা হয়েছে</button><button data-f="all">সব</button></div>
+  <div id="err" class="err"></div>
+  <div id="list">লোড হচ্ছে…</div>
+</div>
+<script type="module">
+import { db } from "../../firebase-config.js";
+import { collection, getDocs, doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let all = [], filter = "new";
+const when = v => { const d = v && v.toDate ? v.toDate() : null; return d ? d.toLocaleString("bn-BD") : ""; };
+
+async function load() {
+  try {
+    all = (await getDocs(collection(db, "messages"))).docs.map(d => ({ id: d.id, ...d.data() }))
+      .sort((a, b) => ((b.createdAt && b.createdAt.seconds) || 0) - ((a.createdAt && a.createdAt.seconds) || 0));
+    render();
+  } catch (e) { document.getElementById("err").textContent = "লোড হয়নি: " + e.message + " (Firestore rules চেক করুন)"; document.getElementById("list").textContent = ""; }
+}
+function render() {
+  const items = all.filter(m => filter === "all" || (filter === "new" ? m.status !== "read" : m.status === "read"));
+  document.getElementById("list").innerHTML = items.map(m =>
+    '<div class="card ' + (m.status !== "read" ? "new" : "") + '"><h3>' + esc(m.name || "নাম নেই") + (m.subject ? " — " + esc(m.subject) : "") + '</h3>' +
+    '<small>' + esc(when(m.createdAt)) + ' · ' +
+    (m.phone ? '<a href="tel:' + esc(m.phone) + '">' + esc(m.phone) + '</a> · ' : '') +
+    (m.email ? '<a href="mailto:' + esc(m.email) + '">' + esc(m.email) + '</a>' : '') + '</small>' +
+    '<p>' + esc(m.message) + '</p><div class="act">' +
+    (m.status !== "read" ? '<button class="rd" data-a="read" data-id="' + esc(m.id) + '">✅ দেখা হয়েছে</button>' : '<button class="rd" data-a="new" data-id="' + esc(m.id) + '">↩️ নতুন করুন</button>') +
+    '<button class="rm" data-a="del" data-id="' + esc(m.id) + '">🗑️ মুছুন</button></div></div>').join("") || "কোনো বার্তা নেই।";
+}
+document.querySelector(".tabs").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  filter = b.dataset.f;
+  document.querySelectorAll(".tabs button").forEach(x => x.classList.toggle("on", x === b));
+  render();
+});
+document.getElementById("list").addEventListener("click", async e => {
+  const b = e.target.closest("button[data-a]"); if (!b) return;
+  try {
+    if (b.dataset.a === "del") { if (!confirm("বার্তাটি মুছে ফেলবেন?")) return; await deleteDoc(doc(db, "messages", b.dataset.id)); }
+    else await updateDoc(doc(db, "messages", b.dataset.id), { status: b.dataset.a });
+    load();
+  } catch (err) { document.getElementById("err").textContent = "ব্যর্থ: " + err.message; }
+});
+load();
+</script></body></html>
