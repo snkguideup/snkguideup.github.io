@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../style.css">
+<script>try{if(localStorage.getItem("snk-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+<script type="module" src="../../role-guard.js"></script>
+<title>ঘোষণা বার - SNK Admin</title>
+<style>
+.w{max-width:720px;margin:0 auto;padding:28px 20px 60px}
+.top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+.top h1{font-size:25px;font-weight:800}
+.box{border:1px solid #eef0f2;border-radius:16px;padding:22px}
+label{display:block;font-size:13px;font-weight:700;margin:14px 0 5px}
+input[type=text],textarea{width:100%;padding:11px 14px;border:1px solid #d1d5db;border-radius:10px;font-family:inherit;font-size:14px;background:#fff;color:#111827}
+textarea{min-height:70px}
+.chk{display:flex;align-items:center;gap:8px;font-weight:700;margin-top:16px}
+button.go{margin-top:18px;padding:12px 26px;border:none;border-radius:999px;background:#ffc72c;font-weight:800;font-family:inherit;font-size:15px;cursor:pointer}
+.msg{margin-top:12px;font-size:13px;font-weight:600}.ok{color:#16a34a}.bad{color:#b91c1c}
+.prev{margin-top:18px;border-radius:10px;overflow:hidden}
+.prev .bar{background:#14213d;color:#fff;padding:10px 16px;text-align:center;font-size:14px;font-weight:600}
+.prev .bar b{background:#ffc72c;color:#111827;padding:3px 12px;border-radius:999px;font-size:12px;margin-left:8px}
+[data-theme="dark"] .box{border-color:#1f2937}
+</style></head><body>
+<div class="w">
+  <div class="top"><h1>📢 ঘোষণা বার</h1></div>
+  <div class="box">
+    <p style="font-size:13px;color:#6b7280">এখানে যা লিখবেন তা সাইটের সব পাবলিক পেজের একদম ওপরে দেখা যাবে (যেমন নতুন ব্যাচ, অফার, ছুটির নোটিশ)।</p>
+    <label>ঘোষণার লেখা</label>
+    <textarea id="text" maxlength="200" placeholder="যেমন: নতুন ব্যাচ শুরু ১৫ তারিখ, সিট সীমিত!"></textarea>
+    <label>বাটনের লেখা (ঐচ্ছিক)</label>
+    <input type="text" id="linkText" placeholder="বিস্তারিত দেখুন">
+    <label>বাটনের লিংক (ঐচ্ছিক, যেমন admission/ বা পুরো https:// লিংক)</label>
+    <input type="text" id="link" placeholder="admission/">
+    <label class="chk"><input type="checkbox" id="active"> ঘোষণা বার চালু রাখুন</label>
+    <div class="prev"><div class="bar"><span id="pt">আপনার ঘোষণা এখানে দেখাবে</span><b id="pb" style="display:none"></b></div></div>
+    <button class="go" id="save">💾 সেভ করুন</button>
+    <div class="msg" id="msg"></div>
+  </div>
+</div>
+<script type="module">
+import { db } from "../../firebase-config.js";
+import { doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+const $ = id => document.getElementById(id);
+const ref = doc(db, "site", "announcement");
+function prev() {
+  $("pt").textContent = "📢 " + ($("text").value || "আপনার ঘোষণা এখানে দেখাবে");
+  const b = $("pb"); b.style.display = $("link").value.trim() ? "inline" : "none"; b.textContent = $("linkText").value || "বিস্তারিত দেখুন";
+}
+["text", "link", "linkText"].forEach(i => $(i).addEventListener("input", prev));
+try {
+  const s = await getDoc(ref);
+  if (s.exists()) { const d = s.data(); $("text").value = d.text || ""; $("link").value = d.link || ""; $("linkText").value = d.linkText || ""; $("active").checked = !!d.active; }
+} catch (e) { $("msg").className = "msg bad"; $("msg").textContent = "পড়া যায়নি: " + e.message; }
+prev();
+$("save").addEventListener("click", async () => {
+  try {
+    await setDoc(ref, { text: $("text").value.trim(), link: $("link").value.trim(), linkText: $("linkText").value.trim(), active: $("active").checked, updatedKey: String(Date.now()), updatedAt: serverTimestamp() });
+    $("msg").className = "msg ok"; $("msg").textContent = "✅ সেভ হয়েছে। সাইট রিফ্রেশ করে দেখুন।";
+  } catch (e) { $("msg").className = "msg bad"; $("msg").textContent = "ব্যর্থ: " + e.message + " (Firestore rules চেক করুন)"; }
+});
+</script></body></html>
