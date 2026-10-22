@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../style.css">
+<script>try{if(localStorage.getItem("snk-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+<script type="module" src="../../role-guard.js"></script>
+<title>উষা প্রশ্ন-উত্তর - SNK Admin</title>
+<style>
+.w{max-width:820px;margin:0 auto;padding:28px 20px 60px}
+h1{font-size:25px;font-weight:800;margin-bottom:6px}
+.sub{color:#6b7280;font-size:14px;margin-bottom:18px;line-height:1.7}
+.card{border:1px solid #eef0f2;border-radius:14px;padding:16px;margin-bottom:12px}
+label{display:block;font-size:12px;font-weight:700;margin:8px 0 4px;color:#6b7280}
+input,textarea{width:100%;padding:10px 12px;border:1px solid #d1d5db;border-radius:10px;font-family:inherit;font-size:14px;background:#fff;color:#111827}
+textarea{min-height:70px}
+.rm{margin-top:10px;padding:7px 14px;border:none;border-radius:999px;background:#fee2e2;color:#b91c1c;font-weight:700;font-family:inherit;cursor:pointer}
+.bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.bar button{padding:12px 24px;border:none;border-radius:999px;font-weight:800;font-family:inherit;font-size:14px;cursor:pointer}
+.add{background:#14213d;color:#fff}.save{background:#ffc72c;color:#111827}
+.msg{margin-top:12px;font-size:13px;font-weight:600}.ok{color:#16a34a}.bad{color:#b91c1c}
+[data-theme="dark"] .card{border-color:#1f2937}
+</style></head><body>
+<div class="w">
+  <h1>🤖 উষা চ্যাটবটের প্রশ্ন-উত্তর</h1>
+  <p class="sub">ভিজিটরের প্রশ্নে নিচের <b>কীওয়ার্ড</b> (কমা দিয়ে আলাদা) থাকলে উষা আপনার লেখা উত্তর দেবে। কোনো কীওয়ার্ড না মিললে উষা আগের মতো নিজের উত্তর দেবে। যেমন কীওয়ার্ড: <code>ফি, দাম, কত টাকা</code></p>
+  <div id="list"></div>
+  <div class="bar"><button class="add" id="add">➕ নতুন প্রশ্ন-উত্তর</button><button class="save" id="save">💾 সেভ করুন</button></div>
+  <div class="msg" id="msg"></div>
+</div>
+<script type="module">
+import { db } from "../../firebase-config.js";
+import { doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+const $ = id => document.getElementById(id);
+const ref = doc(db, "site", "usha");
+const list = $("list");
+
+function row(k = "", a = "") {
+  const c = document.createElement("div"); c.className = "card";
+  c.innerHTML = '<label>কীওয়ার্ড (কমা দিয়ে)</label><input class="k"><label>উষার উত্তর</label><textarea class="a" maxlength="500"></textarea><button type="button" class="rm">🗑️ মুছুন</button>';
+  c.querySelector(".k").value = k; c.querySelector(".a").value = a;
+  c.querySelector(".rm").onclick = () => c.remove();
+  list.appendChild(c);
+}
+try {
+  const s = await getDoc(ref);
+  const items = s.exists() && Array.isArray(s.data().items) ? s.data().items : [];
+  items.forEach(i => row(i.keys, i.answer));
+  if (!items.length) row("ফি, দাম, কত টাকা", "কোর্সের ফি প্রতিটি কোর্সের পেজে দেওয়া আছে। সিজন-১ ফ্রি।");
+} catch (e) { $("msg").className = "msg bad"; $("msg").textContent = "পড়া যায়নি: " + e.message; }
+
+$("add").onclick = () => row();
+$("save").onclick = async () => {
+  const items = [...list.querySelectorAll(".card")].map(c => ({ keys: c.querySelector(".k").value.trim(), answer: c.querySelector(".a").value.trim() })).filter(i => i.keys && i.answer);
+  try {
+    await setDoc(ref, { items, updatedAt: serverTimestamp() });
+    $("msg").className = "msg ok"; $("msg").textContent = "✅ " + items.length + "টি প্রশ্ন-উত্তর সেভ হয়েছে। সাইট রিফ্রেশ করে উষাকে জিজ্ঞেস করুন।";
+  } catch (e) { $("msg").className = "msg bad"; $("msg").textContent = "ব্যর্থ: " + e.message + " (Firestore rules চেক করুন)"; }
+};
+</script></body></html>
