@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>সাইট চেক - SNK Ai Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Hind Siliguri',sans-serif;background:#f9fafb;color:#111827;padding:24px 16px 60px}
+.w{max-width:820px;margin:0 auto}
+h1{font-size:26px;font-weight:800;margin-bottom:6px}
+.sub{color:#6b7280;font-size:14px;margin-bottom:18px}
+button{padding:12px 26px;border:none;border-radius:999px;background:#ffc72c;font-weight:800;font-family:inherit;font-size:15px;cursor:pointer}
+.sum{margin:18px 0;padding:14px 18px;border-radius:12px;background:#fff;border:1px solid #e5e7eb;font-weight:700}
+.grp{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:16px 18px;margin-bottom:14px}
+.grp h2{font-size:16px;margin-bottom:10px}
+.row{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px dashed #eef0f2;font-size:14px}
+.row:last-child{border:none}
+.ok{color:#16a34a;font-weight:700}.bad{color:#b91c1c;font-weight:700}.mid{color:#b45309;font-weight:700}
+code{background:#f3f4f6;padding:1px 6px;border-radius:5px;font-size:13px}
+</style></head><body>
+<div class="w">
+  <h1>🔍 SNK সাইট চেকার</h1>
+  <p class="sub">এই পেজ দেখে নেয় আপনার সাইটে সব ফাইল ও পেজ আপলোড হয়েছে কিনা, এবং হোমপেজে দরকারি স্ক্রিপ্ট লাইনগুলো বসানো আছে কিনা।</p>
+  <button id="run">▶️ চেক শুরু করুন</button>
+  <div class="sum" id="sum" style="display:none"></div>
+  <div id="out"></div>
+  <p class="sub" style="margin-top:20px">⚠️ চেক শেষ হলে এই ফাইল (<code>site-check.html</code>) GitHub থেকে মুছে ফেলুন।</p>
+</div>
+<script>
+var FILES = {
+  "রুটের ফাইল": ["style.css","script.js","logo.svg","firebase-config.js","role-guard.js","site-content.js","payment-link.js","pwa.js","usha-brain.js","manifest.json","sw.js","home-blog.js","course-search.js","mobile-menu.js","mobile-search.js","seo.js","faq.js","speed.js","reviews.js","404.html","robots.txt","sitemap.xml"],
+  "পাবলিক পেজ": ["","login.html","admission/","course/","learn/","about/","contact/","resource/","blogs/","blogs/post/","free-course-academy/","free-course-itskill/","paid-course-academy/","paid-course-itskill/"],
+  "অ্যাডমিন / মেন্টর / ইউজার পেজ": ["admin/content/","admin/users/","admin/access/","admin/orders/","admin/stats/","admin/live/","admin/reviews/","mentor/","mentor/posts/","user/","user/classes/","user/certificate/"]
+};
+var TAGS = ["site-content.js","payment-link.js","pwa.js","usha-brain.js","home-blog.js","course-search.js","mobile-menu.js","mobile-search.js","seo.js","faq.js","speed.js"];
+
+function exists(p) {
+  return fetch(p, { cache: "no-store" }).then(function (r) { return r.ok; }).catch(function () { return false; });
+}
+document.getElementById("run").onclick = async function () {
+  var out = document.getElementById("out"), sum = document.getElementById("sum");
+  out.innerHTML = "লোড হচ্ছে…"; sum.style.display = "none";
+  var okN = 0, badN = 0, html = "";
+  for (var g in FILES) {
+    html += '<div class="grp"><h2>' + g + '</h2>';
+    var res = await Promise.all(FILES[g].map(exists));
+    FILES[g].forEach(function (f, i) {
+      if (res[i]) okN++; else badN++;
+      html += '<div class="row"><span>/' + f + '</span><span class="' + (res[i] ? "ok" : "bad") + '">' + (res[i] ? "✅ আছে" : "❌ নেই") + '</span></div>';
+    });
+    html += '</div>';
+  }
+  html += '<div class="grp"><h2>হোমপেজ (index.html) এ স্ক্রিপ্ট লাইন</h2>';
+  try {
+    var t = await (await fetch("./", { cache: "no-store" })).text();
+    TAGS.forEach(function (s) {
+      var has = t.indexOf(s) > -1;
+      if (has) okN++; else badN++;
+      html += '<div class="row"><span>' + s + '</span><span class="' + (has ? "ok" : "mid") + '">' + (has ? "✅ বসানো আছে" : "⚠️ লাইন বসেনি") + '</span></div>';
+    });
+  } catch (e) { html += '<div class="row"><span>হোমপেজ পড়া যায়নি</span><span class="bad">❌</span></div>'; }
+  html += '</div>';
+  out.innerHTML = html;
+  sum.style.display = "block";
+  sum.innerHTML = "✅ ঠিক আছে: " + okN + " &nbsp;|&nbsp; ❌ / ⚠️ সমস্যা: " + badN + (badN ? " — লাল বা হলুদ লাইনগুলো ঠিক করুন।" : " — সব ঠিক! 🎉");
+};
+</script></body></html>
